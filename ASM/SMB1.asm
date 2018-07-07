@@ -6295,18 +6295,18 @@ ProcFireball_Bubble:
       lda #Sfx_Fireball          ;play fireball sound effect [A920]
       sta Square1SoundQueue      ; [85FF]
       lda #$02                   ;load state [A902]
-      sta Fireball_State,x
-      ldy PlayerAnimTimerSet     ;copy animation frame timer setting
-      sty FireballThrowingTimer  ;into fireball throwing timer
-      dey
-      sty PlayerAnimTimer        ;decrement and store in player's animation timer
-      inc FireballCounter        ;increment fireball counter
+      sta Fireball_State,x       ; [9524]
+      ldy PlayerAnimTimerSet     ;copy animation frame timer setting  [AC0C07]
+      sty FireballThrowingTimer  ;into fireball throwing timer [8C1107]
+      dey                        ; [88]
+      sty PlayerAnimTimer        ;decrement and store in player's animation timer [8C8107]
+      inc FireballCounter        ;increment fireball counter [EECE06]
 
 ProcFireballs:
-      ldx #$00
-      jsr FireballObjCore  ;process first fireball object
-      ldx #$01
-      jsr FireballObjCore  ;process second fireball object, then do air bubbles
+      ldx #$00             ; [A200]
+      jsr FireballObjCore  ;process first fireball object [2089B6]
+      ldx #$01             ; [A201]
+      jsr FireballObjCore  ;process second fireball object, then do air bubbles [2089B6]
 
 ProcAirBubbles:
           lda AreaType                ;if not water type level, skip the rest of this
@@ -6319,40 +6319,40 @@ BublLoop: stx ObjectOffset            ;store offset
           jsr DrawBubble              ;draw the air bubble
           dex
           bpl BublLoop                ;do this until all three are handled
-BublExit: rts                         ;then leave
+BublExit: rts                         ;then leave [60]
 
 FireballXSpdData:
-      .db $40, $c0
+      .db $40, $c0                    ; [40C0]
 
 FireballObjCore:
-         stx ObjectOffset             ;store offset as current object
-         lda Fireball_State,x         ;check for d7 = 1
-         asl
-         bcs FireballExplosion        ;if so, branch to get relative coordinates and draw explosion
-         ldy Fireball_State,x         ;if fireball inactive, branch to leave
-         beq NoFBall
-         dey                          ;if fireball state set to 1, skip this part and just run it
-         beq RunFB
-         lda Player_X_Position        ;get player's horizontal position
-         adc #$04                     ;add four pixels and store as fireball's horizontal position
-         sta Fireball_X_Position,x
-         lda Player_PageLoc           ;get player's page location
-         adc #$00                     ;add carry and store as fireball's page location
-         sta Fireball_PageLoc,x
-         lda Player_Y_Position        ;get player's vertical position and store
-         sta Fireball_Y_Position,x
-         lda #$01                     ;set high byte of vertical position
-         sta Fireball_Y_HighPos,x
-         ldy PlayerFacingDir          ;get player's facing direction
-         dey                          ;decrement to use as offset here
-         lda FireballXSpdData,y       ;set horizontal speed of fireball accordingly
-         sta Fireball_X_Speed,x
-         lda #$04                     ;set vertical speed of fireball
-         sta Fireball_Y_Speed,x
-         lda #$07
-         sta Fireball_BoundBoxCtrl,x  ;set bounding box size control for fireball
-         dec Fireball_State,x         ;decrement state to 1 to skip this part from now on
-RunFB:   txa                          ;add 7 to offset to use
+         stx ObjectOffset             ;store offset as current object [8608]
+         lda Fireball_State,x         ;check for d7 = 1 [B524]
+         asl                          ; [0A]
+         bcs FireballExplosion        ;if so, branch to get relative coordinates and draw explosion [B063]
+         ldy Fireball_State,x         ;if fireball inactive, branch to leave [B424]
+         beq NoFBall                  ; [F05E]
+         dey                          ;if fireball state set to 1, skip this part and just run it [88]
+         beq RunFB                    ; [F027]
+         lda Player_X_Position        ;get player's horizontal position [A586]
+         adc #$04                     ;add four pixels and store as fireball's horizontal position [6904]
+         sta Fireball_X_Position,x    ; [958D]
+         lda Player_PageLoc           ;get player's page location [A56D]
+         adc #$00                     ;add carry and store as fireball's page location [6900]
+         sta Fireball_PageLoc,x       ; [9574]
+         lda Player_Y_Position        ;get player's vertical position and store [A5CE]
+         sta Fireball_Y_Position,x    ; [95D5]
+         lda #$01                     ;set high byte of vertical position [A901]
+         sta Fireball_Y_HighPos,x     ; [95BC]
+         ldy PlayerFacingDir          ;get player's facing direction [A433]
+         dey                          ;decrement to use as offset here [88]
+         lda FireballXSpdData,y       ;set horizontal speed of fireball accordingly [B987B6]
+         sta Fireball_X_Speed,x       ; [955E]
+         lda #$04                     ;set vertical speed of fireball [A904]
+         sta Fireball_Y_Speed,x       ; [95A6]
+         lda #$07                     ; [A907]
+         sta Fireball_BoundBoxCtrl,x  ;set bounding box size control for fireball [9DA004]
+         dec Fireball_State,x         ;decrement state to 1 to skip this part from now on [D624]
+RunFB:   txa                          ;add 7 to offset to use [8A]
          clc                          ;as fireball offset for next routines
          adc #$07
          tax
