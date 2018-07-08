@@ -1299,7 +1299,7 @@ DecNumTimer:  dec FloateyNum_Timer,x       ;decrement value here
               bne ChkTallEnemy
               cpy #$0b                     ;check offset for $0b
               bne LoadNumTiles             ;branch ahead if not found
-              inc NumberofLives            ;give player one extra life (1-up)
+              inc NumberofLives            ;give player one extra life (1-up) [EE5A07]
               lda #Sfx_ExtraLife
               sta Square2SoundQueue        ;and play the 1-up sound
 LoadNumTiles: lda ScoreUpdateData,y        ;load point value here
@@ -7091,9 +7091,9 @@ GiveOneCoin:
       lda CoinTally
       cmp #100               ;does player have 100 coins yet?
       bne CoinPoints         ;if not, skip all of this
-      lda #$00
-      sta CoinTally          ;otherwise, reinitialize coin amount
-      inc NumberofLives      ;give the player an extra life
+      lda #$00               ; [A900]
+      sta CoinTally          ;otherwise, reinitialize coin amount [8D5E07]
+      inc NumberofLives      ;give the player an extra life [EE5A07]
       lda #Sfx_ExtraLife
       sta Square2SoundQueue  ;play 1-up sound
 
@@ -16349,4 +16349,4 @@ BrickShatterEnvData:
 
       .dw NonMaskableInterrupt
       .dw Start
-      .dw $fff0  ;unused
+      .dw $fff0  ;unusedd
