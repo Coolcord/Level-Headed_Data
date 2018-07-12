@@ -6449,16 +6449,16 @@ RunGameTimer:
            lda GameTimerDisplay
            ora GameTimerDisplay+1     ;otherwise check game timer digits
            ora GameTimerDisplay+2
-           beq TimeUpOn               ;if game timer digits at 000, branch to time-up code
-           ldy GameTimerDisplay       ;otherwise check first digit
-           dey                        ;if first digit not on 1,
-           bne ResGTCtrl              ;branch to reset game timer control
-           lda GameTimerDisplay+1     ;otherwise check second and third digits
-           ora GameTimerDisplay+2
-           bne ResGTCtrl              ;if timer not at 100, branch to reset game timer control
-           lda #TimeRunningOutMusic
-           sta EventMusicQueue        ;otherwise load time running out music
-ResGTCtrl: lda #$18                   ;reset game timer control
+           beq TimeUpOn               ;if game timer digits at 000, branch to time-up code [F026]
+           ldy GameTimerDisplay       ;otherwise check first digit [ACF807]
+           dey                        ;if first digit not on 1, [88]
+           bne ResGTCtrl              ;branch to reset game timer control [D00C]
+           lda GameTimerDisplay+1     ;otherwise check second and third digits [ADF907]
+           ora GameTimerDisplay+2     ; [0DFA07]
+           bne ResGTCtrl              ;if timer not at 100, branch to reset game timer control [D004]
+           lda #TimeRunningOutMusic   ; [A940]
+           sta EventMusicQueue        ;otherwise load time running out music [85FC]
+ResGTCtrl: lda #$18                   ;reset game timer control [A918]
            sta GameTimerCtrlTimer
            ldy #$23                   ;set offset for last digit
            lda #$ff                   ;set value to decrement game timer digit
