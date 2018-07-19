@@ -9975,9 +9975,9 @@ ChkLS:   lda Enemy_State,x          ;if lakitu's enemy state not set at all,
          lda #$00
          sta LakituMoveDirection,x  ;otherwise initialize moving direction to move to left
          sta EnemyFrenzyBuffer      ;initialize frenzy buffer
-         lda #$10
-         bne SetLSpd                ;load horizontal speed and do unconditional branch
-Fr12S:   lda #Spiny
+         lda #$10                   ; [A910]
+         bne SetLSpd                ;load horizontal speed and do unconditional branch [D013]
+Fr12S:   lda #Spiny                 ; [A912]
          sta EnemyFrenzyBuffer      ;set spiny identifier in frenzy buffer
          ldy #$02
 LdLDa:   lda LakituDiffAdj,y        ;load values
@@ -12418,14 +12418,14 @@ DoIDCheckBGColl:
 HBChk: cpy #HammerBro           ;check for hammer bro
        bne CInvu                ;branch if not found
        jmp HammerBroBGColl      ;otherwise jump elsewhere
-CInvu: cpy #Spiny               ;if enemy object is spiny, branch
-       beq YesIn
-       cpy #PowerUpObject       ;if special power-up object, branch
-       beq YesIn
-       cpy #$07                 ;if enemy object =>$07, branch to leave
-       bcs ExEBGChk
-YesIn: jsr ChkUnderEnemy        ;if enemy object < $07, or = $12 or $2e, do this sub
-       bne HandleEToBGCollision ;if block underneath enemy, branch
+CInvu: cpy #Spiny               ;if enemy object is spiny, branch [C012]
+       beq YesIn                ; [F008]
+       cpy #PowerUpObject       ;if special power-up object, branch [C02E]
+       beq YesIn                ; [F004]
+       cpy #$07                 ;if enemy object =>$07, branch to leave [C007]
+       bcs ExEBGChk             ; [B074]
+YesIn: jsr ChkUnderEnemy        ;if enemy object < $07, or = $12 or $2e, do this sub [20AEE1]
+       bne HandleEToBGCollision ;if block underneath enemy, branch [D003]
 
 NoEToBGCollision:
        jmp ChkForRedKoopa       ;otherwise skip and do something else
@@ -12510,25 +12510,25 @@ LandEnemyProperly:
 SChkA: jmp DoEnemySideCheck    ;if lower nybble < $0d, d7 set but d6 not set, jump here
 
 ChkLandedEnemyState:
-           lda Enemy_State,x         ;if enemy in normal state, branch back to jump here
-           beq SChkA
-           cmp #$05                  ;if in state used by spiny's egg
-           beq ProcEnemyDirection    ;then branch elsewhere
-           cmp #$03                  ;if already in state used by koopas and buzzy beetles
-           bcs ExSteChk              ;or in higher numbered state, branch to leave
-           lda Enemy_State,x         ;load enemy state again (why?)
-           cmp #$02                  ;if not in $02 state (used by koopas and buzzy beetles)
-           bne ProcEnemyDirection    ;then branch elsewhere
-           lda #$10                  ;load default timer here
-           ldy Enemy_ID,x            ;check enemy identifier for spiny
-           cpy #Spiny
-           bne SetForStn             ;branch if not found
-           lda #$00                  ;set timer for $00 if spiny
-SetForStn: sta EnemyIntervalTimer,x  ;set timer here
-           lda #$03                  ;set state here, apparently used to render
-           sta Enemy_State,x         ;upside-down koopas and buzzy beetles
-           jsr EnemyLanding          ;then land it properly
-ExSteChk:  rts                       ;then leave
+           lda Enemy_State,x         ;if enemy in normal state, branch back to jump here [B51E]
+           beq SChkA                 ; [F0F9]
+           cmp #$05                  ;if in state used by spiny's egg [C905]
+           beq ProcEnemyDirection    ;then branch elsewhere [F01F]
+           cmp #$03                  ;if already in state used by koopas and buzzy beetles [C903]
+           bcs ExSteChk              ;or in higher numbered state, branch to leave [B01A]
+           lda Enemy_State,x         ;load enemy state again (why?) [B51E]
+           cmp #$02                  ;if not in $02 state (used by koopas and buzzy beetles) [C902]
+           bne ProcEnemyDirection    ;then branch elsewhere [D015]
+           lda #$10                  ;load default timer here [A910]
+           ldy Enemy_ID,x            ;check enemy identifier for spiny [B416]
+           cpy #Spiny                ; [C012]
+           bne SetForStn             ;branch if not found [D002]
+           lda #$00                  ;set timer for $00 if spiny [A900]
+SetForStn: sta EnemyIntervalTimer,x  ;set timer here [9D9607]
+           lda #$03                  ;set state here, apparently used to render [A903]
+           sta Enemy_State,x         ;upside-down koopas and buzzy beetles [951E]
+           jsr EnemyLanding          ;then land it properly [204FE1]
+ExSteChk:  rts                       ;then leave [60]
 
 ProcEnemyDirection:
          lda Enemy_ID,x            ;check enemy identifier for goomba
@@ -12556,10 +12556,10 @@ LandEnemyInitState:
       jsr EnemyLanding       ;land enemy properly
       lda Enemy_State,x
       and #%10000000         ;if d7 of enemy state is set, branch
-      bne NMovShellFallBit
-      lda #$00               ;otherwise initialize enemy state and leave
-      sta Enemy_State,x      ;note this will also turn spiny's egg into spiny
-      rts
+      bne NMovShellFallBit   ; [D005]
+      lda #$00               ;otherwise initialize enemy state and leave [A900]
+      sta Enemy_State,x      ;note this will also turn spiny's egg into spiny [951E]
+      rts                    ; [60]
 
 NMovShellFallBit:
       lda Enemy_State,x   ;nullify d6 of enemy state, save other bits
