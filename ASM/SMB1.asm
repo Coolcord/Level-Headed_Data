@@ -971,13 +971,13 @@ WSelectBufferTemplate:
       .db $04, $20, $73, $01, $00, $00
 
 GameMenuRoutine:
-              ldy #$00
+              ldy #$00                    ; [A000]
               lda SavedJoypad1Bits        ;check to see if either player pressed
               ora SavedJoypad2Bits        ;only the start button (either joypad)
-              cmp #Start_Button
-              beq StartGame
-              cmp #A_Button+Start_Button  ;check to see if A + start was pressed
-              bne ChkSelect               ;if not, branch to check select button
+              cmp #Start_Button           ; [C910]
+              beq StartGame               ; [F004]
+              cmp #A_Button+Start_Button  ;check to see if A + start was pressed [C990]
+              bne ChkSelect               ;if not, branch to check select button [D003]
 StartGame:    jmp ChkContinue             ;if either start or A + start, execute here
 ChkSelect:    cmp #Select_Button          ;check to see if the select button was pressed
               beq SelectBLogic            ;if so, branch reset demo timer
@@ -1035,11 +1035,11 @@ ResetTitle:   lda #$00                    ;reset game modes, disable
               rts
 ChkContinue:  ldy DemoTimer               ;if timer for demo has expired, reset modes
               beq ResetTitle
-              asl                         ;check to see if A button was also pushed
-              bcc StartWorld1             ;if not, don't load continue function's world number
-              lda ContinueWorld           ;load previously saved world number for secret
-              jsr GoContinue              ;continue function when pressing A + start
-StartWorld1:  jsr LoadAreaPointer
+              asl                         ;check to see if A button was also pushed [0A]
+              bcc StartWorld1             ;if not, don't load continue function's world number [9006]
+              lda ContinueWorld           ;load previously saved world number for secret [ADFD07]
+              jsr GoContinue              ;continue function when pressing A + start [200E83]
+StartWorld1:  jsr LoadAreaPointer         ; [20039C]
               inc Hidden1UpFlag           ;set 1-up box flag for both players
               inc OffScr_Hidden1UpFlag
               inc FetchNewGameTimerFlag   ;set fetch new game timer flag
@@ -1298,9 +1298,9 @@ DecNumTimer:  dec FloateyNum_Timer,x       ;decrement value here
               cmp #$2b                     ;if not reached a certain point, branch  
               bne ChkTallEnemy
               cpy #$0b                     ;check offset for $0b
-              bne LoadNumTiles             ;branch ahead if not found
+              bne LoadNumTiles             ;branch ahead if not found [D007]
               inc NumberofLives            ;give player one extra life (1-up) [EE5A07]
-              lda #Sfx_ExtraLife
+              lda #Sfx_ExtraLife           ; [A940]
               sta Square2SoundQueue        ;and play the 1-up sound
 LoadNumTiles: lda ScoreUpdateData,y        ;load point value here
               lsr                          ;move high nybble to low
@@ -2908,17 +2908,17 @@ PlayerLoseLife:
              inc DisableScreenFlag    ;disable screen and sprite 0 check
              lda #$00
              sta Sprite0HitDetectFlag
-             lda #Silence             ;silence music
-             sta EventMusicQueue
-             dec NumberofLives        ;take one life from player
-             bpl StillInGame          ;if player still has lives, branch
-             lda #$00
-             sta OperMode_Task        ;initialize mode task,
-             lda #GameOverModeValue   ;switch to game over mode
-             sta OperMode             ;and leave
-             rts
-StillInGame: lda WorldNumber          ;multiply world number by 2 and use
-             asl                      ;as offset
+             lda #Silence             ;silence music [A980]
+             sta EventMusicQueue      ; [85FC]
+             dec NumberofLives        ;take one life from player [CE5A07]
+             bpl StillInGame          ;if player still has lives, branch [100B]
+             lda #$00                 ; [A900]
+             sta OperMode_Task        ;initialize mode task, [8D7207]
+             lda #GameOverModeValue   ;switch to game over mode [A903]
+             sta OperMode             ;and leave [8D7007]
+             rts                      ; [60]
+StillInGame: lda WorldNumber          ;multiply world number by 2 and use [AD5F07]
+             asl                      ;as offset [0A]
              tax
              lda LevelNumber          ;if in area -3 or -4, increment
              and #$02                 ;offset by one byte, otherwise
