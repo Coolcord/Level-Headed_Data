@@ -1,0 +1,28 @@
+# Compatible:
+# 007 You only live 2wice (by emask).hexp
+# 007 You only live 2wice (by emask).hexp;Music 02 (from U1's Music Pack).hexp
+# 007 You only live 2wice (by emask).hexp;Music 04 (from U1's Music Pack).hexp
+# 007 You only live 2wice (by emask).hexp;Music 06 (from U1's Music Pack).hexp
+# 007 You only live 2wice (by emask).hexp;Music 09 (from U1's Music Pack).hexp
+# Music 02 (from U1's Music Pack).hexp
+# Music 03 (from U1's Music Pack).hexp
+# Music 04 (from U1's Music Pack).hexp
+# Music 06 (from U1's Music Pack).hexp
+# Music 09 (from U1's Music Pack).hexp
+# Techno! Mario Bros [O,W,S].hexp
+# Techno! Mario Bros [W,S].hexp
+# TowerRE.hexp
+
+C: SKIP
+
+A: 0x796C
+V: 08
+
+A: 0x7BB4
+V: 81040434343C3C3434823830342A04048134343434823034040481040434343C3C343482
+   3830342A04048134343434823038833400FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+   FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8686464E92D8D6868646
+   4E92D8D68686464E92D8D68686464E92D8D6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+   FFFFFF831C2A122A1C2A122A1C2A122A1C2A122A04220400FFFFFFFFFFFFFFFFFFFFFFFF
+   FF
+
