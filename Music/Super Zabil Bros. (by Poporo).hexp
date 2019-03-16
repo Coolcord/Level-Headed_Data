@@ -1,0 +1,63 @@
+# Compatible:
+# Music 02 (from U1's Music Pack).hexp
+# Music 03 (from U1's Music Pack).hexp
+# Music 03 (from U1's Music Pack).hexp;Music 02 (from U1's Music Pack).hexp
+# Music 03 (from U1's Music Pack).hexp;Music 04 (from U1's Music Pack).hexp
+# Music 03 (from U1's Music Pack).hexp;Music 06 (from U1's Music Pack).hexp
+# Music 03 (from U1's Music Pack).hexp;Music 09 (from U1's Music Pack).hexp
+# Music 03 (from U1's Music Pack).hexp;Super Bobble Bros. (Variant 1) (by Unsavory Maggot).hexp
+# Music 03 (from U1's Music Pack).hexp;Super Bobble Bros. (Variant 2) (by Unsavory Maggot).hexp
+# Music 04 (from U1's Music Pack).hexp
+# Music 06 (from U1's Music Pack).hexp
+# Music 09 (from U1's Music Pack).hexp
+# Super Bobble Bros. (Variant 1) (by Unsavory Maggot).hexp
+# Super Bobble Bros. (Variant 2) (by Unsavory Maggot).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Music 02 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Music 03 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Music 03 (from U1's Music Pack).hexp;Music 02 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Music 03 (from U1's Music Pack).hexp;Music 04 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Music 03 (from U1's Music Pack).hexp;Music 06 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Music 03 (from U1's Music Pack).hexp;Music 09 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Music 03 (from U1's Music Pack).hexp;Super Bobble Bros. (Variant 1) (by Unsavory Maggot).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Music 03 (from U1's Music Pack).hexp;Super Bobble Bros. (Variant 2) (by Unsavory Maggot).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Music 04 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Music 06 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Music 09 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Super Bobble Bros. (Variant 1) (by Unsavory Maggot).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Super Bobble Bros. (Variant 2) (by Unsavory Maggot).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Techno! Mario Bros [O,W,S].hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Techno! Mario Bros [O,W,S].hexp;Music 02 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Techno! Mario Bros [O,W,S].hexp;Music 04 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Techno! Mario Bros [O,W,S].hexp;Music 06 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Techno! Mario Bros [O,W,S].hexp;Music 09 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Techno! Mario Bros [W,S].hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Techno! Mario Bros [W,S].hexp;Music 02 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Techno! Mario Bros [W,S].hexp;Music 04 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Techno! Mario Bros [W,S].hexp;Music 06 (from U1's Music Pack).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp;Techno! Mario Bros [W,S].hexp;Music 09 (from U1's Music Pack).hexp
+# Techno! Mario Bros [O,W,S].hexp
+# Techno! Mario Bros [O,W,S].hexp;Music 02 (from U1's Music Pack).hexp
+# Techno! Mario Bros [O,W,S].hexp;Music 04 (from U1's Music Pack).hexp
+# Techno! Mario Bros [O,W,S].hexp;Music 06 (from U1's Music Pack).hexp
+# Techno! Mario Bros [O,W,S].hexp;Music 09 (from U1's Music Pack).hexp
+# Techno! Mario Bros [W,S].hexp
+# Techno! Mario Bros [W,S].hexp;Music 02 (from U1's Music Pack).hexp
+# Techno! Mario Bros [W,S].hexp;Music 04 (from U1's Music Pack).hexp
+# Techno! Mario Bros [W,S].hexp;Music 06 (from U1's Music Pack).hexp
+# Techno! Mario Bros [W,S].hexp;Music 09 (from U1's Music Pack).hexp
+C: SKIP
+
+A: 0x7BB4
+V: 822C343A83648142403A36343034363A34303436302E30342E8226263036408348814864
+   426442403C40423C82343C844000404040404040404040404040404040404040
+
+A: 0x7C16
+V: 1D84706C6A66626A6C70746CA2AA5C5E625C969C1F8476747074706C6A6C706AA4B02D00
+   FF
+
+A: 0x7C48
+V: 142283142226628418221C8426
+
+A: 0x7D21
+V: 80181E84188218841E8222802485268426822684288228852884268222841E821C801800
