@@ -6,10 +6,11 @@
 # Music 06 (from U1's Music Pack).hexp
 # Music 09 (from U1's Music Pack).hexp
 # Stomp on Brother's Head (by Kaeri).hexp
-# Stomp on Brother's Head (by Kaeri).hexp;Music 04 (from U1's Music Pack).hexp
-# Stomp on Brother's Head (by Kaeri).hexp;Music 06 (from U1's Music Pack).hexp
-# Stomp on Brother's Head (by Kaeri).hexp;Music 09 (from U1's Music Pack).hexp
-
+# Super Bobble Bros. (Variant 1) (by Unsavory Maggot).hexp
+# Super Bobble Bros. (Variant 2) (by Unsavory Maggot).hexp
+# Super Zabil Bros. (by Poporo).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp
+# Techno! Mario Bros [W,S].hexp
 C: SKIP
 
 A: 0x10F8

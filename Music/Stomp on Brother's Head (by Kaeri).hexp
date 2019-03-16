@@ -1,30 +1,15 @@
 # Compatible:
 # 007 You only live 2wice (by emask).hexp
-# 007 You only live 2wice (by emask).hexp;Music 04 (from U1's Music Pack).hexp
-# 007 You only live 2wice (by emask).hexp;Music 06 (from U1's Music Pack).hexp
-# 007 You only live 2wice (by emask).hexp;Music 09 (from U1's Music Pack).hexp
 # Music 03 (from U1's Music Pack).hexp
-# Music 03 (from U1's Music Pack).hexp;Music 04 (from U1's Music Pack).hexp
-# Music 03 (from U1's Music Pack).hexp;Music 06 (from U1's Music Pack).hexp
-# Music 03 (from U1's Music Pack).hexp;Music 09 (from U1's Music Pack).hexp
 # Music 04 (from U1's Music Pack).hexp
 # Music 06 (from U1's Music Pack).hexp
 # Music 09 (from U1's Music Pack).hexp
 # Super Bobble Bros. (Variant 1) (by Unsavory Maggot).hexp
 # Super Bobble Bros. (Variant 2) (by Unsavory Maggot).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp
 # Techno! Mario Bros [O,W,S].hexp
-# Techno! Mario Bros [O,W,S].hexp;Music 04 (from U1's Music Pack).hexp
-# Techno! Mario Bros [O,W,S].hexp;Music 06 (from U1's Music Pack).hexp
-# Techno! Mario Bros [O,W,S].hexp;Music 09 (from U1's Music Pack).hexp
 # Techno! Mario Bros [W,S].hexp
-# Techno! Mario Bros [W,S].hexp;Music 04 (from U1's Music Pack).hexp
-# Techno! Mario Bros [W,S].hexp;Music 06 (from U1's Music Pack).hexp
-# Techno! Mario Bros [W,S].hexp;Music 09 (from U1's Music Pack).hexp
 # TowerRE.hexp
-# TowerRE.hexp;Music 04 (from U1's Music Pack).hexp
-# TowerRE.hexp;Music 06 (from U1's Music Pack).hexp
-# TowerRE.hexp;Music 09 (from U1's Music Pack).hexp
-
 C: SKIP
 
 A: 0x794E
