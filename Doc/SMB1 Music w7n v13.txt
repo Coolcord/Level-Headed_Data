@@ -1,0 +1,1180 @@
+The Perfect Music Classroom of the Baka w7n
+(Super Mario Bros. Music Hacking Guide v1.3)
+
+
+Version History:
+v1.0: By Dr. Floppy, translation by GAP.
+v1.1: Corrections by w7n, plus more details added to it. Posted on Baidu Tieba(Baidu Forum).
+v1.2: Added more details.
+v1.3: w7n's new version.
+
+THANKS TO:
+GAP(CHN)--Who helped me with music editing at the beginning of 2011.
+ZYH(CHN)--The programmer of the NES emulator: ZYH Emulator. He game me some great documents.
+Masa(JPN)--This one helped me make an important breakthrough.
+And other contributors, especially on SMB Archives(smbarchives.run.buttobi.net)...
+And you...
+
+w7n's hack zone:
+http://w7n.bob.buttobi.net/
+
+E-mail: 1721438026@qq.com
+
+
+--CONTENTS--
+>>1-4:Beginner
+1.Getting started.
+2.The structure of the SMB1 BGM code.
+3.Music programming.
+4.Editing headers and pointers.
+>>5-8:Intermediate
+5.Editing rhythmic offsets.
+6.Editing pitch offsets.
+7.Altering tone colour.
+8.Various other settings.
+>>9:Advanced
+9:RAM Address related to the SMB1 music, with a few simple patches I made.
+>>10-11:Others
+10:Quotes.
+11:How to make NES music a work of art? (Not for a musician)
+>>12:Final Essay
+------------
+
+
+1.To begin with...
+
+Minna--! This is w7n's perfect music classroom! Work hard to become a genius(baka) like me!
+(Ignore that :-P) I'm w7n from China. Although my English is not so good, I'll try to give you a clear picture of SMB1 music..
+At the beginning of 2011, I started my music hacking work. At that time I followed Dr. Floppy's guide, yet I didn't know much about how to make the NES music better. Now I've improved my skills, and I want to share the knowledge.
+Well, the first BGM I made is 'Run Devil Run' of Ke$ha, which is the BGM of the performance of 'someone' on my school's foreign language festival. So, if you don't feel motivated, try this. lol
+
+In this zipped file there should be this guide, several ips patches and nsf files.
+
+OK, let's start with what you need for the music hacking.
+PERSONALLY...
+#1 Do you really want to learn SMB1 music hacking? If you don't, of course you won't make it. Seems that this doesn't make sense, but maybe when you're trying to work your way out, you feel bored, and you give up. So, be patient.
+#2 If you don't have a sheet of the BGM, you need to be familiar with the BGM, and also you need a good pitch.
+#3 A good composer will be a bonus.
+TOOLS...
+#1 A hex editor. Use those which will come in handy. I use WinHex for editing, and Fairdell HexCmp for file comparing. (Of course, you need to know about Hex and other stuff.)
+#2 SMB1 ROM, emulators, won't need explanations for that. DON'T USE EMULATORS THAT CAN'T ADJUST THE VOLUME OF DIFFERENT PULSES!
+It doesn't require much, right?
+
+The procedure of music hacking:
+>1 Find a tune or compose a tune.
+>2 (Optional) Analyze the tune, and use ASM to alter the SMB music processing routine.
+>3 Transcribe this tune in separate sections(Square wave 2, Square wave 1, Triangle wave, Noise channel).
+>4 Convert these into codes understood by the SMB.
+>5 Code the music data. After the coding of each part, you need to check whether the tune is the right tune, or whether the tune is enjoyable.
+>6 Arrange and code the headers and pointers.
+For hardcore coders, 3 and 4 are not needed. A hardcore coder keeps the tune in his mind, which is quickly converted into codes when he codes the music data.
+
+Now an introduction of the CPU address.
+When you open an NES file with a hex editor, there is a line(Size: $10) of code right at the beginning of the file(Addr: $0000--$000F), which tells the emulator the mapper, the size of the Program(PRG) ROM and the Graphics(CHR) ROM etc.
+This line will not appear in the CPU.
+In SMB1 the PRG ROM part (Size: $8000) is right after that line (Addr: $0010--$800F). This part will appear in Addr 8000--FFFF in the CPU.
+Now arithmetic: [CPU Memory Addr] - $8000 + $10 = [ROM Addr]
+This will be useful later on.
+
+
+
+2.The structure of the SMB1 BGM.
+Now assume you have a book THE RETURN OF SHERLOCK HOLMES in your hand, and you want to go straight to chapter 5. You didn't mark it. So what would you do?
+Most probably, you check the 'contents' page... Uhh... Chapter 5 ---- page 158... And then you turn to page 158 and start reading.
+SMB1 looks for the music data in a similar way. It is just that... in SMB1 there are 2 kinds of 'CONTENTS'. It goes:
+Pointer->Header->Data. (Core Contents Page->Detailed Contents Page->Story Part)
+
+Um. Excuse my 'copying' parts of Dr. Floppy's guide in Part 2.
+
+>>Pointer:  Default $791D--$794D, normally you won't change the size of this part.
+The list of the pointers is the main 'contents' page. This 'contents' page(pointers) can let a 'reader'(the system) find the addresses of headers.
+The usage of pointers: Pointers control the BGM played on a certain occasion. 
+
+Offset  Contents  Data(In SMB1)
+
+$791D: Mario Dies (A5) 
+$791E: Game Over (59) 
+$791F: Princess Rescued! (54) 
+$7920: Mushroom Retainer Rescued (64) 
+$7921: Game Over [alternate] (59) (See quote)
+$7922: Level Complete (3C) 
+$7923: Time Running Out! (31) 
+$7924: Silence #1 (4B)
+$7925: ????? (69) 
+$7926: Underwater Theme (5E) 
+$7927: Underground Theme (46) 
+$7928: Castle Theme (4F) 
+$7929: Cloud Theme (36) 
+$792A: Pre-pipe Theme [Used at beginning of 1-2, 2-2, 4-2 and 7-2] (8D) 
+$792B: Starman Theme (36) 
+$792C: Silence #2 [plays during 'Level X-Y' screen] (4B) 
+$792D: Overworld Theme Slot #1 (8D) 
+$792E: Overworld Theme Slot #2 (69) 
+$792F: Overworld Theme Slot #3 (69) 
+$7930: Overworld Theme Slot #4 (6F) 
+$7931: Overworld Theme Slot #5 (75) 
+$7932: Overworld Theme Slot #6 (6F) 
+$7933: Overworld Theme Slot #7 (7B) 
+$7934: Overworld Theme Slot #8 (6F) 
+$7935: Overworld Theme Slot #9 (75) 
+$7936: Overworld Theme Slot #10 (6F) 
+$7937: Overworld Theme Slot #11 (7B) 
+$7938: Overworld Theme Slot #12 (81) 
+$7939: Overworld Theme Slot #13 (87) 
+$793A: Overworld Theme Slot #14 (81) 
+$793B: Overworld Theme Slot #15 (8D) 
+$793C: Overworld Theme Slot #16 (69) 
+$793D: Overworld Theme Slot #17 (69) 
+$793E: Overworld Theme Slot #18 (93) 
+$793F: Overworld Theme Slot #19 (99) 
+$7940: Overworld Theme Slot #20 (93) 
+$7941: Overworld Theme Slot #21 (9F) 
+$7942: Overworld Theme Slot #22 (93) 
+$7943: Overworld Theme Slot #23 (99) 
+$7944: Overworld Theme Slot #24 (93) 
+$7945: Overworld Theme Slot #25 (9F) 
+$7946: Overworld Theme Slot #26 (81) 
+$7947: Overworld Theme Slot #27 (87) 
+$7948: Overworld Theme Slot #28 (81) 
+$7949: Overworld Theme Slot #29 (8D) 
+$794A: Overworld Theme Slot #30 (93) 
+$794B: Overworld Theme Slot #31 (99) 
+$794C: Overworld Theme Slot #32 (93) 
+$794D: Overworld Theme Slot #33 (9F) 
+
+The meaning of the values:
+
+Take 'Overworld Theme Slot #1' for example. The value in () is $8D.
+We add $791D to the value. $791D+$8D=$79AA and the HEADER starts at $79AA.
+(This indicates that the first byte of a header should be located within $791D--$7A1C.)
+
+The 'Overworld Theme' goes:
+First Slot #1(The tune E-E-E-C-E-G) plays once, and then (repeating) Slot #2 to #33.
+If you set one of the slots to a 'mute' header, there will be no sound for this part, the system skips to the next part immediately.
+So if you have fewer repeating slots than 32(example:31), you can fill in the remaining slots in this way.
+But if you only have 5 repeating slots, fill in slots #2...#31 with six 'quin-slot' sets A-B-C-D-E-A-B-C-D-E...(6 times), and then fill in slots #32 and #33 with mute(empty) headers.
+(There is a better way, check section 8 when you are trying the intermediate part.)
+
+
+>>Header:  Default $794E--$79C7, easily changeable
+A header consists of 5 or 6 bytes, and each header is a separated 'contents' page.
+The structure of a header:
+Sp-Lo-Hi-Tri-SQ1[-Noi] (Noi is optional, sometimes there are only 5 bytes.)
+Sp: The speed, or (accurately) the tempo offsets for one part of the tune. The values used in SMB1 for this are $00, $08, $10, $18, $20, $28.
+In this guide's 'Music Programming' section, we use $18, $20, $28, for the three are similar, and $18 is the default Sp for Overworld theme.
+Lo&Hi: The High and Low bytes of the starting point of the music data(CPU Addr). And that part of data is the Square 2 wave data.
+Tri: Triangle wave. The data means the num of bytes after Square 2 Starting Point->Triangle Data Starting Point
+SQ1: Square 1. The data means the num of bytes from Square 2 Starting Point->Square 1 Starting Point.
+Noi: Noise channel. The data means the num of bytes...(Don't need to say that again.)
+For all 'event music' headers there is no NOI data, that leaves each such header with 5 bytes. For 'area music' headers, the default setting:
+Underground, Castle---NO NOI DATA, others---WITH NOI DATA. But this setting can be changed(Chapter 8).
+
+
+DefaultOffset   Contents
+
+$794E: Time Running Out theme
+$7954: Starman theme
+$7959: Level Complete theme
+$795E: Useless, probably used for testing 'Game Over[alternate]'
+$7963: Underground theme
+$7968: Nothing (played during silent parts of game)
+$796C: Castle theme
+$7971: Princess Rescued theme
+$7976: Game Over theme
+$797B: Underwater theme
+$7981: Mushroom Retainer Rescued theme
+$7986: Overworld Theme Part 1
+$798C: Overworld Theme Part 2
+$7992: Overworld Theme Part 3
+$7998: Overworld Theme Part 4
+$799E: Overworld Theme Part 5
+$79A4: Overworld Theme Part 6
+$79AA: Overworld Theme Part 7
+$79B0: Overworld Theme Part 8
+$79B6: Overworld Theme Part 9
+$79BC: Overworld Theme Part 10
+$79C2: 'You Just Died' theme
+
+
+Now let's take 'Overworld Theme Part 1' as an example.
+$7986--$798B: 18 01 FA 2D 1C B8
+18: the tempo offsets.
+01 FA: the Lo and Hi bytes of the starting point of the music data. This means the CPU Address is $FA01.
+ROM Address: $FA01 - $8000 + $10 = $7A11.
+2D: Triangle wave starts from $7A11 + $2D = $7A3E. (ROM Address)
+1C: Square 1 wave starts from $7A11 + $1C = $7A2D.
+B8: Noise channel starts from $7A11 + $B8 = $7AC9.
+
+
+>>Music Data:  Default $79C8--$7F0F
+Music Data. The real editing starts here! There are 1352($548) bytes for you.
+If you don't think this is enough, $4057--$413E is also at your disposal(But if you use this part, you cannot design looping mazes).
+
+
+
+3.Music Programming
+I separate this section from the 2nd section(Just like Dr.Floppy), because this part needs a detailed guide.
+
+All NES music consists of 5 channels, Square Wave 1&2(SQ1,SQ2), Triangle Wave(TRI), Noise channel(NOI), DPCM channel, sometimes more channels are added.
+SMB1 music consists of 4 of them: SQ1,SQ2,TRI,NOI. The DPCM is always silent.
+Usage(Used in SMB1 and also strongly recommended for beginners):
+SQ2--Melody
+SQ1--Harmony
+TRI--Bassline
+NOI--Percussion
+
+A part of BGM always starts with SQ2.
+You can arrange the other 3 parts of the data in any order.
+SMB1 codes most parts in this sequence: SQ2, SQ1, TRI, NOI.
+
+2 things I'd like to mention:
+ONE--SQ2 and NOI must end in '00'.
+TWO--SQ2 and TRI use one encoding mechanism, while SQ1 and NOI use another two mechanisms which are similar.
+
+>>SQUARE WAVE 2, TRIANGLE CHANNEL CODING
+These 2 channels use one encoding mechanism as I said.
+This mechanism consists of a 'Rhythm Byte' followed by a series of 'Note Bytes' which all abide by the established rhythm.
+If a tune goes: E-E-F-G-G-F-E-D-C-C-D-E...(Quarter notes)
+Just code the rhythm byte first and all those note bytes after the rhythm byte in the right order: Quar E E F G G F E D C C D E.
+If the rhythm changes, a new rhythm byte should be added. However, sometimes there is another way of solving the problem:
+If a tune goes: B(1/16) d(1/8) e(1/16) #f(3/4) You can code like this: 16th--B--8th--d--16th--e--DotHalf--#f
+But you can also code like this: 16th--B--d--Silence--e--DotHalf--#f. You can save 1 byte of space in the latter way.
+(Has the duration of the note d changed? See quote.)
+For Sp=18,20,28 there are 8 rhythm bytes:
+
+87: 8th Triplet
+86: Quarter Note
+85: Dotted 8th
+84: 8th Note
+83: 16th Triplet
+82: 16th Note
+81: 32nd Triplet (Used for buzz-rolls)
+80: Dotted Quarter
+
+The length of an xth Triplet is 2/3 the length of an xth note.
+
+In order of decreasing duration:
+
+80: Dotted Quarter
+86: Quarter Note
+85: Dotted 8th
+84: 8th Note
+87: 8th Triplet
+82: 16th Note
+83: 16th Triplet
+81: 32nd Triplet
+
+
+So let's start the coding.
+I'll use a tune as an example. Assume that this is a complete part of SQ2 data.
+D(4th) A(4th) E(4th) A(4th) F(4th) G(8th) A(8th) G(4th) B(4th)
+Paying attention only to the rhythm bytes...
+86-(D)-(A)-(E)-(A)-(F)-84-(G)-(A)-86-(G)-(B)-00(SQ2 ends with 00)
+Now fill in the note bytes.
+86 30 40 34 40 36 84 3A 40 86 3A 42 00 Complete!
+
+G-6:    58
+E-6: 	56
+D-6: 	02 (In my opinion, 02 and 64 should have exchanged their pitch data in SMB1. See quote.)
+C-6:    54
+Bb5: 	52
+Ab5: 	50 
+G-5: 	4E
+(F#5: No data)
+F-5: 	4C
+E-5: 	44
+Eb5: 	4A
+D-5: 	48
+C#5: 	46
+C-5: 	64 
+B-4: 	42 
+Bb4: 	3E (this breaks sequence, because of the LEVEL CLEAR music)
+A-4: 	40 (ditto)
+Ab4: 	3C
+G-4: 	3A
+F#4: 	38
+F-4: 	36
+E-4: 	34
+Eb4: 	32
+D-4: 	30
+C#4: 	2E
+C-4: 	2C [This is Middle C]
+B-3: 	2A
+Bb3: 	28
+A-3: 	26
+Ab3: 	24
+G-3: 	22
+F#3: 	20
+F-3: 	1E
+E-3: 	1C
+Eb3: 	1A
+D-3: 	18
+C#3: 	16
+C-3: 	14
+B-2: 	12
+Bb2: 	10
+A-2: 	62 (don't ask) 
+Ab2: 	0E
+G-2:	0C
+F#2: 	0A
+F-2: 	08
+E-2: 	06
+Eb2:    60
+D-2:    5E
+C-2:    5C
+G-2:    5A
+Silence: 04
+
+00(Only for Tri): A note a little higher than G-4.
+
+NOTICE:
+TRI part won't be overridden by sound effects. SQ2 part will be overridden by these sound effects:
+Power-up appears, vine appears, get a power-up, get 1UP, get a coin, the sound that appears when the remaining time is converted into score, fireworks.
+
+EXERCISE: Explain SQ2 Data: 82 34 84 34 34 82 2C 84 34 86 3A 04 00(Can be found at ROM Addr: $7B09)
+
+
+>>SQUARE WAVE 1 CODING
+In SQ1 coding, you only need 1 byte for 1 note, because the value itself provides both rhythm and pitch information.
+Unfortunately, SQ1 has a smaller note range, many high notes don't exist in the SQ1 chart.
+
+
+Dotted Quarter(Rhythm=80)
+3E: Bb4
+3C: Ab4
+3A: G-4
+38: F#4
+36: F-4
+34: E-4
+32: Eb4
+30: D-4
+2E: C#4
+2C: C-4
+2A: B-3
+28: Bb3
+26: A-3
+24: Ab3
+22: G-3
+20: F#3
+1E: F-3
+1C: E-3
+1A: Eb3
+18: D-3
+16: C#3
+14: C-3
+12: B-2
+10: Bb2
+0E: Ab2
+0C: G-2
+0A: F#2
+08: F-2
+06: E-2
+04: Silence
+02: D-6
+00: Special Usage
+
+
+
+Quarter Note(86)
+BF: Bb4
+BD: Ab4
+BB: G-4
+B9: F#4
+B7: F-4
+B5: E-4
+B3: Eb4
+B1: D-4
+AF: C#4
+AD: C-4
+AB: B-3
+A9: Bb3
+A7: A-3
+A5: Ab3
+A3: G-3
+A1: F#3
+9F: F-3
+9D: E-3
+9B: Eb3
+99: D-3
+97: C#3
+95: C-3
+93: B-2
+91: Bb2
+8F: Ab2
+8D: G-2
+8B: F#2
+89: F-2
+87: E-2 
+85: Silence
+83: D-6
+81: Ab4(Actually this is the note 'a little bit higher than G-4'.)
+
+
+
+Dotted 8th(85)
+7F: Bb4
+7D: Ab4
+7B: G-4
+79: F#4
+77: F-4
+75: E-4
+73: Eb4
+71: D-4
+6F: C#4
+6D: C-4
+6B: B-3
+69: Bb3
+67: A-3
+65: Ab3
+63: G-3
+61: F#3
+5F: F-3
+5D: E-3
+5B: Eb3
+59: D-3
+57: C#3
+55: C-3
+53: B-2
+51: Bb2
+4F: Ab2
+4D: G-2
+4B: F#2
+49: F-2
+47: E-2 
+45: Silence
+43: D-6
+41: Ab4(like last one, you know)
+
+
+8th Note(84)
+3F: Bb4
+3D: Ab4
+3B: G-4
+39: F#4
+37: F-4
+35: E-4
+33: Eb4
+31: D-4
+2F: C#4
+2D: C-4
+2B: B-3
+29: Bb3
+27: A-3
+25: Ab3
+23: G-3
+21: F#3
+1F: F-3
+1D: E-3
+1B: Eb3
+19: D-3
+17: C#3
+15: C-3
+13: B-2
+11: Bb2
+0F: Ab2
+0D: G-2
+0B: F#2
+09: F-2
+07: E-2 
+05: Silence 
+03: D-6
+01: Ab4
+
+
+
+8th Triplet(87)
+FF: Bb4
+FD: Ab4
+FB: G-4
+F9: F#4
+F7: F-4
+F5: E-4
+F3: Eb4
+F1: D-4
+EF: C#4
+ED: C-4
+EB: B-3
+E9: Bb3
+E7: A-3
+E5: Ab3
+E3: G-3
+E1: F#3
+DF: F-3
+DD: E-3
+DB: Eb3
+D9: D-3
+D7: C#3
+D5: C-3
+D3: B-2
+D1: Bb2
+CF: Ab2
+CD: G-2
+CB: F#2
+C9: F-2
+C7: E-2 
+C5: Silence 
+C3: D-6
+C1: Ab4
+
+
+
+16th note(82)
+BE: Bb4
+BC: Ab4
+BA: G-4
+B8: F#4
+B6: F-4
+B4: E-4
+B2: Eb4
+B0: D-4
+AE: C#4
+AC: C-4
+AA: B-3
+A8: Bb3
+A6: A-3
+A4: Ab3
+A2: G-3
+A0: F#3
+9E: F-3
+9C: E-3
+9A: Eb3
+98: D-3
+96: C#3
+94: C-3
+92: B-2
+90: Bb2
+8E: Ab2
+8C: G-2
+8A: F#2
+88: F-2
+86: E-2
+84: Silence
+82: D-6
+80: Ab4
+
+
+
+16th Triplet(83)
+FE: Bb4
+FC: Ab4
+FA: G-4
+F8: F#4
+F6: F-4
+F4: E-4
+F2: Eb4
+F0: D-4
+EE: C#4
+EC: C-4
+EA: B-3
+E8: Bb3
+E6: A-3
+E4: Ab3
+E2: G-3
+E0: F#3
+DE: F-3
+DC: E-3
+DA: Eb3
+D8: D-3
+D6: C#3
+D4: C-3
+D2: B-2
+D0: Bb2
+CE: Ab2
+CC: G-2
+CA: F#2
+C8: F-2
+C6: E-2
+C4: Silence 
+C2: D-6
+C0: Ab4
+
+
+
+32nd Triplet(81)
+7E: Bb4
+7C: Ab4
+7A: G-4
+78: F#4
+76: F-4
+74: E-4
+72: Eb4
+70: D-4
+6E: C#4
+6C: C-4
+6A: B-3
+68: Bb3
+66: A-3
+64: Ab3
+62: G-3
+60: F#3
+5E: F-3
+5C: E-3
+5A: Eb3
+58: D-3
+56: C#3
+54: C-3
+52: B-2
+50: Bb2
+4E: Ab2
+4C: G-2
+4A: F#2
+48: F-2
+46: E-2
+44: Silence 
+42: D-6
+40: Ab4
+
+Example.
+Bb3(4th) F-4(4th) C-4(4th) E-4(4th) D-4(4th) E-4(8th) F-4(8th) D-4(4th) G-4(4th)
+Look up the chart and you get the answer:
+A9 B7 AD B5 B1 35 37 B1 BB
+This also shows you a way to compose the SQ1 part. (Why? Review the example in the SQ2 coding part. The 2 channels correspond to 1 part of music.)
+
+NOTICE:
+SQ1 part will be overridden by these sound effects:
+Jumping, swimming(same SE as Mario stomps an enemy, and that overrides too), fireball thrown, fireball kills(same SE as Mario kicks a shell or a shell knocks an enemy), fireball hits a wall(same SE as Mario bumps onto the ceiling or other blocks, or a shell hits a wall).
+You can see that SQ1 is often overridden. So, if you don't want to edit the SQ1 part, just don't, and set SQ1 in the header to 00(REMEMBER!!) and it's done.
+
+The value 00 has a special usage in Square Wave 1. 00 itself isn't a note, and there is no duration for it. But the notes after 00 will sound like 'Dew', which is the sound of the notes in 'You are dead' music!
+Be cautious with it: Do not use this effect when Mario is able to jump.
+
+
+>>NOISE CHANNEL CODING
+The default sounds for the noise channel are 4 sounds:
+(Dr. Floppy's version) Kick drum, Pseudo-snare, Hihat, Silence.
+(Most Japanese guides) Chee, Ko, Chi, Silence.
+I recommend those onomatopoetic words, so I use the latter version.
+There is neither volume control nor pitch control for them, unless you come to the intermediate part.
+
+Dotted Quarter(80)
+Chee: 30
+Ko: 20
+Chi: 10
+Silence: 04
+
+Quarter Note(86)
+Chee: B1
+Ko: A1
+Chi: 91
+Silence: 85
+
+Dotted 8th(85)
+Chee: 71
+Ko: 61
+Chi: 51
+Silence: 45
+
+8th Note(84)
+Chee: 31
+Ko: 21
+Chi: 11
+Silence: 05
+
+8th Triplet(87)
+Chee: F1
+Ko: E1
+Chi: D1
+Silence: C5
+
+16th Note(82)
+Chee: B0
+Ko: A0
+Chi: 90
+Silence: 84
+
+16th Triplet(83)
+Chee: F0
+Ko: E0
+Chi: D0
+Silence: C4
+
+32nd Triplet(81)
+Chee: 70
+Ko: 60
+Chi: 50
+Silence: 44
+
+The NOI part ends with 00 because most often, the NOI part repeats until the SQ2 part ends. If the NOI part is as long as the SQ2 part(I mean by the time), you don't need to end NOI with 00.
+Another notice: If you don't want NOI for one part of BGM, you can't just link the NOI header to an address whose value is 00, or the game will crash on the spot. You need a 'silence' and a '00' after it.
+
+NOI will be overridden by these sound effects:
+Brick break, Bowser's fire breath(Long interruption).
+
+
+4. Editing headers and pointers.
+You may think, why is this section here? Because we always edit the data in this order: Music Data->Header->Pointer.
+Now assume your data is complete, like this:
+SQ2 STARTS AT ROM ADDRESS $7A11
+86 30 40 34 40 36 84 3A 40 86 3A 42 00
+SQ1 STARTS AT $7A1E
+A9 B7 A7 B7 B1 35 37 B5 BB
+TRI STARTS AT $7A27
+84 28 36 28 36 2C 3A 2C 3A 30 40 30 40 2A 3A 2A 3A
+NOI STARTS AT $7A38
+21 11 00
+Let's edit the header, assume it's at ROM addr $7986.
+Sp-Lo-Hi-Tri-SQ1-Noi
+Sp: The Sp for this part is $20.(Of course, you decide it)
+Lo&Hi: SQ2 starts at $7A11, arithmetic: $7A11 + $8000 - $10 = $FA01, so Lo=$01, Hi=$FA
+Tri: $7A27-$7A11=$16.
+SQ1: $7A1E-$7A11=$0D.
+NOI: $7A38-$7A11=$27.
+So the header: 20 01 FA 16 0D 27
+Now edit the pointer. The header starts at $7986.
+$7986-$791D=$69.
+Choose the correct pointer, and put $69 in the offset.
+Now sit back and enjoy the melody! Are you battling against Flandre Scarlet? Of course this is only one short part.
+
+
+
+---INTERMEDIATE WARNING SIGN---
+Actually not a warning, lol
+The contents after this sign are EXTREMELY USEFUL! If you want to make your music better, do not quit when you're ahead.
+
+
+5.Editing rhythmic offsets.
+This rhythmic offsets section goes from $7F76 to $7FA5(default). It consists of six, 8-byte sequences, which respectively determine the note duration for the 6 tempo presets.
+If we put the values in this order...
+
+(Rhythm Byte:80-81-82-83-84-85-86-87)
+____________________________________ 
+
+Preset $00:  05-0A-14-28-50-1E-3C-02 
+
+Preset $08:  04-08-10-20-40-18-30-0C 
+
+Preset $10:  03-06-0C-18-30-12-24-08 
+
+Preset $18:  36-03-09-06-12-1B-24-0C 
+
+Preset $20:  24-02-06-04-0C-12-18-08 
+
+Preset $28:  12-01-03-02-06-09-0C-04 
+
+The tempo becomes crystal clear.
+Notice these are hex numbers, i.e. $12(hex) is actually 18(dec).
+Now, altering this section can help you build a user-defined tempo.
+For Sp=$18,$20,$28, the most useless notes are dotted 8th notes and 32nd triplets. You can change them to a note you want.
+
+One more thing to notice: When the time dips below 100, the 'Hurry Up!' fanfare sounds and the music tempo speeds up, actually going to the next preset, like $00 to $08, $20 to $28 etc. (The 'Hurry Up' fanfare itself has been speeded-up.)
+This means, you must make sure that your rewriting this part does not cause rhythmic chaos, like when the music tempo speeds up the '85'(before, it is a half note) becomes '85'(now a dotted 8th note).
+ROM Addr $76D2(Default value: $08) is the value to add to the regular tempo preset when the time dips below 100. You can change it to any value and it works--Ironically, except the most important value $00.
+If you change $76D2 to $00, once the time dips below 100, the music will revert to Starman music.(No 'Hurry Up' fanfare either.)
+The way of solving this problem is simple: Still change $76D2 to $00, and change $76D6 from $D0 to $F0.
+($D0 is 'BNE', branch when value is not 0; but $F0 is 'BEQ', branch when value is 0.)
+
+
+6.Editing Pitch Offsets.
+The pitch offset goes from $7F10 to $7F75(default). Every sequential 2 bytes in this section encode frequencies for byte values from $00 to $64. i.e. '$02 $3A' means $023A.
+For square wave 1, only the notes $00 to $3E are used(in order to fit $8 rhythm * $40 notes into $100 different values).
+This means that in the SQ1 chart, for one type of rhythm, the biggest value corresponds to the '3E' note, the second highest '3C' note, and so on.
+Notice: If you change the low byte to $00, no matter what value you change the high bytes to, the note is equivalent to the 'silence' note. This is because of the SMB system's 'check for a silent note' routine.
+
+These values are proportional to the wavelengths of the notes. We know Frequency * Wavelength is a constant.
+Also, if note one is one octave higher than note two, then note one's frequency is twice as much as note two's.
+So based on these rules, we have this chart:
+
+D-2 ($)02F9
+Eb2    02CE
+E-2    02A6
+F-2    0280
+F#2    025C
+G-2    023A
+Ab2    021A
+A-2    01FB
+Bb2    01DF
+B-2    01C4
+C-3    01AB
+C#3    0193
+D-3    017C
+Eb3    0167
+E-3    0152
+F-3    013F
+F#3    012D
+G-3    011C
+Ab3    010C
+A-3    00FD
+Bb3    00EF
+B-4    00E1
+C-4    00D5
+C#4    00C9
+D-4    00BD
+Eb4    00B3
+E-4    00A9
+F-4    009F
+F#4    0096
+G-4    008E
+Ab4    0086
+A-4    007E
+Bb4    0077
+B-4    0070
+C-5    006A
+C#5    0064
+D-5    005E
+Eb5    0059
+E-5    0054
+F-5    004F
+F#5    004B
+G-5    0046
+Ab5    0042
+A-5    003F
+Bb5    003B
+B-5    0038
+C-6    0034
+C#6    0031
+D-6    002F
+Eb6    002C
+E-6    0029
+F-6    0027
+F#6    0025
+G-6    0023
+(Due to some reason which should be explained in physics, data of high notes may not be accurate.)
+
+
+7. Altering the tone colours(of the Square Waves)
+Notice the different tone colours of the square waves between the overworld theme and the underwater theme? Here we're going to alter the tone colours.
+$7900: Default value $82. The tone colour used for 'You are dead' music(For both square waves, really!).
+$7FA6-$7FAA: Default values 98 99 9A 9B 90. Only used for 'Axe reached' music.
+$7FAA-$7FB2: Def values 90 94 94 95 95 96 97 98 90. The tone colour used for the overworld theme etc.
+$7FB2-$7FD9: The tone colour used for the underwater BGM etc., and all event music except 'Axe reached' and 'You are dead' music.
+($7FAA and $7FB2 are both used by the data of 2 tone colours.)
+These values are called ENVELOPES.
+The meaning of the values:
+$97, a binary number should be: 10010111
+10: High 2 bits; 01: Mid 2 bits; 0111: Low 4 bits
+High 2 bits 10: The duty ratio of the tone colour is 50%.
+To know more about 'duty ratio', please check Wikipedia. To know some practical information, please check w7npedia.
+When the duty ratio is 50%(Value=10), the sound will be soft and most enjoyable. Example: SMB1 all BGM
+When the duty ratio is 25%(Value=01) or 75%(Value=11)(These two are almost the same), the sound will be clearer. Example: SMB3 'Athletic' theme
+When the duty ratio is 12.5%(Value=00), the sound will be even clearer, and not so enjoyable. Example: Mega Man II Title Screen
+Mid 2 bits 01: If you set these 2 bits to...
+00: The sound will be louder than usual, and the sound wanes if this value hasn't been changed.
+01 or 11(What's the difference? I don't know): The volume will be normal, and the sound will remain its original volume if the value hasn't been changed.
+10: The sound will be louder than usual, and a sound will be heard periodically(the cycle becomes longer when the volume is higher) if the value hasn't been changed.
+Low 4 bits 0111: The volume. Ranged from 0 to 15.
+Now that the default values in $7FAA-$7FB2 are 90 94 94 95 95 96 97 98 90, what will the sound be?
+Answer: The note will sound like this:(sequentially, by frame) 90 98 97 96 95 95 94 94, and then remains 90(that's why no sound remains).
+If the values in $7FAA-$7FB2 becomes 92 94 94 95 95 96 97 98 90...
+The note will sound like this: 90 98 97 96 95 95 94 94, and remains 92. In this way, a sound (volume=2, duty ratio=50%) will remain.
+If ... 81 94 94 95 95 96 97 98 90...
+the note will sound like this: 90 98 97 96 95 95 94 94, and then the sound wanes(Check the 'mid 2 bits' of 81.)
+Notice! The 'silence' note won't stop the sound in the channel. The 'silence' note only means a 'delay' command.
+If you want to clear a sound in SQ2 and Tri, simply use a rhythm byte to clear it.
+For clearing sounds in other channels, you can use a note whose pitch offsets' value is $0001(Recommended) or $07FF. (This works for SQ2 and Tri too.)
+You can also use a 'silence' note whose rhythm is different from the previous note to clear it.
+When you alter any of the latter 2 types of tone colours, so that a sound may remain, you must clear the sound in the 'mute' BGM.
+
+
+8. Various other settings.
+>>Adding/Removing NOI channel in Area Music
+SMB players must have noticed that the underground and castle themes don't have a NOI channel.
+If you want to add/remove NOI channel in area themes, ROM Addr $7880 is the key. This is a byte with 8 switches.
+The default value is $F3(hex).
+A binary number will be:
+Num: 11110011
+Bit: 76543210
+Bit 7: Level Intro(World x-x, Mario x 3)
+Bit 6: Starman
+Bit 5: Pipe Intro(In 1-2, 2-2, 4-2, 7-2)
+Bit 4: Cloud
+Bit 3: Castle
+Bit 2: Underground
+Bit 1: Underwater
+Bit 0: Overworld
+For the value in each bit, 0 means 'no NOI channel', 1 means 'NOI channel included'.
+Note: If you remove the NOI channel in one area theme, the header of the area theme will be 5 bytes: No need for another byte for NOI. (Remember?)
+
+If you wish to enable the NOI channel in all area music, try 7F(Recommended) or FF.
+
+
+>>Adding/Removing the SQ1 channel in Area Music
+There is no SQ1 for underground music... and for this part of music, the SQ1 part can't be added in the regular way.
+The byte at $76D9 is the key for this problem. The difference between this byte and $7880 is that, this time '1' means 'no' but '0' means 'yes'.
+The default value is $04 which means '1' for underground music only.
+
+
+>>Changing the 'type of tone colour' in Area Music
+We have talked about changing tone colours, but we haven't talked about changing 'which part correspond to which kind of waves'.
+The offsets $78F6, $7912 are about changing the type of tone colour of the square waves(not respectively). These 2 values must be the same!
+Alter these 2 bytes according to the bits listed in 'adding NOI channel'. 0 means 'Underwater type', 1 means 'Overground type'.
+The offset $7861 is about changing the duration of the TRI notes.
+0 means 'duration is short', 1 means 'duration is extremely long'.
+
+
+>>Changing the tune played for one type of area
+Go to the bytes at $10F7-$10FC.
+$10F7: BGM played at Underwater levels(Default: $02=Underwater)
+$10F8: ...Overworld levels(Default: $01=Overworld)
+$10F9: Underground(Default: Similar...)
+$10FA: Castle
+$10FB: Cloud
+$1OFC: Pipe Intro
+
+
+>>Editing a few sound effects(SFX)
+Here I pick the sound effects which are easy to edit, and the alteration of some sound effects which will be useful.
+EDITING NOTES:
+$74E4--$74E9  1UP
+$74EA--$7507  Get power-up
+$7508--$7527  Power-up appears/Vine grows
+The values are note bytes(SQ2). The offsets perform as a sequential string of notes in reversed order.
+EDITING DURATIONS:
+Offsets related to Mario leaping: $73EB(Default value: $28), $73F3(Def value: $25), $73FD(Def value: $20)
+There is a variable y. First y is given the value $28, and then y is decreased by 1 every frame(after the frame y is given the value, y becomes $27).
+At first a low(frequency) sound can be heard. When y becomes $25 a higher sound can be heard.
+When y becomes $20, a much higher sound can be heard, and this sound becomes higher as time passes.
+Finally when y becomes 0, sfx stops.
+Offsets related to coin grab: $7529(Def value: $35), $7540(Def value: $30)
+Similar to the previous one. When y becomes $35 the 'B-4' sound can be heard; when y becomes $30 the 'E-5' sound can be heard.
+Actually, if these values are changed(respectively) to $1C and $18 there is no clear difference between this and the original version.
+
+The significance of SFX duration editing is that, if you like your tune and you don't want these sfx to interrupt your square waves, you can shorten these sfx.
+These 2 sfx are the sfx most frequently interrupting the BGM.
+But notice: if you change the values I mentioned related to one sound effect to $00, there will still be a sound effect and it can be heard!
+
+
+>>Editing the number of Overworld theme slots
+The offset $76F6 is the key. The default value is $32.
+Subtract $11 from it. $32-$11=$21(Hex)=33(Dec). Get it?
+So if you want to change the number of the Overworld theme slots to x, put x+$11 in the offset.
+You will still start the coding of the Overworld pointers at $792D.
+
+
+
+--ADVANCED WARNING SIGN--
+For those who don't know the 6502 assembly, you don't need to read section 9.
+However, you can use the patches I provide in section 10.
+
+9. RAM Addr related to SMB1 music.
+--All NES--
+You can find guides about this in many places, so I will only provide you with a simple introduction here.
+SQ1/SQ2
+$4000/4 ddle nnnn   duty, loop env/disable length, env disable, vol/env period
+$4001/5 eppp nsss   enable sweep, period, negative, shift
+$4002/6 pppp pppp   period low
+$4003/7 llll lppp   length index, period high
+TRI
+$4008   clll llll   control, linear counter load
+$400A   pppp pppp   period low
+$400B   llll lppp   length index, period high
+NOI
+$400C   --le nnnn   loop env/disable length, env disable, vol/env period
+$400E   s--- pppp   short mode, period index
+$400F   llll l---   length index
+DMC
+$4010   il-- ffff   IRQ enable, loop, frequency index
+$4011   -ddd dddd   DAC(w7n: Usually, don't alter this, unless you want PCM playback!)
+$4012   aaaa aaaa   sample address(w7n: Actual address is $C000 + this value multiplied by $40.)
+$4013   llll llll   sample length(w7n: Actual length is $1 + this value multiplied by $10.)
+Common
+$4015   ---d nt21   length ctr enable: DMC, noise, triangle, pulse 2, 1
+$4017   fd-- ----   5-frame cycle, disable frame interrupt
+Status (read)
+$4015   if-d nt21   DMC IRQ, frame IRQ, length counter statuses
+
+
+--SMB1--
+$F0: The tempo offset.
+
+$F1: The SFX of SQ1.
+(Values:
+$00: No SFX.
+$01: Super Mario or Fire Mario jump.
+$02: Mario hits block/Fireball miss/Shell hits a wall
+$04: Swimming/Mario stomps an enemy
+$08: Fireball kills/Mario kicks a shell/Shell kills an enemy
+$10: Injury/Entering pipe
+$20: Fireball thrown
+$40: Flagpole reached
+$80: Normal Mario jump.)
+
+$F2: The SFX of SQ2.
+(Values:
+$00: No SFX.
+$01: Coin reached
+$02: Mushroom appears
+$04: Vine appears
+$08: Bullet Bill appears/Fireworks/Bridge breaks
+$10: Time converts into score
+$20: Power up
+$40: 1UP
+$80: Bowser is down)
+
+$F3: The SFX of NOI.
+(Values:
+$00: No SFX.
+$01: Brick break/Bridge break
+$02: Bowser's flame)
+
+$F4: Area Music.
+(Values:
+$00: No area music.
+$01: Overworld
+$02: Underwater
+$04: Underground
+$08: Castle
+$10: Cloud
+$20: Pipe Intro
+$40: Starman
+$80: Music paused, this can only be found during debug, when the game routine is not finished)
+
+$F5 and $F6: The high and low bytes of the starting point of SQ2 data.
+$F7, $F8, $F9, $07B0: SQ2, SQ1, Tri, Noi counter('Current note address' subtract 'SQ2 starting point')
+$FA: Pause flag. (Values: $00: Normal; $01: Pausing start; $02: Unpausing start)
+
+$07B1: Secondary Music.
+(Values:
+$00: No secondary music
+$01: You're dead!
+$02: Game over
+$04: Princess rescued
+$08: Mushroom Retainer rescued
+$10: Game over(alternate)(unused)
+$20: Flagpole reached
+$40: Hurry up!
+$80: Music paused, only found during debug, when the game routine is not finished)
+
+$07B2: Pausing music. Values: $00: Pausing music not playing; $01: Pausing music playing; $02: Pausing music playing(Game continued)
+$07B3: SQ2 note duration(From the tempo offsets).
+$07B4: SQ2 note time remaining.
+$07B5: SQ2 note envelope.
+$07B6: SQ1 note time remaining.
+$07B7: SQ1 note envelope.
+$07B8: Tri note duration(From the tempo offsets).
+$07B9: Tri note time remaining.
+$07BA: Noi note time remaining.
+$07BB: SQ1 SFX counter(decreasing)
+$07BD: SQ2 SFX counter(decreasing)
+$07BE: SQ2 SFX counter(Only for: Mushroom appears, Vine appears)(decreasing)
+$07BF: NOI SFX counter(decreasing)
+
+$07C0: Used for dac(DPCM Delta counter, $4011) for some reason. Yet there is no DPCM sound in SMB1.
+$07C1: The starting point of NOI.
+$07C4: Usually $00, when 'Hurry Up' BGM starts playing, the value becomes $08.
+$07C5: Copied from $F4. The current area BGM.
+If the BGM played is temporarily replaced by an event BGM(e.g. 'Hurry Up!'), after playing the event BGM, the area BGM is reloaded.
+$07C6: The switch about pausing, controlling whether the BGM is being played.
+Values: $00: Played; $01: Paused, not played; $02: Unpausing, not played temporarily.
+$07C7: The slot of the overground BGM currently playing(The value of slot 1 is $11, slot 2 is $12 and so on.)
+$07CA: Related to the SQ1 notes' pitch change. This value is always 00, except when 'Death' BGM is being played, the value becomes $94('Dew' sound). This value is copied to $4001.
+
+Simple patches I made:
+>>1: Free use of tone colours
+For a part of BGM which uses the 'Overworld type' or 'Underwater type' of tone colours, if the starting offset of the SQ2 data is even, then the tone colour is 'Underwater type', otherwise it's 'Overground type'.
+>>2: Different types of tone colours for SQ1 and SQ2 (for Area Music) (The 16 '$EA's: $78FE-$790D can be changed freely.)
+Type 1: SQ2 always uses 'Underwater type'(Except 'Mushroom Retainer rescued BGM'), while SQ1 always uses 'Overground type'.
+Type 2: SQ2 always uses 'Overground type'(Except 'Mushroom Retainer rescued BGM'), while SQ1 always uses 'Underwater type'.
+
+
+
+--OTHERS--
+10. Quotes.
+*What is 'Game Over(Alternate)'?
+This was originally used when the game was being developed, but was cancelled in the end. Instead, Kondo Koji(I suppose) used a non-repeating theme.
+
+*Has the duration of the note d changed?
+Answer: No. Instead, the duration of a note is fixed(unless it's interrupted or overridden by another sound).
+
+*Why should notes $02 and $64 have exchanged their pitch data?
+$64 is C-5. In the 'level clear' theme, there is a SQ2 note C-5. This note will be overridden by the sound effect when time converts into score.
+Note $64 can't be used by SQ1, but note $02 can. If $64 and $02 exchange their pitch data, and with the SQ2 note changed to SQ1, the note will not be overridden.
+
+Extra quote:
+*How free is SMB music editing?
+Answer: you can edit SMB music quite freely.
+Though there are default 'ranges' for music pointers, headers and music data, you can set user-defined ranges by yourself.
+We know the offset $76F6 is the key to changing the number of overworld slots. That part (in section 8) has provided an example.
+Other examples: One part of music data may be used in several places. You can use a part of SQ2 music data in one slot as a part of TRI music data in another slot.
+Or you can use the same part of SQ2 data in 2 slots. etc. Normally, if a header is linked to correct parts of music data, there will be no problem.
+Music data can be put anywhere in $0010-$8009(CPU $8000-$FFF9) if there is space for you to spare. If you feel like ASM-ing the data into CPU $0000-$7FFF, do as you please(but not recommended...).
+
+
+
+11. How to make NES music a good work of art?
+This section is for those who have known everything in the intermediate sections. The NOI channel is pretty easy to edit, so I'll talk about the other 3 channels.
+>>How to make good use of the 3 music channels?
+The SQ2 channel has a wide range of notes. Most NES music use a square wave as the MELODY, and in SMB1 it's best to use SQ2.
+In some games (usually late NES games) the TRI part is occasionally used as the MELODY.
+In these cases, only high notes(at least higher than C-4, most of the notes are higher than C-5) are used for the TRI part.
+If the SQ2 channel is used as the MELODY, the SQ1 is used as the HARMONY or the BASSLINE... Or sometimes, there is no SQ1 part.
+For non-artists, you can try the 'Lo-Hi-Lo-Hi...' way to compose the TRI part(like the way shown in the example in section 4). The TRI part must be fast-tempoed.
+This way, the tune will be acceptable. Remember: DON'T USE CHEAP TRICKS LIKE COMPOSING ONLY 2 WAVES OFTEN!
+...But for integrated artists, you have to find for a way to achieve something better than a simple bassline.
+There are a few examples where TRI is used as the HARMONY.
+If the TRI channel is used as the MELODY, the other 2 channels will both perform as BASSLINES(sometimes one square wave perform as the bassline's HARMONY).
+In other examples, there are two MELODY channels and one BASSLINE.
+When you use the TRI channel as the MELODY, it's not recommended to use a square wave as its HARMONY! Even if a TRI note is one octave higher than a SQ note, their pitches seem the same.
+The arranging of 'which part performs as what' depends on the composing of the tune of course.
+If you're trying to recompose a non-NES tune, the decision is simple:
+You judge from the tone colours of different channels, and decide which NES channel will play which original channel's melody.
+If you're trying to recode an NES tune this will be easier.
+
+Another thing to notice: the SQ1 channel in SMB1 is often overridden by sound effects.
+Thus, the tune must be still enjoyable even when the less important SQ channel is completely overridden!
+Examples: BGM in Contra, Life Force, Gradius II, SMB2(USA)
+(For the castle theme, the tune must be still enjoyable when either SQ channel is completely overridden.)
+
+Now, I'd like to recommend some awesome NES tunes. SMB1 overworld theme is, well, too awesome to be digested.
+#1: Cheetahmen BGM.
+The game Cheetahmen is extremely lame, but the BGM is definitely a work of art!
+It's noteworthy also, as it provides a way of composing your tune using only 3 waves(SQ1, SQ2, NOI for most parts).
+#2: Mega Man II Dr.Wily Stage 1 BGM(a.k.a. 110 Million Memories)
+The best tune in the NES Mega Man series.
+In most parts of the tune, the SQ1 MELODY--SQ2 HARMONY--TRI BASSLINE structure is used. (In Mega Man II, SQ2 performs most sound effects)
+But there is a rare usage: SQ2 becomes the 'MELODY'S ECHO' when the duty ratios of the square waves are both 50%.
+#3: The Legend of Zelda (overworld)
+This tune is outstanding also. Integrated artists should pay attention to this. Notice how this tune codes the SQ1 and TRI parts.
+
+>>Imitating sounds
+The imitations of sounds are mostly based on the tone colours and the 'Attack-Decay-Sustain-Release' envelopes.
+It's easy to imitate many sounds in this way. Examples:
+Sounds      Waves imitating these sounds(50% means duty ratio=50%. SQ wave with a duty ratio of 75% is left out.)
+Whistling   50% Square wave, Volume Low->High. You can also try the Triangle wave.
+Piano       50% or 25% Square wave.
+Violin      25%(Recommended) or 12.5% Square wave, Volume Low->High.
+Guitar      25%(Recommended) or 12.5% Square wave.
+
+An exception is the human voice. It's hard to actually 'imitate' this sound. The following ways are my choices:
+Male singer: Usually 25% Square wave, never 50%, seldom 12.5%.
+Female singer: If the voice represents cuteness(Example: Girls' Generation, Avril Lavigne etc), use a 50% Square wave.
+If there are strong emotions(usually sadness being one of its ingredients) in the music, use a 25% Square wave, volume Medium->High--------->Low.
+The effects will be great especially when the notes are high. Example: Aozora(Blue Skies) in AIR, the BGM played when Kamio Misuzu has reached her final 'goal'.
+For others, use a 25% or 50% Square wave as you please(according to the tone colour of the human voice).
+Chorus: 50%(Recommended for female) or 25% Square wave, volume Low->High--------->Low, with the TRI/Another 50% SQ channel as the harmony.
+
+That example also shows that: the emotions, and the tune itself may help you decide the waves you use to imitate sounds(not only the human voice).
+
+>>About DPCM
+Although with drawbacks, DPCM can imitate ANY SOUND!
+A DPCM sample occupies a lot of space(a 33KHz sample for 1 second occupies about 4KB, which is about the max size of a sample), and you need to use assembly if you want to use DPCM samples.
+Usually, DPCM is used for drums, snares, hats etc., or used for human voices.
+
+>>About expansion chips
+There are 6 sound expansion chips(only available on the Japanese Famicom):
+Konami Virtual ROM Controller VI(VRC6; 2 square wave+1 sawtooth), 
+Konami Virtual ROM Controller VII(VRC7; 6 FM synthesis wave),
+Famicom Disk System(FDS, technically not a chip. 1 user-defined 6-bit wave),
+Nintendo Memory Management Controller V(MMC5; 2 square wave),
+Namco 163(N163; Max 8 user-defined 4-bit wave),
+Sunsoft 5B(SN5B; 3 square wave with various noise settings)
+You need the correct mappers to use the chips. A game can only use one chip, while an NSF(NES Sound Format) file can use all these chips.
+
+
+Here, I present you with some NSF files to help: (Use an NSF player or NES emulator to play these)
+AOZORA(Blue Skies), NOMICHI -FIELD PATH-
+Recomposed into the NES by me.
+The original soundtrack for Aozora is the song(not the piano ver). NOMICHI is partly based on the composing in KZ-S's AIR FOR NES.
+These show you how to recompose a tune.
+Note: If you turn off the sound of the SQ2 part in AOZORA, it's still enjoyable.
+SECRET BASE~KIMI GA KURETA MONO~10 YEARS AFTER VER. (Secret Base: What You've Given Me)
+Covered by ZYH. Try to digest the ways of arranging different channels! (This NSF is made out of a MIDI file, and extra sound chips are used.)
+CHEETAHMEN
+Recomposed into the .nsf format by me. (May differ a bit from the original version, but I can guarantee that the pitches are correct)
+You can take a training course using this file. Listen to the Cheetahmen BGM, try to compose this tune, and then check if the notes match.
+
+
+
+--FINAL ESSAY--
+Compose a tune whose music data takes up at least $A0 bytes of space.
+The melody can be either original or picked elsewhere.
+(lol)

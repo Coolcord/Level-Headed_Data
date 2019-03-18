@@ -1,0 +1,636 @@
+Super Mario Bros. Hex Offsets
+
+LEVEL ARRANGEMENT (MAPS)
+
+1CCC - 1CD0	     World 1
+1CD1 - 1CD5	     World 2
+1CD6 - 1CD9	     World 3
+1CDA - 1CDE	     World 4
+1CDF - 1CE2          World 5
+1CE3 - 1CE6	     World 6
+1CE7 - 1CEB	     World 7
+1CEC - 1CEF	     World 8 
+
+LEVELS
+
+Objects
+
+21BF - 221F          1-4 (6-4)
+2220 - 229E          4-4
+229F - 2311          2-4 (5-4)
+2312 - 237E          3-4
+237F - 2409          7-4
+240A - 247A          8-4
+247B - 24DD          3-3
+24DE - 2546          8-3
+2547 - 2599          4-1
+259A - 2628          6-2
+2629 - 269D          3-1
+269E - 2702          1-1
+2703 - 2757	     1-3 (5-3)
+2758 - 27DC 	     2-3 (7-3)
+27DD - 2841          2-1
+2842 - 284A	     Beginning (1-2, 2-2, 4-2, 7-2)
+284B - 2889	     5-1
+288A - 289E	     Clouds (Day)
+289F - 2905	     4-3
+2906 - 296A	     6-3
+296B - 29DD	     6-1
+29DE - 2A0E	     Mushrooms (4-2)
+2A0F - 2AA1	     8-1
+2AA2 - 2B14	     5-2
+2B15 - 2B8D	     8-2
+2B8E - 2BE6	     7-1
+2BE7 - 2C11	     Clouds (Night)
+2C12 - 2C44	     3-2
+2C45 - 2CE7	     1-2
+2CE8 - 2D88	     4-2
+2D89 - 2E15	     Underground
+2E16 - 2E54	     Underwater
+2E55 - 2ECF	     2-2 (7-2)
+2ED0 - 2EEA	     Underwater (8-4)
+
+Sprites
+
+1D80 - 1DA6	     1-4 (6-4)
+1DA7 - 1DBF          4-4
+1DC0 - 1DEE	     2-4 (5-4)
+1DEF - 1E19 	     3-4
+1E1A - 1E2E	     7-4
+1E2F - 1E68	     8-4
+1E69 - 1E8D          3-3
+1E8E - 1EAA	     8-3
+1EAB - 1EB8          4-1
+1EB9 - 1EDF          6-2
+1EE0 - 1F10	     3-1
+1F11 - 1F2E	     1-1
+1F2F - 1F4B	     1-3 (5-3)
+1F4C - 1F60	     2-3 (7-3)
+1F61 - 1F8B	     2-1
+1F8C - 1FAF	     5-1
+1FB0 - 1FB8	     Clouds (Day)
+1FB9 - 1FDD          4-3
+1FDE - 2000	     6-3
+2001 - 2009          6-1
+200B - 2044	     8-1
+2045 - 206F	     5-2
+2070 - 209D	     8-2
+209E - 20B9	     7-1
+20BA - 20C2	     Clouds (Night)
+20C3 - 20E7          3-2
+20E8 - 2114	     1-2
+2115 - 2142          4-2
+2143 - 216F	     Underground
+2170 - 2180	     Underwater
+2181 - 21AA	     2-2 (7-2)
+21AB - 21BE	     Underwater (8-4)
+
+
+HALFWAY PAGES
+
+11CD		     1-1, 1-2
+11CE		     1-3, 1-4
+11CF		     2-1, 2-2
+11D0		     2-3, 2-4
+11D1		     3-1, 3-2
+11D2		     3-3, 3-4
+11D3		     4-1, 4-2
+11D4		     4-3, 4-4
+11D5		     5-1, 5-2
+11D6		     5-3, 5-4
+11D7		     6-1, 6-2
+11D8		     6-3, 6-4
+11D9		     7-1, 7-2
+11DA		     7-3, 7-4
+11DB		     8-1, 8-2
+11DC		     8-3, 8-4
+
+
+TILE ARRANGEMENT
+
+331 - 333, 
+346, 34B	     Mushroom Symbol
+4B1 - 4B2,
+6559 - 655A	     100
+4B3 - 4B4,
+6686, 668B	     200
+4B5 - 4B6,
+6557 - 6558	     400
+4B7 - 4B8	     500
+4B9 - 4BA,
+6555 - 6556	     800
+4BB - 4BC	     1000
+4BD - 4BE,
+6553 - 6554	     2000
+4BF - 4C0	     4000
+4C1 - 4C2,
+6551 - 6552	     5000
+4C3 - 4C4	     8000
+4C5 - 4C6	     1-UP
+77C - 77E, FDC	     Coin Symbol
+7A2		     Spaces under lives (Lives Screen)
+859	             Crown Symbol
+A49 - A4C	     Bricks (After hitting them)
+A4D - A50	     Bricks (After hitting them - Underground, Castle)
+A51 - A54	     Empty Blocks (After hitting ? blocks)
+A55 - A58	     Spaces after breaking bricks
+A59 - A5C	     Spaces after getting coins (Sea)
+B20 - B23            Spaces (Background)
+B28 - B33	     Shrubs
+B34 - B4B	     Mountains
+B4C - B4F, C48 - C4B Bridges
+B50 - B53	     Chains
+B54 - B5F, BF4 - BF7 Trees
+B60 - B67	     Pipes (Can go down)(Top only)
+B68 - B6F	     Pipes (Top only)
+B70 - B77	     Pipes (Bottom only)
+B78 - B83, BEC - BEF Green Islands
+B84 - B8F, BF8 - BFF Orange Islands
+B90 - BA7	     Horizontal Pipes
+BA8 - BAB	     Seaplants
+BB0 - BB3	     Flag Balls (On Poles)
+BB4 - BB7	     Poles
+BBC - BBF	     Vertical Ropes of Balance Lifts
+BC0 - BC3	     Balance's Horizontal Ropes
+BC4 - BC7	     Ropes (Top left)
+BC8 - BCB	     Ropes (Top right)
+BCC - BCF	     Spaces Below Ropes
+BD0 - BEB	     Castles
+BF0 - BF3	     Fences
+C00 - C03	     Bricks (Nothing)
+C04 - C07	     Underground Bricks (Nothing)
+C0C - C0F	     Ground
+C10 - C13	     Bricks (Mushroom)
+C14 - C17	     Bricks (Tree of Beans)
+C18 - C1B	     Bricks (Star)
+C1C - C1F	     Bricks (10 Coins)
+C20 - C23	     Bricks (1UP Mushroom)
+C24 - C27	     Underground Bricks (Mushroom)
+C28 - C2B	     Underground Bricks (Tree of Beans)
+C2C - C2F	     Underground Bricks (Star)
+C30 - C33	     Underground Bricks (10 Coins)
+C34 - C37	     Underground Bricks (1UP Mushroom)
+C38 - C3B	     Hidden Blocks (Coin)
+C3C - C3F	     Hidden Blocks (1UP Mushroom)
+C40 - C43	     Blocks
+C44 - C47	     Ground (Castle)
+C4C - C57	     Bullet Bill Shooters
+C58 - C5F	     Jump Stands (Bottom)
+C60 - C63	     Ground (Underwater)
+C68 - C6F	     Horizontal Pipes (Underwater)
+C70 - C73	     Vertical Balls (Used for climbing - Not used)
+C74 - C8B	     Clouds
+C8C - C93	     Water/Lava
+C94 - C97	     Cloud Blocks
+C98 - C9B	     Bridges (Castle)
+C9C - C9F	     ? Blocks (Coin)
+CA0 - CA3	     ? Blocks (Mushroom)
+CA4 - CA7	     Coins
+CA8 - CAB	     Coins (Underwater)
+CAC - CAF	     Used Blocks
+CB0 - CB3	     Axes
+E4A, 3C52	     Spaces on top (Background)
+5238		     Bowser's Fire	
+52E5 - 52E8	     Flags (Castle)
+54FB, 5500	     Ropes right (Extending down)
+5508	  	     Spaces extending up right (Ropes)
+552C, 5531	     Ropes left (Extending down)
+5539	             Spaces extending up left (Ropes)
+648A, 649C	     Tree of Beans 
+64E0 - 64E7	     Hammers
+6591, 6599	     Flags
+6605, 6D7A   	     Lifts
+660C		     Lifts (Clouds)
+6692 - 6695	     Bounced Coins (? Blocks)
+66CE - 66D1	     Mushrooms
+66D2 - 66D5	     Fire Flowers
+66D6 - 66D9	     Stars
+66DA - 66DD	     1UP Mushrooms
+674E - 6759,
+67C0 - 67D7	     Buzzy Beetles
+675A - 6771,
+67A8 - 67BF	     Koopa Troopas, Paratroopas	
+6772 - 677D	     Spinys
+677E - 6789	     Spiny's Eggs
+678A - 6795	     Bloobers
+6796 - 67A1	     Cheep-cheeps
+67A2 - 67A7,	     
+67D8 - 67DD	     Goombas
+67DE - 67E9	     Lakitu
+67EA - 67EF	     Princess Toadstool
+67F0 - 67F5	     Mushroom Retainers
+67F6 - 680D	     Hammer Brothers
+680E - 6819	     Pirana Plants
+681A - 681F	     Podoboos
+6820 - 6837	     Bowser
+6838 - 683D	     Bullet Bills
+674E - 674F,
+683E - 684D	     Jump Stands
+6BDD - 6BE0	     Bounced Bricks
+6C13		     Bounced Bricks Underground (Top)
+6C22		     Bounced ? Blocks
+6C74		     Brick Pieces
+6D05		     Fireballs
+6D16 - 6D18	     Fireworks
+6E0D		     Bubbles
+6E27 - 6EF8	     Mario/Luigi
+9ED3, 9ED7, 9EDB,
+9EDF, 9EE3, 9EE7, 
+9EEB, 9EEF, 9EF3, 
+9EF7 - 9F00, 9F04 - 
+9F0D, 9F11 - 9F1A, 
+9F1E - 9F27, 9F2B - 
+9F3E, 9F42 - 9F55, 
+9F59, 9F5D - 9F6A, 
+9F6E - 9F81, 9F85 - 
+9F98, 9F9C - 9FB1    Title
+9FB5		     Copyright Symbol
+
+
+TILE PATTERNS
+
+8010 - 850F,
+8590 - 85BF,
+85D0 - 860F,
+8910 - 894F,
+89F0 - 8A0F	     Mario/Luigi
+8510 - 851F	     00
+8520 - 854F	     Bowser's Fire
+8550 - 858F	     Flags (Castle)
+85C0 - 85CF	     Lifts
+8610 - 864F	     Bounced Coins (? Blocks)
+8650 - 866F	     Fireballs
+8670 - 869F	     Fireworks
+86A0 - 870F,
+8A10 - 8AAF	     Koopas, Parakoopas
+8710 - 874F,
+8F00 - 8F0F	     Goombas
+8750 - 875F	     Bubbles
+8760 - 876F	     Lifts (Clouds)
+8770 - 87AF	     Mushrooms
+87B0 - 87CF,
+8D90 - 8D9F,
+8DB0 - 8DCF	     Princess Toadstool
+87D0 - 87EF,
+8890 - 88DF,
+8D20 - 8D6F,
+8E30 - 8E4F	     Hammer Brothers
+87F0 - 880F	     Flags
+8810 - 884F	     Hammers
+8850 - 885F	     Brick Pieces
+8860 - 887F	     Bounced Bricks
+8880 - 888F	     Bounced ? Blocks
+88E0 - 88EF,
+8E50 - 8E5F	     Stars
+88F0 - 890F,
+8950 - 896F	     Spiny's Eggs
+8970 - 89EF	     Spinys
+8AB0 - 8B2F,
+8F50 - 8F6F	     Buzzy Beetles
+8B30 - 8B8F	     Cheep-cheaps
+8B90 - 8BEF	     Lakitu
+8BF0 - 8CDF	     Bowser
+8CE0 - 8D0F	     Mushroom Retainers
+8D10 - 8D1F,
+8D80 - 8D8F	     Podoboos
+8D70 - 8D7F,
+8DA0 - 8DAF	     Fire Flowers
+8DD0 - 8E0F	     Bloobers
+8E10 - 8E2F	     Tree of Beans
+8E60 - 8E7F,
+8EC0 - 8EFF	     Pirana Plants
+8E80 - 8EBF	     Bullet Bills
+8F10 - 8F4F	     Jump Stands
+8F70 - 8F7F	     10
+8F80 - 8F8F	     20
+8F90 - 8F9F	     40
+8FA0 - 8FAF	     50
+8FB0 - 8FBF	     80
+8FC0 - 8FCF	     0
+8FD0 - 8FDF	     Space (Sprites)
+8FE0 - 8FFF	     1-UP
+9000 - 900F,
+92F0 - 92FF	     Coin Symbol
+9010 - 901F	     0
+9020 - 902F	     1
+9030 - 903F	     2
+9040 - 904F	     3
+9050 - 905F	     4
+9060 - 906F	     5
+9070 - 907F	     6
+9080 - 908F	     7
+9090 - 909F	     8
+90A0 - 90AF	     9
+90B0 - 90BF	     A
+90C0 - 90CF	     B
+90D0 - 90DF	     C
+90E0 - 90EF	     D
+90F0 - 90FF	     E
+9100 - 910F	     F
+9110 - 911F	     G
+9120 - 912F	     H
+9130 - 913F	     I
+9140 - 914F	     J
+9150 - 915F	     K
+9160 - 916F	     L
+9170 - 917F	     M
+9180 - 918F	     N
+9190 - 919F	     O
+91A0 - 91AF	     P
+91B0 - 91BF	     Q
+91C0 - 91CF	     R
+91D0 - 91DF	     S
+91E0 - 91EF	     T
+91F0 - 91FF	     U
+9200 - 920F	     V
+9210 - 921F	     W
+9220 - 922F	     X
+9230 - 923F	     Y
+9240 - 924F	     Z
+9250 - 925F	     Space (Objects)
+9260 - 926F	     Background tile (Clouds, Shrubs)
+9270 - 927F	     Background tile (Mountains, Pipes)
+9280 - 928F	     Background tile (Castles)
+9290 - 929F	     -
+92A0 - 92AF	     *
+92B0 - 92BF,
+9410 - 941F,
+9C70 - 9CEF	     Bullet Bill Shooters
+92C0 - 92CF	     !
+92D0 - 92EF,
+96C0 - 977F	     Orange Islands
+9300 - 930F,
+93E0 - 93EF	     Flag Balls
+9310 - 935F	     Mountains
+9360 - 93DF	     Clouds
+93F0 - 940F	     Left Wheels (Ropes)
+9420 - 942F	     Water/Lava
+9430 - 945F,
+9470 - 947F,
+9490 - 94BF,
+9600 - 960F,
+9790 - 979F,
+97B0 - 97BF,
+9960 - 999F,
+9D10 - 9E9F	     Title
+9460 - 946F,
+9480 - 948F	     Bricks
+94C0 - 953F	     Green Islands
+9540 - 957F	     ? Blocks
+9580 - 95BF	     Used Blocks
+95C0 - 95DF	     Right Wheels (Ropes)
+95E0 - 95FF	     Blocks (Castle)
+9610 - 96BF	     Pipes
+9780 - 978F,
+97A0 - 97AF	     Bridges (Castle)
+97C0 - 97FF	     Axes
+9800 - 980F	     Chains
+9810 - 982F,
+9A10 - 9A2F	     Fences
+9830 - 986F	     Ground (Underwater)
+9870 - 995F	     Horizontal Pipes
+99A0 - 99AF	     Ropes (Top)
+99B0 - 99BF	     Not Used?
+99C0 - 99DF	     Castle Door (Top)
+99E0 - 99FF	     Castle (Top)
+9A00 - 9A0F	     Crown Symbol
+9A30 - 9A4F	     Poles
+9A50 - 9A5F,
+9EA0 - 9ECF	     Seaplants
+9A60 - 9A9F	     Coins
+9AA0 - 9ABF	     Castle (Top, Bricks for background)
+9AC0 - 9AFF	     Blocks
+9B00 - 9B0F	     .
+9B10 - 9B4F	     Cloud Blocks
+9B50 - 9B8F	     Ground
+9B90 - 9C0F	     Trees
+9C10 - 9C2F	     Bridges
+9C30 - 9C6F	     Coins (Underwater)
+9CF0 - 9CFF	     Mushroom Symbol
+9D00 - 9D0F	     Copyright Symbol
+
+
+BACKGROUND METATILES
+
+139A - 13A2	     Clouds
+13A3 - 13AB	     Shrubs
+13AC - 13B4	     Mountains
+13B5 - 13B7	     Fences
+13B8 - 13BD	     Trees
+
+
+PALETTES
+
+General 
+
+5E8 - 5EA            Mario
+5EC - 5EE            Luigi
+5F0 - 5F2            Fiery Mario/Luigi
+9D3 - 9D8	     Coins, ? Blocks (Flashing Colors Only)
+D58 - D5A	     Orange Islands
+
+Day Only
+
+5E0		     Background
+
+Day + Snow Only
+
+5E4		     Background
+D48 - D4A	     Pipes, Shrubs, Trees (Top)
+
+Night Only
+
+5E3		     Background
+
+Night + Snow Only
+
+5E5	             Background
+D50 - D52	     Pipes, Shrubs, Trees (Top)
+
+Day and Night Only
+
+CDC - CDE	     Pipes, Shrubs, Trees (Top)
+
+Day, Day + Snow, Night, and Night + Snow
+
+9E7 - 9E8	     Coins, ? Blocks (Except Flashing Colors)
+CE0 - CE2	     Blocks, Bricks, Ground
+CE4 - CE6	     Clouds, Cloud Blocks, Text
+CE8 - CEA	     Coins, ? Blocks (Upon Entrance)
+CF0 - CF2	     1UP Mushrooms, Hammer Brothers, Pirana Plants
+CF4 - CF6	     Mushrooms, Fireballs, Lifts
+CF8 - CFA	     Bounced Bricks, Bullet Bills, Goombas  
+
+Underground
+
+5E1	  	     Background
+9EB - 9EC	     Coins, ? Blocks (Except Flashing Colors)
+D00 - D02	     Pipes
+D04 - D06	     Blocks, Bricks, Ground
+D08 - D0A	     Text
+D0C - D0E	     Coins, ? Blocks (Upon Entrance)
+D14 - D16	     1UP Mushrooms, Pirana Plants
+D18 - D1A	     Mushrooms, Fireballs, Lifts
+D1C - D1E	     Goombas, Bounced Bricks and ? Blocks
+
+Sea
+
+5DF		     Background
+9E3 - 9E4	     Coins (Except Flashing Colors)
+CB8 - CBA	     Pipes, Seaplants
+CBC - CBE	     Blocks, Endpipes
+CC0 - CC2	     Water, Text
+CC4 - CC6	     Coins (Upon Entrance)
+CCC - CCE	     Slow Cheep-cheeps
+CD0 - CD2	     Fireballs, Lifts, Cheep-cheeps
+CD4 - CD6	     Bloobers
+
+Castle
+
+5E2		     Background
+9EF - 9F0	     Coins, Axes, ? Blocks (Except Flashing Colors)
+D24 - D26	     Pipes, Chain, Text (Mushroom Retainers, Princess Toadstool)
+D28 - D2A	     Blocks, Bricks
+D2C - D2E	     Lava, Bridge, Text
+D30 - D32	     Coins, Axes, ? Blocks (Upon Entrance)
+D38 - D3A	     Hammer Brothers, Pirana Plants
+D3C - D3E	     Mushrooms, Fireballs, Lifts
+D40 - D42	     Goombas, Bounced Bricks and ? Blocks
+D60 - D62	     Bowser
+
+
+SPRITE ATTRIBUTES (HOW TILES ARE MIRRORED, WHETHER THEY GO BEHIND BACKGROUND + OBJECTS, WHICH PALETTE SET THEY USE)
+
+55C, 667E	     Used by Points/1-UP
+523C, 5244	     Used by Bowser's Fire
+538E		     Used by Flags (Castle)
+6472		     Used by Tree of Beans
+64E8 - 64EB	     Used by Hammers
+6582		     Used by Flags/Points from Flags (02 and 03 mirrors points from flags)
+6614		     Used by Lifts, Lifts (Clouds)
+66C2, 66C7	     Used by Bounced Coins
+66DE		     Used by Mushrooms
+66DF		     Used by Fire Flowers (Stems)
+66E1		     Used by 1UP Mushrooms
+686B, 6879	     Used by Green Koopa Troopas, Paratroopas
+686C, 686E, 687A     Used by Red Koopa Troopas, Paratroopas
+686D		     Used by Buzzy Beetles
+6870		     Used by Hammer Bros.
+6871		     Used by Goombas
+6872		     Used by Bloobers
+6875		     Used by Slow Cheep-cheeps
+6876, 687F	     Used by Cheep-cheeps
+6877		     Used by Podoboos
+6878		     Used by Pirana Plants
+687C, 6B31, 6B39,
+6B48, 6B52, 6B5A     Used by Lakitu
+687D		     Used by Spinys, Spiny's Eggs
+6880, 6ADF	     Used by Mushroom Retainers/Princess Toadstool
+6881, 6882	     Used by Bowser
+6883 - 6885, 6B65    Used by Jump Stands
+68D5		     Used by Bullet Bills
+6BEC		     Used by Bounced Bricks
+6C70		     Used by Brick Pieces
+6D0D		     Used by Fireballs
+6D5D, 6D62, 
+6D67, 6D6C	     Used by Fireworks
+6E12		     Used by Bubbles
+
+
+TEXT 
+
+688		     -
+765 - 769	     MARIO
+76D - 777	     WORLD  TIME
+77B		     0 (Last Digit in Score)
+77F		     *
+78C - 792 	       *    (Lives Screen)
+796 - 79B	     WORLD  (Lives Screen)
+79D		     - (Lives Screen)
+7B3 - 7B9	     TIME UP
+7C6 - 7CE	     GAME OVER
+7D3 - 7E7	     WELCOME TO WARP ZONE!
+7FD - 801	     LUIGI
+D67 - D76	     THANK YOU MARIO!
+D7B - D8A	     THANK YOU LUIGI!
+D8F - DA4	     BUT OUR PRINCESS IS IN
+DA8 - DB6	     ANOTHER CASTLE!
+DBB - DCD	     YOUR QUEST IS OVER.
+DD2 - DEC	     WE PRESENT YOU A NEW QUEST.
+DF1 - DFD	     PUSH BUTTON B
+E02 - E12	     TO SELECT A WORLD
+9FB6 - 9FC2	     1985 NINTENDO
+9FC6 - 9FD2	     1 PLAYER GAME
+9FD6 - 9FE2	     2 PLAYER GAME
+9FE6 - 9FE9	     TOP-
+9FED		     0 (Last Digit in Top Score)
+
+
+MUSIC
+
+449		     played when the Princess is saved
+1065		     played when exiting or during the prelevel screen
+10F7		     played in underwater levels
+10F8		     played in overworld levels
+10F9		     played in Underground levels
+10FA		     played in Castle levels
+10FB		     played in Cloud Bonus areas
+10FC		     played in Go-Into-Pipe Intro areas
+123D		     played on Game Over Screen
+32EB		     played after taking down the flag
+3793		     played when time is running out
+5016		     played when a world is beaten
+582C		     played When Getting a Star
+
+
+CASTLE LOOPS
+
+1C08 - 1C12	     Offset of Map Page Skip Data
+407B - 4085	     World
+4086 - 4090	     Page
+4091 - 409B	     Vertical Position
+410C, 4129	     World 7's Loop World
+
+
+MISC.
+
+438		     World Mushroom Retainer's Message Changes to Princess Toadstool's Message 
+47A		     Last World
+802 - 804	     Warp Zone 1 (4, 3, 2)
+806 - 808	     Warp Zone 2 ( , 5,  )
+80A - 80C	     Warp Zone 3 (8, 7, 6)
+104B, 1054	     Become Hard (World, Area)
+107A		     Number of Lives
+113E - 1140	     400, 300, 200 (Time)
+1486		     World Sea Brick Changes to Castle Brick
+1CC4 - 1CCB	     Table of World Offsets (Worlds 1 - 8)
+32D2 - 32D9	     Coins for 1UP (Worlds 1 - 8)
+3434		     Mario/Luigi Standing Jump Height
+3435		     Mario/Luigi Walking Jump Height (Changing Direction)
+3436		     Mario/Luigi Walking Jump Height
+3437		     Mario/Luigi Running Jump Height (Changing Direction)
+3438		     Mario/Luigi Running Jump Height
+3522		     Big Mario/Luigi jump sound
+3529		     Small Mario/Luigi jump sound
+3697 - 3698	     Fireball speed
+39D2		     How often Bullet Bill cannons shoot
+3A41 - 3A42	     Bullet Bill speed
+3AA2 - 3AA3	     Hammers' horizontal distance
+3C85		     What comes out of Question Blocks and Bricks depending on Mario's/Luigi's size/fire
+4217		     Which enemy single Goombas turn into on second quest
+431C		     Most enemies' initial speed
+431D		     Most enemies' initial speed on 2nd quest
+473E		     Which enemy pairs and trios of Goombas turn into on second quest
+47E6		     Green Leaping Koopa Paratroopa Speed
+49E4 - 49E5	     Koopa Troopa speed after stomped
+49E6 - 49E7	     Koopa Troopa speed after stomped on 2nd quest
+512B		     World Bowser Starts Throwing Hammers
+52D5		     Number of points given for each Fireworks blast
+5308, 530E, 5314     The three timer last digits which give you Fireworks and Number of Fireworks
+5334		     Sound used when timer reaches 0 when level is finished
+5342		     Number of points given for each second left on the timer at the end of a level
+5746 - 574D	     True Character of Bowser (Worlds 1 - 8)
+5827		     How Long Mario/Luigi Has Starman Power When He Gets a Starman
+594A		     How Long Mario/Luigi Flashes When He Gets Hurt
+61F1		     How High Fireballs bounce
+6A27		     World Mushroom Retainer Changes to Princess Toadstool
