@@ -11,8 +11,6 @@
 # Super Bobble Bros. (Variant 2) (by Unsavory Maggot).hexp
 # Super Zabil Bros. (by Poporo).hexp
 # Super Zabil Bros. Starman (by Poporo).hexp
-C: SKIP
-
 A: 0x7D63
 V: 202420832E8220842404830482202420832E8220842404820416831E821E862082041620
    202086248204162A2A2A2A832A812E8328822483202024000482

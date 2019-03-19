@@ -12,8 +12,6 @@
 # Super Bobble Bros. (Variant 2) (by Unsavory Maggot).hexp
 # Super Zabil Bros. (by Poporo).hexp
 # Super Zabil Bros. Starman (by Poporo).hexp
-C: SKIP
-
 A: 0x797B
 V: 1852FD000062
 

@@ -6,8 +6,6 @@
 # Super Zabil Bros. Starman (by Poporo).hexp
 # Techno! Mario Bros [O,W,S].hexp
 # Techno! Mario Bros [W,S].hexp
-C: SKIP
-
 A: 0x792D
 V: 7B6F756F81996999937B6F756F81996999937B6F756F81996999937B6F756F8199
 

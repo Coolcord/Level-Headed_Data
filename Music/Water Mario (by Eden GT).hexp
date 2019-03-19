@@ -1,6 +1,4 @@
 # Invalid Tones: 10,15
-C: SKIP
-
 A: 0x72E0
 V: AD7007D0048D154060
 

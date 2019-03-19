@@ -13,8 +13,6 @@
 # Techno! Mario Bros [O,W,S].hexp
 # Techno! Mario Bros [W,S].hexp
 # TowerRE.hexp
-C: SKIP
-
 A: 0x796C
 V: 08
 
