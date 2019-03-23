@@ -3,15 +3,15 @@
 # Kamikaze 3 (by 79).hexp
 # Music 02 (from U1's Music Pack).hexp
 # Music 04 (from U1's Music Pack).hexp
-# Music 05 (from U1's Music Pack).hexp
 # Music 06 (from U1's Music Pack).hexp
 # Music 09 (from U1's Music Pack).hexp
 # Stomp on Brother's Head (by Kaeri).hexp
-# Super Bobble Bros. (Variant 1) (by Unsavory Maggot).hexp
-# Super Bobble Bros. (Variant 2) (by Unsavory Maggot).hexp
 # Super Zabil Bros. Starman (by Poporo).hexp
+A: 0x7880
+V: F1
+
 A: 0x7926
-V: 69
+V: 46
 
 A: 0x7D21
 V: 84626262621212121214141414121212128462148224842282141A851C85148218148512
