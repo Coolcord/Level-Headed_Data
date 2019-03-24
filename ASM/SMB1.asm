@@ -6134,7 +6134,7 @@ GetYPhy:   lda JumpMForceData,y       ;store appropriate jump/swim
 PJumpSnd:  lda #Sfx_BigJump           ;load big mario's jump sound by default
            ldy PlayerSize             ;is mario big?
            beq SJumpSnd
-           lda #Sfx_SmallJump         ;if not, load small mario's jump sound
+           lda #Sfx_SmallJump         ;if not, load small mario's jump sound  [A980]
 SJumpSnd:  sta Square1SoundQueue      ;store appropriate jump sound in square 1 sfx queue
 X_Physics: ldy #$00
            sty $00                    ;init value here
@@ -8725,26 +8725,26 @@ AddFBit: ora BitMFilter            ;add bit to already set bits in filter
          sta Enemy_YMF_Dummy,x     ;initialize dummy variable
          lda #$20                  ;set timer
          sta FrenzyEnemyTimer
-         jmp CheckpointEnemyID     ;process our new enemy object
+         jmp CheckpointEnemyID     ;process our new enemy object  [4C6CC2]
 
 DoBulletBills:
-          ldy #$ff                   ;start at beginning of enemy slots
-BB_SLoop: iny                        ;move onto the next slot
-          cpy #$05                   ;branch to play sound if we've done all slots
-          bcs FireBulletBill
-          lda Enemy_Flag,y           ;if enemy buffer flag not set,
-          beq BB_SLoop               ;loop back and check another slot
-          lda Enemy_ID,y
-          cmp #BulletBill_FrenzyVar  ;check enemy identifier for
-          bne BB_SLoop               ;bullet bill object (frenzy variant)
-ExF17:    rts                        ;if found, leave
+          ldy #$ff                   ;start at beginning of enemy slots  [A0FF]
+BB_SLoop: iny                        ;move onto the next slot  [C8]
+          cpy #$05                   ;branch to play sound if we've done all slots  [C005]
+          bcs FireBulletBill         ; [B00D]
+          lda Enemy_Flag,y           ;if enemy buffer flag not set,  [B90F00]
+          beq BB_SLoop               ;loop back and check another slot  [F0F6]
+          lda Enemy_ID,y             ; [B91600]
+          cmp #BulletBill_FrenzyVar  ;check enemy identifier for  [C908]
+          bne BB_SLoop               ;bullet bill object (frenzy variant)  [D0EF]
+ExF17:    rts                        ;if found, leave  [60]
 
 FireBulletBill:
-      lda Square2SoundQueue
-      ora #Sfx_Blast            ;play fireworks/gunfire sound
-      sta Square2SoundQueue
-      lda #BulletBill_FrenzyVar ;load identifier for bullet bill object
-      bne Set17ID               ;unconditional branch
+      lda Square2SoundQueue     ; [A5FE]
+      ora #Sfx_Blast            ;play fireworks/gunfire sound  [0908]
+      sta Square2SoundQueue     ; [85FE]
+      lda #BulletBill_FrenzyVar ;load identifier for bullet bill object  [A908]
+      bne Set17ID               ;unconditional branch  [D0A8]
 
 ;--------------------------------
 ;$00 - used to store Y position of group enemies
@@ -15201,58 +15201,58 @@ ContinueSndJump:
           bne DmpJpFPS           ;unconditional branch
 N2Prt:    cmp #$20               ;check for third part
           bne DecJpFPS
-          ldx #$48               ;load third part
-FPS2nd:   ldy #$bc               ;the flagpole slide sound shares part of third part
-DmpJpFPS: jsr Dump_Squ1_Regs
-          bne DecJpFPS           ;unconditional branch outta here
+          ldx #$48               ;load third part  [A248]
+FPS2nd:   ldy #$bc               ;the flagpole slide sound shares part of third part  [A0BC]
+DmpJpFPS: jsr Dump_Squ1_Regs     ; [2081F3]
+          bne DecJpFPS           ;unconditional branch outta here  [D020]
 
 PlayFireballThrow:
-        lda #$05
-        ldy #$99                 ;load reg contents for fireball throw sound
-        bne Fthrow               ;unconditional branch
+        lda #$05                 ; [A905]
+        ldy #$99                 ;load reg contents for fireball throw sound  [A099]
+        bne Fthrow               ;unconditional branch  [D004]
 
 PlayBump:
-          lda #$0a                ;load length of sfx and reg contents for bump sound
-          ldy #$93
-Fthrow:   ldx #$9e                ;the fireball sound shares reg contents with the bump sound
-          sta Squ1_SfxLenCounter
-          lda #$0c                ;load offset for bump sound
-          jsr PlaySqu1Sfx
+          lda #$0a                ;load length of sfx and reg contents for bump sound  [A90A]
+          ldy #$93                ; [A093]
+Fthrow:   ldx #$9e                ;the fireball sound shares reg contents with the bump sound  [A29E]
+          sta Squ1_SfxLenCounter  ; [8DBB07]
+          lda #$0c                ;load offset for bump sound  [A90C]
+          jsr PlaySqu1Sfx         ; [2088F3]
 
 ContinueBumpThrow:    
-          lda Squ1_SfxLenCounter  ;check for second part of bump sound
-          cmp #$06   
-          bne DecJpFPS
-          lda #$bb                ;load second part directly
-          sta SND_SQUARE1_REG+1
-DecJpFPS: bne BranchToDecLength1  ;unconditional branch
+          lda Squ1_SfxLenCounter  ;check for second part of bump sound  [ADBB07]
+          cmp #$06                ; [C906]
+          bne DecJpFPS            ; [D005]
+          lda #$bb                ;load second part directly  [A9BB]
+          sta SND_SQUARE1_REG+1   ; [8D0140]
+DecJpFPS: bne BranchToDecLength1  ;unconditional branch  [D060]
 
 
 Square1SfxHandler:
-       ldy Square1SoundQueue   ;check for sfx in queue
-       beq CheckSfx1Buffer
-       sty Square1SoundBuffer  ;if found, put in buffer
-       bmi PlaySmallJump       ;small jump
-       lsr Square1SoundQueue
-       bcs PlayBigJump         ;big jump
-       lsr Square1SoundQueue
-       bcs PlayBump            ;bump
-       lsr Square1SoundQueue
-       bcs PlaySwimStomp       ;swim/stomp
-       lsr Square1SoundQueue
-       bcs PlaySmackEnemy      ;smack enemy
-       lsr Square1SoundQueue
-       bcs PlayPipeDownInj     ;pipedown/injury
-       lsr Square1SoundQueue
-       bcs PlayFireballThrow   ;fireball throw
-       lsr Square1SoundQueue
-       bcs PlayFlagpoleSlide   ;slide flagpole
+       ldy Square1SoundQueue   ;check for sfx in queue  [A4FF]
+       beq CheckSfx1Buffer     ; [F020]
+       sty Square1SoundBuffer  ;if found, put in buffer  [84F1]
+       bmi PlaySmallJump       ;small jump  [30AA]
+       lsr Square1SoundQueue   ;  [46FF]
+       bcs PlayBigJump         ;big jump  [B0AA]
+       lsr Square1SoundQueue   ;  [46FF]
+       bcs PlayBump            ;bump  [B0D4]
+       lsr Square1SoundQueue   ;  [46FF]
+       bcs PlaySwimStomp       ;swim/stomp  [B02C]
+       lsr Square1SoundQueue   ;  [46FF]
+       bcs PlaySmackEnemy      ;smack enemy  [B04A]
+       lsr Square1SoundQueue   ;  [46FF]
+       bcs PlayPipeDownInj     ;pipedown/injury  [B07F]
+       lsr Square1SoundQueue   ;  [46FF]
+       bcs PlayFireballThrow   ;fireball throw  [B0BE]
+       lsr Square1SoundQueue   ;  [46FF]
+       bcs PlayFlagpoleSlide   ;slide flagpole  [B080]
 
 CheckSfx1Buffer:
-       lda Square1SoundBuffer   ;check for sfx in buffer 
-       beq ExS1H                ;if not found, exit sub
-       bmi ContinueSndJump      ;small mario jump 
-       lsr
+       lda Square1SoundBuffer   ;check for sfx in buffer  [A5F1]
+       beq ExS1H                ;if not found, exit sub  [F017]
+       bmi ContinueSndJump      ;small mario jump  [309A]
+       lsr                      ; [4A]
        bcs ContinueSndJump      ;big mario jump 
        lsr
        bcs ContinueBumpThrow    ;bump
@@ -15266,47 +15266,47 @@ CheckSfx1Buffer:
        bcs ContinueBumpThrow    ;fireball throw
        lsr
        bcs DecrementSfx1Length  ;slide flagpole
-ExS1H: rts
+ExS1H: rts                      ; [60]
 
 PlaySwimStomp:
-      lda #$0e               ;store length of swim/stomp sound
-      sta Squ1_SfxLenCounter
-      ldy #$9c               ;store reg contents for swim/stomp sound
-      ldx #$9e
-      lda #$26
-      jsr PlaySqu1Sfx
+      lda #$0e               ;store length of swim/stomp sound  [A90E]
+      sta Squ1_SfxLenCounter ; [8DBB07]
+      ldy #$9c               ;store reg contents for swim/stomp sound  [A09C]
+      ldx #$9e               ; [A29E]
+      lda #$26               ; [A926]
+      jsr PlaySqu1Sfx        ; [2088F3]
 
 ContinueSwimStomp: 
-      ldy Squ1_SfxLenCounter        ;look up reg contents in data section based on
-      lda SwimStompEnvelopeData-1,y ;length of sound left, used to control sound's
-      sta SND_SQUARE1_REG           ;envelope
-      cpy #$06   
-      bne BranchToDecLength1
-      lda #$9e                      ;when the length counts down to a certain point, put this
-      sta SND_SQUARE1_REG+2         ;directly into the LSB of square 1's frequency divider
+      ldy Squ1_SfxLenCounter        ;look up reg contents in data section based on  [ACBB07]
+      lda SwimStompEnvelopeData-1,y ;length of sound left, used to control sound's  [B9B0F3]
+      sta SND_SQUARE1_REG           ;envelope  [8D0040]
+      cpy #$06                      ; [C006]
+      bne BranchToDecLength1        ; [D005]
+      lda #$9e                      ;when the length counts down to a certain point, put this  [A99E]
+      sta SND_SQUARE1_REG+2         ;directly into the LSB of square 1's frequency divider [8D0240]
 
 BranchToDecLength1: 
-      bne DecrementSfx1Length  ;unconditional branch (regardless of how we got here)
+      bne DecrementSfx1Length  ;unconditional branch (regardless of how we got here)  [D025]
 
 PlaySmackEnemy:
-      lda #$0e                 ;store length of smack enemy sound
-      ldy #$cb
-      ldx #$9f
-      sta Squ1_SfxLenCounter
-      lda #$28                 ;store reg contents for smack enemy sound
-      jsr PlaySqu1Sfx
-      bne DecrementSfx1Length  ;unconditional branch
+      lda #$0e                 ;store length of smack enemy sound  [A90E]
+      ldy #$cb                 ; [A0CB]
+      ldx #$9f                 ; [A29F]
+      sta Squ1_SfxLenCounter   ; [8DBB07]
+      lda #$28                 ;store reg contents for smack enemy sound  [A928]
+      jsr PlaySqu1Sfx          ; [2088F3]
+      bne DecrementSfx1Length  ;unconditional branch  [D015]
 
 ContinueSmackEnemy:
-        ldy Squ1_SfxLenCounter  ;check about halfway through
-        cpy #$08
-        bne SmSpc
-        lda #$a0                ;if we're at the about-halfway point, make the second tone
-        sta SND_SQUARE1_REG+2   ;in the smack enemy sound
-        lda #$9f
-        bne SmTick
-SmSpc:  lda #$90                ;this creates spaces in the sound, giving it its distinct noise
-SmTick: sta SND_SQUARE1_REG
+        ldy Squ1_SfxLenCounter  ;check about halfway through [ACBB07]
+        cpy #$08                ; [C008]
+        bne SmSpc               ; [D009]
+        lda #$a0                ;if we're at the about-halfway point, make the second tone  [A9A0]
+        sta SND_SQUARE1_REG+2   ;in the smack enemy sound  [8D0240]
+        lda #$9f                ; [A99F]
+        bne SmTick              ; [D002]
+SmSpc:  lda #$90                ;this creates spaces in the sound, giving it its distinct noise  [A990]
+SmTick: sta SND_SQUARE1_REG     ; [8D0040]
 
 DecrementSfx1Length:
       dec Squ1_SfxLenCounter    ;decrement length of sfx
