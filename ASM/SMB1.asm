@@ -15309,35 +15309,35 @@ SmSpc:  lda #$90                ;this creates spaces in the sound, giving it its
 SmTick: sta SND_SQUARE1_REG     ; [8D0040]
 
 DecrementSfx1Length:
-      dec Squ1_SfxLenCounter    ;decrement length of sfx
-      bne ExSfx1
+      dec Squ1_SfxLenCounter    ;decrement length of sfx  [CEBB07]
+      bne ExSfx1                ; [D00E]
 
 StopSquare1Sfx:
-        ldx #$00                ;if end of sfx reached, clear buffer
-        stx $f1                 ;and stop making the sfx
-        ldx #$0e
-        stx SND_MASTERCTRL_REG
-        ldx #$0f
-        stx SND_MASTERCTRL_REG
-ExSfx1: rts
+        ldx #$00                ;if end of sfx reached, clear buffer  [A200]
+        stx $f1                 ;and stop making the sfx  [86F1]
+        ldx #$0e                ; [A20E]
+        stx SND_MASTERCTRL_REG  ; [8E1540]
+        ldx #$0f                ; [A20F]
+        stx SND_MASTERCTRL_REG  ; [8E1540]
+ExSfx1: rts                     ; [60]
 
 PlayPipeDownInj:  
-      lda #$2f                ;load length of pipedown sound
-      sta Squ1_SfxLenCounter
+      lda #$2f                ;load length of pipedown sound  [A92F]
+      sta Squ1_SfxLenCounter  ; [8DBB07]
 
 ContinuePipeDownInj:
-         lda Squ1_SfxLenCounter  ;some bitwise logic, forces the regs
-         lsr                     ;to be written to only during six specific times
-         bcs NoPDwnL             ;during which d3 must be set and d1-0 must be clear
-         lsr
-         bcs NoPDwnL
-         and #%00000010
-         beq NoPDwnL
-         ldy #$91                ;and this is where it actually gets written in
-         ldx #$9a
-         lda #$44
-         jsr PlaySqu1Sfx
-NoPDwnL: jmp DecrementSfx1Length
+         lda Squ1_SfxLenCounter  ;some bitwise logic, forces the regs  [AdBB07]
+         lsr                     ;to be written to only during six specific times  [4A]
+         bcs NoPDwnL             ;during which d3 must be set and d1-0 must be clear  [B010]
+         lsr                     ; [4A]
+         bcs NoPDwnL             ; [B00D]
+         and #%00000010          ; [2902]
+         beq NoPDwnL             ; [F009]
+         ldy #$91                ;and this is where it actually gets written in  [A091]
+         ldx #$9a                ; [A29A]
+         lda #$44                ; [A944]
+         jsr PlaySqu1Sfx         ; [2088F3]
+NoPDwnL: jmp DecrementSfx1Length ; [4CA2F4]
 
 ;--------------------------------
 
