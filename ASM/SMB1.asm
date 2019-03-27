@@ -15171,36 +15171,36 @@ SwimStompEnvelopeData:
       .db $90, $9a, $97, $95, $93, $92
 
 PlayFlagpoleSlide:
-       lda #$40               ;store length of flagpole sound
-       sta Squ1_SfxLenCounter
-       lda #$62               ;load part of reg contents for flagpole sound
-       jsr SetFreq_Squ1
-       ldx #$99               ;now load the rest
-       bne FPS2nd
+       lda #$40               ;store length of flagpole sound  [A940]
+       sta Squ1_SfxLenCounter ; [8DBB07]
+       lda #$62               ;load part of reg contents for flagpole sound  [A962]
+       jsr SetFreq_Squ1       ; [208BF3]
+       ldx #$99               ;now load the rest  [A299]
+       bne FPS2nd             ; [D025]
 
 PlaySmallJump:
-       lda #$26               ;branch here for small mario jumping sound
-       bne JumpRegContents
+       lda #$26               ;branch here for small mario jumping sound  [A926]
+       bne JumpRegContents    ; [D002]
 
 PlayBigJump:
-       lda #$18               ;branch here for big mario jumping sound
+       lda #$18               ;branch here for big mario jumping sound  [A918]
 
 JumpRegContents:
-       ldx #$82               ;note that small and big jump borrow each others' reg contents
-       ldy #$a7               ;anyway, this loads the first part of mario's jumping sound
-       jsr PlaySqu1Sfx
-       lda #$28               ;store length of sfx for both jumping sounds
-       sta Squ1_SfxLenCounter ;then continue on here
+       ldx #$82               ;note that small and big jump borrow each others' reg contents  [A282]
+       ldy #$a7               ;anyway, this loads the first part of mario's jumping sound  [A0A7]
+       jsr PlaySqu1Sfx        ; [2088F3]
+       lda #$28               ;store length of sfx for both jumping sounds  [A928]
+       sta Squ1_SfxLenCounter ;then continue on here  [8DBB07]
 
 ContinueSndJump:
-          lda Squ1_SfxLenCounter ;jumping sounds seem to be composed of three parts
-          cmp #$25               ;check for time to play second part yet
-          bne N2Prt
-          ldx #$5f               ;load second part
-          ldy #$f6
-          bne DmpJpFPS           ;unconditional branch
-N2Prt:    cmp #$20               ;check for third part
-          bne DecJpFPS
+          lda Squ1_SfxLenCounter ;jumping sounds seem to be composed of three parts  [ADBB07]
+          cmp #$25               ;check for time to play second part yet  [C925]
+          bne N2Prt              ; [D006]
+          ldx #$5f               ;load second part  [A25F]
+          ldy #$f6               ; [A0F6]
+          bne DmpJpFPS           ;unconditional branch  [D008]
+N2Prt:    cmp #$20               ;check for third part  [C920]
+          bne DecJpFPS           ; [D029]
           ldx #$48               ;load third part  [A248]
 FPS2nd:   ldy #$bc               ;the flagpole slide sound shares part of third part  [A0BC]
 DmpJpFPS: jsr Dump_Squ1_Regs     ; [2081F3]
