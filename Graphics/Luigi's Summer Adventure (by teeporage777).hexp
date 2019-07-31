@@ -22,9 +22,6 @@ V: 2A
 A: 0x0D00
 V: 2A
 
-A: 0x1CCC
-V: C0
-
 A: 0x6750
 V: AEAF
 
