@@ -1395,10 +1395,10 @@ InitScreen:
 SetupIntermediate:
       lda BackgroundColorCtrl  ;save current background color control
       pha                      ;and player status to stack
-      lda PlayerStatus
-      pha
-      lda #$00                 ;set background color to black
-      sta PlayerStatus         ;and player status to not fiery
+      lda PlayerStatus         ; [AD5607]
+      pha                      ; [48]
+      lda #$00                 ;set background color to black  [A900]
+      sta PlayerStatus         ;and player status to not fiery  [8D5607]
       lda #$02                 ;this is the ONLY time background color control
       sta BackgroundColorCtrl  ;is set to less than 4
       jsr GetPlayerColors
@@ -1549,10 +1549,10 @@ DisplayIntermediate:
                ldy AreaType                 ;check if we are on castle level
                cpy #$03                     ;and if so, branch (possibly residual)
                beq PlayerInter
-               lda DisableIntermediate      ;if this flag is set, skip intermediate lives display
-               bne NoInter                  ;and jump to specific task, otherwise
-PlayerInter:   jsr DrawPlayer_Intermediate  ;put player in appropriate place for
-               lda #$01                     ;lives display, then output lives display to buffer
+               lda DisableIntermediate      ;if this flag is set, skip intermediate lives display  [Ad6907]
+               bne NoInter                  ;and jump to specific task, otherwise  [D01E]
+PlayerInter:   jsr DrawPlayer_Intermediate  ;put player in appropriate place for  [20A4EF]
+               lda #$01                     ;lives display, then output lives display to buffer  [A901]
 OutputInter:   jsr WriteGameText
                jsr ResetScreenTimer
                lda #$00
@@ -2718,8 +2718,8 @@ DoneInitArea:  lda #Silence             ;silence music
 PrimaryGameSetup:
       lda #$01
       sta FetchNewGameTimerFlag   ;set flag to load game timer from header
-      sta PlayerSize              ;set player's size to small
-      lda #$02
+      sta PlayerSize              ;set player's size to small  [8D5407]
+      lda #$02                    ; [A902]
       sta NumberofLives           ;give each player three lives
       sta OffScr_NumberofLives
 
@@ -2990,8 +2990,8 @@ TerminateGame:
 
 ContinueGame:
            jsr LoadAreaPointer       ;update level pointer with
-           lda #$01                  ;actual world and area numbers, then
-           sta PlayerSize            ;reset player's size, status, and
+           lda #$01                  ;actual world and area numbers, then  [A901]
+           sta PlayerSize            ;reset player's size, status, and  [8D5407]
            inc FetchNewGameTimerFlag ;set game timer flag to reload
            lda #$00                  ;game timer from header
            sta TimerControl          ;also set flag for timers to count again
@@ -6466,7 +6466,7 @@ ResGTCtrl: lda #$18                   ;reset game timer control [A918]
            jsr DigitsMathRoutine      ;do sub to decrement game timer slowly
            lda #$a4                   ;set status nybbles to update game timer display
            jmp PrintStatusBarNumbers  ;do sub to update the display
-TimeUpOn:  sta PlayerStatus           ;init player status (note A will always be zero here)
+TimeUpOn:  sta PlayerStatus           ;init player status (note A will always be zero here)  [8D5607]
            jsr ForceInjury            ;do sub to kill the player (note player is small here)
            inc GameTimerExpiredFlag   ;set game timer expiration flag
 ExGTimer:  rts                        ;leave
