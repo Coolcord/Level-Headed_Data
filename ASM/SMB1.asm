@@ -1549,7 +1549,7 @@ DisplayIntermediate:
                ldy AreaType                 ;check if we are on castle level
                cpy #$03                     ;and if so, branch (possibly residual)
                beq PlayerInter
-               lda DisableIntermediate      ;if this flag is set, skip intermediate lives display  [Ad6907]
+               lda DisableIntermediate      ;if this flag is set, skip intermediate lives display  [AD6907]
                bne NoInter                  ;and jump to specific task, otherwise  [D01E]
 PlayerInter:   jsr DrawPlayer_Intermediate  ;put player in appropriate place for  [20A4EF]
                lda #$01                     ;lives display, then output lives display to buffer  [A901]
@@ -1563,9 +1563,9 @@ GameOverInter: lda #$12                     ;set screen timer
                lda #$03                     ;output game over screen to buffer
                jsr WriteGameText
                jmp IncModeTask_B
-NoInter:       lda #$08                     ;set for specific task and leave
-               sta ScreenRoutineTask
-               rts
+NoInter:       lda #$08                     ;set for specific task and leave  [A908]
+               sta ScreenRoutineTask        ; [8D3C07]
+               rts                          ; [60]
 
 ;-------------------------------------------------------------------------------------
 
@@ -11245,11 +11245,11 @@ HandlePowerUpCollision:
       bcc Shroom_Flower_PUp   ;if mushroom or fire flower, branch
       cmp #$03
       beq SetFor1Up           ;if 1-up mushroom, branch
-      lda #$23                ;otherwise set star mario invincibility
-      sta StarInvincibleTimer ;timer, and load the star mario music
-      lda #StarPowerMusic     ;into the area music queue, then leave
-      sta AreaMusicQueue
-      rts
+      lda #$23                ;otherwise set star mario invincibility  [A923]
+      sta StarInvincibleTimer ;timer, and load the star mario music  [8D9F07]
+      lda #StarPowerMusic     ;into the area music queue, then leave  [A940]
+      sta AreaMusicQueue      ; [85FB]
+      rts                     ; [60]
 
 Shroom_Flower_PUp:
       lda PlayerStatus    ;if player status = small, branch
@@ -15101,10 +15101,10 @@ RunSoundSubroutines:
          jsr Square1SfxHandler  ;play sfx on square channel 1
          jsr Square2SfxHandler  ; ''  ''  '' square channel 2
          jsr NoiseSfxHandler    ; ''  ''  '' noise channel
-         jsr MusicHandler       ;play music on all channels
-         lda #$00               ;clear the music queues
-         sta AreaMusicQueue
-         sta EventMusicQueue
+         jsr MusicHandler       ;play music on all channels  [2094F6[
+         lda #$00               ;clear the music queues  [A900]
+         sta AreaMusicQueue     ; [85FB]
+         sta EventMusicQueue    ; [85FC]
 
 SkipSoundSubroutines:
           lda #$00               ;clear the sound effects queues
@@ -15615,7 +15615,7 @@ MusicHandler:
         lda EventMusicBuffer    ;check both buffers
         ora AreaMusicBuffer
         bne ContinueMusic 
-        rts                     ;no music, then leave
+        rts                     ;no music, then leave  [60]
 
 LoadEventMusic:
            sta EventMusicBuffer      ;copy event music queue contents to buffer
