@@ -6,4 +6,5 @@ Generator_Plugin_Tester/
 .~lock.*
 *.autosave
 *.sa
+*.nes
 
