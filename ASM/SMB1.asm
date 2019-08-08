@@ -15382,10 +15382,10 @@ ContinueCGrabTTick:
 N2Tone: bne DecrementSfx2Length
 
 PlayBlast:
-        lda #$20                ;load length of fireworks/gunfire sound
-        sta Squ2_SfxLenCounter
-        ldy #$94                ;load reg contents of fireworks/gunfire sound
-        lda #$5e
+        lda #$20                ;load length of fireworks/gunfire sound  [A920]
+        sta Squ2_SfxLenCounter  ; [8DBD07]
+        ldy #$94                ;load reg contents of fireworks/gunfire sound  [A094]
+        lda #$5e                ; [A95E]
         bne SBlasJ
 
 ContinueBlast:
@@ -15477,20 +15477,20 @@ JumpToDecLength2:
         jmp DecrementSfx2Length
 
 PlayBowserFall:    
-         lda #$38                ;load length of bowser defeat sound
-         sta Squ2_SfxLenCounter
-         ldy #$c4                ;load contents of reg for bowser defeat sound
-         lda #$18
-BlstSJp: bne PBFRegs
+         lda #$38                ;load length of bowser defeat sound  [A938]
+         sta Squ2_SfxLenCounter  ; [8DBD07]
+         ldy #$c4                ;load contents of reg for bowser defeat sound  [A0C4]
+         lda #$18                ; [A918]
+BlstSJp: bne PBFRegs             ; [D00B]
 
 ContinueBowserFall:
-          lda Squ2_SfxLenCounter   ;check for almost near the end
-          cmp #$08
-          bne DecrementSfx2Length
-          ldy #$a4                 ;if so, load the rest of reg contents for bowser defeat sound
-          lda #$5a
-PBFRegs:  ldx #$9f                 ;the fireworks/gunfire sound shares part of reg contents here
-EL_LRegs: bne LoadSqu2Regs         ;this is an unconditional branch outta here
+          lda Squ2_SfxLenCounter   ;check for almost near the end  [ADBD07]
+          cmp #$08                 ; [C908]
+          bne DecrementSfx2Length  ; [D08E]
+          ldy #$a4                 ;if so, load the rest of reg contents for bowser defeat sound  [A0A4]
+          lda #$5a                 ; [A95A]
+PBFRegs:  ldx #$9f                 ;the fireworks/gunfire sound shares part of reg contents here  [A29F]
+EL_LRegs: bne LoadSqu2Regs         ;this is an unconditional branch outta here  [D083]
 
 PlayExtraLife:
         lda #$30                  ;load length of 1-up sound
@@ -15591,16 +15591,16 @@ CheckNoiseBuffer:
 ExNH:   rts
 
 PlayBowserFlame:
-        lda #$40                    ;load length of bowser flame sound
-        sta Noise_SfxLenCounter
+        lda #$40                    ;load length of bowser flame sound  [A940]
+        sta Noise_SfxLenCounter     ; [8DBF07]
 
 ContinueBowserFlame:
-        lda Noise_SfxLenCounter
-        lsr
-        tay
-        ldx #$0f                    ;load reg contents of bowser flame sound
-        lda BowserFlameEnvData-1,y
-        bne PlayNoiseSfx            ;unconditional branch here
+        lda Noise_SfxLenCounter     ; [ADBF07]
+        lsr                         ; [4A]
+        tay                         ; [A8]
+        ldx #$0f                    ;load reg contents of bowser flame sound  [A20F]
+        lda BowserFlameEnvData-1,y  ; [B9C9FF]
+        bne PlayNoiseSfx            ;unconditional branch here  [D0BC]
 
 ;--------------------------------
 
