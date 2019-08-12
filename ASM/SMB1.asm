@@ -2919,13 +2919,13 @@ PlayerLoseLife:
              rts                      ; [60]
 StillInGame: lda WorldNumber          ;multiply world number by 2 and use [AD5F07]
              asl                      ;as offset [0A]
-             tax
-             lda LevelNumber          ;if in area -3 or -4, increment
-             and #$02                 ;offset by one byte, otherwise
-             beq GetHalfway           ;leave offset alone
-             inx
-GetHalfway:  ldy HalfwayPageNybbles,x ;get halfway page number with offset
-             lda LevelNumber          ;check area number's LSB
+             tax                      ; [AA]
+             lda LevelNumber          ;if in area -3 or -4, increment  [AD5C07]
+             and #$02                 ;offset by one byte, otherwise  [2902]
+             beq GetHalfway           ;leave offset alone  [F001]
+             inx                      ;  [E8]
+GetHalfway:  ldy HalfwayPageNybbles,x ;get halfway page number with offset  [BCBD91]
+             lda LevelNumber          ;check area number's LSB  [AD5C07]
              lsr
              tya                      ;if in area -2 or -4, use lower nybble
              bcs MaskHPNyb
