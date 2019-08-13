@@ -7597,10 +7597,10 @@ NoJSChk: lda VerticalForce       ;dump vertical force
 ;--------------------------------
 
 MoveD_EnemyVertically:
-      ldy #$3d           ;set quick movement amount downwards
-      lda Enemy_State,x  ;then check enemy state
-      cmp #$05           ;if not set to unique state for spiny's egg, go ahead
-      bne ContVMove      ;and use, otherwise set different movement amount, continue on
+      ldy #$3d           ;set quick movement amount downwards  [A03D]
+      lda Enemy_State,x  ;then check enemy state  [B51E]
+      cmp #$05           ;if not set to unique state for spiny's egg, go ahead  [C905]
+      bne ContVMove      ;and use, otherwise set different movement amount, continue on  [D002]
 
 MoveFallingPlatform:
            ldy #$20       ;set movement amount
@@ -8356,13 +8356,13 @@ SetSpSpd: jsr SmallBBox              ;set bounding box control, init attributes,
           bmi SpinyRte               ;the same reason
           dey
 SpinyRte: sty Enemy_MovingDir,x      ;set moving direction to the right
-          lda #$fd
-          sta Enemy_Y_Speed,x        ;set vertical speed to move upwards
-          lda #$01
-          sta Enemy_Flag,x           ;enable enemy object by setting flag
-          lda #$05
-          sta Enemy_State,x          ;put spiny in egg state and leave
-ChpChpEx: rts
+          lda #$fd                   ; [A9FD]
+          sta Enemy_Y_Speed,x        ;set vertical speed to move upwards  [95A0]
+          lda #$01                   ; [A901]
+          sta Enemy_Flag,x           ;enable enemy object by setting flag  [950F]
+          lda #$05                   ; [A905]
+          sta Enemy_State,x          ;put spiny in egg state and leave  [951E]
+ChpChpEx: rts                        ; [60]
 
 ;--------------------------------
 
@@ -9302,11 +9302,11 @@ MoveNormalEnemy:
        and #%00100000             ;check enemy state for d5 set
        bne MoveDefeatedEnemy      ;if set, branch to move defeated enemy object
        lda Enemy_State,x
-       and #%00000111             ;check d2-d0 of enemy state for any set bits
-       beq SteadM                 ;if enemy in normal state, branch to move enemy horizontally
-       cmp #$05
-       beq FallE                  ;if enemy in state used by spiny's egg, go ahead here
-       cmp #$03
+       and #%00000111             ;check d2-d0 of enemy state for any set bits  [2907]
+       beq SteadM                 ;if enemy in normal state, branch to move enemy horizontally  [F024]
+       cmp #$05                   ; [C905]
+       beq FallE                  ;if enemy in state used by spiny's egg, go ahead here  [F004]
+       cmp #$03                   ; [C903]
        bcs ReviveStunned          ;if enemy in states $03 or $04, skip ahead to yet another part
 FallE: jsr MoveD_EnemyVertically  ;do a sub here to move enemy downwards
        ldy #$00
@@ -11082,36 +11082,36 @@ FireballEnemyCDLoop:
            bne NoFToECol               ;if so, skip to next enemy slot
            lda Enemy_Flag,x            ;check to see if buffer flag is set
            beq NoFToECol               ;if not, skip to next enemy slot
-           lda Enemy_ID,x              ;check enemy identifier
-           cmp #$24
-           bcc GoombaDie               ;if < $24, branch to check further
-           cmp #$2b
-           bcc NoFToECol               ;if in range $24-$2a, skip to next enemy slot
-GoombaDie: cmp #Goomba                 ;check for goomba identifier
-           bne NotGoomba               ;if not found, continue with code
-           lda Enemy_State,x           ;otherwise check for defeated state
-           cmp #$02                    ;if stomped or otherwise defeated,
-           bcs NoFToECol               ;skip to next enemy slot
-NotGoomba: lda EnemyOffscrBitsMasked,x ;if any masked offscreen bits set,
-           bne NoFToECol               ;skip to next enemy slot
-           txa
-           asl                         ;otherwise multiply enemy offset by four
-           asl
-           clc
-           adc #$04                    ;add 4 bytes to it
-           tax                         ;to use enemy's bounding box coordinates
-           jsr SprObjectCollisionCore  ;do fireball-to-enemy collision detection
-           ldx ObjectOffset            ;return fireball's original offset
-           bcc NoFToECol               ;if carry clear, no collision, thus do next enemy slot
-           lda #%10000000
-           sta Fireball_State,x        ;set d7 in enemy state
-           ldx $01                     ;get enemy offset
-           jsr HandleEnemyFBallCol     ;jump to handle fireball to enemy collision
-NoFToECol: pla                         ;pull fireball offset from stack
-           tay                         ;put it in Y
-           ldx $01                     ;get enemy object offset
-           dex                         ;decrement it
-           bpl FireballEnemyCDLoop     ;loop back until collision detection done on all enemies
+           lda Enemy_ID,x              ;check enemy identifier  [B516]
+           cmp #$24                    ; [C924]
+           bcc GoombaDie               ;if < $24, branch to check further  [9004]
+           cmp #$2b                    ; [C92B]
+           bcc NoFToECol               ;if in range $24-$2a, skip to next enemy slot  [9026]
+GoombaDie: cmp #Goomba                 ;check for goomba identifier  [C906]
+           bne NotGoomba               ;if not found, continue with code  [D006]
+           lda Enemy_State,x           ;otherwise check for defeated state  [B51E]
+           cmp #$02                    ;if stomped or otherwise defeated,  [C902]
+           bcs NoFToECol               ;skip to next enemy slot  [B01C]
+NotGoomba: lda EnemyOffscrBitsMasked,x ;if any masked offscreen bits set,  [BDD803]
+           bne NoFToECol               ;skip to next enemy slot  [D017]
+           txa                         ; [8A]
+           asl                         ;otherwise multiply enemy offset by four  [0A]
+           asl                         ; [0A]
+           clc                         ; [18]
+           adc #$04                    ;add 4 bytes to it  [6904]
+           tax                         ;to use enemy's bounding box coordinates  [AA]
+           jsr SprObjectCollisionCore  ;do fireball-to-enemy collision detection  [2027E3]
+           ldx ObjectOffset            ;return fireball's original offset  [A608]
+           bcc NoFToECol               ;if carry clear, no collision, thus do next enemy slot  [9009]
+           lda #%10000000              ; [A980]
+           sta Fireball_State,x        ;set d7 in enemy state  [9524]
+           ldx $01                     ;get enemy offset  [A601]
+           jsr HandleEnemyFBallCol     ;jump to handle fireball to enemy collision  [203ED7]
+NoFToECol: pla                         ;pull fireball offset from stack  [68]
+           tay                         ;put it in Y  [A8]
+           ldx $01                     ;get enemy object offset  [A601]
+           dex                         ;decrement it  [CA]
+           bpl FireballEnemyCDLoop     ;loop back until collision detection done on all enemies  [10BB]
 
 ExitFBallEnemy:
       ldx ObjectOffset                 ;get original fireball offset and leave
@@ -11133,8 +11133,8 @@ HandleEnemyFBallCol:
       ldx $01                    ;otherwise retrieve current enemy offset
 
 ChkBuzzyBeetle:
-      lda Enemy_ID,x
-      cmp #BuzzyBeetle           ;check for buzzy beetle
+      lda Enemy_ID,x             ; [B516]
+      cmp #BuzzyBeetle           ;check for buzzy beetle  [C902]
       beq ExHCF                  ;branch if found to leave (buzzy beetles fireproof)
       cmp #Bowser                ;check for bowser one more time (necessary if d7 of flag was clear)
       bne ChkOtherEnemies        ;if not found, branch to check other enemies
@@ -11166,17 +11166,17 @@ ChkOtherEnemies:
       beq ExHCF                 ;branch to leave if bullet bill (frenzy variant) 
       cmp #Podoboo       
       beq ExHCF                 ;branch to leave if podoboo
-      cmp #$15       
-      bcs ExHCF                 ;branch to leave if identifier => $15
+      cmp #$15                  ; [C915]
+      bcs ExHCF                 ;branch to leave if identifier => $15  [B02E]
 
 ShellOrBlockDefeat:
-      lda Enemy_ID,x            ;check for piranha plant
-      cmp #PiranhaPlant
-      bne StnE                  ;branch if not found
-      lda Enemy_Y_Position,x
-      adc #$18                  ;add 24 pixels to enemy object's vertical position
-      sta Enemy_Y_Position,x
-StnE: jsr ChkToStunEnemies      ;do yet another sub
+      lda Enemy_ID,x            ;check for piranha plant  [B516]
+      cmp #PiranhaPlant         ; [C90D]
+      bne StnE                  ;branch if not found  [D006]
+      lda Enemy_Y_Position,x    ; [B5CF]
+      adc #$18                  ;add 24 pixels to enemy object's vertical position  [6918]
+      sta Enemy_Y_Position,x    ; [95CF]
+StnE: jsr ChkToStunEnemies      ;do yet another sub  [201BE0]
       lda Enemy_State,x
       and #%00011111            ;mask out 2 MSB of enemy object's state
       ora #%00100000            ;set d5 to defeat enemy and save as new state
@@ -12404,12 +12404,12 @@ EnemyToBGCollisionDet:
       bne ExEBG                ;if set, branch to leave
       jsr SubtEnemyYPos        ;otherwise, do a subroutine here
       bcc ExEBG                ;if enemy vertical coord + 62 < 68, branch to leave
-      ldy Enemy_ID,x
-      cpy #Spiny               ;if enemy object is not spiny, branch elsewhere
-      bne DoIDCheckBGColl
-      lda Enemy_Y_Position,x
-      cmp #$25                 ;if enemy vertical coordinate < 36 branch to leave
-      bcc ExEBG
+      ldy Enemy_ID,x           ; [B416]
+      cpy #Spiny               ;if enemy object is not spiny, branch elsewhere  [C012]
+      bne DoIDCheckBGColl      ; [D006]
+      lda Enemy_Y_Position,x   ; [B5CF]
+      cmp #$25                 ;if enemy vertical coordinate < 36 branch to leave  [C925]
+      bcc ExEBG                ; [90E0]
 
 DoIDCheckBGColl:
        cpy #GreenParatroopaJump ;check for some other enemy object
@@ -12440,13 +12440,13 @@ HandleEToBGCollision:
       bne LandEnemyProperly     ;check for blank metatile $23 and branch if not found
       ldy $02                   ;get vertical coordinate used to find block
       lda #$00                  ;store default blank metatile in that spot so we won't
-      sta ($06),y               ;trigger this routine accidentally again
-      lda Enemy_ID,x
-      cmp #$15                  ;if enemy object => $15, branch ahead
-      bcs ChkToStunEnemies
-      cmp #Goomba               ;if enemy object not goomba, branch ahead of this routine
-      bne GiveOEPoints
-      jsr KillEnemyAboveBlock   ;if enemy object IS goomba, do this sub
+      sta ($06),y               ;trigger this routine accidentally again  [9106]
+      lda Enemy_ID,x            ; [B516]
+      cmp #$15                  ;if enemy object => $15, branch ahead  [C915]
+      bcs ChkToStunEnemies      ; [B00C]
+      cmp #Goomba               ;if enemy object not goomba, branch ahead of this routine  [C906]
+      bne GiveOEPoints          ; [D003]
+      jsr KillEnemyAboveBlock   ;if enemy object IS goomba, do this sub  [208EE1]
 
 GiveOEPoints:
       lda #$01                  ;award 100 points for hitting block beneath enemy
@@ -12531,11 +12531,11 @@ SetForStn: sta EnemyIntervalTimer,x  ;set timer here [9D9607]
 ExSteChk:  rts                       ;then leave [60]
 
 ProcEnemyDirection:
-         lda Enemy_ID,x            ;check enemy identifier for goomba
-         cmp #Goomba               ;branch if found
-         beq LandEnemyInitState
-         cmp #Spiny                ;check for spiny
-         bne InvtD                 ;branch if not found
+         lda Enemy_ID,x            ;check enemy identifier for goomba  [B516]
+         cmp #Goomba               ;branch if found  [C906]
+         beq LandEnemyInitState    ; [F022]
+         cmp #Spiny                ;check for spiny  [C912]
+         bne InvtD                 ;branch if not found  [D00E]
          lda #$01
          sta Enemy_MovingDir,x     ;send enemy moving to the right by default
          lda #$08
@@ -13941,13 +13941,13 @@ ContES: cmp #Bloober                ;check for bloober object
         beq MirrorEnemyGfx
         cmp #PiranhaPlant           ;check for piranha plant object
         beq MirrorEnemyGfx
-        cmp #Podoboo                ;check for podoboo object
-        beq MirrorEnemyGfx          ;branch if either of three are found
-        cmp #Spiny                  ;check for spiny object
-        bne ESRtnr                  ;branch closer if not found
-        cpx #$05                    ;check spiny's state
-        bne CheckToMirrorLakitu     ;branch if not an egg, otherwise
-ESRtnr: cmp #$15                    ;check for princess/mushroom retainer object
+        cmp #Podoboo                ;check for podoboo object  [C90C]
+        beq MirrorEnemyGfx          ;branch if either of three are found  [F015]
+        cmp #Spiny                  ;check for spiny object  [C912]
+        bne ESRtnr                  ;branch closer if not found  [D004]
+        cpx #$05                    ;check spiny's state  [E005]
+        bne CheckToMirrorLakitu     ;branch if not an egg, otherwise  [D048]
+ESRtnr: cmp #$15                    ;check for princess/mushroom retainer object  [C915]
         bne SpnySC
         lda #$42                    ;set horizontal flip on bottom right sprite
         sta Sprite_Attributes+20,y  ;note that palette bits were already set earlier
@@ -13963,9 +13963,9 @@ MirrorEnemyGfx:
         sta Sprite_Attributes+8,y   ;in left sprite column of enemy object OAM data
         sta Sprite_Attributes+16,y
         ora #%01000000              ;set horizontal flip
-        cpx #$05                    ;check for state used by spiny's egg
-        bne EggExc                  ;if alternate state not set to $05, branch
-        ora #%10000000              ;otherwise set vertical flip
+        cpx #$05                    ;check for state used by spiny's egg  [E005]
+        bne EggExc                  ;if alternate state not set to $05, branch  [D002]
+        ora #%10000000              ;otherwise set vertical flip  [0980]
 EggExc: sta Sprite_Attributes+4,y   ;set bits of right sprite column
         sta Sprite_Attributes+12,y  ;of enemy object sprite data
         sta Sprite_Attributes+20,y
