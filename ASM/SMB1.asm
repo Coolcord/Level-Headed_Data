@@ -7165,12 +7165,12 @@ PowerUpObjHandler:
          bcc GrowThePowerUp         ;if not set, branch ahead to skip this part
          lda TimerControl           ;if master timer control set,
          bne RunPUSubs              ;branch ahead to enemy object routines
-         lda PowerUpType            ;check power-up type
-         beq ShroomM                ;if normal mushroom, branch ahead to move it
-         cmp #$03
-         beq ShroomM                ;if 1-up mushroom, branch ahead to move it
-         cmp #$02
-         bne RunPUSubs              ;if not star, branch elsewhere to skip movement
+         lda PowerUpType            ;check power-up type  [A539]
+         beq ShroomM                ;if normal mushroom, branch ahead to move it  [F011]
+         cmp #$03                   ; [C903]
+         beq ShroomM                ;if 1-up mushroom, branch ahead to move it  [F00D]
+         cmp #$02                   ; [C902]
+         bne RunPUSubs              ;if not star, branch elsewhere to skip movement  [D037]
          jsr MoveJumpingEnemy       ;otherwise impose gravity on star power-up and make it jump
          jsr EnemyJump              ;note that green paratroopa shares the same code here 
          jmp RunPUSubs              ;then jump to other power-up subroutines
