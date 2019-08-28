@@ -16,10 +16,10 @@ int main(int argc, char *argv[]) {
         qInfo() << "Possible operands:";
         qInfo() << "rgb";
         qInfo() << "rg";
-        qInfo() << "rb";
-        qInfo() << "gb";
-        qInfo() << "red";
-        qInfo() << "green";
+        qInfo() << "rb (not recommended!)";
+        qInfo() << "gb (not recommended!)";
+        qInfo() << "red (not recommended!)";
+        qInfo() << "green (not recommended!)";
         qInfo() << "blue";
         qInfo() << "black (alias for blue)";
         qInfo() << "mario";
