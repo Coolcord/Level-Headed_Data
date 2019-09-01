@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     ../../../Level-Headed/SMB1/SMB1_Writer/SMB1_Writer.cpp \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Bowser_Bridge_Destroyer.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Item_Writer.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Binary_Manipulator.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Object_Writer.cpp \
@@ -49,6 +50,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     ../../../Level-Headed/SMB1/SMB1_Writer/SMB1_Writer.h \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Bowser_Bridge_Destroyer.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Item_Writer.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Binary_Manipulator.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Object_Writer.h \
