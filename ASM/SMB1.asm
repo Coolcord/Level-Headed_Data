@@ -2980,7 +2980,7 @@ TerminateGame:
       jsr TransposePlayers  ;check if other player can keep
       bcc ContinueGame      ;going, and do so if possible
       lda WorldNumber       ;otherwise put world number of current
-      sta ContinueWorld     ;player into secret continue function variable
+      sta ContinueWorld     ;player into secret continue function variable  [8DFD07]
       lda #$00
       asl                   ;residual ASL instruction
       sta OperMode_Task     ;reset all modes to title screen and
