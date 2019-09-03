@@ -2872,7 +2872,7 @@ SetStPos: lda PlayerStarting_X_Pos,y  ;load appropriate horizontal position
           lsr
           sta GameTimerDisplay+1      ;set second digit of game timer
           sta FetchNewGameTimerFlag   ;clear flag for game timer reset
-          sta StarInvincibleTimer     ;clear star mario timer
+          sta StarInvincibleTimer     ;clear star mario timer  [8D9F07]
 ChkOverR: ldy JoypadOverride          ;if controller bits not set, branch to skip this part
           beq ChkSwimE
           lda #$03                    ;set player state to climbing
@@ -5334,9 +5334,9 @@ ProcELoop:    stx ObjectOffset           ;put incremented offset in X as enemy o
               jsr RunGameTimer           ;count down the game timer
               jsr ColorRotation          ;cycle one of the background colors
               lda Player_Y_HighPos
-              cmp #$02                   ;if player is below the screen, don't bother with the music
-              bpl NoChgMus
-              lda StarInvincibleTimer    ;if star mario invincibility timer at zero,
+              cmp #$02                   ;if player is below the screen, don't bother with the music  [C902]
+              bpl NoChgMus               ; [1011]
+              lda StarInvincibleTimer    ;if star mario invincibility timer at zero,  [AD9F07]
               beq ClrPlrPal              ;skip this part
               cmp #$04
               bne NoChgMus               ;if not yet at a certain point, continue
@@ -9798,7 +9798,7 @@ FirebarCollision:
          jsr DrawFirebar          ;run sub here to draw current tile of firebar
          tya                      ;return OAM data offset and save
          pha                      ;to the stack for now
-         lda StarInvincibleTimer  ;if star mario invincibility timer
+         lda StarInvincibleTimer  ;if star mario invincibility timer  [Ad9F07]
          ora TimerControl         ;or master timer controls set
          bne NoColFB              ;then skip all of this
          sta $05                  ;otherwise initialize counter
