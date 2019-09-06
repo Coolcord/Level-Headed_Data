@@ -2686,9 +2686,9 @@ SetInitNTHigh: sty CurrentNTAddr_High   ;store name table address
                asl
                asl
                sta BlockBufferColumnPos
-               dec AreaObjectLength     ;set area object lengths for all empty
-               dec AreaObjectLength+1
-               dec AreaObjectLength+2
+               dec AreaObjectLength     ;set area object lengths for all empty  [CE3007]
+               dec AreaObjectLength+1   ; [CE3107]
+               dec AreaObjectLength+2   ; [CE3207]
                lda #$0b                 ;set value for renderer to update 12 column sets
                sta ColumnSets           ;12 column sets = 24 metatile columns = 1 1/2 screens
                jsr GetAreaDataAddrs     ;get enemy and level addresses and load header
