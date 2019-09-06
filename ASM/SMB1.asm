@@ -3738,8 +3738,8 @@ ChkCFloor:  cpx #$0b                 ;have we reached the row just before floor?
             tax                      ;get obj buffer offset from before
             lda CurrentPageLoc
             beq ExitCastle           ;if we're at page 0, we do not need to do anything else
-            lda AreaObjectLength,x   ;check length
-            cmp #$01                 ;if length almost about to expire, put brick at floor
+            lda AreaObjectLength,x   ;check length  [BD3007]
+            cmp #$01                 ;if length almost about to expire, put brick at floor  [C901]
             beq PlayerStop
             ldy $07                  ;check starting row for tall castle ($00)
             bne NotTall
