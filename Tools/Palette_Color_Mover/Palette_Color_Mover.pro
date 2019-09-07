@@ -35,6 +35,8 @@ SOURCES += \
     ../../../Level-Headed/SMB1/SMB1_Writer/Music.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Byte_Writer.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Graphics.cpp \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Palettes.cpp \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Colors.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Text.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Sequential_Archive_Handler.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Powerups.cpp \
@@ -68,6 +70,9 @@ HEADERS += \
     ../../../Level-Headed/SMB1/SMB1_Writer/Music.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Byte_Writer.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Graphics.h \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Palettes.h \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Color.h \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Colors.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Text.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Sequential_Archive_Handler.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Powerups.h \
