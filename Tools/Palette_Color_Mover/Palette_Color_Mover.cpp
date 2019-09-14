@@ -167,6 +167,7 @@ bool Palette_Color_Mover::Read_Maps() {
     if (!this->Read_Color_Map_Value(Sprites::ONE_UP_TEXT)) return false;
     if (!this->Read_Color_Map_Value(Sprites::COIN_TEXT)) return false;
     if (!this->Read_Color_Map_Value(Sprites::BRICK_PIECE)) return false;
+    if (!this->Read_Color_Map_Value(Sprites::COIN_ANIMATION)) return false;
 
     //Read the Tile Map
     this->tileMap->clear();
@@ -223,6 +224,7 @@ bool Palette_Color_Mover::Read_Maps() {
     if (!this->Read_Tile_Map_Value(Sprites::ONE_UP_TEXT)) return false;
     if (!this->Read_Tile_Map_Value(Sprites::COIN_TEXT)) return false;
     if (!this->Read_Tile_Map_Value(Sprites::BRICK_PIECE)) return false;
+    if (!this->Read_Tile_Map_Value(Sprites::COIN_ANIMATION)) return false;
     return true;
 }
 
@@ -236,6 +238,7 @@ bool Palette_Color_Mover::Read_Color_Map_Value(Sprites::Sprites value) {
         case Sprites::ONE_UP_TEXT:  this->colorMap->insert(value, 0x02); break;
         case Sprites::COIN_TEXT:    this->colorMap->insert(value, 0x03); break;
         case Sprites::BRICK_PIECE:  this->colorMap->insert(value, 0x03); break;
+        case Sprites::COIN_ANIMATION:  this->colorMap->insert(value, 0x02); break;
         }
         return true;
     } else {
@@ -310,6 +313,7 @@ bool Palette_Color_Mover::Read_Tile_Map_Value(Sprites::Sprites value) {
     case Sprites::ONE_UP_TEXT:                      tiles = QByteArray::fromHex(QString("FDFE").toLatin1()); break;
     case Sprites::COIN_TEXT:                        tiles = QByteArray(1, static_cast<char>(0xFF)); break;
     case Sprites::BRICK_PIECE:                      tiles = QByteArray(1, static_cast<char>(0x84)); break;
+    case Sprites::COIN_ANIMATION:                   tiles = QByteArray::fromHex(QString("60616263").toLatin1()); break;
     }
     assert(!offsets.isEmpty() || !tiles.isEmpty());
 

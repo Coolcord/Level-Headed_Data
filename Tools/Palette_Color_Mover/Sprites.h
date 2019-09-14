@@ -55,7 +55,8 @@ namespace Sprites {
         POINTS = -1,
         ONE_UP_TEXT = -2,
         COIN_TEXT = -3,
-        BRICK_PIECE = -4
+        BRICK_PIECE = -4,
+        COIN_ANIMATION = -5
     };
 }
 
