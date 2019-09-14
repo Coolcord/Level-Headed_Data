@@ -3,7 +3,7 @@
 #include <QStack>
 #include <QMap>
 
-Palette_Color_Mover::Palette_Color_Mover(QFile *file, Level_Offset *levelOffset) : Byte_Writer(file, levelOffset) {
+Palette_Color_Mover::Palette_Color_Mover(QFile *f, Level_Offset *lo) : Byte_Writer(f, lo) {
     this->colorMap = new QMap<Sprites::Sprites, int>();
     this->tileMap = new QMap<Sprites::Sprites, QByteArray>();
     this->swappedTiles = new QSet<char>();
@@ -13,6 +13,13 @@ Palette_Color_Mover::~Palette_Color_Mover() {
     delete this->colorMap;
     delete this->tileMap;
     delete this->swappedTiles;
+}
+
+bool Palette_Color_Mover::Get_Hex_From_Char_Arg(char *inArg, char &outArg) {
+    QByteArray bytes = QByteArray::fromHex(QString(inArg).toLatin1());
+    if (bytes.size() != 1) return false;
+    outArg = bytes.at(0);
+    return true;
 }
 
 bool Palette_Color_Mover::Swap_Colors_In_RGB_Groups(int color1, int color2) {
@@ -80,13 +87,22 @@ bool Palette_Color_Mover::Swap_Colors_In_Bowser_Group(int color1, int color2) {
     if (!this->Swap_Color_In_Palette(color1, color2, 0x0D60)) return false;
 
     //Swap the Palette in the Graphics Data
-    QSet<char> swappedTiles;
     QByteArray bowserTiles;
     if (!this->Read_Bytes_From_Offset(0x6820, 24, bowserTiles)) return false;
     for (int i = 0; i < bowserTiles.size(); ++i) {
         if (!this->Swap_Color_In_Sprite_Tile(bowserTiles.at(i), color1, color2)) return false;
     }
     return true;
+}
+
+bool Palette_Color_Mover::Swap_Colors_In_Background_Tile_Without_Touching_Palette(int color1, int color2, char tileID) {
+    if (!this->Are_Colors_Valid(color1, color2)) return false;
+    return this->Swap_Color_In_Background_Tile(tileID, color1, color2);
+}
+
+bool Palette_Color_Mover::Swap_Colors_In_Sprite_Tile_Without_Touching_Palette(int color1, int color2, char tileID) {
+    if (!this->Are_Colors_Valid(color1, color2)) return false;
+    return this->Swap_Color_In_Sprite_Tile(tileID, color1, color2);
 }
 
 bool Palette_Color_Mover::Are_Colors_Valid(int color1, int color2) {
@@ -441,7 +457,7 @@ bool Palette_Color_Mover::Swap_Color_In_Graphics_Bytes(QByteArray &graphicsBytes
 
 bool Palette_Color_Mover::Read_Graphics_Bytes_From_Background_Tile_ID(char tileID, QByteArray &graphicsBytes) {
     unsigned char c = static_cast<unsigned char>(tileID);
-    qint64 spriteGraphicsOffset = 0x8110+(c*0x10); //get the graphics offset for the tile
+    qint64 spriteGraphicsOffset = 0x9010+(c*0x10); //get the graphics offset for the tile
     return this->Read_Bytes_From_Offset(spriteGraphicsOffset, 16, graphicsBytes);
 }
 
@@ -454,7 +470,7 @@ bool Palette_Color_Mover::Read_Graphics_Bytes_From_Sprite_Tile_ID(char tileID, Q
 bool Palette_Color_Mover::Write_Graphics_Bytes_To_Background_Tile_ID(char tileID, const QByteArray &graphicsBytes) {
     if (graphicsBytes.size() != 16) return false;
     unsigned char c = static_cast<unsigned char>(tileID);
-    qint64 spriteGraphicsOffset = 0x8110+(c*0x10); //get the graphics offset for the tile
+    qint64 spriteGraphicsOffset = 0x9010+(c*0x10); //get the graphics offset for the tile
     return this->Write_Bytes_To_Offset(spriteGraphicsOffset, graphicsBytes);
 }
 

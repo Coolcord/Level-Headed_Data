@@ -10,6 +10,8 @@ public:
     Palette_Color_Mover(QFile *file, Level_Offset *levelOffset);
     ~Palette_Color_Mover();
 
+    bool Get_Hex_From_Char_Arg(char *inArg, char &outArg);
+
     bool Swap_Colors_In_RGB_Groups(int color1, int color2);
     bool Swap_Colors_In_Red_Group(int color1, int color2);
     bool Swap_Colors_In_Green_Group(int color1, int color2);
@@ -17,6 +19,9 @@ public:
 
     bool Swap_Colors_In_Mario_Group(int color1, int color2); //also updates Luigi and Fire Mario
     bool Swap_Colors_In_Bowser_Group(int color1, int color2);
+
+    bool Swap_Colors_In_Background_Tile_Without_Touching_Palette(int color1, int color2, char tileID);
+    bool Swap_Colors_In_Sprite_Tile_Without_Touching_Palette(int color1, int color2, char tileID);
 
 private:
     bool Are_Colors_Valid(int color1, int color2);

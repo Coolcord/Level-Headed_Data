@@ -8,7 +8,10 @@
 
 int main(int argc, char *argv[]) {
     QCoreApplication a(argc, argv);
-    if (argc != 5) {
+    QString operation(argv[2]);
+    operation = operation.toLower();
+    bool allowMoreArguments = (operation == "background" || operation == "sprite");
+    if ((allowMoreArguments && argc < 6) || (!allowMoreArguments && argc != 5)) {
         qInfo() << argv[0] << "[file] [operand] [color1] [color2]";
         qInfo() << "";
         qInfo() << "Colors must be between 1-3";
@@ -24,6 +27,12 @@ int main(int argc, char *argv[]) {
         qInfo() << "black (alias for blue)";
         qInfo() << "mario";
         qInfo() << "bowser";
+        qInfo() << "";
+        qInfo() << "Additional operands (will not change the color palette):";
+        qInfo() << "background [color1] [color2] [titleIDs]";
+        qInfo() << "sprite [color1] [color2] [titleIDs]";
+        qInfo() << "";
+        qInfo() << "[titleIDs] should be formated like this (specify as many as needed): 00 01 02 03";
         qInfo() << "";
         return 1;
     }
@@ -66,8 +75,6 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    QString operation(argv[2]);
-    operation = operation.toLower();
     bool success = false;
     if (operation == "rgb") {
         success = paletteColorMover.Swap_Colors_In_RGB_Groups(color1, color2);
@@ -90,6 +97,22 @@ int main(int argc, char *argv[]) {
         success = paletteColorMover.Swap_Colors_In_Mario_Group(color1, color2);
     } else if (operation == "bowser") {
         success = paletteColorMover.Swap_Colors_In_Bowser_Group(color1, color2);
+    } else if (operation == "background") {
+        success = true;
+        for (int i = 5; i < argc && success; ++i) {
+            char tileID = 0x00;
+            success = paletteColorMover.Get_Hex_From_Char_Arg(argv[i], tileID);
+            if (!success) break;
+            success = paletteColorMover.Swap_Colors_In_Background_Tile_Without_Touching_Palette(color1, color2, tileID);
+        }
+    } else if (operation == "sprite") {
+        success = true;
+        for (int i = 5; i < argc && success; ++i) {
+            char tileID = 0x00;
+            success = paletteColorMover.Get_Hex_From_Char_Arg(argv[i], tileID);
+            if (!success) break;
+            success = paletteColorMover.Swap_Colors_In_Sprite_Tile_Without_Touching_Palette(color1, color2, tileID);
+        }
     } else {
         qWarning() << "Unknown operation!";
         return 1;
