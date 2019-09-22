@@ -24,6 +24,7 @@ private:
     Object_Writer *objectWriter;
     Pipe_Pointer_Writer *pipePointerWriter;
     SMB1_Compliance_Generator_Arguments *args;
+    QTextStream *stream;
 };
 
 #endif // ENEMY_PARSER_H

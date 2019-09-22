@@ -6,7 +6,8 @@
 Object_Parser::Object_Parser(QTextStream *stream, int numBytesLeft, SMB1_Compliance_Generator_Arguments *args) {
     this->args = args;
     this->objectWriter = new Object_Writer(stream, numBytesLeft, args);
-    this->coordinates = new Coordinates();
+    this->objectWriter->Set_Coordinate_Safety(false);
+    this->coordinates = new Coordinates(this->objectWriter);
 }
 
 Object_Parser::~Object_Parser() {
@@ -63,8 +64,8 @@ bool Object_Parser::Parse_B_Object(int x, int y, char object) {
     case 0x60:
         return this->objectWriter->Vertical_Blocks(x, y, (value&0x0F)+1);
     case 0x70:
-        if (value < 0x78) return this->objectWriter->Pipe(x, y, (value&0x0F)+2);
-        else return this->objectWriter->Enterable_Pipe_Without_Pointer(x, y, (value&0x0F)-6);
+        if (value < 0x78) return this->objectWriter->Pipe(x, y, (value&0x0F)+1);
+        else return this->objectWriter->Enterable_Pipe_Without_Pointer(x, y, (value&0x0F)-7);
     }
 }
 
@@ -153,6 +154,13 @@ bool Object_Parser::Parse_E_Object(int x, char object) {
 
 bool Object_Parser::Parse_F_Object(int x, char object) {
     int value = static_cast<int>(object)&0x7F;
+    switch (value) {
+    default:    break;
+    case 0x26:  return this->objectWriter->Castle(x);
+    case 0x38:  return this->objectWriter->End_Steps(x);
+    case 0x4F:  return this->objectWriter->Reverse_L_Pipe_Without_Pointer(x);
+    }
+
     switch (value&0x70) {
     default:    return false;
     case 0x00:  return this->objectWriter->Lift_Rope(x);

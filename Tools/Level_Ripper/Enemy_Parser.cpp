@@ -6,10 +6,13 @@
 #include <assert.h>
 
 Enemy_Parser::Enemy_Parser(QTextStream *stream, int numBytesLeft, SMB1_Compliance_Generator_Arguments *args) {
+    this->stream = stream;
     this->enemyWriter = new Enemy_Writer(stream, numBytesLeft);
     this->objectWriter = new Object_Writer(stream, numBytesLeft, args);
+    this->objectWriter->Set_Coordinate_Safety(false);
+    this->enemyWriter->Set_Coordinate_Safety(false);
     this->pipePointerWriter = new Pipe_Pointer_Writer(this->objectWriter, this->enemyWriter);
-    this->coordinates = new Coordinates();
+    this->coordinates = new Coordinates(this->objectWriter);
 }
 
 Enemy_Parser::~Enemy_Parser() {
@@ -89,6 +92,8 @@ bool Enemy_Parser::Parse_Enemy(char coordinates, char enemy) {
 bool Enemy_Parser::Parse_Pipe_Pointer(char coordinates, char levelSlot, char page) {
     int x = 0, y = 0;
     this->coordinates->Get_Coordinates(coordinates, levelSlot, x, y);
-    int room = 0x00; //TODO: SET THE ROOM PROPERLY!!!
-    return this->pipePointerWriter->Pipe_Pointer(x, room, static_cast<int>(page));
+    //int room = 0x00; //TODO: SET THE ROOM PROPERLY!!!
+    //return this->pipePointerWriter->Pipe_Pointer(x, room, static_cast<int>(page));
+    *this->stream << "PIPE_POINTER ___" << QString(static_cast<int>(levelSlot)) << " " << QString(static_cast<int>(page)) << endl;
+    return true;
 }

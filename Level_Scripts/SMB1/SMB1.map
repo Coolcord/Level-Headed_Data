@@ -12,44 +12,44 @@ Number_of_Levels_per_World: 4
 ======================================================================
 # Level Map
 World_1_Level_1 "Level_1_1.lvl"
-World_1_Level_2 "Level_1_2.lvl"
-World_1_Level_3 "Level_1_3.lvl"
-World_1_Level_4 "Level_1_4.lvl"
-World_2_Level_1 "Level_2_1.lvl"
-World_2_Level_2 "Level_2_2.lvl"
-World_2_Level_3 "Level_2_3.lvl"
-World_2_Level_4 "Level_2_4.lvl"
-World_3_Level_1 "Level_3_1.lvl"
-World_3_Level_2 "Level_3_2.lvl"
-World_3_Level_3 "Level_3_3.lvl"
-World_3_Level_4 "Level_3_4.lvl"
-World_4_Level_1 "Level_4_1.lvl"
-World_4_Level_2 "Level_4_2.lvl"
-World_4_Level_3 "Level_4_3.lvl"
-World_4_Level_4 "Level_4_4.lvl"
-World_5_Level_1 "Level_5_1.lvl"
-World_5_Level_2 "Level_5_2.lvl"
-World_5_Level_3
-World_5_Level_4
-World_6_Level_1 "Level_6_1.lvl"
-World_6_Level_2 "Level_6_2.lvl"
-World_6_Level_3 "Level_6_3.lvl"
-World_6_Level_4
-World_7_Level_1 "Level_7_1.lvl"
-World_7_Level_2
-World_7_Level_3
-World_7_Level_4 "Level_7_4.lvl"
-World_8_Level_1 "Level_8_1.lvl"
-World_8_Level_2 "Level_8_2.lvl"
-World_8_Level_3 "Level_8_3.lvl"
-World_8_Level_4 "Level_8_4.lvl"
-======================================================================
+# World_1_Level_2 "Level_1_2.lvl"
+# World_1_Level_3 "Level_1_3.lvl"
+# World_1_Level_4 "Level_1_4.lvl"
+# World_2_Level_1 "Level_2_1.lvl"
+# World_2_Level_2 "Level_2_2.lvl"
+# World_2_Level_3 "Level_2_3.lvl"
+# World_2_Level_4 "Level_2_4.lvl"
+# World_3_Level_1 "Level_3_1.lvl"
+# World_3_Level_2 "Level_3_2.lvl"
+# World_3_Level_3 "Level_3_3.lvl"
+# World_3_Level_4 "Level_3_4.lvl"
+# World_4_Level_1 "Level_4_1.lvl"
+# World_4_Level_2 "Level_4_2.lvl"
+# World_4_Level_3 "Level_4_3.lvl"
+# World_4_Level_4 "Level_4_4.lvl"
+# World_5_Level_1 "Level_5_1.lvl"
+# World_5_Level_2 "Level_5_2.lvl"
+# World_5_Level_3
+# World_5_Level_4
+# World_6_Level_1 "Level_6_1.lvl"
+# World_6_Level_2 "Level_6_2.lvl"
+# World_6_Level_3 "Level_6_3.lvl"
+# World_6_Level_4
+# World_7_Level_1 "Level_7_1.lvl"
+# World_7_Level_2
+# World_7_Level_3
+# World_7_Level_4 "Level_7_4.lvl"
+# World_8_Level_1 "Level_8_1.lvl"
+# World_8_Level_2 "Level_8_2.lvl"
+# World_8_Level_3 "Level_8_3.lvl"
+# World_8_Level_4 "Level_8_4.lvl"
+# ======================================================================
 # Bonus Areas
-Pipe_Intro "Pipe_Intro.lvl"
-Underground_Bonus "Underground_Bonus.lvl"
-Cloud_Bonus_1 "Cloud_Bonus_1.lvl"
-Cloud_Bonus_2 "Cloud_Bonus_2.lvl"
-Underwater_Bonus "Underwater_Bonus.lvl"
-Warp_Zone "Warp_Zone.lvl"
-Underwater_Castle "Underwater_Castle.lvl"
+# Pipe_Intro "Pipe_Intro.lvl"
+# Underground_Bonus "Underground_Bonus.lvl"
+# Cloud_Bonus_1 "Cloud_Bonus_1.lvl"
+# Cloud_Bonus_2 "Cloud_Bonus_2.lvl"
+# Underwater_Bonus "Underwater_Bonus.lvl"
+# Warp_Zone "Warp_Zone.lvl"
+# Underwater_Castle "Underwater_Castle.lvl"
 ======================================================================
