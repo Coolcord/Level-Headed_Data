@@ -1,8 +1,8 @@
 #include "Coordinates.h"
-#include "../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Writer.h"
+#include "../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Item_Writer.h"
 
-Coordinates::Coordinates(Object_Writer *objectWriter) {
-    this->objectWriter = objectWriter;
+Coordinates::Coordinates(Item_Writer *itemWriter) {
+    this->itemWriter = itemWriter;
     this->lastX = 0;
 }
 
@@ -13,9 +13,9 @@ void Coordinates::Get_Coordinates(char coordinates, char object, int &x, int &y)
     int absoluteX = (value&0xF0)/0x10;
     if (pageFlag) {
         x = 0;
-        x = (0x10-this->objectWriter->Get_Absolute_X(0)+absoluteX);
+        x = ((0x10-this->itemWriter->Get_Absolute_X(0))+absoluteX);
     } else {
-        x = absoluteX - this->objectWriter->Get_Absolute_X(0);
+        x = absoluteX - this->itemWriter->Get_Absolute_X(0);
     }
     lastX = x;
 }

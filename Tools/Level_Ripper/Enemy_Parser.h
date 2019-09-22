@@ -20,8 +20,8 @@ public:
 
 private:
     Coordinates *coordinates;
-    Enemy_Writer *enemyWriter;
     Object_Writer *objectWriter;
+    Enemy_Writer *enemyWriter;
     Pipe_Pointer_Writer *pipePointerWriter;
     SMB1_Compliance_Generator_Arguments *args;
     QTextStream *stream;

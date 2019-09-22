@@ -12,7 +12,7 @@ Enemy_Parser::Enemy_Parser(QTextStream *stream, int numBytesLeft, SMB1_Complianc
     this->objectWriter->Set_Coordinate_Safety(false);
     this->enemyWriter->Set_Coordinate_Safety(false);
     this->pipePointerWriter = new Pipe_Pointer_Writer(this->objectWriter, this->enemyWriter);
-    this->coordinates = new Coordinates(this->objectWriter);
+    this->coordinates = new Coordinates(this->enemyWriter);
 }
 
 Enemy_Parser::~Enemy_Parser() {
@@ -38,6 +38,10 @@ bool Enemy_Parser::Parse_Enemy(char coordinates, char enemy) {
     int x = 0, y = 0;
     this->coordinates->Get_Coordinates(coordinates, enemy, x, y);
     if (y == 0xF) return this->enemyWriter->Page_Change(value);
+    y -= 1;
+    if (value > 0x36) { //group enemy x value is off by 3
+        x -= 3;
+    }
     switch (value) {
     default:    return false;
     case 0x00:  return this->enemyWriter->Green_Koopa(x, y, true, hardMode);
@@ -92,8 +96,8 @@ bool Enemy_Parser::Parse_Enemy(char coordinates, char enemy) {
 bool Enemy_Parser::Parse_Pipe_Pointer(char coordinates, char levelSlot, char page) {
     int x = 0, y = 0;
     this->coordinates->Get_Coordinates(coordinates, levelSlot, x, y);
-    //int room = 0x00; //TODO: SET THE ROOM PROPERLY!!!
-    //return this->pipePointerWriter->Pipe_Pointer(x, room, static_cast<int>(page));
-    *this->stream << "PIPE_POINTER ___" << QString(static_cast<int>(levelSlot)) << " " << QString(static_cast<int>(page)) << endl;
-    return true;
+    return this->pipePointerWriter->Pipe_Pointer(x, static_cast<int>(QString::number(levelSlot).toUInt()), static_cast<int>(QString::number(page).toUInt()));
+    //*this->stream << "Pipe_Pointer " << x << " [[[" << QString::number(static_cast<int>(levelSlot)) << "]]] " << QString::number(static_cast<int>(page)) << endl;
+    //this->enemyWriter->Set_First_Enemy(false);
+    //return true;
 }

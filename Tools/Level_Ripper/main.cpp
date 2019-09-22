@@ -14,26 +14,33 @@ int main(int argc, char *argv[]) {
     if (!output.open(QIODevice::WriteOnly | QIODevice::Truncate)) { file.close(); return 1; }
     QTextStream stream(&output);
     SMB1_Compliance_Generator_Arguments args;
-
-    //Place Arguments Here
-    args.levelType = Level_Type::STANDARD_OVERWORLD;
-    args.levelCompliment = Level_Compliment::TREES;
     args.endCastle = Castle::SMALL;
     args.startCastle = Castle::SMALL;
     args.difficulty = 1;
     args.useMidpoints = true;
-    bool object = true;
-    qint64 offset = 0x000026A0;
 
 
 
+    //Place Arguments Here
+    //=======================================================
+    args.levelType = Level_Type::UNDERGROUND;
+    args.levelCompliment = Level_Compliment::TREES;
+    bool object = false;
+    //qint64 offset = 0x000026A0; //Level 1-1 Objects
+    //qint64 offset = 0x00001F11; //Level 1-1 Enemies
+    //qint64 offset = 0x00002C47; //Level 1-2 Objects
+    qint64 offset = 0x000020E8; //Level 1-2 Enemies
+    //=======================================================
 
+
+
+    //Parse the level
     if (!file.seek(offset)) { output.close(); file.close(); return 1; }
     if (object) {
         Object_Parser objectParser(&stream, 10000, &args);
         QByteArray bytes = file.read(2);
         while (!objectParser.At_End(bytes.at(0))) {
-            objectParser.Parse_Object(bytes.at(0), bytes.at(1));
+            if (!objectParser.Parse_Object(bytes.at(0), bytes.at(1))) { output.close(); file.close(); return 1; }
             bytes = file.read(2);
         }
     } else {
@@ -42,9 +49,9 @@ int main(int argc, char *argv[]) {
         while (!enemyParser.At_End(bytes.at(0))) {
             if (enemyParser.Is_Pipe_Pointer(bytes.at(0), bytes.at(1))) {
                 bytes += file.read(1);
-                enemyParser.Parse_Pipe_Pointer(bytes.at(0), bytes.at(1), bytes.at(2));
+                if (!enemyParser.Parse_Pipe_Pointer(bytes.at(0), bytes.at(1), bytes.at(2))) { output.close(); file.close(); return 1; }
             } else {
-                enemyParser.Parse_Enemy(bytes.at(0), bytes.at(1));
+                if (!enemyParser.Parse_Enemy(bytes.at(0), bytes.at(1))) { output.close(); file.close(); return 1; }
             }
             bytes = file.read(2);
         }

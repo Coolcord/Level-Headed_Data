@@ -44,10 +44,11 @@ bool Object_Parser::Parse_B_Object(int x, int y, char object) {
         case 0x04:  return this->objectWriter->Brick_With_Mushroom_Only(x, y);
         case 0x05:  return this->objectWriter->Brick_With_Vine_Without_Pointer(x, y);
         case 0x06:  return this->objectWriter->Brick_With_Star_Only(x, y);
-        case 0x07:  return this->objectWriter->Brick_With_1up_Only(x, y);
-        case 0x08:  return this->objectWriter->Underwater_Sideways_Pipe_Without_Pointer(x, y);
-        case 0x09:  return this->objectWriter->Used_Block(x, y);
-        case 0x0A:  return this->objectWriter->Trampoline(x, y);
+        case 0x07:  return this->objectWriter->Brick_With_10_Coins(x, y);
+        case 0x08:  return this->objectWriter->Brick_With_1up_Only(x, y);
+        case 0x09:  return this->objectWriter->Underwater_Sideways_Pipe_Without_Pointer(x, y);
+        case 0x0A:  return this->objectWriter->Used_Block(x, y);
+        case 0x0B:  return this->objectWriter->Trampoline(x, y);
         }
     case 0x10:
         if (this->args->levelCompliment == Level_Compliment::BULLET_BILL_TURRETS) return this->objectWriter->Bullet_Bill_Turret(x, y, (value&0x0F)+1);
@@ -158,7 +159,16 @@ bool Object_Parser::Parse_F_Object(int x, char object) {
     default:    break;
     case 0x26:  return this->objectWriter->Castle(x);
     case 0x38:  return this->objectWriter->End_Steps(x);
-    case 0x4F:  return this->objectWriter->Reverse_L_Pipe_Without_Pointer(x);
+    case 0x42:  return this->objectWriter->Tall_Reverse_L_Pipe_Without_Pointer(x, 2);
+    case 0x43:  return this->objectWriter->Tall_Reverse_L_Pipe_Without_Pointer(x, 3);
+    case 0x44:  return this->objectWriter->Tall_Reverse_L_Pipe_Without_Pointer(x, 4);
+    case 0x45:  return this->objectWriter->Tall_Reverse_L_Pipe_Without_Pointer(x, 5);
+    case 0x46:  return this->objectWriter->Tall_Reverse_L_Pipe_Without_Pointer(x, 6);
+    case 0x47:  return this->objectWriter->Tall_Reverse_L_Pipe_Without_Pointer(x, 7);
+    case 0x48:  return this->objectWriter->Tall_Reverse_L_Pipe_Without_Pointer(x, 8);
+    case 0x49:  return this->objectWriter->Tall_Reverse_L_Pipe_Without_Pointer(x, 9);
+    case 0x4A:  return this->objectWriter->Tall_Reverse_L_Pipe_Without_Pointer(x, 0xA);
+    case 0x4F:  return this->objectWriter->Pipe_Wall(x);
     }
 
     switch (value&0x70) {

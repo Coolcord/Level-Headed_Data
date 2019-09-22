@@ -1,16 +1,16 @@
 #ifndef COORDINATES_H
 #define COORDINATES_H
 
-class Object_Writer;
+class Item_Writer;
 
 class Coordinates {
 public:
-    Coordinates(Object_Writer *objectWriter);
+    Coordinates(Item_Writer *itemWriter);
     ~Coordinates() {}
     void Get_Coordinates(char coordinates, char object, int &x, int &y);
 
 private:
-    Object_Writer *objectWriter;
+    Item_Writer *itemWriter;
     int lastX;
 };
 
