@@ -13,6 +13,7 @@ Enemy_Parser::Enemy_Parser(QTextStream *stream, int numBytesLeft, SMB1_Complianc
     this->enemyWriter->Set_Coordinate_Safety(false);
     this->pipePointerWriter = new Pipe_Pointer_Writer(this->objectWriter, this->enemyWriter);
     this->coordinates = new Coordinates(this->enemyWriter);
+    this->lastWasPageChange = false;
 }
 
 Enemy_Parser::~Enemy_Parser() {
@@ -37,10 +38,16 @@ bool Enemy_Parser::Parse_Enemy(char coordinates, char enemy) {
     bool hardMode = (static_cast<int>(enemy)&0x40) == 0x40;
     int x = 0, y = 0;
     this->coordinates->Get_Coordinates(coordinates, enemy, x, y);
-    if (y == 0xF) return this->enemyWriter->Page_Change(value);
-    y -= 1;
-    if (value > 0x36) { //group enemy x value is off by 3
-        x -= 3;
+    if (y == 0xF) {
+        this->lastWasPageChange = true;
+        return this->enemyWriter->Page_Change(value);
+    }
+    --y;
+    if (value >= 0x1B && value <= 0x1F) --y;
+    if (value > 0x36) x -= 3; //group enemy x value is off by 3
+    if (this->lastWasPageChange && x > 0x10) {
+        this->lastWasPageChange = false;
+        x -= 0x10;
     }
     switch (value) {
     default:    return false;

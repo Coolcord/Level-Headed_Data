@@ -11,10 +11,10 @@ Number_of_Levels_per_World: 4
 # Enemy Move Table
 ======================================================================
 # Level Map
-World_1_Level_1 "Level_1_1.lvl"
-World_1_Level_2 "Level_1_2.lvl"
-World_1_Level_3 "Level_1_3.lvl"
-World_1_Level_4 "Level_1_4.lvl"
+# World_1_Level_1 "Level_1_1.lvl"
+# World_1_Level_2 "Level_1_2.lvl"
+# World_1_Level_3 "Level_1_3.lvl"
+# World_1_Level_4 "Level_1_4.lvl"
 World_2_Level_1 "Level_2_1.lvl"
 World_2_Level_2 "Level_2_2.lvl"
 World_2_Level_3 "Level_2_3.lvl"

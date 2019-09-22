@@ -25,6 +25,7 @@ private:
     Pipe_Pointer_Writer *pipePointerWriter;
     SMB1_Compliance_Generator_Arguments *args;
     QTextStream *stream;
+    bool lastWasPageChange;
 };
 
 #endif // ENEMY_PARSER_H

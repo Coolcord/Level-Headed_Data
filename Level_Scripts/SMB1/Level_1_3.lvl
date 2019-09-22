@@ -1,15 +1,70 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 on Level-Headed
+SMB1 Level 1-3 on Level-Headed
 ======================================================================
 Attribute: Overworld
 Starting_Position: Overworld
 Brick_Pattern: Surface
 Background: Blank_Background
-Scenery: Mountains
+Scenery: Only_Clouds
 Compliment: Trees
-Time: 400
-Midpoint: 0
+Time: 300
+Midpoint: 4
 ======================================================================
+Castle 0
+Change_Brick_And_Scenery 15 No_Bricks Only_Clouds
+Island 3 10 4
+Island 6 7 8
+Island 2 3 5
+Horizontal_Coins 1 2 3
+Island 5 10 3
+Horizontal_Coins 1 9 1
+Island 2 6 5
+Horizontal_Coins 2 0 2
+Island 3 2 7
+Island 10 11 4
+Horizontal_Coins 0 4 2
+Island 9 11 5
+Question_Block_With_Mushroom 0 8
+Horizontal_Coins 1 2 4
+Island 0 3 4
+Island 5 11 5
+Island 5 7 3
+Island 6 4 6
+Horizontal_Coins 9 3 2
+Horizontal_Coins 8 2 2
+Horizontal_Coins 4 2 2
+Island 1 9 4
+Island 6 5 8
+Island 9 11 3
+Horizontal_Coins 0 10 3
+Island 3 7 4
+Horizontal_Coins 4 3 2
+Island 2 7 4
+Change_Brick_And_Scenery 6 Surface Only_Clouds
+Vertical_Blocks 10 7 4
+Vertical_Blocks 1 7 4
+Vertical_Blocks 1 5 6
+Vertical_Blocks 1 5 6
+Cancel_Spawner 0
+Vertical_Blocks 1 3 8
+Vertical_Blocks 1 3 8
+Flagpole 9
+Change_Background 2 Castle_Wall
+Big_Castle 3
 ======================================================================
+Bullet_Bill_Spawner 18 Hard
+Red_Koopa 12 2 Normal
+Goomba 14 1 Normal
+Goomba 2 1 Normal
+Lift 9 5 Vertical Normal
+Red_Paratroopa 19 2 Normal
+Goomba 6 2 Normal
+Bullet_Bill_Spawner 2 Hard
+Lift 4 7 Horizontal Normal
+Lift 8 8 Horizontal Normal
+Red_Koopa 16 4 Normal
+Red_Paratroopa 4 3 Normal
+Lift 17 5 Horizontal Normal
+Red_Koopa 2 10 Normal
 ======================================================================

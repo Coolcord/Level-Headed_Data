@@ -17,5 +17,5 @@ void Coordinates::Get_Coordinates(char coordinates, char object, int &x, int &y)
     } else {
         x = absoluteX - this->itemWriter->Get_Absolute_X(0);
     }
-    lastX = x;
+    this->lastX = x;
 }

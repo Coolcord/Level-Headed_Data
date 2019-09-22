@@ -103,14 +103,14 @@ Goomba 2 10 Normal
 Goomba 9 2 Normal
 Goomba_Group 3 6 2 Normal
 Page_Change 6
-Goomba_Group 19 10 3 Normal
+Goomba_Group 3 10 3 Normal
 Goomba 14 10 Normal
 Goomba_Group 22 6 2 Normal
-Lift_Spawner 4 6 Horizontal Large Normal
-Lift_Spawner 0 12 Horizontal Large Normal
+Lift_Spawner 4 6 Down Large Normal
+Lift_Spawner 0 12 Down Large Normal
 Red_Koopa 7 10 Normal
-Lift_Spawner 8 0 Vertical Large Normal
-Lift_Spawner 0 8 Vertical Large Normal
-Pipe_Pointer 4 37 11
-Warp_Zone 4 Normal
+Lift_Spawner 8 0 Up Large Normal
+Lift_Spawner 0 8 Up Large Normal
+Pipe_Pointer 4 World_1_Level_1 11
+Warp_Zone 4
 ======================================================================
