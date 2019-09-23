@@ -19,12 +19,12 @@ bool Object_Parser::At_End(char coordinates) {
     return coordinates == static_cast<char>(0xFD);
 }
 
-bool Object_Parser::Parse_Object(char coordinates, char object) {
+bool Object_Parser::Parse_Object(char coordinates, char object, Level_Type::Level_Type levelType) {
     int x = 0, y = 0;
     this->coordinates->Get_Coordinates(coordinates, object, x, y);
     if (y < 0xC) return this->Parse_B_Object(x, y, object);
     else if (y == 0xC) return this->Parse_C_Object(x, object);
-    else if (y == 0xD) return this->Parse_D_Object(x, object);
+    else if (y == 0xD) return this->Parse_D_Object(x, object, levelType);
     else if (y == 0xE) return this->Parse_E_Object(x, object);
     else if (y == 0xF) return this->Parse_F_Object(x, object);
     return false;
@@ -85,7 +85,7 @@ bool Object_Parser::Parse_C_Object(int x, char object) {
     }
 }
 
-bool Object_Parser::Parse_D_Object(int x, char object) {
+bool Object_Parser::Parse_D_Object(int x, char object, Level_Type::Level_Type levelType) {
     int value = static_cast<int>(object)&0x7F;
     if (value < 0x40) return this->objectWriter->Page_Change(value);
     switch (value) {
@@ -99,7 +99,9 @@ bool Object_Parser::Parse_D_Object(int x, char object) {
     case 0x46:  return this->objectWriter->Scroll_Stop(x, false);
     case 0x47:  return this->objectWriter->Scroll_Stop(x, false);
     case 0x48:  return this->objectWriter->Flying_Cheep_Cheep_Spawner(x);
-    case 0x49:  return this->objectWriter->Bullet_Bill_Spawner(x);
+    case 0x49:
+        if (levelType == Level_Type::UNDERWATER) return this->objectWriter->Swimming_Cheep_Cheep_Spawner(x);
+        else return this->objectWriter->Bullet_Bill_Spawner(x);
     case 0x4A:  return this->objectWriter->Cancel_Spawner(x);
     case 0x4B:  return this->objectWriter->Loop_Command(x);
     }

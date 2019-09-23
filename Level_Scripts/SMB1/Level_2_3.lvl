@@ -1,15 +1,90 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 on Level-Headed
+SMB1 Level 2-3 on Level-Headed
 ======================================================================
 Attribute: Overworld
 Starting_Position: Overworld
 Brick_Pattern: Surface
 Background: Blank_Background
-Scenery: Mountains
+Scenery: Only_Clouds
 Compliment: Trees
-Time: 400
-Midpoint: 0
+Time: 300
+Midpoint: 7
 ======================================================================
+Castle 0
+Change_Brick_And_Scenery 6 No_Bricks Only_Clouds
+Island 2 11 8
+Steps 2 3
+Vertical_Blocks 3 8 3
+Vertical_Blocks 1 8 3
+Bridge 1 8 16
+Flying_Cheep_Cheep_Spawner 11
+Vertical_Blocks 5 8 5
+Bridge 1 8 15
+Horizontal_Coins 4 3 4
+Vertical_Blocks 11 8 5
+Bridge 1 8 16
+Horizontal_Coins 7 3 1
+Horizontal_Coins 1 4 1
+Horizontal_Coins 1 3 1
+Horizontal_Coins 1 4 1
+Horizontal_Coins 1 3 1
+Vertical_Blocks 4 8 5
+Vertical_Blocks 5 8 5
+Bridge 1 8 10
+Horizontal_Coins 3 3 1
+Horizontal_Coins 1 2 2
+Horizontal_Coins 2 3 1
+Vertical_Blocks 4 8 5
+Vertical_Blocks 5 8 5
+Bridge 1 8 10
+Vertical_Blocks 10 8 5
+Horizontal_Coins 2 3 3
+Vertical_Blocks 2 7 6
+Bridge 1 7 5
+Question_Block_With_Mushroom 2 3
+Vertical_Blocks 3 7 6
+Horizontal_Coins 3 3 3
+Island 4 11 8
+Bridge 10 8 3
+Vertical_Blocks 5 8 5
+Bridge 1 8 15
+Horizontal_Coins 5 3 6
+Flying_Cheep_Cheep_Spawner 4
+Vertical_Blocks 6 8 5
+Vertical_Blocks 3 10 3
+Bridge 1 10 8
+Horizontal_Coins 2 6 4
+Vertical_Blocks 6 10 3
+Vertical_Blocks 4 8 5
+Bridge 1 8 8
+Vertical_Blocks 8 8 5
+Bridge 3 8 2
+Horizontal_Coins 2 4 6
+Bridge 2 8 2
+Bridge 4 8 2
+Vertical_Blocks 4 8 5
+Bridge 1 8 9
+Island 8 11 13
+Horizontal_Blocks 1 10 4
+Vertical_Blocks 0 8 2
+Vertical_Blocks 1 8 2
+Vertical_Blocks 1 9 1
+Cancel_Spawner 2
+Change_Brick_And_Scenery 9 Surface Only_Clouds
+End_Steps 2
+Flagpole 17
+Change_Background 2 Castle_Wall
+Big_Castle 3
 ======================================================================
+Page_Change 2
+Green_Koopa 7 7 Moving Hard
+Green_Paratroopa 13 7 Leaping Hard
+Red_Koopa 11 7 Hard
+Red_Koopa 16 7 Hard
+Page_Change 7
+Red_Koopa 7 10 Hard
+Green_Paratroopa 5 5 Flying Hard
+Page_Change 10
+Green_Paratroopa 12 7 Flying Hard
 ======================================================================

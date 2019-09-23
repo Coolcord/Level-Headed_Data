@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 
     //Place Arguments Here
     //=======================================================
-    args.levelType = Level_Type::UNDERGROUND;
+    args.levelType = Level_Type::UNDERWATER;
     args.levelCompliment = Level_Compliment::TREES;
     bool object = true;
     //qint64 offset = 0x000026A0; //Level 1-1 Objects
@@ -34,8 +34,14 @@ int main(int argc, char *argv[]) {
     //qint64 offset = 0x00001F2F; //Level 1-3 Enemies
     //qint64 offset = 0x000021C1; //Level 1-4 Objects
     //qint64 offset = 0x00001D80; //Level 1-4 Enemies
-    qint64 offset = 0x000027DF; //Level 2-1 Objects
+    //qint64 offset = 0x000027DF; //Level 2-1 Objects
     //qint64 offset = 0x00001F61; //Level 2-1 Enemies
+    //qint64 offset = 0x00002E57; //Level 2-2 Objects
+    //qint64 offset = 0x00002181; //Level 2-2 Enemies
+    //qint64 offset = 0x0000275A; //Level 2-3 Objects
+    //qint64 offset = 0x00001F4C; //Level 2-3 Enemies
+    qint64 offset = 0x000022A1; //Level 2-4 Objects
+    //qint64 offset = 0x00001DC0; //Level 2-4 Enemies
     //=======================================================
 
 
@@ -46,7 +52,7 @@ int main(int argc, char *argv[]) {
         Object_Parser objectParser(&stream, 10000, &args);
         QByteArray bytes = file.read(2);
         while (!objectParser.At_End(bytes.at(0))) {
-            if (!objectParser.Parse_Object(bytes.at(0), bytes.at(1))) { output.close(); file.close(); return 1; }
+            if (!objectParser.Parse_Object(bytes.at(0), bytes.at(1), args.levelType)) { output.close(); file.close(); return 1; }
             bytes = file.read(2);
         }
     } else {
