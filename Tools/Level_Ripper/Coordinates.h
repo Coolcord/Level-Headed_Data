@@ -7,11 +7,12 @@ class Coordinates {
 public:
     Coordinates(Item_Writer *itemWriter);
     ~Coordinates() {}
+    void Set_Last_Was_Group(bool lastWasGroup);
     void Get_Coordinates(char coordinates, char object, int &x, int &y);
 
 private:
     Item_Writer *itemWriter;
-    int lastX;
+    bool lastWasGroup;
 };
 
 #endif // COORDINATES_H

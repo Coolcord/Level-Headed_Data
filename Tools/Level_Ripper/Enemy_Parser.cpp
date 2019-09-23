@@ -49,6 +49,7 @@ bool Enemy_Parser::Parse_Enemy(char coordinates, char enemy) {
         this->lastWasPageChange = false;
         x -= 0x10;
     }
+    bool success = false;
     switch (value) {
     default:    return false;
     case 0x00:  return this->enemyWriter->Green_Koopa(x, y, true, hardMode);
@@ -89,15 +90,17 @@ bool Enemy_Parser::Parse_Enemy(char coordinates, char enemy) {
     case 0x2D:  return this->enemyWriter->Bowser(x, hardMode);
     case 0x34:  return this->enemyWriter->Warp_Zone(x);
     case 0x35:  return this->enemyWriter->Toad(x, hardMode);
-    case 0x37:  return this->enemyWriter->Goomba_Group(x, 0xA, 2, hardMode);
-    case 0x38:  return this->enemyWriter->Goomba_Group(x, 0xA, 3, hardMode);
-    case 0x39:  return this->enemyWriter->Goomba_Group(x, 0x6, 2, hardMode);
-    case 0x3A:  return this->enemyWriter->Goomba_Group(x, 0x6, 3, hardMode);
-    case 0x3B:  return this->enemyWriter->Koopa_Group(x, 0xA, 2, hardMode);
-    case 0x3C:  return this->enemyWriter->Koopa_Group(x, 0xA, 3, hardMode);
-    case 0x3D:  return this->enemyWriter->Koopa_Group(x, 0x6, 2, hardMode);
-    case 0x3E:  return this->enemyWriter->Koopa_Group(x, 0x6, 3, hardMode);
+    case 0x37:  success = this->enemyWriter->Goomba_Group(x, 0xA, 2, hardMode); break;
+    case 0x38:  success = this->enemyWriter->Goomba_Group(x, 0xA, 3, hardMode); break;
+    case 0x39:  success = this->enemyWriter->Goomba_Group(x, 0x6, 2, hardMode); break;
+    case 0x3A:  success = this->enemyWriter->Goomba_Group(x, 0x6, 3, hardMode); break;
+    case 0x3B:  success = this->enemyWriter->Koopa_Group(x, 0xA, 2, hardMode); break;
+    case 0x3C:  success = this->enemyWriter->Koopa_Group(x, 0xA, 3, hardMode); break;
+    case 0x3D:  success = this->enemyWriter->Koopa_Group(x, 0x6, 2, hardMode); break;
+    case 0x3E:  success = this->enemyWriter->Koopa_Group(x, 0x6, 3, hardMode); break;
     }
+    this->coordinates->Set_Last_Was_Group(true);
+    return success;
 }
 
 bool Enemy_Parser::Parse_Pipe_Pointer(char coordinates, char levelSlot, char page) {

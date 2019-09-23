@@ -1,15 +1,57 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 on Level-Headed
+SMB1 Level 3-2 on Level-Headed
 ======================================================================
 Attribute: Overworld
 Starting_Position: Overworld
 Brick_Pattern: Surface
-Background: Blank_Background
-Scenery: Mountains
+Background: Night_And_Snow
+Scenery: Fences
 Compliment: Trees
-Time: 400
-Midpoint: 0
+Time: 300
+Midpoint: 6
 ======================================================================
+Castle 0
+Page_Change 3
+Vertical_Blocks 1 10 1
+Horizontal_Coins 6 7 3
+Question_Block_With_Mushroom 5 4
+Vertical_Blocks 0 8 3
+Vertical_Blocks 15 9 2
+Brick_With_Star 2 3
+Brick_With_10_Coins 0 7
+Vertical_Blocks 2 9 2
+Hole 1 2
+Change_Brick_And_Scenery 20 Surface Fences
+Change_Brick_And_Scenery 20 Surface Fences
+Hole 3 2
+Vertical_Bricks 3 4 1
+Vertical_Blocks 0 9 2
+Hole 2 2
+Page_Change 10
+Horizontal_Coins 8 4 4
+Pipe 1 8 3
+Page_Change 12
+End_Steps 0
+Flagpole 17
+Castle 4
 ======================================================================
+Green_Koopa 17 10 Moving Normal
+Goomba_Group 7 10 3 Normal
+Koopa_Group 9 10 3 Normal
+Koopa_Group 10 10 2 Normal
+Page_Change 4
+Green_Koopa 2 10 Moving Normal
+Goomba_Group 5 10 3 Normal
+Green_Koopa 7 10 Moving Normal
+Green_Paratroopa 14 10 Leaping Normal
+Green_Koopa 3 10 Moving Normal
+Goomba_Group 8 10 3 Normal
+Green_Koopa 15 10 Moving Normal
+Koopa_Group 6 10 3 Normal
+Koopa_Group 10 10 2 Normal
+Koopa_Group 12 10 3 Normal
+Green_Koopa 13 10 Moving Normal
+Goomba_Group 4 10 3 Normal
+Goomba_Group 9 10 3 Normal
 ======================================================================

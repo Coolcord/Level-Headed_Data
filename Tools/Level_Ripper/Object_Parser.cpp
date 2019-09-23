@@ -142,7 +142,7 @@ bool Object_Parser::Parse_E_Object(int x, char object) {
         return this->objectWriter->Change_Brick_And_Scenery(x, brick, scenery);
     }
 
-    switch (value) {
+    switch (value&0x4F) {
     default:    return false;
     case 0x40:  return this->objectWriter->Change_Background(x, Background::BLANK_BACKGROUND);
     case 0x41:  return this->objectWriter->Change_Background(x, Background::IN_WATER);

@@ -3,7 +3,10 @@
 
 Coordinates::Coordinates(Item_Writer *itemWriter) {
     this->itemWriter = itemWriter;
-    this->lastX = 0;
+}
+
+void Coordinates::Set_Last_Was_Group(bool lastWasGroup) {
+    this->lastWasGroup = lastWasGroup;
 }
 
 void Coordinates::Get_Coordinates(char coordinates, char object, int &x, int &y) {
@@ -12,10 +15,17 @@ void Coordinates::Get_Coordinates(char coordinates, char object, int &x, int &y)
     y = value&0x0F;
     int absoluteX = (value&0xF0)/0x10;
     if (pageFlag) {
-        x = 0;
         x = ((0x10-this->itemWriter->Get_Absolute_X(0))+absoluteX);
     } else {
-        x = absoluteX - this->itemWriter->Get_Absolute_X(0);
+        if (this->lastWasGroup) {
+            int lastAbsoluteX = this->itemWriter->Get_Absolute_X(0);
+            if (lastAbsoluteX > 0xC) {
+                assert(lastAbsoluteX <= 0xF);
+                lastAbsoluteX = 0xC-lastAbsoluteX;
+            }
+            x = absoluteX - lastAbsoluteX;
+        } else {
+            x = absoluteX - this->itemWriter->Get_Absolute_X(0);
+        }
     }
-    this->lastX = x;
 }
