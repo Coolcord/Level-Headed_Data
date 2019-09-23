@@ -5,11 +5,77 @@ SMB1 Level 1-1 on Level-Headed
 Attribute: Overworld
 Starting_Position: Overworld
 Brick_Pattern: Surface
-Background: Blank_Background
-Scenery: Mountains
+Background: Night
+Scenery: Only_Clouds
 Compliment: Trees
-Time: 400
-Midpoint: 0
+Time: 300
+Midpoint: 4
 ======================================================================
+Castle 0
+Change_Brick_And_Scenery 15 No_Bricks Only_Clouds
+Island 3 8 5
+Island 4 5 6
+Island 8 11 3
+Horizontal_Coins 1 10 2
+Island 5 10 7
+Horizontal_Coins 1 4 1
+Horizontal_Coins 5 4 3
+Island 1 7 4
+Island 3 9 10
+Island 1 5 6
+Question_Block_With_Mushroom 2 1
+Horizontal_Coins 3 7 3
+Island 3 1 4
+Horizontal_Coins 1 0 2
+Island 9 5 3
+Island 0 11 16
+Horizontal_Coins 1 4 1
+Island 3 5 3
+Horizontal_Coins 1 4 1
+Island 3 5 3
+Horizontal_Coins 1 4 1
+Island 3 2 3
+Horizontal_Coins 1 1 1
+Horizontal_Coins 3 3 1
+Balance_Lift_Horizontal_Rope 1 8
+Balance_Lift_Vertical_Rope 0 3
+Island 2 9 4
+Horizontal_Coins 4 3 1
+Balance_Lift_Vertical_Rope 1 5
+Horizontal_Coins 1 3 1
+Island 7 7 3
+Island 7 3 4
+Horizontal_Coins 1 2 2
+Island 2 9 5
+Island 1 5 3
+Horizontal_Coins 0 8 1
+Horizontal_Coins 1 4 1
+Island 7 11 3
+Island 3 8 12
+Balance_Lift_Horizontal_Rope 18 5
+Balance_Lift_Vertical_Rope 0 2
+Balance_Lift_Vertical_Rope 4 5
+Change_Brick_And_Scenery 2 Surface Only_Clouds
+Flagpole 8
+Change_Background 2 Castle_Wall
+Big_Castle 3
 ======================================================================
+Goomba 26 4 Normal
+Lift 4 3 Horizontal Normal
+Lift 3 7 Horizontal Normal
+Red_Koopa 19 4 Normal
+Red_Koopa 2 8 Normal
+Falling_Lift 6 5 Normal
+Red_Koopa 13 10 Normal
+Balance_Lift 8 5 Normal
+Balance_Lift 7 7 Normal
+Lift 6 8 Horizontal Normal
+Lift 2 4 Horizontal Normal
+Lift 7 10 Horizontal Normal
+Red_Paratroopa 11 3 Normal
+Red_Koopa 10 7 Normal
+Red_Koopa 2 7 Normal
+Lift 6 5 Horizontal Normal
+Balance_Lift 4 4 Normal
+Balance_Lift 4 7 Normal
 ======================================================================

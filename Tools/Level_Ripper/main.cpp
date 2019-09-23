@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
     //=======================================================
     args.levelType = Level_Type::STANDARD_OVERWORLD;
     args.levelCompliment = Level_Compliment::TREES;
-    bool object = false;
+    bool object = true;
     //qint64 offset = 0x000026A0; //Level 1-1 Objects
     //qint64 offset = 0x00001F11; //Level 1-1 Enemies
     //qint64 offset = 0x00002C47; //Level 1-2 Objects
@@ -46,8 +46,8 @@ int main(int argc, char *argv[]) {
     //qint64 offset = 0x0000262B; //Level 3-1 Objects
     //qint64 offset = 0x00001EE0; //Level 3-1 Enemies
     //qint64 offset = 0x00002C14; //Level 3-2 Objects
-    qint64 offset = 0x000020C3; //Level 3-2 Enemies
-    //qint64 offset = 0x0000247D; //Level 3-3 Objects
+    //qint64 offset = 0x000020C3; //Level 3-2 Enemies
+    qint64 offset = 0x0000247D; //Level 3-3 Objects
     //qint64 offset = 0x00001E69; //Level 3-3 Enemies
     //qint64 offset = 0x00002314; //Level 3-4 Objects
     //qint64 offset = 0x00001DEF; //Level 3-4 Enemies

@@ -45,9 +45,9 @@ bool Enemy_Parser::Parse_Enemy(char coordinates, char enemy) {
     --y;
     if (value >= 0x1B && value <= 0x1F) --y;
     if (value > 0x36) x -= 3; //group enemy x value is off by 3
-    if (this->lastWasPageChange && x > 0x10) {
+    if (this->lastWasPageChange) {
         this->lastWasPageChange = false;
-        x -= 0x10;
+        if (x > 0x10) x -= 0x10;
     }
     bool success = false;
     switch (value) {

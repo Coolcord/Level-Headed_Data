@@ -14,18 +14,18 @@ void Coordinates::Get_Coordinates(char coordinates, char object, int &x, int &y)
     int value = static_cast<int>(coordinates);
     y = value&0x0F;
     int absoluteX = (value&0xF0)/0x10;
-    if (pageFlag) {
-        x = ((0x10-this->itemWriter->Get_Absolute_X(0))+absoluteX);
-    } else {
-        if (this->lastWasGroup) {
-            int lastAbsoluteX = this->itemWriter->Get_Absolute_X(0);
-            if (lastAbsoluteX > 0xC) {
-                assert(lastAbsoluteX <= 0xF);
-                lastAbsoluteX = 0xC-lastAbsoluteX;
-            }
-            x = absoluteX - lastAbsoluteX;
-        } else {
-            x = absoluteX - this->itemWriter->Get_Absolute_X(0);
+    int lastAbsoluteX = this->itemWriter->Get_Absolute_X(0);
+    if (this->lastWasGroup) {
+        this->lastWasGroup = false;
+        int lastAbsoluteX = this->itemWriter->Get_Absolute_X(0);
+        if (lastAbsoluteX > 0xC) {
+            assert(lastAbsoluteX <= 0xF);
+            lastAbsoluteX = 0xC-lastAbsoluteX;
         }
+    }
+    if (pageFlag) {
+        x = ((0x10-lastAbsoluteX)+absoluteX);
+    } else {
+        x = absoluteX - lastAbsoluteX;
     }
 }
