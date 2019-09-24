@@ -21,7 +21,7 @@ bool Object_Parser::At_End(char coordinates) {
 
 bool Object_Parser::Parse_Object(char coordinates, char object, Level_Type::Level_Type levelType) {
     int x = 0, y = 0;
-    this->coordinates->Get_Coordinates(coordinates, object, x, y);
+    this->coordinates->Get_Coordinates(coordinates, object, x, y, false);
     if (y < 0xC) return this->Parse_B_Object(x, y, object);
     else if (y == 0xC) return this->Parse_C_Object(x, object);
     else if (y == 0xD) return this->Parse_D_Object(x, object, levelType);

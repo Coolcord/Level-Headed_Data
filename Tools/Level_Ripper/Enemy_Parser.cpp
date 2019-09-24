@@ -29,7 +29,7 @@ bool Enemy_Parser::At_End(char coordinates) {
 
 bool Enemy_Parser::Is_Pipe_Pointer(char coordinates, char enemy) {
     int x = 0, y = 0;
-    this->coordinates->Get_Coordinates(coordinates, enemy, x, y);
+    this->coordinates->Get_Coordinates(coordinates, enemy, x, y, true);
     return y == 0xE;
 }
 
@@ -37,7 +37,7 @@ bool Enemy_Parser::Parse_Enemy(char coordinates, char enemy) {
     int value = static_cast<int>(enemy)&0x3F;
     bool hardMode = (static_cast<int>(enemy)&0x40) == 0x40;
     int x = 0, y = 0;
-    this->coordinates->Get_Coordinates(coordinates, enemy, x, y);
+    this->coordinates->Get_Coordinates(coordinates, enemy, x, y, false);
     if (y == 0xF) {
         this->lastWasPageChange = true;
         return this->enemyWriter->Page_Change(value);
@@ -105,7 +105,7 @@ bool Enemy_Parser::Parse_Enemy(char coordinates, char enemy) {
 
 bool Enemy_Parser::Parse_Pipe_Pointer(char coordinates, char levelSlot, char page) {
     int x = 0, y = 0;
-    this->coordinates->Get_Coordinates(coordinates, levelSlot, x, y);
+    this->coordinates->Get_Coordinates(coordinates, levelSlot, x, y, false);
     return this->pipePointerWriter->Pipe_Pointer(x, static_cast<int>(QString::number(levelSlot).toUInt()), static_cast<int>(QString::number(page).toUInt()));
     //*this->stream << "Pipe_Pointer " << x << " [[[" << QString::number(static_cast<int>(levelSlot)) << "]]] " << QString::number(static_cast<int>(page)) << endl;
     //this->enemyWriter->Set_First_Enemy(false);

@@ -1,15 +1,89 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 on Level-Headed
+SMB1 Level 3-4 on Level-Headed
 ======================================================================
-Attribute: Overworld
-Starting_Position: Overworld
-Brick_Pattern: Surface
-Background: Blank_Background
-Scenery: Mountains
+Attribute: Castle
+Starting_Position: Castle
+Brick_Pattern: Surface_4_And_Ceiling_3
+Background: Over_Water
+Scenery: No_Scenery
 Compliment: Trees
-Time: 400
+Time: 300
 Midpoint: 0
 ======================================================================
+Horizontal_Blocks 0 5 3
+Horizontal_Blocks 0 6 4
+Horizontal_Blocks 0 7 5
+Change_Brick_And_Scenery 15 Surface_4_And_Ceiling No_Scenery
+Hole 1 2
+Used_Block 3 9
+Hole 2 2
+Used_Block 3 9
+Hole 2 2
+Used_Block 3 9
+Hole 2 2
+Change_Brick_And_Scenery 3 Surface_And_Ceiling_3 No_Scenery
+Question_Block_With_Coin 8 7
+Question_Block_With_Mushroom 1 7
+Question_Block_With_Coin 1 7
+Change_Brick_And_Scenery 1 Ceiling No_Scenery
+Change_Brick_And_Scenery 2 Surface_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 5 Surface_And_Ceiling_3 No_Scenery
+Horizontal_Blocks 1 10 3
+Used_Block 1 3
+Used_Block 0 9
+Change_Brick_And_Scenery 1 Surface_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 7 Surface_And_Ceiling_3 No_Scenery
+Horizontal_Blocks 1 10 3
+Used_Block 1 3
+Used_Block 0 9
+Change_Brick_And_Scenery 1 Surface_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 13 Surface_And_Ceiling_3 No_Scenery
+Horizontal_Blocks 1 10 3
+Used_Block 1 3
+Used_Block 0 9
+Horizontal_Coins 1 4 3
+Change_Brick_And_Scenery 0 Surface_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 6 Ceiling No_Scenery
+Change_Brick_And_Scenery 2 Surface_4_And_Ceiling_3 No_Scenery
+Change_Brick_And_Scenery 6 Ceiling No_Scenery
+Change_Brick_And_Scenery 3 Surface_4_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 3 Ceiling No_Scenery
+Change_Brick_And_Scenery 3 Surface_4_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 3 Ceiling No_Scenery
+Change_Brick_And_Scenery 3 Surface_4_And_Ceiling_3 No_Scenery
+Change_Brick_And_Scenery 5 Surface_And_Ceiling_3 No_Scenery
+Change_Brick_And_Scenery 2 Surface_4_And_Ceiling_3 No_Scenery
+Change_Brick_And_Scenery 10 Ceiling No_Scenery
+Bowser_Bridge 1
+Vertical_Bricks 4 1 3
+Vertical_Bricks 1 1 3
+Axe_Rope 7
+Change_Brick_And_Scenery 0 Surface_5_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 1 Surface_5_And_Ceiling_4 No_Scenery
+Axe 0
+Change_Brick_And_Scenery 2 Surface_And_Ceiling No_Scenery
+Scroll_Stop 6
 ======================================================================
+Podoboo 16 Normal
+Fire_Bar 3 9 Counter_Clockwise Slow Normal
+Fire_Bar 5 9 Counter_Clockwise Slow Normal
+Podoboo 2 Normal
+Fire_Bar 3 9 Counter_Clockwise Slow Normal
+Page_Change 3
+Fire_Bar 6 3 Counter_Clockwise Slow Normal
+Fire_Bar 0 9 Clockwise Slow Normal
+Fire_Bar 10 3 Counter_Clockwise Slow Normal
+Fire_Bar 0 9 Clockwise Slow Normal
+Fire_Bar 16 3 Clockwise Slow Normal
+Fire_Bar 0 9 Counter_Clockwise Slow Normal
+Podoboo 8 Normal
+Podoboo 9 Normal
+Bowser_Fire_Spawner 6 Normal
+Podoboo 0 Normal
+Podoboo 6 Normal
+Page_Change 8
+Bowser 7 Normal
+Lift 3 5 Horizontal Normal
+Toad 15 Normal
 ======================================================================

@@ -1,15 +1,115 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 on Level-Headed
+SMB1 Level 4-2 on Level-Headed
 ======================================================================
-Attribute: Overworld
-Starting_Position: Overworld
-Brick_Pattern: Surface
+Attribute: Underground
+Starting_Position: Underground
+Brick_Pattern: All
 Background: Blank_Background
-Scenery: Mountains
+Scenery: No_Scenery
 Compliment: Trees
 Time: 400
-Midpoint: 0
+Midpoint: 6
 ======================================================================
+Change_Brick_And_Scenery 0 Surface No_Scenery
+Change_Brick_And_Scenery 5 Surface_And_Ceiling No_Scenery
+Hole 6 2
+Hole 4 2
+Hole 3 3
+Vertical_Bricks 2 1 3
+Change_Brick_And_Scenery 0 Surface_And_Ceiling_4 No_Scenery
+Horizontal_Bricks 2 7 6
+Horizontal_Bricks 0 8 5
+Horizontal_Bricks 0 9 5
+Horizontal_Coins 5 10 3
+Brick_With_Mushroom 1 7
+Change_Brick_And_Scenery 1 Surface_5_And_Ceiling_4 No_Scenery
+Brick_With_10_Coins 14 2
+Change_Brick_And_Scenery 4 Surface_And_Ceiling No_Scenery
+Horizontal_Question_Blocks_With_Coins 3 3 2
+Horizontal_Question_Blocks_With_Coins 0 7 2
+Question_Block_With_Coin 4 7
+Question_Block_With_Mushroom 1 7
+Question_Block_With_Coin 1 7
+Change_Brick_And_Scenery 0 No_Bricks No_Scenery
+Change_Brick_And_Scenery 6 Surface No_Scenery
+Hidden_Block_With_Coin 1 6
+Brick_With_Vine 1 3
+Hidden_Block_With_Coin 0 5
+Horizontal_Bricks 1 3 2
+Hidden_Block_With_Coin 0 6
+Hidden_Block_With_Coin 1 7
+Change_Brick_And_Scenery 0 Surface_And_Ceiling No_Scenery
+Pipe 6 8 3
+Horizontal_Bricks 4 7 1
+Brick_With_10_Coins 1 7
+Pipe 1 4 7
+Horizontal_Bricks 2 7 1
+Brick_With_Star 1 7
+Enterable_Pipe 3 8 3
+Horizontal_Bricks 3 6 1
+Pipe 2 8 3
+Vertical_Blocks 14 9 2
+Vertical_Blocks 1 8 3
+Hole 1 2
+Pipe 2 7 4
+Hole 2 2
+Vertical_Blocks 2 8 3
+Change_Brick_And_Scenery 0 Surface No_Scenery
+Vertical_Blocks 1 8 3
+Change_Brick_And_Scenery 0 No_Bricks No_Scenery
+Change_Brick_And_Scenery 6 Surface_And_Ceiling No_Scenery
+Horizontal_Bricks 1 3 1
+Horizontal_Bricks 0 7 4
+Brick_With_Mushroom 1 3
+Horizontal_Bricks 1 3 1
+Change_Brick_And_Scenery 1 No_Bricks No_Scenery
+Change_Brick_And_Scenery 5 Ceiling No_Scenery
+Change_Brick_And_Scenery 1 Surface_And_Ceiling No_Scenery
+Pipe 3 9 2
+Pipe 7 8 3
+Pipe 4 7 4
+Hole 2 2
+Steps 8 3
+Change_Brick_And_Scenery 2 No_Bricks No_Scenery
+Change_Brick_And_Scenery 5 Surface_And_Ceiling_4 No_Scenery
+Vertical_Bricks 1 4 2
+Brick_With_Mushroom 1 7
+Horizontal_Coins 1 6 10
+Horizontal_Bricks 0 7 10
+Steps 11 4
+Change_Brick_And_Scenery 2 Surface_And_Ceiling No_Scenery
+Pipe 5 4 7
+Hole 3 2
+Change_Brick_And_Scenery 1 Surface_4_And_Ceiling No_Scenery
+Tall_Reverse_L_Pipe 3 7
+Change_Brick_And_Scenery 3 All No_Scenery
+Scroll_Stop 6
+Change_Brick_And_Scenery 12 Surface_And_Ceiling No_Scenery
+Enterable_Pipe 6 8 3
+Change_Brick_And_Scenery 4 Surface No_Scenery
+Change_Brick_And_Scenery 3 All No_Scenery
+Scroll_Stop_Warp_Zone 9
 ======================================================================
+Page_Change 2
+Pipe_Pointer 1 Warp_Zone 0
+Goomba_Group 10 6 3 Normal
+Lift_Spawner 15 4 Down Large Normal
+Green_Koopa 19 10 Moving Normal
+Buzzy_Beetle 6 10 Normal
+Buzzy_Beetle 5 10 Normal
+Pipe_Pointer 7 Underground_Bonus 8
+Koopa_Group 5 10 2 Normal
+Lift_Spawner 14 4 Down Large Normal
+Lift_Spawner 0 11 Down Large Normal
+Lift_Spawner 9 1 Up Large Normal
+Lift_Spawner 0 8 Up Large Normal
+Green_Koopa 14 10 Moving Normal
+Buzzy_Beetle 17 7 Normal
+Lift_Spawner 1 4 Down Large Normal
+Lift_Spawner 0 11 Down Large Normal
+Koopa_Group 13 10 2 Normal
+Buzzy_Beetle 11 10 Normal
+Warp_Zone 5
+Pipe_Pointer 6 World_1_Level_1 11
 ======================================================================

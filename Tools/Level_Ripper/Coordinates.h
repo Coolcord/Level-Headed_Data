@@ -8,7 +8,7 @@ public:
     Coordinates(Item_Writer *itemWriter);
     ~Coordinates() {}
     void Set_Last_Was_Group(bool lastWasGroup);
-    void Get_Coordinates(char coordinates, char object, int &x, int &y);
+    void Get_Coordinates(char coordinates, char object, int &x, int &y, bool peek);
 
 private:
     Item_Writer *itemWriter;

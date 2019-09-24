@@ -9,15 +9,14 @@ void Coordinates::Set_Last_Was_Group(bool lastWasGroup) {
     this->lastWasGroup = lastWasGroup;
 }
 
-void Coordinates::Get_Coordinates(char coordinates, char object, int &x, int &y) {
+void Coordinates::Get_Coordinates(char coordinates, char object, int &x, int &y, bool peek) {
     bool pageFlag = (static_cast<int>(object)&0x80) == 0x80;
     int value = static_cast<int>(coordinates);
     y = value&0x0F;
     int absoluteX = (value&0xF0)/0x10;
     int lastAbsoluteX = this->itemWriter->Get_Absolute_X(0);
     if (this->lastWasGroup) {
-        this->lastWasGroup = false;
-        int lastAbsoluteX = this->itemWriter->Get_Absolute_X(0);
+        if (!peek) this->lastWasGroup = false;
         if (lastAbsoluteX > 0xC) {
             assert(lastAbsoluteX <= 0xF);
             lastAbsoluteX = 0xC-lastAbsoluteX;

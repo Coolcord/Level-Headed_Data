@@ -1,15 +1,61 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 on Level-Headed
+SMB1 Level 4-1 on Level-Headed
 ======================================================================
 Attribute: Overworld
 Starting_Position: Overworld
 Brick_Pattern: Surface
-Background: Blank_Background
+Background: Castle_Wall
 Scenery: Mountains
 Compliment: Trees
 Time: 400
-Midpoint: 0
+Midpoint: 6
 ======================================================================
+Big_Castle 0
+Change_Background 6 Blank_Background
+Pipe 15 8 3
+Question_Block_With_Coin 4 3
+Question_Block_With_Mushroom 0 7
+Hole 7 2
+Horizontal_Coins 9 7 1
+Horizontal_Coins 1 6 2
+Horizontal_Coins 2 7 1
+Page_Change 4
+Question_Block_With_Coin 0 3
+Question_Block_With_Coin 0 7
+Question_Block_With_Coin 2 3
+Question_Block_With_Coin 0 7
+Hole 12 4
+Horizontal_Question_Blocks_With_Coins 12 7 4
+Hidden_Block_With_1up 2 3
+Vertical_Blocks 11 8 3
+Horizontal_Coins 2 4 4
+Pipe 11 7 4
+Horizontal_Coins 3 4 4
+Enterable_Pipe 13 7 4
+Horizontal_Coins 3 4 4
+Horizontal_Question_Blocks_With_Coins 11 7 2
+Horizontal_Question_Blocks_With_Coins 2 3 4
+Question_Block_With_Mushroom 0 7
+Horizontal_Bricks 1 7 2
+Hole 0 2
+Horizontal_Question_Blocks_With_Coins 2 7 3
+Pipe 12 9 2
+Hole 11 3
+Hole 6 2
+Vertical_Blocks 9 8 3
+Hole 1 2
+Page_Change 13
+End_Steps 0
+Brick_With_10_Coins 12 7
+Cancel_Spawner 2
+Flagpole 3
+Castle 4
 ======================================================================
+Pipe_Pointer 18 Underground_Bonus 6
+Lakitu 12 1 Normal
+Page_Change 7
+Lakitu 0 1 Normal
+Page_Change 12
+Lakitu 1 1 Normal
 ======================================================================
