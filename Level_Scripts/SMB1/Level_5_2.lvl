@@ -1,15 +1,91 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 on Level-Headed
+SMB1 Level 5-2 on Level-Headed
 ======================================================================
 Attribute: Overworld
 Starting_Position: Overworld
 Brick_Pattern: Surface
-Background: Blank_Background
-Scenery: Mountains
-Compliment: Trees
+Background: Snow
+Scenery: Fences
+Compliment: Bullet_Bill_Turrets
 Time: 400
-Midpoint: 0
+Midpoint: 6
 ======================================================================
+Castle 0
+Steps 12 4
+Horizontal_Blocks 4 7 3
+Bullet_Bill_Turret 1 5 2
+Horizontal_Coins 4 2 3
+Trampoline 4 9
+Hole 1 3
+Horizontal_Bricks 3 3 5
+Horizontal_Coins 0 6 3
+Horizontal_Bricks 0 7 6
+Brick_With_Mushroom 5 3
+Steps 10 4
+Vertical_Blocks 4 7 4
+Vertical_Blocks 1 9 2
+Enterable_Pipe 6 8 3
+Steps 7 4
+Hole 4 2
+Vertical_Blocks 2 6 5
+Vertical_Blocks 1 5 6
+Vertical_Blocks 1 5 6
+Horizontal_Question_Blocks_With_Coins 8 7 5
+Hidden_Block_With_Coin 6 7
+Brick_With_Vine 1 3
+Horizontal_Bricks 1 3 2
+Horizontal_Coins 0 2 2
+Horizontal_Bricks 3 6 3
+Horizontal_Coins 0 10 2
+Hole 3 4
+Bullet_Bill_Turret 15 9 2
+Pipe 8 9 2
+Horizontal_Bricks 3 3 7
+Horizontal_Bricks 0 7 8
+Brick_With_Star 7 3
+Hole 2 2
+Vertical_Blocks 2 8 3
+Brick_With_10_Coins 12 9
+Brick_With_Mushroom 1 9
+Hole 2 7
+Horizontal_Bricks 3 7 3
+Horizontal_Bricks 6 3 5
+Brick_With_Mushroom 15 7
+Hole 2 3
+Horizontal_Coins 2 2 2
+Horizontal_Bricks 0 3 4
+Pipe 1 9 2
+Hole 2 2
+Steps 8 2
+Hole 2 1
+Vertical_Blocks 1 7 4
+Vertical_Blocks 1 6 5
+Hole 1 1
+Vertical_Blocks 1 4 7
+Vertical_Blocks 1 3 8
+Vertical_Blocks 1 3 8
+Flagpole 9
+Castle 4
 ======================================================================
+Green_Koopa 23 10 Moving Normal
+Pipe_Pointer 3 Underwater_Bonus 0
+Green_Paratroopa 14 10 Leaping Normal
+Hammer_Bro 6 7 Normal
+Goomba 17 8 Normal
+Goomba 2 6 Normal
+Hammer_Bro 16 5 Normal
+Pipe_Pointer 3 Cloud_Bonus_1 0
+Green_Paratroopa 22 10 Leaping Normal
+Hammer_Bro 14 6 Normal
+Hammer_Bro 4 2 Normal
+Buzzy_Beetle 12 10 Normal
+Buzzy_Beetle 1 10 Normal
+Buzzy_Beetle 1 10 Normal
+Goomba 17 10 Normal
+Goomba 1 10 Normal
+Red_Koopa 1 2 Normal
+Green_Paratroopa 6 10 Leaping Normal
+Green_Paratroopa 3 10 Leaping Normal
+Green_Paratroopa 20 6 Leaping Normal
 ======================================================================
