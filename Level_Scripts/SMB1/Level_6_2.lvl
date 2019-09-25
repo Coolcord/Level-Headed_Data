@@ -1,15 +1,102 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 on Level-Headed
+SMB1 Level 6-2 in Level-Headed
 ======================================================================
 Attribute: Overworld
 Starting_Position: Overworld
 Brick_Pattern: Surface
-Background: Blank_Background
+Background: Night
 Scenery: Mountains
 Compliment: Trees
 Time: 400
-Midpoint: 0
+Midpoint: 6
 ======================================================================
+Castle 0
+Horizontal_Bricks 10 7 3
+Enterable_Pipe 9 7 4
+Horizontal_Bricks 4 3 1
+Brick_With_10_Coins 1 3
+Hidden_Block_With_Coin 0 7
+Horizontal_Bricks 1 3 1
+Pipe 3 7 4
+Pipe 4 4 2
+Horizontal_Blocks 0 6 2
+Pipe 3 9 2
+Pipe 2 9 2
+Pipe 9 7 4
+Horizontal_Bricks 5 7 1
+Brick_With_Mushroom 1 7
+Enterable_Pipe 4 6 5
+Pipe 6 5 2
+Horizontal_Blocks 0 7 2
+Horizontal_Bricks 5 3 5
+Pipe 0 9 2
+Pipe 7 9 2
+Horizontal_Bricks 3 3 4
+Pipe 3 8 3
+Brick_With_Vine 1 3
+Hidden_Block_With_Coin 1 7
+Pipe 2 9 2
+Pipe 3 5 6
+Pipe 7 8 3
+Pipe 8 7 4
+Pipe 3 9 2
+Horizontal_Bricks 5 7 1
+Pipe 1 4 3
+Horizontal_Blocks 0 7 2
+Horizontal_Bricks 2 7 1
+Horizontal_Bricks 2 3 1
+Pipe 0 9 2
+Horizontal_Bricks 4 3 9
+Hole 4 6
+Pipe 8 9 2
+Pipe 4 9 2
+Horizontal_Bricks 3 6 2
+Brick_With_Star 2 3
+Horizontal_Bricks 1 3 1
+Hole 0 1
+Hole 2 1
+Horizontal_Bricks 1 7 3
+Horizontal_Bricks 1 3 2
+Steps 4 3
+Hole 3 1
+Enterable_Pipe 1 8 3
+Vertical_Blocks 3 7 4
+Vertical_Blocks 1 9 2
+Horizontal_Bricks 3 3 3
+Horizontal_Bricks 0 7 3
+Pipe 7 4 3
+Horizontal_Blocks 0 7 2
+Pipe 7 7 4
+Pipe 5 9 2
+Pipe 2 8 3
+Pipe 2 7 4
+Pipe 6 8 3
+Steps 10 2
+Pipe 2 7 4
+Vertical_Blocks 2 6 5
+Vertical_Blocks 1 5 6
+Vertical_Blocks 1 4 7
+Vertical_Blocks 1 3 8
+Vertical_Blocks 1 3 8
+Flagpole 9
+Castle 4
 ======================================================================
+Pipe_Pointer 16 Underground_Bonus 8
+Green_Koopa 10 10 Moving Normal
+Green_Paratroopa 17 10 Leaping Normal
+Buzzy_Beetle 11 10 Normal
+Pipe_Pointer 7 Underwater_Bonus 0
+Goomba 6 2 Normal
+Goomba 1 2 Normal
+Pipe_Pointer 15 Cloud_Bonus_2 0
+Buzzy_Beetle 9 10 Normal
+Page_Change 7
+Pipe_Pointer 7 Underground_Bonus 6
+Buzzy_Beetle 1 2 Normal
+Page_Change 10
+Buzzy_Beetle 3 10 Normal
+Goomba_Group 6 10 2 Normal
+Page_Change 12
+Green_Paratroopa 14 2 Leaping Normal
 ======================================================================

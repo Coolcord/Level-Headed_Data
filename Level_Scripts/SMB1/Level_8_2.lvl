@@ -1,15 +1,96 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 on Level-Headed
+SMB1 Level 8-2 in Level-Headed
 ======================================================================
 Attribute: Overworld
 Starting_Position: Overworld
 Brick_Pattern: Surface
 Background: Blank_Background
-Scenery: Mountains
-Compliment: Trees
+Scenery: Fences
+Compliment: Bullet_Bill_Turrets
 Time: 400
 Midpoint: 0
 ======================================================================
+Castle 0
+Hole 15 1
+Steps 2 4
+Hole 4 1
+Vertical_Blocks 1 5 6
+Vertical_Blocks 1 4 7
+Vertical_Blocks 1 3 8
+Vertical_Blocks 1 3 8
+Horizontal_Question_Blocks_With_Coins 4 7 4
+Hole 7 1
+Horizontal_Bricks 7 3 1
+Trampoline 1 9
+Brick_With_1up 0 3
+Horizontal_Bricks 1 3 16
+Hole 0 1
+Hole 5 1
+Hole 2 1
+Hole 4 1
+Horizontal_Bricks 5 3 15
+Cancel_Spawner 1
+Hole 1 1
+Horizontal_Bricks 14 7 2
+Hole 1 2
+Hole 6 1
+Bullet_Bill_Turret 1 9 2
+Bullet_Bill_Turret 8 8 2
+Bullet_Bill_Turret 0 10 1
+Horizontal_Bricks 6 7 1
+Brick_With_Mushroom 1 7
+Bullet_Bill_Turret 5 9 2
+Horizontal_Bricks 5 7 2
+Bullet_Bill_Turret 5 10 1
+Horizontal_Bricks 3 7 1
+Bullet_Bill_Turret 1 6 1
+Vertical_Blocks 0 7 1
+Brick_With_10_Coins 1 7
+Bullet_Bill_Turret 5 8 3
+Pipe 6 9 2
+Hole 7 1
+Pipe 4 9 2
+Hole 2 1
+Hole 2 1
+Hole 2 6
+Enterable_Pipe 8 7 4
+Pipe 7 9 2
+Hole 11 1
+Bullet_Bill_Turret 1 9 2
+Hole 1 3
+Steps 6 5
+Bullet_Bill_Turret 9 8 2
+Bullet_Bill_Turret 0 10 1
+Steps 8 3
+Hole 3 1
+Vertical_Blocks 1 6 5
+Hole 1 2
+Vertical_Blocks 2 3 8
+Vertical_Blocks 1 3 8
+Flagpole 9
+Castle 4
 ======================================================================
+Green_Paratroopa 18 8 Leaping Normal
+Lakitu 3 1 Normal
+Green_Paratroopa 3 2 Leaping Normal
+Page_Change 3
+Green_Paratroopa 9 10 Leaping Normal
+Green_Paratroopa 9 10 Leaping Normal
+Green_Paratroopa 3 10 Leaping Normal
+Green_Paratroopa 23 10 Leaping Normal
+Green_Paratroopa 3 10 Leaping Normal
+Buzzy_Beetle 16 10 Normal
+Buzzy_Beetle 10 10 Normal
+Buzzy_Beetle 2 10 Normal
+Pipe_Pointer 4 Underground_Bonus 8
+Green_Paratroopa 12 10 Leaping Normal
+Page_Change 10
+Green_Paratroopa 10 10 Leaping Normal
+Green_Paratroopa 2 10 Leaping Normal
+Green_Paratroopa 3 8 Leaping Normal
+Goomba 9 7 Normal
+Goomba 2 5 Normal
+Buzzy_Beetle 3 10 Normal
+Green_Paratroopa 14 5 Leaping Normal
 ======================================================================

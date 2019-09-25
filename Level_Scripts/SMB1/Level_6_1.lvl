@@ -1,15 +1,75 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 on Level-Headed
+SMB1 Level 6-1 in Level-Headed
 ======================================================================
 Attribute: Overworld
 Starting_Position: Overworld
 Brick_Pattern: Surface
-Background: Blank_Background
+Background: Castle_Wall
 Scenery: Mountains
 Compliment: Trees
 Time: 400
-Midpoint: 0
+Midpoint: 6
 ======================================================================
+Big_Castle 0
+Change_Background 6 Night
+Horizontal_Question_Blocks_With_Coins 10 7 2
+Hole 4 2
+Horizontal_Blocks 6 10 6
+Horizontal_Blocks 3 9 5
+Change_Brick_And_Scenery 1 No_Bricks Mountains
+Horizontal_Blocks 2 8 4
+Horizontal_Blocks 3 7 3
+Brick_With_Mushroom 1 3
+Change_Brick_And_Scenery 0 Surface Mountains
+Horizontal_Bricks 1 3 1
+Hole 2 2
+Horizontal_Bricks 2 7 2
+Brick_With_10_Coins 2 7
+Hole 14 2
+Horizontal_Coins 5 7 3
+Steps 7 4
+Vertical_Blocks 4 7 4
+Hole 1 3
+Horizontal_Coins 2 5 2
+Vertical_Blocks 8 9 1
+Vertical_Blocks 1 8 2
+Vertical_Blocks 2 6 5
+Vertical_Blocks 1 5 6
+Vertical_Blocks 1 4 7
+Horizontal_Bricks 1 4 3
+Hidden_Block_With_1up 0 6
+Horizontal_Bricks 2 8 3
+Hole 1 3
+Pipe 9 8 3
+Horizontal_Coins 3 6 3
+Hidden_Block_With_Coin 8 3
+Hidden_Block_With_Coin 0 7
+Steps 9 5
+Horizontal_Bricks 5 6 2
+Hole 0 7
+Question_Block_With_Mushroom 3 6
+Horizontal_Bricks 0 10 5
+Question_Block_With_Coin 1 6
+Hole 5 1
+Steps 7 6
+Change_Brick_And_Scenery 5 No_Bricks Mountains
+Horizontal_Bricks 1 5 2
+Horizontal_Bricks 2 7 1
+Brick_With_10_Coins 1 7
+Horizontal_Bricks 0 9 3
+Change_Brick_And_Scenery 2 Surface Mountains
+Hole 10 3
+Steps 5 5
+Hole 5 2
+Vertical_Blocks 2 3 8
+Vertical_Blocks 1 3 8
+Cancel_Spawner 7
+Flagpole 2
+Castle 6
 ======================================================================
+Page_Change 2
+Lakitu 0 1 Normal
+Page_Change 7
+Lakitu 0 1 Normal
 ======================================================================

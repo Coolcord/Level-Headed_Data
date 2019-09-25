@@ -1,15 +1,80 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 on Level-Headed
+SMB1 Level 8-3 in Level-Headed
 ======================================================================
 Attribute: Overworld
 Starting_Position: Overworld
 Brick_Pattern: Surface
 Background: Blank_Background
-Scenery: Mountains
-Compliment: Trees
-Time: 400
+Scenery: Fences
+Compliment: Bullet_Bill_Turrets
+Time: 300
 Midpoint: 0
 ======================================================================
+Castle 0
+Bullet_Bill_Turret 18 9 2
+Change_Background 5 Castle_Wall
+Change_Background 8 Blank_Background
+Bullet_Bill_Turret 3 8 3
+Change_Background 2 Castle_Wall
+Change_Background 14 Blank_Background
+Pipe 3 7 4
+Horizontal_Bricks 7 3 6
+Horizontal_Bricks 0 7 8
+Brick_With_Mushroom 6 3
+Horizontal_Bricks 1 3 1
+Hole 2 2
+Vertical_Blocks 2 7 4
+Vertical_Blocks 1 8 3
+Vertical_Blocks 1 9 2
+Vertical_Blocks 1 10 1
+Hole 1 2
+Change_Background 3 Castle_Wall
+Change_Background 6 Blank_Background
+Bullet_Bill_Turret 2 9 2
+Change_Background 1 Castle_Wall
+Change_Background 6 Blank_Background
+Vertical_Blocks 2 8 3
+Change_Background 1 Castle_Wall
+Change_Background 10 Blank_Background
+Vertical_Blocks 3 7 4
+Vertical_Blocks 1 7 4
+Horizontal_Bricks 5 3 8
+Horizontal_Bricks 0 7 8
+Brick_With_Mushroom 1 3
+Hole 8 2
+Pipe 2 7 4
+Hole 2 2
+Change_Background 3 Castle_Wall
+Page_Change 10
+Change_Background 5 Blank_Background
+Pipe 3 8 3
+Change_Background 3 Castle_Wall
+Brick_With_10_Coins 19 7
+Change_Background 1 Blank_Background
+Vertical_Blocks 4 9 2
+Change_Brick_And_Scenery 1 No_Bricks No_Scenery
+Vertical_Blocks 2 9 1
+Vertical_Blocks 2 7 1
+Vertical_Blocks 2 5 1
+Horizontal_Blocks 2 3 2
+Change_Brick_And_Scenery 3 Surface Fences
+Flagpole 7
+Change_Background 5 Castle_Wall
+Big_Castle 3
 ======================================================================
+Green_Paratroopa 30 10 Leaping Normal
+Page_Change 3
+Hammer_Bro 15 10 Normal
+Hammer_Bro 2 6 Normal
+Green_Paratroopa 28 10 Leaping Normal
+Page_Change 7
+Hammer_Bro 5 6 Normal
+Hammer_Bro 2 10 Normal
+Green_Koopa 18 10 Moving Normal
+Hammer_Bro 9 10 Normal
+Hammer_Bro 13 10 Normal
+Page_Change 11
+Hammer_Bro 1 10 Normal
+Hammer_Bro 8 10 Normal
 ======================================================================
