@@ -61,7 +61,7 @@ End_Steps 2
 Flagpole 17
 Castle 4
 ======================================================================
-Pipe_Pointer 17 Underground_Bonus 0
+Pipe_Pointer 17 Underground_Bonus 1 0
 Goomba 5 10 Normal
 Goomba 18 10 Normal
 Goomba_Group 11 10 2 Normal

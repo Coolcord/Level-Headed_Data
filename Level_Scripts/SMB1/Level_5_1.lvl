@@ -55,7 +55,7 @@ Goomba_Group 18 10 3 Normal
 Green_Koopa 6 10 Moving Normal
 Goomba_Group 8 10 3 Normal
 Koopa_Group 9 10 2 Normal
-Pipe_Pointer 14 Underground_Bonus 8
+Pipe_Pointer 14 Underground_Bonus 5 8
 Page_Change 11
 Green_Paratroopa 2 10 Leaping Normal
 Green_Paratroopa 4 6 Leaping Normal

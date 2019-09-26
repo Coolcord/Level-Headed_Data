@@ -68,25 +68,25 @@ Change_Brick_And_Scenery 2 Surface_And_Ceiling No_Scenery
 Scroll_Stop 6
 ======================================================================
 Page_Change 3
-Pipe_Pointer 8 World_8_Level_4 1
+Pipe_Pointer 8 World_8_Level_4 8 1
 Goomba_Group 0 10 3 Normal
 Lift 14 12 Horizontal Normal
-Pipe_Pointer 13 World_8_Level_4 7
+Pipe_Pointer 13 World_8_Level_4 8 7
 Page_Change 8
 Buzzy_Beetle 0 10 Normal
 Buzzy_Beetle 2 10 Normal
-Pipe_Pointer 3 World_8_Level_4 1
+Pipe_Pointer 3 World_8_Level_4 8 1
 Green_Paratroopa 6 10 Leaping Normal
 Green_Paratroopa 2 10 Leaping Normal
 Green_Paratroopa 14 10 Leaping Normal
 Green_Paratroopa 2 10 Leaping Normal
-Pipe_Pointer 2 World_8_Level_4 12
+Pipe_Pointer 2 World_8_Level_4 8 12
 Page_Change 13
-Pipe_Pointer 4 World_8_Level_4 1
+Pipe_Pointer 4 World_8_Level_4 8 1
 Page_Change 14
-Pipe_Pointer 4 Underwater_Castle 0
+Pipe_Pointer 4 Underwater_Castle 8 0
 Page_Change 16
-Pipe_Pointer 15 World_8_Level_4 1
+Pipe_Pointer 15 World_8_Level_4 8 1
 Hammer_Bro 2 10 Normal
 Podoboo 6 Normal
 Bowser_Fire_Spawner 14 Normal

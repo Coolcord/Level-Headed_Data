@@ -71,7 +71,7 @@ Castle 4
 ======================================================================
 Green_Paratroopa 25 10 Leaping Normal
 Green_Paratroopa 3 9 Leaping Normal
-Pipe_Pointer 2 Underground_Bonus 4
+Pipe_Pointer 2 Underground_Bonus 3 4
 Goomba 7 10 Normal
 Goomba_Group 16 10 3 Normal
 Green_Koopa 12 10 Moving Normal
@@ -80,7 +80,7 @@ Goomba_Group 12 10 2 Normal
 Green_Koopa 7 10 Moving Normal
 Hammer_Bro 12 6 Normal
 Hammer_Bro 3 10 Normal
-Pipe_Pointer 11 Cloud_Bonus_2 0
+Pipe_Pointer 11 Cloud_Bonus_2 3 0
 Goomba 12 6 Normal
 Goomba 1 5 Normal
 Green_Koopa 9 10 Moving Normal

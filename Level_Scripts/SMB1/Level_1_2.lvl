@@ -95,7 +95,7 @@ Scroll_Stop_Warp_Zone 9
 Goomba 16 10 Normal
 Goomba 1 9 Normal
 Goomba 12 10 Normal
-Pipe_Pointer 16 Underground_Bonus 2
+Pipe_Pointer 16 Underground_Bonus 1 2
 Koopa_Group -1 10 2 Normal
 Green_Koopa 15 10 Moving Normal
 Goomba 3 10 Normal
@@ -111,6 +111,6 @@ Lift_Spawner 0 12 Down Large Normal
 Red_Koopa 7 10 Normal
 Lift_Spawner 8 0 Up Large Normal
 Lift_Spawner 0 8 Up Large Normal
-Pipe_Pointer 4 World_1_Level_1 11
+Pipe_Pointer 4 World_1_Level_1 1 11
 Warp_Zone 4
 ======================================================================

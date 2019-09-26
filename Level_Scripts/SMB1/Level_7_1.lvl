@@ -56,7 +56,7 @@ Flagpole 17
 Castle 4
 ======================================================================
 Green_Paratroopa 26 10 Leaping Hard
-Pipe_Pointer 3 Underground_Bonus 0
+Pipe_Pointer 3 Underground_Bonus 7 0
 Green_Paratroopa 15 10 Leaping Hard
 Green_Paratroopa 9 10 Leaping Normal
 Green_Paratroopa 12 10 Leaping Hard

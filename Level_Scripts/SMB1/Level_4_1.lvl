@@ -52,7 +52,7 @@ Cancel_Spawner 2
 Flagpole 3
 Castle 4
 ======================================================================
-Pipe_Pointer 18 Underground_Bonus 6
+Pipe_Pointer 18 Underground_Bonus 4 6
 Lakitu 12 1 Normal
 Page_Change 7
 Lakitu 0 1 Normal

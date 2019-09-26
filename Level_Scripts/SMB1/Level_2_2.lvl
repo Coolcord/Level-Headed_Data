@@ -73,9 +73,9 @@ Cancel_Spawner 3
 Scroll_Stop 7
 ======================================================================
 Page_Change 1
-Pipe_Pointer 2 World_1_Level_1 11
-Pipe_Pointer 0 World_1_Level_1 11
-Pipe_Pointer 2 World_1_Level_1 11
+Pipe_Pointer 2 World_1_Level_1 2 11
+Pipe_Pointer 0 World_1_Level_1 2 11
+Pipe_Pointer 2 World_1_Level_1 2 11
 Blooper 2 10 Normal
 Blooper 3 6 Hard
 Blooper 5 8 Normal

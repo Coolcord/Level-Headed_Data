@@ -67,12 +67,12 @@ Green_Koopa 1 10 Moving Normal
 Goomba_Group 9 10 2 Normal
 Green_Koopa 13 6 Moving Normal
 Goomba_Group 4 10 2 Normal
-Pipe_Pointer 4 Cloud_Bonus_1 0
+Pipe_Pointer 4 Cloud_Bonus_1 2 0
 Green_Koopa 3 10 Moving Normal
 Goomba_Group 2 10 3 Normal
 Goomba_Group 19 10 3 Normal
 Goomba 16 6 Normal
-Pipe_Pointer 8 Underground_Bonus 0
+Pipe_Pointer 8 Underground_Bonus 2 0
 Goomba 5 8 Normal
 Goomba 4 10 Normal
 Green_Koopa 17 10 Moving Normal

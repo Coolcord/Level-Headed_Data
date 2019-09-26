@@ -86,7 +86,7 @@ Castle 4
 ======================================================================
 Buzzy_Beetle 18 10 Normal
 Goomba_Group 5 10 3 Normal
-Pipe_Pointer 6 Underground_Bonus 2
+Pipe_Pointer 6 Underground_Bonus 8 2
 Goomba_Group 1 10 3 Normal
 Koopa_Group 13 10 2 Normal
 Green_Koopa 18 10 Moving Normal

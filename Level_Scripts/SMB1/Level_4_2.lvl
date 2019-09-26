@@ -92,13 +92,13 @@ Change_Brick_And_Scenery 3 All No_Scenery
 Scroll_Stop_Warp_Zone 9
 ======================================================================
 Page_Change 2
-Pipe_Pointer 1 Warp_Zone 0
+Pipe_Pointer 1 Warp_Zone 4 0
 Goomba_Group 10 6 3 Normal
 Lift_Spawner 15 4 Down Large Normal
 Green_Koopa 19 10 Moving Normal
 Buzzy_Beetle 6 10 Normal
 Buzzy_Beetle 5 10 Normal
-Pipe_Pointer 7 Underground_Bonus 8
+Pipe_Pointer 7 Underground_Bonus 4 8
 Koopa_Group 5 10 2 Normal
 Lift_Spawner 14 4 Down Large Normal
 Lift_Spawner 0 11 Down Large Normal
@@ -111,5 +111,5 @@ Lift_Spawner 0 11 Down Large Normal
 Koopa_Group 13 10 2 Normal
 Buzzy_Beetle 11 10 Normal
 Warp_Zone 5
-Pipe_Pointer 6 World_1_Level_1 11
+Pipe_Pointer 6 World_1_Level_1 4 11
 ======================================================================
