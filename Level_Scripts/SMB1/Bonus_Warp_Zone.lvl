@@ -1,15 +1,36 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 in Level-Headed
+SMB1 Warp_Zone in Level-Headed
 ======================================================================
 Attribute: Overworld
 Starting_Position: Overworld
 Brick_Pattern: Surface
 Background: Blank_Background
-Scenery: Mountains
-Compliment: Trees
-Time: 400
-Midpoint: 0
+Scenery: Only_Clouds
+Compliment: Mushrooms
 ======================================================================
+Hole 4 1
+Island 8 7 3
+Horizontal_Coins 0 6 3
+Island 4 3 3
+Horizontal_Coins 0 2 3
+Island 2 9 3
+Island 4 3 3
+Horizontal_Coins 0 2 3
+Island 0 9 5
+Island 4 5 3
+Horizontal_Coins 0 4 3
+Island 4 2 5
+Horizontal_Coins 0 1 5
+Island 1 8 7
+Horizontal_Coins 4 7 2
+End_Steps 5
+Horizontal_Blocks 8 2 12
+Enterable_Pipe 2 8 3
+Enterable_Pipe 4 8 3
+Enterable_Pipe 4 8 3
+Vertical_Blocks 4 0 11
+Vertical_Blocks 1 0 11
+Scroll_Stop_Warp_Zone 7
 ======================================================================
 ======================================================================

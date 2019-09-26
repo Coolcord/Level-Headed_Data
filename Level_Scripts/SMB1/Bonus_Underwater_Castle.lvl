@@ -1,15 +1,34 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 in Level-Headed
+SMB1 Underwater_Castle in Level-Headed
 ======================================================================
-Attribute: Overworld
-Starting_Position: Overworld
-Brick_Pattern: Surface
-Background: Blank_Background
-Scenery: Mountains
+Attribute: Underwater
+Starting_Position: Underwater
+Brick_Pattern: All
+Background: In_Water
+Scenery: No_Scenery
 Compliment: Trees
-Time: 400
-Midpoint: 0
 ======================================================================
+Change_Brick_And_Scenery 1 Surface No_Scenery
+Pipe 2 9 4
+Change_Brick_And_Scenery 2 Surface_4_And_Ceiling_3 No_Scenery
+Change_Brick_And_Scenery 5 Surface_5_And_Ceiling_4 No_Scenery
+Change_Brick_And_Scenery 7 Surface_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 21 Surface_4_And_Ceiling_4 No_Scenery
+Change_Brick_And_Scenery 3 Surface_And_Ceiling No_Scenery
+Page_Change 4
+Change_Brick_And_Scenery 2 Surface_5_And_Ceiling_4 No_Scenery
+Underwater_Sideways_Pipe 2 5
+Change_Brick_And_Scenery 0 All No_Scenery
+Scroll_Stop 10
 ======================================================================
+Fire_Bar 20 5 Clockwise Slow Normal
+Blooper 8 10 Normal
+Fire_Bar 3 8 Counter_Clockwise Slow Normal
+Fire_Bar 9 4 Clockwise Slow Normal
+Blooper 11 9 Normal
+Blooper 2 5 Normal
+Fire_Bar 3 6 Clockwise Slow Normal
+Fire_Bar 8 5 Counter_Clockwise Slow Normal
+Pipe_Pointer 2 World_8_Level_4 8 16
 ======================================================================

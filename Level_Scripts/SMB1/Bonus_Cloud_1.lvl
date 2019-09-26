@@ -1,15 +1,25 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 in Level-Headed
+SMB1 Cloud_Bonus_1 in Level-Headed
 ======================================================================
 Attribute: Overworld
 Starting_Position: Overworld
 Brick_Pattern: Surface
 Background: Blank_Background
-Scenery: Mountains
-Compliment: Trees
-Time: 400
-Midpoint: 0
+Scenery: No_Scenery
+Compliment: Clouds
 ======================================================================
+Hole 4 1
+Horizontal_Coins 11 4 16
+Page_Change 2
+Horizontal_Coins 0 2 3
+Horizontal_Coins 4 3 16
+Horizontal_Coins 17 2 3
+Change_Brick_And_Scenery 8 No_Bricks No_Scenery
+Horizontal_Coins 8 10 3
+Scroll_Stop 15
 ======================================================================
+Surfing_Lift 16 9 Normal
+Pipe_Pointer 0 World_2_Level_1 2 10
+Pipe_Pointer 0 World_5_Level_2 5 8
 ======================================================================

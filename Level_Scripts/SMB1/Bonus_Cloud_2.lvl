@@ -1,0 +1,36 @@
+SMB1_Compliance_Level
+======================================================================
+SMB1 Cloud_Bonus_2 in Level-Headed
+======================================================================
+Attribute: Overworld
+Starting_Position: Overworld
+Brick_Pattern: Surface
+Background: Night_And_Snow
+Scenery: No_Scenery
+Compliment: Clouds
+======================================================================
+Hole 4 1
+Horizontal_Coins 11 4 16
+Page_Change 2
+Horizontal_Bricks 0 6 1
+Horizontal_Coins 2 4 16
+Horizontal_Bricks 17 5 1
+Horizontal_Bricks 0 6 1
+Horizontal_Coins 2 3 7
+Horizontal_Bricks 8 5 1
+Horizontal_Bricks 0 6 1
+Horizontal_Bricks 6 4 2
+Horizontal_Coins 4 3 10
+Horizontal_Bricks 0 4 1
+Horizontal_Bricks 2 4 1
+Horizontal_Bricks 2 4 1
+Horizontal_Bricks 2 4 1
+Horizontal_Bricks 2 4 1
+Change_Brick_And_Scenery 3 No_Bricks No_Scenery
+Horizontal_Coins 3 9 3
+Scroll_Stop 15
+======================================================================
+Surfing_Lift 16 9 Normal
+Pipe_Pointer 0 World_3_Level_1 3 10
+Pipe_Pointer 1 World_6_Level_2 6 10
+======================================================================

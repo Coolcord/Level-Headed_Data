@@ -25,8 +25,8 @@ int main(int argc, char *argv[]) {
     //Place Arguments Here
     //=======================================================
     args.levelType = Level_Type::STANDARD_OVERWORLD;
-    args.levelCompliment = Level_Compliment::BULLET_BILL_TURRETS;
-    bool object = false;
+    args.levelCompliment = Level_Compliment::TREES;
+    bool object = true;
     //qint64 offset = 0x000026A0; //Level 1-1 Objects
     //qint64 offset = 0x00001F11; //Level 1-1 Enemies
     //qint64 offset = 0x00002C47; //Level 1-2 Objects
@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
     //qint64 offset = 0x000024E0; //Level 8-3 Objects
     //qint64 offset = 0x00001E8E; //Level 8-3 Enemies
     //qint64 offset = 0x0000240C; //Level 8-4 Objects
-    qint64 offset = 0x00001E2F; //Level 8-4 Enemies
+    //qint64 offset = 0x00001E2F; //Level 8-4 Enemies
 
     //qint64 offset = 0x00002844; //Pipe_Intro Objects
     //qint64 offset = 0x00002D8B; //Underground_Bonus Objects
@@ -99,7 +99,7 @@ int main(int argc, char *argv[]) {
     //qint64 offset = 0x00001FB0; //Cloud_Bonus_1 Enemies
     //qint64 offset = 0x00002BE9; //Cloud_Bonus_2 Objects
     //qint64 offset = 0x000020BA; //Cloud_Bonus_2 Enemies
-    //qint64 offset = 0x000029E0; //Warp_Zone Objects
+    qint64 offset = 0x000029E0; //Warp_Zone Objects
     //qint64 offset = 0x00002E18; //Underwater_Bonus Objects
     //qint64 offset = 0x00002170; //Underwater_Bonus Enemies
     //qint64 offset = 0x00002ED2; //Castle_Underwater Objects

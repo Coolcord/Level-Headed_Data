@@ -1,15 +1,16 @@
 SMB1_Compliance_Level
 ======================================================================
-SMB1 Level 1-1 in Level-Headed
+SMB1 Pipe_Intro in Level-Headed
 ======================================================================
 Attribute: Overworld
-Starting_Position: Overworld
+Starting_Position: Overworld_Walking
 Brick_Pattern: Surface
 Background: Blank_Background
-Scenery: Mountains
+Scenery: Only_Clouds
 Compliment: Trees
-Time: 400
-Midpoint: 0
 ======================================================================
+Castle 0
+Reverse_L_Pipe 10
+Scroll_Stop 9
 ======================================================================
 ======================================================================
