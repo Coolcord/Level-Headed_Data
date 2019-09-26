@@ -47,12 +47,12 @@ World_8_Level_1 "Level_8_1.lvl"
 World_8_Level_2 "Level_8_2.lvl"
 World_8_Level_3 "Level_8_3.lvl"
 World_8_Level_4 "Level_8_4.lvl"
-# ======================================================================
+======================================================================
 # Bonus Areas
-# Underground_Bonus "Bonus_Underground.lvl"
-# Cloud_Bonus_1 "Bonus_Cloud_1.lvl"
-# Cloud_Bonus_2 "Bonus_Cloud_2.lvl"
-# Underwater_Bonus "Bonus_Underwater.lvl"
-# Warp_Zone "Bonus_Warp_Zone.lvl"
-# Underwater_Castle "Bonus_Underwater_Castle.lvl"
+Underground_Bonus "Bonus_Underground.lvl"
+Cloud_Bonus_1 "Bonus_Cloud_1.lvl"
+Cloud_Bonus_2 "Bonus_Cloud_2.lvl"
+Underwater_Bonus "Bonus_Underwater.lvl"
+Warp_Zone "Bonus_Warp_Zone.lvl"
+Underwater_Castle "Bonus_Underwater_Castle.lvl"
 ======================================================================
