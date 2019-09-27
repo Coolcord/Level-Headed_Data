@@ -11,8 +11,10 @@ Compliment: Trees
 Time: 400
 Midpoint: 0
 ======================================================================
-Flagpole 5
-Change_Brick_And_Scenery 4 No_Bricks No_Scenery
+Horizontal_Blocks 4 10 2
+Vertical_Blocks 1 1 8
+Flagpole 1
+Change_Brick_And_Scenery 3 No_Bricks No_Scenery
 Trampoline 0 11
 Trampoline 2 9
 Trampoline 2 7
@@ -23,25 +25,17 @@ Flagpole 3
 Vertical_Blocks 0 11 2
 Horizontal_Blocks 2 7 14
 Horizontal_Coins 2 6 10
-Page_Change 4
-Horizontal_Blocks 9 6 10
+Horizontal_Blocks 23 6 8
 Vertical_Blocks 1 0 5
-Question_Block_With_Mushroom 1 3
-Trampoline 0 6
-Horizontal_Blocks 1 3 11
-Vertical_Blocks 6 7 6
+Horizontal_Blocks 1 3 16
+Vertical_Blocks 5 6 7
 Island 2 11 9
 Castle 2
-Horizontal_Blocks 1 4 1
-Horizontal_Blocks 1 5 1
-Horizontal_Blocks 1 4 1
-Horizontal_Blocks 1 3 4
-Vertical_Blocks 4 3 10
+Vertical_Blocks 7 3 10
 Page_Change 8
 ======================================================================
 Page_Change 3
-Surfing_Lift 3 7 Normal
-Surfing_Lift 6 7 Normal
-Surfing_Lift 6 7 Normal
-Lift 6 11 Vertical Normal
+Surfing_Lift 3 8 Normal
+Surfing_Lift 4 8 Normal
+Lift 4 12 Vertical Normal
 ======================================================================
