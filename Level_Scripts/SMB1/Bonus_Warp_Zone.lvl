@@ -8,6 +8,7 @@ Brick_Pattern: Surface
 Background: Blank_Background
 Scenery: Only_Clouds
 Compliment: Mushrooms
+Time: 0
 ======================================================================
 Hole 4 1
 Island 8 7 3

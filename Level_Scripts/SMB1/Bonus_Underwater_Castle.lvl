@@ -8,6 +8,7 @@ Brick_Pattern: All
 Background: In_Water
 Scenery: No_Scenery
 Compliment: Trees
+Time: 0
 ======================================================================
 Change_Brick_And_Scenery 1 Surface No_Scenery
 Pipe 2 9 4

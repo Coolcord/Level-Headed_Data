@@ -8,6 +8,7 @@ Brick_Pattern: Surface
 Background: Blank_Background
 Scenery: No_Scenery
 Compliment: Trees
+Time: 0
 ======================================================================
 Change_Brick_And_Scenery 0 Surface No_Scenery
 Vertical_Bricks 0 0 11

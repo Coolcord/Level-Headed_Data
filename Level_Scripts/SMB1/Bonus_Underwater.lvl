@@ -8,6 +8,7 @@ Brick_Pattern: Surface
 Background: In_Water
 Scenery: No_Scenery
 Compliment: Trees
+Time: 0
 ======================================================================
 Horizontal_Blocks 11 4 5
 Coral 1 8 3

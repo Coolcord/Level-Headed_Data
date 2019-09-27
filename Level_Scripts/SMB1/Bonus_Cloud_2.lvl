@@ -8,6 +8,7 @@ Brick_Pattern: Surface
 Background: Night_And_Snow
 Scenery: No_Scenery
 Compliment: Clouds
+Time: 0
 ======================================================================
 Hole 4 1
 Horizontal_Coins 11 4 16

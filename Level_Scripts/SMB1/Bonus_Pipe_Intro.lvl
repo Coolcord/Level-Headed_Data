@@ -8,6 +8,7 @@ Brick_Pattern: Surface
 Background: Blank_Background
 Scenery: Only_Clouds
 Compliment: Trees
+Time: 0
 ======================================================================
 Castle 0
 Reverse_L_Pipe 10
