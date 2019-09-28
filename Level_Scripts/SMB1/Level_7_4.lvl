@@ -24,44 +24,44 @@ Vertical_Blocks 2 6 2
 Vertical_Blocks 1 5 3
 Change_Brick_And_Scenery 0 Surface_And_Ceiling_And_Middle_4 No_Scenery
 Change_Brick_And_Scenery 12 Surface_And_Ceiling No_Scenery
+Vertical_Blocks 0 1 2
 Horizontal_Blocks 5 8 13
 Horizontal_Blocks 1 4 11
-Loop_Command 0
-Change_Brick_And_Scenery 14 Surface_And_Ceiling_And_Middle_4 No_Scenery
-Loop_Command 2
-Change_Brick_And_Scenery 16 Surface_And_Ceiling No_Scenery
+Vertical_Blocks 10 1 2
+Change_Brick_And_Scenery 4 Surface_And_Ceiling_And_Middle_4 No_Scenery
+Change_Brick_And_Scenery 18 Ceiling No_Scenery
 Vertical_Blocks 1 4 3
 Vertical_Blocks 1 4 2
 Horizontal_Blocks 1 4 2
-Loop_Command 1
-Change_Brick_And_Scenery 1 Surface_4_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 2 Surface_4_And_Ceiling No_Scenery
 Change_Brick_And_Scenery 3 Surface_And_Ceiling No_Scenery
 Page_Change 6
-Horizontal_Blocks 3 4 2
-Change_Brick_And_Scenery 0 Ceiling No_Scenery
+Change_Brick_And_Scenery 3 Ceiling No_Scenery
+Horizontal_Blocks 0 4 2
 Horizontal_Blocks 3 4 3
-Used_Block 1 5
-Vertical_Blocks 0 11 2
-Horizontal_Blocks 3 4 4
-Change_Brick_And_Scenery 0 Surface_And_Ceiling No_Scenery
+Vertical_Blocks 1 11 2
+Used_Block 0 5
+Change_Brick_And_Scenery 3 Surface_And_Ceiling No_Scenery
+Horizontal_Blocks 0 4 4
 Change_Brick_And_Scenery 3 Surface_And_Ceiling_And_Middle_4 No_Scenery
 Change_Brick_And_Scenery 6 Surface_And_Ceiling No_Scenery
 Horizontal_Blocks 3 4 3
 Horizontal_Blocks 1 8 3
 Horizontal_Blocks 4 4 7
 Horizontal_Blocks 1 8 7
-Loop_Command 1
-Horizontal_Blocks 7 4 3
-Horizontal_Blocks 1 8 3
-Vertical_Blocks 4 4 4
-Horizontal_Blocks 1 4 15
+Vertical_Blocks 5 1 2
+Horizontal_Blocks 3 4 3
+Vertical_Blocks 5 4 4
+Horizontal_Blocks 1 4 14
 Horizontal_Blocks 1 10 1
-Vertical_Blocks 1 9 2
-Change_Brick_And_Scenery 0 Surface_4_And_Ceiling No_Scenery
-Loop_Command 1
-Change_Brick_And_Scenery 15 Surface_4_And_Ceiling No_Scenery
-Loop_Command 1
-Change_Brick_And_Scenery 2 Surface_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 1 Surface_4_And_Ceiling No_Scenery
+Vertical_Blocks 0 9 2
+Change_Brick_And_Scenery 3 Ceiling No_Scenery
+Vertical_Blocks 4 11 2
+Change_Brick_And_Scenery 4 Surface_And_Ceiling No_Scenery
+Vertical_Blocks 1 4 5
+Change_Brick_And_Scenery 1 Surface_4_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 6 Surface_And_Ceiling No_Scenery
 Change_Brick_And_Scenery 3 Surface_4_And_Ceiling No_Scenery
 Change_Brick_And_Scenery 3 Surface_And_Ceiling No_Scenery
 Change_Brick_And_Scenery 2 Surface_4_And_Ceiling No_Scenery

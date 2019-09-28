@@ -20,26 +20,26 @@ Page_Change 1
 Pipe 3 9 4
 Page_Change 3
 Enterable_Pipe 3 9 4
-Loop_Command 1
-Change_Brick_And_Scenery 9 Surface_4_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 10 Surface_4_And_Ceiling No_Scenery
 Change_Brick_And_Scenery 4 Ceiling No_Scenery
 Change_Brick_And_Scenery 9 Surface_4_And_Ceiling No_Scenery
 Horizontal_Blocks 2 4 4
 Enterable_Pipe 5 6 7
 Pipe 9 5 8
-Change_Brick_And_Scenery 5 Surface_And_Ceiling No_Scenery
-Change_Brick_And_Scenery 16 Surface_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 5 Ceiling No_Scenery
+Change_Brick_And_Scenery 7 Surface_And_Ceiling No_Scenery
+Scroll_Stop 5
 Page_Change 7
 Pipe 3 9 4
 Pipe 7 8 5
-Loop_Command 4
-Enterable_Pipe 6 9 4
+Enterable_Pipe 10 9 4
 Pipe 10 8 5
 Change_Brick_And_Scenery 1 Ceiling No_Scenery
 Change_Brick_And_Scenery 3 Surface_And_Ceiling No_Scenery
 Hidden_Block_With_Coin 4 7
 Enterable_Pipe 2 4 3
 Horizontal_Blocks 0 7 2
+Scroll_Stop 16
 Page_Change 11
 Change_Brick_And_Scenery 15 Surface_And_Ceiling No_Scenery
 Page_Change 12
@@ -50,10 +50,10 @@ Enterable_Pipe 8 5 8
 Change_Brick_And_Scenery 7 Ceiling No_Scenery
 Flying_Cheep_Cheep_Spawner 2
 Change_Brick_And_Scenery 2 Surface_4_And_Ceiling No_Scenery
-Loop_Command 4
-Enterable_Pipe 1 6 7
+Enterable_Pipe 5 6 7
 Cancel_Spawner 6
-Change_Brick_And_Scenery 21 Surface_And_Ceiling No_Scenery
+Scroll_Stop 10
+Change_Brick_And_Scenery 11 Surface_And_Ceiling No_Scenery
 Pipe 4 9 4
 Enterable_Pipe 7 9 4
 Change_Brick_And_Scenery 10 Ceiling No_Scenery

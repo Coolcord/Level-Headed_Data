@@ -36,7 +36,6 @@ Change_Brick_And_Scenery 3 Surface_And_Ceiling_And_Middle_4 No_Scenery
 Page_Change 4
 Change_Brick_And_Scenery 10 Surface_And_Ceiling No_Scenery
 Change_Brick_And_Scenery 2 Surface_4_And_Ceiling_4 No_Scenery
-Loop_Command 0
 Change_Brick_And_Scenery 3 Surface_And_Ceiling No_Scenery
 Page_Change 5
 Horizontal_Blocks 6 8 2
@@ -56,14 +55,15 @@ Horizontal_Blocks 1 4 2
 Horizontal_Blocks 4 4 2
 Horizontal_Blocks 2 4 16
 Horizontal_Blocks 0 8 16
-Horizontal_Blocks 16 4 16
+Horizontal_Blocks 16 4 15
 Horizontal_Blocks 0 8 16
-Loop_Command 12
-Vertical_Blocks 4 3 5
-Change_Brick_And_Scenery 0 Surface_And_Ceiling_3 No_Scenery
-Change_Brick_And_Scenery 2 Surface No_Scenery
-Change_Brick_And_Scenery 5 Surface_4_And_Ceiling No_Scenery
-Change_Brick_And_Scenery 4 Surface_And_Ceiling No_Scenery
+Vertical_Blocks 16 3 6
+Horizontal_Blocks 1 3 3
+Horizontal_Blocks 1 8 3
+Vertical_Blocks 0 6 2
+Vertical_Blocks 3 1 7
+Change_Brick_And_Scenery 3 Surface_4_And_Ceiling No_Scenery
+Change_Brick_And_Scenery 3 Surface_And_Ceiling No_Scenery
 Change_Brick_And_Scenery 2 Surface_4_And_Ceiling No_Scenery
 Change_Brick_And_Scenery 2 Ceiling No_Scenery
 Bowser_Bridge 1
@@ -81,8 +81,8 @@ Page_Change 7
 Fire_Bar 3 4 Clockwise Slow Normal
 Fire_Bar 7 8 Clockwise Slow Normal
 Bowser_Fire_Spawner 10 Normal
-Page_Change 10
-Fire_Bar 2 8 Clockwise Slow Normal
+Large_Fire_Bar 13 3 Normal
+Fire_Bar 17 8 Clockwise Slow Normal
 Podoboo 3 Normal
 Bowser 2 Normal
 Toad 18 Normal
