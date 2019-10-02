@@ -6784,8 +6784,8 @@ ThreeSChk: stx ObjectOffset            ;start at third enemy slot
 FireCannon:
           lda TimerControl           ;if master timer control set,
           bne Chk_BB                 ;branch to check enemy
-          lda #$0e                   ;otherwise we start creating one
-          sta Cannon_Timer,y         ;first, reset cannon timer
+          lda #$0e                   ;otherwise we start creating one  [A90E]
+          sta Cannon_Timer,y         ;first, reset cannon timer  [997D04]
           lda Cannon_PageLoc,y       ;get page location of cannon
           sta Enemy_PageLoc,x        ;save as page location of bullet bill
           lda Cannon_X_Position,y    ;get horizontal coordinate of cannon
