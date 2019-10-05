@@ -24,4 +24,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    ../../../Hexagon/Hexagon/Hexagon_Interface.h \
+    ../../../Hexagon/Hexagon_GUI/Common_Strings.h \
     Graphics_Ripper.h
