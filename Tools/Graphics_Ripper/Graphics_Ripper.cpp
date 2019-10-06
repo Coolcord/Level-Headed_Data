@@ -9,10 +9,11 @@ Graphics_Ripper::Graphics_Ripper(const QString &applicationLocation, const QStri
     this->applicationLocation = applicationLocation;
     this->originalFileLocation = originalFileLocation;
     this->patchFileLocation = patchFileLocation;
+    this->hexagon = hexagon;
     this->outputFile = nullptr;
     this->originalFile = nullptr;
     this->workingFile = nullptr;
-    this->hexagon = hexagon;
+    this->baseFile = nullptr;
 }
 
 Graphics_Ripper::~Graphics_Ripper() {
@@ -90,15 +91,16 @@ bool Graphics_Ripper::Rip_Bullet_Bill() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Bullet_Bill");
+    return this->Create_Patch("Bullet Bill");
 }
 
 bool Graphics_Ripper::Rip_Buzzy_Beetle() {
     if (!this->Apply_Patch()) return false;
-
-
-    //TODO: WRITE THIS!!!
-    return this->Create_Patch("Buzzy_Beetle");
+    bool sprite = true;
+    QStack<qint64> offsets; offsets.push(0x674E); offsets.push(0x6754); offsets.push(0x67C0); offsets.push(0x67C6); offsets.push(0x67CC); offsets.push(0x67D2);
+    if (this->Does_Patch_Use_New_Tiles(QByteArray::fromHex(QString("AAABACADAEAFB0B1F4F5").toLatin1()), offsets, sprite)) return true; //nothing to do
+    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite)) return false;
+    return this->Create_Patch("Buzzy Beetle");
 }
 
 bool Graphics_Ripper::Rip_Castle_Flag() {
@@ -106,7 +108,7 @@ bool Graphics_Ripper::Rip_Castle_Flag() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Castle_Flag");
+    return this->Create_Patch("Castle Flag");
 }
 
 bool Graphics_Ripper::Rip_Cheep_Cheep() {
@@ -114,7 +116,7 @@ bool Graphics_Ripper::Rip_Cheep_Cheep() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Cheep_Cheep");
+    return this->Create_Patch("Cheep Cheep");
 }
 
 bool Graphics_Ripper::Rip_Coin_Animation() {
@@ -122,7 +124,7 @@ bool Graphics_Ripper::Rip_Coin_Animation() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Coin_Animation");
+    return this->Create_Patch("Coin Animation");
 }
 
 bool Graphics_Ripper::Rip_Explosion() {
@@ -142,7 +144,7 @@ bool Graphics_Ripper::Rip_Flagpole_Flag() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Flagpole_Flag");
+    return this->Create_Patch("Flagpole Flag");
 }
 
 bool Graphics_Ripper::Rip_Goomba() {
@@ -158,7 +160,7 @@ bool Graphics_Ripper::Rip_Hammer_Bro() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Hammer_Bro");
+    return this->Create_Patch("Hammer Bro");
 }
 
 bool Graphics_Ripper::Rip_Jump_Spring() {
@@ -166,7 +168,7 @@ bool Graphics_Ripper::Rip_Jump_Spring() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Jump_Spring");
+    return this->Create_Patch("Jump Spring");
 }
 
 bool Graphics_Ripper::Rip_Koopa() {
@@ -202,7 +204,7 @@ bool Graphics_Ripper::Rip_Mario() {
 bool Graphics_Ripper::Rip_One_Up_Font() {
     if (!this->Apply_Patch()) return false;
     if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("FDFE").toLatin1()))) return false;
-    return this->Create_Patch("Score_Font");
+    return this->Create_Patch("Font One Up");
 }
 
 bool Graphics_Ripper::Rip_Peach() {
@@ -218,7 +220,7 @@ bool Graphics_Ripper::Rip_Piranha_Plant() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Piranha_Plant");
+    return this->Create_Patch("Piranha Plant");
 }
 
 bool Graphics_Ripper::Rip_Podoboo() {
@@ -232,13 +234,13 @@ bool Graphics_Ripper::Rip_Podoboo() {
 bool Graphics_Ripper::Rip_Score_Font() {
     if (!this->Apply_Patch()) return false;
     if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("50F6F7F8F9FAFB").toLatin1()))) return false;
-    return this->Create_Patch("Score_Font");
+    return this->Create_Patch("Font Score");
 }
 
 bool Graphics_Ripper::Rip_Sky_Lift() {
     if (!this->Apply_Patch()) return false;
     if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("75").toLatin1()))) return false;
-    return this->Create_Patch("Sky_Lift");
+    return this->Create_Patch("Lift Sky");
 }
 
 bool Graphics_Ripper::Rip_Spiny() {
@@ -254,7 +256,7 @@ bool Graphics_Ripper::Rip_Spiny_Egg() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Spiny_Egg");
+    return this->Create_Patch("Spiny Egg");
 }
 
 bool Graphics_Ripper::Rip_Toad() {
@@ -278,7 +280,7 @@ bool Graphics_Ripper::Rip_Brick_Block() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Brick_Block");
+    return this->Create_Patch("Brick Block");
 }
 
 bool Graphics_Ripper::Rip_Bridge() {
@@ -294,7 +296,7 @@ bool Graphics_Ripper::Rip_Bowser_Bridge() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Bowser_Bridge");
+    return this->Create_Patch("Bowser Bridge");
 }
 
 bool Graphics_Ripper::Rip_Bullet_Bill_Cannon() {
@@ -302,7 +304,7 @@ bool Graphics_Ripper::Rip_Bullet_Bill_Cannon() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Bullet_Bill_Cannon");
+    return this->Create_Patch("Bullet Bill Cannon");
 }
 
 bool Graphics_Ripper::Rip_Castle_Block() {
@@ -310,7 +312,7 @@ bool Graphics_Ripper::Rip_Castle_Block() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Castle_Block");
+    return this->Create_Patch("Block Castle");
 }
 
 bool Graphics_Ripper::Rip_Chain() {
@@ -326,7 +328,7 @@ bool Graphics_Ripper::Rip_Cloud_Block() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Cloud_Block");
+    return this->Create_Patch("Block Cloud");
 }
 
 bool Graphics_Ripper::Rip_Coin() {
@@ -350,7 +352,7 @@ bool Graphics_Ripper::Rip_Fire_Flower() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Fire_Flower");
+    return this->Create_Patch("Powerup Fire Flower");
 }
 
 bool Graphics_Ripper::Rip_Flagpole() {
@@ -374,7 +376,7 @@ bool Graphics_Ripper::Rip_Mushroom_Powerup() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Mushroom_Powerup");
+    return this->Create_Patch("Powerup Mushroom");
 }
 
 bool Graphics_Ripper::Rip_Mushroom_Platform() {
@@ -382,7 +384,7 @@ bool Graphics_Ripper::Rip_Mushroom_Platform() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Mushroom_Platform");
+    return this->Create_Patch("Island Mushroom");
 }
 
 bool Graphics_Ripper::Rip_Overworld_Block() {
@@ -390,7 +392,7 @@ bool Graphics_Ripper::Rip_Overworld_Block() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Overworld_Block");
+    return this->Create_Patch("Block Overworld");
 }
 
 bool Graphics_Ripper::Rip_Pipe() {
@@ -406,7 +408,7 @@ bool Graphics_Ripper::Rip_Question_Block() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Question_Block");
+    return this->Create_Patch("Question Block");
 }
 
 bool Graphics_Ripper::Rip_Rope() {
@@ -422,7 +424,7 @@ bool Graphics_Ripper::Rip_Solid_Block() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Solid_Block");
+    return this->Create_Patch("Solid Block");
 }
 
 bool Graphics_Ripper::Rip_Tree_Platform() {
@@ -430,7 +432,7 @@ bool Graphics_Ripper::Rip_Tree_Platform() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Tree_Platform");
+    return this->Create_Patch("Island Tree");
 }
 
 bool Graphics_Ripper::Rip_Underwater_Block() {
@@ -438,7 +440,7 @@ bool Graphics_Ripper::Rip_Underwater_Block() {
 
 
     //TODO: WRITE THIS!!!
-    return this->Create_Patch("Underwater_Block");
+    return this->Create_Patch("Block Underwater");
 }
 
 bool Graphics_Ripper::Rip_Water() {
@@ -454,19 +456,22 @@ bool Graphics_Ripper::Apply_Patch() {
 
     //Create the Patched file
     int lineNum = 0;
-    QString outputLocation = this->applicationLocation+"/"+QFileInfo(this->patchFileLocation).baseName()+".nes";
+    QString outputLocation = this->applicationLocation+"/"+this->Get_Base_Name_From_Path(this->patchFileLocation)+".nes";
     if (this->hexagon->Apply_Hexagon_Patch(this->patchFileLocation, this->originalFileLocation, outputLocation, false, lineNum) != Hexagon_Error_Codes::OK) return false;
     this->outputFile = new QFile(outputLocation);
     if (!this->outputFile->open(QIODevice::ReadWrite)) return false;
 
     //Open the original file and create a working copy
     if (!this->Recreate_Working_File()) { this->Close_Files(); return false; }
-
-    return this->Make_Directory_Structure(); //create all of the necessary folders
+    return true;
 }
 
 bool Graphics_Ripper::Create_Patch(const QString &sprite) {
-    if (this->hexagon->Create_Hexagon_Patch(this->originalFileLocation, this->workingFileLocation, this->applicationLocation+"/Sprites/"+sprite+"/"+QFileInfo(this->patchFileLocation).baseName()+".hexp", 5, false, false) != Hexagon_Error_Codes::OK) return false;
+    QDir dir(this->applicationLocation);
+    dir.mkdir("Sprites");
+    if (!dir.cd("Sprites")) return false;
+    dir.mkdir(sprite);
+    if (this->hexagon->Create_Hexagon_Patch(this->baseFileLocation, this->workingFileLocation, this->applicationLocation+"/Sprites/"+sprite+"/"+this->Get_Base_Name_From_Path(this->patchFileLocation)+".hexp", 5, false, false) != Hexagon_Error_Codes::OK) return false;
     return this->Recreate_Working_File();
 }
 
@@ -486,66 +491,63 @@ void Graphics_Ripper::Close_Working_Files() {
         this->workingFile->close();
         this->workingFile->remove();
     }
+    if (this->baseFile) {
+        this->baseFile->close();
+        this->baseFile->remove();
+    }
     delete this->originalFile;
     delete this->workingFile;
+    delete this->baseFile;
     this->originalFile = nullptr;
     this->workingFile = nullptr;
+    this->baseFile = nullptr;
+    this->writtenSpriteTiles.clear();
+    this->writtenBackgroundTiles.clear();
 }
 
-bool Graphics_Ripper::Make_Directory_Structure() {
-    QDir dir(this->applicationLocation);
-    dir.mkdir("Sprites");
-    if (!dir.cd("Sprites")) return false;
-    dir.mkdir("Air_Bubble");
-    dir.mkdir("Blooper");
-    dir.mkdir("Bowser");
-    dir.mkdir("Bullet_Bill");
-    dir.mkdir("Buzzy_Beetle");
-    dir.mkdir("Castle_Flag");
-    dir.mkdir("Cheep_Cheep");
-    dir.mkdir("Coin_Animation");
-    dir.mkdir("Explosion");
-    dir.mkdir("Fireball");
-    dir.mkdir("Flagpole_Flag");
-    dir.mkdir("Goomba");
-    dir.mkdir("Hammer_Bro");
-    dir.mkdir("Jump_Spring");
-    dir.mkdir("Koopa");
-    dir.mkdir("Lakitu");
-    dir.mkdir("Lift");
-    dir.mkdir("Mario");
-    dir.mkdir("One_Up_Font");
-    dir.mkdir("Peach");
-    dir.mkdir("Piranha_Plant");
-    dir.mkdir("Podoboo");
-    dir.mkdir("Score_Font");
-    dir.mkdir("Sky_Lift");
-    dir.mkdir("Spiny");
-    dir.mkdir("Spiny_Egg");
-    dir.mkdir("Toad");
-    dir.mkdir("Axe");
-    dir.mkdir("Brick_Block");
-    dir.mkdir("Bridge");
-    dir.mkdir("Bowser_Bridge");
-    dir.mkdir("Bullet_Bill_Cannon");
-    dir.mkdir("Castle_Block");
-    dir.mkdir("Chain");
-    dir.mkdir("Cloud_Block");
-    dir.mkdir("Coin");
-    dir.mkdir("Coral");
-    dir.mkdir("Fire_Flower");
-    dir.mkdir("Flagpole");
-    dir.mkdir("Font");
-    dir.mkdir("Mushroom_Powerup");
-    dir.mkdir("Mushroom_Platform");
-    dir.mkdir("Overworld_Block");
-    dir.mkdir("Pipe");
-    dir.mkdir("Question_Block");
-    dir.mkdir("Rope");
-    dir.mkdir("Solid_Block");
-    dir.mkdir("Tree_Platform");
-    dir.mkdir("Underwater_Block");
-    dir.mkdir("Water");
+bool Graphics_Ripper::Does_Patch_Use_New_Tiles(const QByteArray &oldTiles, qint64 offset, bool sprite) {
+    QStack<qint64> offsets;
+    offsets.push(offset);
+    return this->Does_Patch_Use_New_Tiles(oldTiles, offsets, sprite);
+}
+
+bool Graphics_Ripper::Does_Patch_Use_New_Tiles(const QByteArray &oldTiles, QStack<qint64> offsets, bool sprite) {
+    //TODO: Update this to allow blank tiles that are not 0xFC. Also, new tiles will somehow need to be updated if a blank tile that is not 0xFC is used
+
+    QSet<char> tiles;
+    if (sprite) tiles.insert(static_cast<char>(0xFC));
+    else tiles.insert(static_cast<char>(0x24));
+    for (char c : oldTiles) tiles.insert(c);
+    while (!offsets.isEmpty()) {
+        qint64 offset = offsets.pop();
+        assert(this->outputFile->seek(offset));
+        QByteArray newTiles = this->outputFile->read(6);
+        assert(newTiles.size() == 6);
+        for (char c : newTiles) {
+            if (!tiles.contains(c)) return true;
+        }
+    }
+    return false;
+}
+
+QString Graphics_Ripper::Get_Base_Name_From_Path(const QString &path) {
+    QString baseName;
+    QStringList strings = QFileInfo(path).fileName().split('.');
+    strings.removeLast();
+    for (int i = 0; i < strings.size()-1; ++i) {
+        baseName += strings.at(i) + ".";
+    }
+    baseName += strings.last();
+    return baseName;
+}
+
+bool Graphics_Ripper::Is_Tile_Blank(char tileID, bool sprite) {
+    QByteArray graphicsBytes;
+    if (sprite) assert(this->Read_Graphics_Bytes_From_Sprite_Tile_ID(tileID, graphicsBytes));
+    else assert(this->Read_Graphics_Bytes_From_Background_Tile_ID(tileID, graphicsBytes));
+    for (int i = 0; i < graphicsBytes.size(); ++i) {
+        if (graphicsBytes.at(i) != static_cast<char>(0x00)) return false;
+    }
     return true;
 }
 
@@ -572,7 +574,20 @@ bool Graphics_Ripper::Recreate_Working_File() {
         if (!this->originalFile->open(QIODevice::ReadWrite)) { this->Close_Working_Files(); return false; }
     }
 
+    //Create the base file if necessary
+    QByteArray buffer(static_cast<int>(this->originalFile->size()), static_cast<char>(0x52));
+    if (!this->baseFile) {
+        this->baseFileLocation = this->applicationLocation+"/"+this->Get_Base_Name_From_Path(this->patchFileLocation)+"_base.nes";
+        if (QFileInfo(this->baseFileLocation).exists()) QFile(this->baseFileLocation).remove();
+        this->baseFile = new QFile(this->baseFileLocation);
+        if (!this->baseFile->open(QIODevice::ReadWrite)) { this->Close_Working_Files(); return false; }
+        if (this->baseFile->write(buffer) != buffer.size()) return false;
+        if (!this->baseFile->reset()) return false;
+    }
+
     //Delete the old working file if it exists
+    this->writtenSpriteTiles.clear();
+    this->writtenBackgroundTiles.clear();
     if (this->workingFile) {
         this->workingFile->close();
         this->workingFile->remove();
@@ -581,13 +596,10 @@ bool Graphics_Ripper::Recreate_Working_File() {
     }
 
     //Create a copy of the original file to work with
-    this->workingFileLocation = this->applicationLocation+"/"+QFileInfo(this->patchFileLocation).baseName()+"_working.nes";
+    this->workingFileLocation = this->applicationLocation+"/"+this->Get_Base_Name_From_Path(this->patchFileLocation)+"_working.nes";
     if (QFileInfo(this->workingFileLocation).exists()) QFile(this->workingFileLocation).remove();
     this->workingFile = new QFile(this->workingFileLocation);
     if (!this->workingFile->open(QIODevice::ReadWrite)) { this->Close_Working_Files(); return false; }
-    if (!this->originalFile->reset()) return false;
-    QByteArray buffer = this->originalFile->readAll();
-    if (!this->originalFile->reset()) return false;
     if (this->workingFile->write(buffer) != buffer.size()) return false;
     if (!this->workingFile->reset()) return false;
     return true;
@@ -601,19 +613,63 @@ bool Graphics_Ripper::Write_Sprite_Tiles_To_Working_File(const QByteArray &tiles
     return this->Write_Tiles_To_Working_File(tiles, true);
 }
 
+bool Graphics_Ripper::Write_Tiles_And_Order_To_Working_File(qint64 offset, bool sprite) {
+    QStack<qint64> offsets;
+    offsets.push(offset);
+    return this->Write_Tiles_And_Order_To_Working_File(offsets, sprite);
+}
+
+bool Graphics_Ripper::Write_Tiles_And_Order_To_Working_File(QStack<qint64> offsets, bool sprite) {
+    while (!offsets.isEmpty()) {
+        qint64 offset = offsets.pop();
+        //Read the tile order
+        if (!this->outputFile->seek(offset)) return false;
+        QByteArray tileOrder = this->outputFile->read(6);
+        if (tileOrder.size() != 6) return false;
+
+        //Update blank tiles
+        for (int i = 0; i < tileOrder.size(); ++i) {
+            if (this->Is_Tile_Blank(tileOrder.at(i), sprite)) {
+                if (sprite) tileOrder.data()[i] = static_cast<char>(0xFC);
+                else tileOrder.data()[i] = static_cast<char>(0x24);
+            }
+        }
+
+        //Write the tile order
+        if (!this->workingFile->seek(offset)) return false;
+        if (this->workingFile->write(tileOrder) != tileOrder.size()) return false;
+
+        //Write the tiles themselves
+        if (sprite) {
+            if (!this->Write_Sprite_Tiles_To_Working_File(tileOrder)) return false;
+        } else {
+            if (!this->Write_Background_Tiles_To_Working_File(tileOrder)) return false;
+        }
+    }
+    return true;
+}
+
 bool Graphics_Ripper::Write_Tiles_To_Working_File(const QByteArray &tiles, bool sprite) {
-    for (int i = 0; i < tiles.size(); ++i) {
+    for (char tile : tiles) {
+        //Don't write the tile if it has already been written
+        if (sprite) {
+            if (this->writtenSpriteTiles.contains(tile)) continue;
+        } else {
+            if (this->writtenBackgroundTiles.contains(tile)) continue;
+        }
         QByteArray graphicsBytes;
         qint64 offset = 0;
         if (sprite) {
-            this->Read_Graphics_Bytes_From_Sprite_Tile_ID(tiles.at(i), graphicsBytes);
-            offset = 0x8010+(tiles.at(i)*0x10);
+            this->Read_Graphics_Bytes_From_Sprite_Tile_ID(tile, graphicsBytes);
+            offset = 0x8010+(static_cast<unsigned char>(tile)*0x10);
         } else {
-            this->Read_Graphics_Bytes_From_Background_Tile_ID(tiles.at(i), graphicsBytes);
-            offset = 0x9010+(tiles.at(i)*0x10);
+            this->Read_Graphics_Bytes_From_Background_Tile_ID(tile, graphicsBytes);
+            offset = 0x9010+(static_cast<unsigned char>(tile)*0x10);
         }
         if (!this->workingFile->seek(offset)) return false;
         if (this->workingFile->write(graphicsBytes) != graphicsBytes.size()) return false;
+        if (sprite) this->writtenSpriteTiles.insert(tile);
+        else this->writtenBackgroundTiles.insert(tile);
     }
     return true;
 }

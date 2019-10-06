@@ -3,6 +3,8 @@
 
 #include "../../../Hexagon/Hexagon/Hexagon_Interface.h"
 #include <QByteArray>
+#include <QSet>
+#include <QStack>
 
 class Graphics_Ripper {
 public:
@@ -69,22 +71,31 @@ private:
     bool Create_Patch(const QString &sprite);
     void Close_Files();
     void Close_Working_Files();
-    bool Make_Directory_Structure();
+    bool Does_Patch_Use_New_Tiles(const QByteArray &oldTiles, qint64 offset, bool sprite);
+    bool Does_Patch_Use_New_Tiles(const QByteArray &oldTiles, QStack<qint64> offsets, bool sprite);
+    QString Get_Base_Name_From_Path(const QString &path);
+    bool Is_Tile_Blank(char tileID, bool sprite);
     bool Read_Graphics_Bytes_From_Sprite_Tile_ID(char tileID, QByteArray &graphicsBytes);
     bool Read_Graphics_Bytes_From_Background_Tile_ID(char tileID, QByteArray &graphicsBytes);
     bool Recreate_Working_File();
     bool Write_Background_Tiles_To_Working_File(const QByteArray &tiles);
     bool Write_Sprite_Tiles_To_Working_File(const QByteArray &tiles);
+    bool Write_Tiles_And_Order_To_Working_File(qint64 offset, bool sprite);
+    bool Write_Tiles_And_Order_To_Working_File(QStack<qint64> offsets, bool sprite);
     bool Write_Tiles_To_Working_File(const QByteArray &tiles, bool sprite);
 
     QString applicationLocation;
     QString originalFileLocation;
-    QString workingFileLocation;
+    QString workingFileLocation; //0x52
+    QString baseFileLocation;
     QString patchFileLocation;
     QFile *originalFile;
     QFile *workingFile;
+    QFile *baseFile;
     QFile *outputFile;
     Hexagon_Interface *hexagon;
+    QSet<char> writtenBackgroundTiles;
+    QSet<char> writtenSpriteTiles;
 };
 
 #endif // GRAPHICS_RIPPER_H

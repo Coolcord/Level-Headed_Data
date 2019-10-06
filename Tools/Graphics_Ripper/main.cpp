@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
     if (!dir.cd("Patches") || dir.isEmpty()) { qWarning() << "The patches directory is empty!"; return 1; }
     QStringList files = dir.entryList(QStringList("*.hexp"), QDir::Files | QDir::NoDotAndDotDot);
     if (files.isEmpty()) { qWarning() << "The patches directory does not contain any .hexp files!"; return 1; }
+    QDir(applicationLocation+"/Sprites").removeRecursively();
 
     //Load the Hexagon Plugin
     QPluginLoader *pluginLoader = new QPluginLoader(Common_Strings::STRING_PLUGIN_LOCATION);
@@ -29,7 +30,9 @@ int main(int argc, char *argv[]) {
     //Rip the Graphics
     for (QString file : files) {
         Graphics_Ripper ripper(applicationLocation, applicationLocation+"/SMB1.nes", applicationLocation+"/Patches/"+file, hexagonPlugin);
+        if (!ripper.Rip_Buzzy_Beetle()) { qWarning() << "Failed to rip from" << file; return 1; }
         if (!ripper.Rip_Fireball()) { qWarning() << "Failed to rip from" << file; return 1; }
     }
+    qInfo() << "Ripping complete!";
     return 0;
 }
