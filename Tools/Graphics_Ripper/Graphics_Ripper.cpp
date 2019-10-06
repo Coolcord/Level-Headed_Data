@@ -1,4 +1,5 @@
 #include "Graphics_Ripper.h"
+#include "../../../Level-Headed/SMB1/Common_SMB1_Files/Fix_Strings.h"
 #include <assert.h>
 #include <QDebug>
 #include <QDir>
@@ -10,6 +11,7 @@ Graphics_Ripper::Graphics_Ripper(const QString &applicationLocation, const QStri
     this->originalFileLocation = originalFileLocation;
     this->patchFileLocation = patchFileLocation;
     this->hexagon = hexagon;
+    this->palettesDisabled = false;
     this->outputFile = nullptr;
     this->originalFile = nullptr;
     this->workingFile = nullptr;
@@ -453,6 +455,7 @@ bool Graphics_Ripper::Rip_Water() {
 
 bool Graphics_Ripper::Apply_Patch() {
     if (this->outputFile) return true; //patch already applied
+    if (!this->Scan_For_Palette_Allowed()) return false;
 
     //Create the Patched file
     int lineNum = 0;
@@ -512,8 +515,7 @@ bool Graphics_Ripper::Does_Patch_Use_New_Tiles(const QByteArray &oldTiles, qint6
 }
 
 bool Graphics_Ripper::Does_Patch_Use_New_Tiles(const QByteArray &oldTiles, QStack<qint64> offsets, bool sprite) {
-    //TODO: Update this to allow blank tiles that are not 0xFC. Also, new tiles will somehow need to be updated if a blank tile that is not 0xFC is used
-
+    if (this->palettesDisabled) return true;
     QSet<char> tiles;
     if (sprite) tiles.insert(static_cast<char>(0xFC));
     else tiles.insert(static_cast<char>(0x24));
@@ -602,6 +604,28 @@ bool Graphics_Ripper::Recreate_Working_File() {
     if (!this->workingFile->open(QIODevice::ReadWrite)) { this->Close_Working_Files(); return false; }
     if (this->workingFile->write(buffer) != buffer.size()) return false;
     if (!this->workingFile->reset()) return false;
+    return true;
+}
+
+bool Graphics_Ripper::Scan_For_Palette_Allowed() {
+    QFile patchFile(this->patchFileLocation);
+    if (!patchFile.open(QIODevice::ReadOnly)) return false;
+    QTextStream stream(&patchFile);
+    QString line = stream.readLine();
+    bool done = false;
+    while (!stream.atEnd() && !done) {
+        if (line.startsWith(Patch_Strings::STRING_OFFSET)) {
+            this->palettesDisabled = false;
+            done = true;
+        } else if (line.startsWith(Fix_Strings::STRING_ALLOW_PALETTES)) {
+            this->palettesDisabled = true;
+            done = true;
+        } else if (line.startsWith(Fix_Strings::STRING_ALLOW_ONLY_COIN_PALETTES)) {
+            this->palettesDisabled = true;
+            done = true;
+        }
+    }
+    patchFile.close();
     return true;
 }
 

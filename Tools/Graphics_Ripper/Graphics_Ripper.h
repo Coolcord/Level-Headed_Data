@@ -78,6 +78,7 @@ private:
     bool Read_Graphics_Bytes_From_Sprite_Tile_ID(char tileID, QByteArray &graphicsBytes);
     bool Read_Graphics_Bytes_From_Background_Tile_ID(char tileID, QByteArray &graphicsBytes);
     bool Recreate_Working_File();
+    bool Scan_For_Palette_Allowed();
     bool Write_Background_Tiles_To_Working_File(const QByteArray &tiles);
     bool Write_Sprite_Tiles_To_Working_File(const QByteArray &tiles);
     bool Write_Tiles_And_Order_To_Working_File(qint64 offset, bool sprite);
@@ -96,6 +97,7 @@ private:
     Hexagon_Interface *hexagon;
     QSet<char> writtenBackgroundTiles;
     QSet<char> writtenSpriteTiles;
+    bool palettesDisabled;
 };
 
 #endif // GRAPHICS_RIPPER_H
