@@ -71,8 +71,8 @@ private:
     bool Create_Patch(const QString &sprite);
     void Close_Files();
     void Close_Working_Files();
-    bool Does_Patch_Use_New_Tiles(const QByteArray &oldTiles, qint64 offset, bool sprite);
-    bool Does_Patch_Use_New_Tiles(const QByteArray &oldTiles, QStack<qint64> offsets, bool sprite);
+    bool Does_Patch_Use_New_Tiles(qint64 offset, bool sprite);
+    bool Does_Patch_Use_New_Tiles(QStack<qint64> offsets, bool sprite);
     QString Get_Base_Name_From_Path(const QString &path);
     bool Is_Tile_Blank(char tileID, bool sprite);
     bool Read_Graphics_Bytes_From_Sprite_Tile_ID(char tileID, QByteArray &graphicsBytes);

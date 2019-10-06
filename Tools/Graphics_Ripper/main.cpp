@@ -29,11 +29,10 @@ int main(int argc, char *argv[]) {
     if (!hexagonPlugin) { qWarning() << "Unable to load the backend plugin! Make sure the plugin is in the plugins folder!"; return 1; }
 
     //Rip the Graphics
-    qInfo() << "Ripping graphics...";
     for (QString file : files) {
+        qInfo() << "Ripping from" << file;
         Graphics_Ripper ripper(applicationLocation, applicationLocation+"/SMB1.nes", applicationLocation+"/Patches/"+file, hexagonPlugin);
-        if (!ripper.Rip_Buzzy_Beetle()) { qWarning() << "Failed to rip from" << file; return 1; }
-        if (!ripper.Rip_Fireball()) { qWarning() << "Failed to rip from" << file; return 1; }
+        if (!ripper.Rip_All()) { qWarning() << "Failed to rip from" << file; return 1; }
     }
     qInfo() << "Removing duplicates...";
     if (!Duplicate_Remover(applicationLocation+"/Sprites").Scan_And_Remove_All_Duplicates()) { qWarning() << "Failed to remove duplicates!"; return 1; }

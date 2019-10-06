@@ -100,7 +100,7 @@ bool Graphics_Ripper::Rip_Buzzy_Beetle() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
     QStack<qint64> offsets; offsets.push(0x674E); offsets.push(0x6754); offsets.push(0x67C0); offsets.push(0x67C6); offsets.push(0x67CC); offsets.push(0x67D2);
-    if (this->Does_Patch_Use_New_Tiles(QByteArray::fromHex(QString("AAABACADAEAFB0B1F4F5").toLatin1()), offsets, sprite)) return true; //nothing to do
+    if (this->Does_Patch_Use_New_Tiles(offsets, sprite)) return true; //nothing to do
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite)) return false;
     return this->Create_Patch("Buzzy Beetle");
 }
@@ -271,9 +271,10 @@ bool Graphics_Ripper::Rip_Toad() {
 
 bool Graphics_Ripper::Rip_Axe() {
     if (!this->Apply_Patch()) return false;
-
-
-    //TODO: WRITE THIS!!!
+    bool sprite = false;
+    QStack<qint64> offsets; offsets.push(0x0CB0);
+    if (this->Does_Patch_Use_New_Tiles(offsets, sprite)) return true; //nothing to do
+    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite)) return false;
     return this->Create_Patch("Axe");
 }
 
@@ -295,9 +296,10 @@ bool Graphics_Ripper::Rip_Bridge() {
 
 bool Graphics_Ripper::Rip_Bowser_Bridge() {
     if (!this->Apply_Patch()) return false;
-
-
-    //TODO: WRITE THIS!!!
+    bool sprite = false;
+    QStack<qint64> offsets; offsets.push(0x0C98);
+    if (this->Does_Patch_Use_New_Tiles(offsets, sprite)) return true; //nothing to do
+    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite)) return false;
     return this->Create_Patch("Bowser Bridge");
 }
 
@@ -319,9 +321,10 @@ bool Graphics_Ripper::Rip_Castle_Block() {
 
 bool Graphics_Ripper::Rip_Chain() {
     if (!this->Apply_Patch()) return false;
-
-
-    //TODO: WRITE THIS!!!
+    bool sprite = false;
+    QStack<qint64> offsets; offsets.push(0x0B50);
+    if (this->Does_Patch_Use_New_Tiles(offsets, sprite)) return true; //nothing to do
+    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite)) return false;
     return this->Create_Patch("Chain");
 }
 
@@ -341,7 +344,7 @@ bool Graphics_Ripper::Rip_Coin() {
     return this->Create_Patch("Coin");
 }
 
-bool Graphics_Ripper::Rip_Coral() {
+bool Graphics_Ripper::Rip_Coral() { //TODO: One of the locations for these can be found in Super Luigi Rev A
     if (!this->Apply_Patch()) return false;
 
 
@@ -508,18 +511,30 @@ void Graphics_Ripper::Close_Working_Files() {
     this->writtenBackgroundTiles.clear();
 }
 
-bool Graphics_Ripper::Does_Patch_Use_New_Tiles(const QByteArray &oldTiles, qint64 offset, bool sprite) {
+bool Graphics_Ripper::Does_Patch_Use_New_Tiles(qint64 offset, bool sprite) {
     QStack<qint64> offsets;
     offsets.push(offset);
-    return this->Does_Patch_Use_New_Tiles(oldTiles, offsets, sprite);
+    return this->Does_Patch_Use_New_Tiles(offsets, sprite);
 }
 
-bool Graphics_Ripper::Does_Patch_Use_New_Tiles(const QByteArray &oldTiles, QStack<qint64> offsets, bool sprite) {
+bool Graphics_Ripper::Does_Patch_Use_New_Tiles(QStack<qint64> offsets, bool sprite) {
     if (this->palettesDisabled) return true;
+
+    //Read the old tiles
     QSet<char> tiles;
+    QByteArray oldTiles;
+    QStack<qint64> oldOffsets = offsets;
     if (sprite) tiles.insert(static_cast<char>(0xFC));
     else tiles.insert(static_cast<char>(0x24));
-    for (char c : oldTiles) tiles.insert(c);
+    while (!oldOffsets.isEmpty()) {
+        qint64 offset = oldOffsets.pop();
+        assert(this->originalFile->seek(offset));
+        QByteArray oldTiles = this->originalFile->read(6);
+        assert(oldTiles.size() == 6);
+        for (char c : oldTiles) tiles.insert(c);
+    }
+
+    //Compare against the new tiles
     while (!offsets.isEmpty()) {
         qint64 offset = offsets.pop();
         assert(this->outputFile->seek(offset));
