@@ -23,6 +23,7 @@ Graphics_Ripper::~Graphics_Ripper() {
 }
 
 bool Graphics_Ripper::Rip_All() {
+    //Rip all except bridge and chain
     if (!this->Rip_Air_Bubble()) return false;
     if (!this->Rip_Blooper()) return false;
     if (!this->Rip_Bowser()) return false;
@@ -53,11 +54,9 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Toad()) return false;
     if (!this->Rip_Axe()) return false;
     if (!this->Rip_Brick_Block()) return false;
-    if (!this->Rip_Bridge()) return false;
     if (!this->Rip_Bowser_Bridge()) return false;
     if (!this->Rip_Bullet_Bill_Cannon()) return false;
     if (!this->Rip_Castle_Block()) return false;
-    if (!this->Rip_Chain()) return false;
     if (!this->Rip_Cloud_Block()) return false;
     if (!this->Rip_Coin()) return false;
     if (!this->Rip_Coin_Icon()) return false;
@@ -229,7 +228,6 @@ bool Graphics_Ripper::Rip_Lift() {
 }
 
 bool Graphics_Ripper::Rip_Mario() {
-    //TODO: Pull code for sprite mirroring (check SMB DX for this)
     if (!this->Apply_Patch()) return false;
 
     //Write the Tile Order
