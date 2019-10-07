@@ -16,6 +16,7 @@ public:
     bool Rip_Air_Bubble();
     bool Rip_Blooper();
     bool Rip_Bowser();
+    bool Rip_Bowser_Fire();
     bool Rip_Bullet_Bill();
     bool Rip_Buzzy_Beetle();
     bool Rip_Castle_Flag();
@@ -51,6 +52,7 @@ public:
     bool Rip_Chain();
     bool Rip_Cloud_Block();
     bool Rip_Coin();
+    bool Rip_Coin_Icon();
     bool Rip_Coral();
     bool Rip_Fire_Flower();
     bool Rip_Flagpole();
@@ -61,9 +63,11 @@ public:
     bool Rip_Pipe();
     bool Rip_Question_Block();
     bool Rip_Rope();
+    bool Rip_Selector_Icon();
     bool Rip_Solid_Block();
     bool Rip_Tree_Platform();
     bool Rip_Underwater_Block();
+    bool Rip_Vine();
     bool Rip_Water();
 
 private:
