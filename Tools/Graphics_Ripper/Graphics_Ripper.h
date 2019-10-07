@@ -45,8 +45,8 @@ public:
     //Background
     bool Rip_Axe();
     bool Rip_Brick_Block();
-    bool Rip_Bridge();
     bool Rip_Bowser_Bridge();
+    bool Rip_Bridge();
     bool Rip_Bullet_Bill_Cannon();
     bool Rip_Castle_Block();
     bool Rip_Chain();

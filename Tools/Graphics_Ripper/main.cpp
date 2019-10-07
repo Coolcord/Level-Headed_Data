@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
     }
 
     //Generate the original patch file
-    QFile originalPatchFile(applicationLocation+"/Patches/Original (by Nintendo.hexp");
+    QFile originalPatchFile(applicationLocation+"/Patches/Original (by Nintendo).hexp");
     originalPatchFile.remove();
     if (!originalPatchFile.open(QIODevice::ReadWrite)) { qWarning() << "Unable to generate the original patch file!"; return 1; }
     QTextStream originalPatchFileStream(&originalPatchFile);

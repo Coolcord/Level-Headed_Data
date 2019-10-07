@@ -31,6 +31,7 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Bullet_Bill()) return false;
     if (!this->Rip_Buzzy_Beetle()) return false;
     if (!this->Rip_Castle_Flag()) return false;
+    if (!this->Rip_Chain()) return false;
     if (!this->Rip_Cheep_Cheep()) return false;
     if (!this->Rip_Coin_Animation()) return false;
     if (!this->Rip_Explosion()) return false;
@@ -55,6 +56,7 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Axe()) return false;
     if (!this->Rip_Brick_Block()) return false;
     if (!this->Rip_Bowser_Bridge()) return false;
+    if (!this->Rip_Bridge()) return false;
     if (!this->Rip_Bullet_Bill_Cannon()) return false;
     if (!this->Rip_Castle_Block()) return false;
     if (!this->Rip_Cloud_Block()) return false;
@@ -82,7 +84,7 @@ bool Graphics_Ripper::Rip_All() {
 
 bool Graphics_Ripper::Rip_Air_Bubble() {
     if (!this->Apply_Patch()) return false;
-    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("74").toLatin1()))) return false;
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray(1, static_cast<char>(0x75)))) return false;
     return this->Create_Patch("Air Bubble");
 }
 
@@ -286,7 +288,7 @@ bool Graphics_Ripper::Rip_Score_Font() {
 
 bool Graphics_Ripper::Rip_Sky_Lift() {
     if (!this->Apply_Patch()) return false;
-    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("75").toLatin1()))) return false;
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray(1, static_cast<char>(0x75)))) return false;
     return this->Create_Patch("Lift Sky");
 }
 
@@ -336,15 +338,6 @@ bool Graphics_Ripper::Rip_Brick_Block() {
     return this->Create_Patch("Brick Block");
 }
 
-bool Graphics_Ripper::Rip_Bridge() {
-    if (!this->Apply_Patch()) return false;
-    bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0B4C);
-    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, false)) return true;
-    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, false)) return false;
-    return this->Create_Patch("Bridge");
-}
-
 bool Graphics_Ripper::Rip_Bowser_Bridge() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
@@ -352,6 +345,15 @@ bool Graphics_Ripper::Rip_Bowser_Bridge() {
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, false)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, false)) return false;
     return this->Create_Patch("Bowser Bridge");
+}
+
+bool Graphics_Ripper::Rip_Bridge() {
+    if (!this->Apply_Patch()) return false;
+    bool sprite = false;
+    QStack<qint64> offsets; offsets.push(0x0B4C); offsets.push(0x0C48);
+    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, false)) return true;
+    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, false)) return false;
+    return this->Create_Patch("Bridge");
 }
 
 bool Graphics_Ripper::Rip_Bullet_Bill_Cannon() {
@@ -563,6 +565,8 @@ bool Graphics_Ripper::Create_Patch(const QString &sprite) {
     dir.mkdir("Sprites");
     if (!dir.cd("Sprites")) return false;
     dir.mkdir(sprite);
+    this->workingFile->flush();
+    this->baseFile->flush();
     if (this->hexagon->Create_Hexagon_Patch(this->baseFileLocation, this->workingFileLocation, this->applicationLocation+"/Sprites/"+sprite+"/"+this->Get_Base_Name_From_Path(this->patchFileLocation)+".hexp", 5, false, false) != Hexagon_Error_Codes::OK) return false;
     return this->Recreate_Working_File();
 }
