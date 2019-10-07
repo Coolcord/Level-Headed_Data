@@ -65,6 +65,7 @@ public:
     bool Rip_Rope();
     bool Rip_Selector_Icon();
     bool Rip_Solid_Block();
+    bool Rip_Starman();
     bool Rip_Tree_Platform();
     bool Rip_Underwater_Block();
     bool Rip_Vine();
@@ -75,8 +76,8 @@ private:
     bool Create_Patch(const QString &sprite);
     void Close_Files();
     void Close_Working_Files();
-    bool Does_Patch_Use_New_Tiles(qint64 offset, bool sprite);
-    bool Does_Patch_Use_New_Tiles(QStack<qint64> offsets, bool sprite);
+    bool Does_Patch_Use_New_Tiles(qint64 offset, bool sprite, bool mario);
+    bool Does_Patch_Use_New_Tiles(QStack<qint64> offsets, bool sprite, bool mario);
     QString Get_Base_Name_From_Path(const QString &path);
     bool Is_Tile_Blank(char tileID, bool sprite);
     bool Read_Graphics_Bytes_From_Sprite_Tile_ID(char tileID, QByteArray &graphicsBytes);
@@ -85,8 +86,9 @@ private:
     bool Scan_For_Palette_Allowed();
     bool Write_Background_Tiles_To_Working_File(const QByteArray &tiles);
     bool Write_Sprite_Tiles_To_Working_File(const QByteArray &tiles);
-    bool Write_Tiles_And_Order_To_Working_File(qint64 offset, bool sprite);
-    bool Write_Tiles_And_Order_To_Working_File(QStack<qint64> offsets, bool sprite);
+    bool Write_Data_To_Working_File(qint64 offset, int amount);
+    bool Write_Tiles_And_Order_To_Working_File(qint64 offset, bool sprite, bool mario);
+    bool Write_Tiles_And_Order_To_Working_File(QStack<qint64> offsets, bool sprite, bool mario);
     bool Write_Tiles_To_Working_File(const QByteArray &tiles, bool sprite);
 
     QString applicationLocation;
