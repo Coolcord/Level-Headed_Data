@@ -357,7 +357,7 @@ bool Graphics_Ripper::Rip_Spiny_Egg() {
 
 bool Graphics_Ripper::Rip_Starman() {
     if (!this->Apply_Patch()) return false;
-    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("7DE4").toLatin1()))) return false;
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("8DE4").toLatin1()))) return false;
     return this->Create_Patch("Starman");
 }
 
