@@ -15,6 +15,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Combiner.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/SMB1_Writer.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Bowser_Bridge_Destroyer.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Item_Writer.cpp \
@@ -51,6 +52,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Combiner.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/SMB1_Writer.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Bowser_Bridge_Destroyer.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Item_Writer.h \

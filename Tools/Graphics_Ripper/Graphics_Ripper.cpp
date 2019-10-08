@@ -1,4 +1,5 @@
 #include "Graphics_Ripper.h"
+#include "../../../Hexagon/Hexagon/Value_Manipulator.h"
 #include "../../../Level-Headed/SMB1/Common_SMB1_Files/Fix_Strings.h"
 #include <assert.h>
 #include <QDebug>
@@ -11,6 +12,7 @@ Graphics_Ripper::Graphics_Ripper(const QString &applicationLocation, const QStri
     this->originalFileLocation = originalFileLocation;
     this->patchFileLocation = patchFileLocation;
     this->hexagon = hexagon;
+    this->usedOffsets = new QMap<qint64, QByteArray*>();
     this->palettesDisabled = false;
     this->outputFile = nullptr;
     this->originalFile = nullptr;
@@ -20,6 +22,8 @@ Graphics_Ripper::Graphics_Ripper(const QString &applicationLocation, const QStri
 
 Graphics_Ripper::~Graphics_Ripper() {
     this->Close_Files();
+    for (QByteArray *bytes : this->usedOffsets->values()) delete bytes;
+    delete this->usedOffsets;
 }
 
 bool Graphics_Ripper::Rip_All() {
@@ -81,6 +85,20 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Underwater_Block()) return false;
     if (!this->Rip_Vine()) return false;
     if (!this->Rip_Water()) return false;
+    return true;
+}
+
+bool Graphics_Ripper::Dump_Tile_Order_Map() {
+    qInfo() << "Dumping tile order map";
+    QFile file(this->applicationLocation+"/Tile Order Map.txt");
+    file.remove();
+    if (!file.open(QIODevice::ReadWrite)) return false;
+    Value_Manipulator valueManipulator;
+    QTextStream stream(&file);
+    for (qint64 offset : this->usedOffsets->keys()) {
+        stream << "this->tileOrderMap->insert(0x"+QString::number(offset, 0x10).toUpper()+", new QByteArray(QByteArray::fromHex(QString(\""
+               << valueManipulator.Convert_QByteArray_To_QString(*this->usedOffsets->find(offset).value()) << "\").toLatin1())));" << Patch_Strings::STRING_NEW_LINE;
+    }
     return true;
 }
 
@@ -352,6 +370,7 @@ bool Graphics_Ripper::Rip_Brick_Block() {
     if (this->Does_Patch_Use_New_Tiles(brickHitOffset, true, 4)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     if (!this->Write_Tiles_And_Order_To_Working_File(brickHitOffset, true, 4)) return false;
+    if (!this->Write_Background_Tiles_To_Working_File(QByteArray(1, static_cast<char>(0x45)))) return false;
     return this->Create_Patch("Brick Block");
 }
 
@@ -585,7 +604,7 @@ bool Graphics_Ripper::Create_Patch(const QString &sprite) {
     dir.mkdir(sprite);
     this->workingFile->flush();
     this->baseFile->flush();
-    if (this->hexagon->Create_Hexagon_Patch(this->baseFileLocation, this->workingFileLocation, this->applicationLocation+"/Sprites/"+sprite+"/"+this->Get_Base_Name_From_Path(this->patchFileLocation)+".hexp", 1, false, false) != Hexagon_Error_Codes::OK) return false;
+    if (this->hexagon->Create_Hexagon_Patch(this->baseFileLocation, this->workingFileLocation, this->applicationLocation+"/Sprites/"+sprite+"/"+this->Get_Base_Name_From_Path(this->patchFileLocation)+".hexp", 3, false, false) != Hexagon_Error_Codes::OK) return false;
     return this->Recreate_Working_File();
 }
 
@@ -642,6 +661,7 @@ bool Graphics_Ripper::Does_Patch_Use_New_Tiles(QStack<qint64> offsets, bool spri
         qint64 offset = oldOffsets.pop();
         assert(this->originalFile->seek(offset));
         QByteArray oldTiles = this->originalFile->read(tileOrderSize);
+        if (!this->usedOffsets->contains(offset)) this->usedOffsets->insert(offset, new QByteArray(oldTiles));
         assert(oldTiles.size() == tileOrderSize);
         for (char c : oldTiles) tiles.insert(c);
     }

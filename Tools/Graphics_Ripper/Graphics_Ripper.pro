@@ -15,6 +15,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        ../../../Hexagon/Hexagon/Value_Manipulator.cpp \
         Duplicate_Remover.cpp \
         Graphics_Ripper.cpp \
         main.cpp
@@ -27,6 +28,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     ../../../Hexagon/Hexagon/Hexagon_Interface.h \
     ../../../Hexagon/Hexagon/Patch_Strings.h \
+    ../../../Hexagon/Hexagon/Value_Manipulator.h \
     ../../../Hexagon/Hexagon_GUI/Common_Strings.h \
     ../../../Level-Headed/SMB1/Common_SMB1_Files/Fix_Strings.h \
     Duplicate_Remover.h \

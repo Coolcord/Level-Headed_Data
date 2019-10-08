@@ -3,6 +3,7 @@
 
 #include "../../../Hexagon/Hexagon/Hexagon_Interface.h"
 #include <QByteArray>
+#include <QMap>
 #include <QSet>
 #include <QStack>
 
@@ -11,6 +12,7 @@ public:
     Graphics_Ripper(const QString &applicationLocation, const QString &originalFileLocation, const QString &patchFileLocation, Hexagon_Interface *hexagon);
     ~Graphics_Ripper();
     bool Rip_All();
+    bool Dump_Tile_Order_Map();
 
     //Sprites
     bool Rip_Air_Bubble();
@@ -105,6 +107,7 @@ private:
     Hexagon_Interface *hexagon;
     QSet<char> writtenBackgroundTiles;
     QSet<char> writtenSpriteTiles;
+    QMap<qint64, QByteArray*> *usedOffsets;
     bool palettesDisabled;
 };
 

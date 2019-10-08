@@ -64,6 +64,7 @@ int main(int argc, char *argv[]) {
         qInfo() << "Ripping from" << file;
         Graphics_Ripper ripper(applicationLocation, applicationLocation+"/SMB1.nes", applicationLocation+"/Patches/"+file, hexagonPlugin);
         if (!ripper.Rip_All()) { qWarning() << "Failed to rip from" << file; return 1; }
+        if (file == "Original (by Nintendo).hexp" && !ripper.Dump_Tile_Order_Map()) { qWarning() << "Failed to write used offsets"; return 1; }
     }
     qInfo() << "Removing duplicates...";
     if (!Duplicate_Remover(applicationLocation+"/Sprites").Scan_And_Remove_All_Duplicates()) { qWarning() << "Failed to remove duplicates!"; return 1; }
