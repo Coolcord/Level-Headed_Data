@@ -7,6 +7,8 @@
 #include <QSet>
 #include <QStack>
 
+class Graphics_Combiner;
+
 class Graphics_Ripper {
 public:
     Graphics_Ripper(const QString &applicationLocation, const QString &originalFileLocation, const QString &patchFileLocation, Hexagon_Interface *hexagon);
@@ -105,6 +107,7 @@ private:
     QFile *baseFile;
     QFile *outputFile;
     Hexagon_Interface *hexagon;
+    Graphics_Combiner *graphicsCombiner;
     QSet<char> writtenBackgroundTiles;
     QSet<char> writtenSpriteTiles;
     QMap<qint64, QByteArray*> *usedOffsets;

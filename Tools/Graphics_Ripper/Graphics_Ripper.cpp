@@ -1,6 +1,7 @@
 #include "Graphics_Ripper.h"
 #include "../../../Hexagon/Hexagon/Value_Manipulator.h"
 #include "../../../Level-Headed/SMB1/Common_SMB1_Files/Fix_Strings.h"
+#include "../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Combiner.h"
 #include <assert.h>
 #include <QDebug>
 #include <QDir>
@@ -18,12 +19,14 @@ Graphics_Ripper::Graphics_Ripper(const QString &applicationLocation, const QStri
     this->originalFile = nullptr;
     this->workingFile = nullptr;
     this->baseFile = nullptr;
+    this->graphicsCombiner = new Graphics_Combiner();
 }
 
 Graphics_Ripper::~Graphics_Ripper() {
     this->Close_Files();
     for (QByteArray *bytes : this->usedOffsets->values()) delete bytes;
     delete this->usedOffsets;
+    delete this->graphicsCombiner;
 }
 
 bool Graphics_Ripper::Rip_All() {
@@ -111,7 +114,7 @@ bool Graphics_Ripper::Rip_Air_Bubble() {
 bool Graphics_Ripper::Rip_Blooper() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x678A); offsets.push(0x6790);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Blooper_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Blooper");
@@ -120,7 +123,7 @@ bool Graphics_Ripper::Rip_Blooper() {
 bool Graphics_Ripper::Rip_Bowser() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x6820); offsets.push(0x6826); offsets.push(0x682C); offsets.push(0x6832);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Bowser_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     if (!this->Write_Data_To_Working_File(0x0D60, 3)) return false; //write the palette
@@ -142,7 +145,7 @@ bool Graphics_Ripper::Rip_Brick_Piece() {
 bool Graphics_Ripper::Rip_Bullet_Bill() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x6838);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Bullet_Bill_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Bullet Bill");
@@ -151,7 +154,7 @@ bool Graphics_Ripper::Rip_Bullet_Bill() {
 bool Graphics_Ripper::Rip_Buzzy_Beetle() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x674E); offsets.push(0x6754); offsets.push(0x67C0); offsets.push(0x67C6); offsets.push(0x67CC); offsets.push(0x67D2);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Buzzy_Beetle_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Buzzy Beetle");
@@ -166,7 +169,7 @@ bool Graphics_Ripper::Rip_Castle_Flag() {
 bool Graphics_Ripper::Rip_Cheep_Cheep() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x6796); offsets.push(0x679C);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Cheep_Cheep_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Cheep Cheep");
@@ -199,7 +202,7 @@ bool Graphics_Ripper::Rip_Flagpole_Flag() {
 bool Graphics_Ripper::Rip_Goomba() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x67A2); offsets.push(0x67D8);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Goomba_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Goomba");
@@ -214,7 +217,7 @@ bool Graphics_Ripper::Rip_Hammer() {
 bool Graphics_Ripper::Rip_Hammer_Bro() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x67F6); offsets.push(0x67FC); offsets.push(0x6802); offsets.push(0x6808);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Hammer_Bro_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Hammer Bro");
@@ -225,13 +228,13 @@ bool Graphics_Ripper::Rip_Jump_Spring() {
 
     //Jump Spring Sprite
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x683E); offsets.push(0x6844); offsets.push(0x684A);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Jump_Spring_Animation_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
 
     //Brick Base
     sprite = false;
-    offsets.push(0x0C5C); offsets.push(0x0C64);
+    offsets = this->graphicsCombiner->Get_Jump_Spring_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Jump Spring");
@@ -240,7 +243,7 @@ bool Graphics_Ripper::Rip_Jump_Spring() {
 bool Graphics_Ripper::Rip_Koopa() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x675A); offsets.push(0x6760); offsets.push(0x6766); offsets.push(0x676C); offsets.push(0x67A8); offsets.push(0x67AE); offsets.push(0x67B4); offsets.push(0x67BA);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Koopa_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Koopa");
@@ -249,7 +252,7 @@ bool Graphics_Ripper::Rip_Koopa() {
 bool Graphics_Ripper::Rip_Lakitu() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x67DE); offsets.push(0x67E4);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Lakitu_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Lakitu");
@@ -266,9 +269,7 @@ bool Graphics_Ripper::Rip_Mario() {
 
     //Write the Tile Order
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x6E28); offsets.push(0x6E30); offsets.push(0x6E38); offsets.push(0x6E40); offsets.push(0x6E48); offsets.push(0x6E50); offsets.push(0x6E58); offsets.push(0x6E60); offsets.push(0x6E68);
-    offsets.push(0x6E70); offsets.push(0x6E78); offsets.push(0x6E80); offsets.push(0x6E88); offsets.push(0x6E90); offsets.push(0x6E98); offsets.push(0x6EA0); offsets.push(0x6EA8); offsets.push(0x6EB0); offsets.push(0x6EB8);
-    offsets.push(0x6EC0); offsets.push(0x6EC8); offsets.push(0x6ED0); offsets.push(0x6ED8); offsets.push(0x6EE0); offsets.push(0x6EE8); offsets.push(0x6EF0);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Mario_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 8)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 8)) return false;
 
@@ -288,7 +289,7 @@ bool Graphics_Ripper::Rip_One_Up_Font() {
 bool Graphics_Ripper::Rip_Peach() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x67EA);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Peach_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Peach");
@@ -297,7 +298,7 @@ bool Graphics_Ripper::Rip_Peach() {
 bool Graphics_Ripper::Rip_Piranha_Plant() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x680E); offsets.push(0x6814);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Piranha_Plant_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Piranha Plant");
@@ -306,7 +307,7 @@ bool Graphics_Ripper::Rip_Piranha_Plant() {
 bool Graphics_Ripper::Rip_Podoboo() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x681A);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Podoboo_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Podoboo");
@@ -327,7 +328,7 @@ bool Graphics_Ripper::Rip_Sky_Lift() {
 bool Graphics_Ripper::Rip_Spiny() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x6772); offsets.push(0x6778);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Spiny_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Spiny");
@@ -336,7 +337,7 @@ bool Graphics_Ripper::Rip_Spiny() {
 bool Graphics_Ripper::Rip_Spiny_Egg() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x677E); offsets.push(0x6784);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Spiny_Egg_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Spiny Egg");
@@ -345,7 +346,7 @@ bool Graphics_Ripper::Rip_Spiny_Egg() {
 bool Graphics_Ripper::Rip_Toad() {
     if (!this->Apply_Patch()) return false;
     bool sprite = true;
-    QStack<qint64> offsets; offsets.push(0x67F0);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Toad_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Toad");
@@ -354,7 +355,7 @@ bool Graphics_Ripper::Rip_Toad() {
 bool Graphics_Ripper::Rip_Axe() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0CB0);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Axe_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Axe");
@@ -363,13 +364,12 @@ bool Graphics_Ripper::Rip_Axe() {
 bool Graphics_Ripper::Rip_Brick_Block() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0BD0); offsets.push(0x0BD4); offsets.push(0x0BD8); offsets.push(0x0BDC); offsets.push(0x0BE0); offsets.push(0x0C00); offsets.push(0x0C04); offsets.push(0x0C08);
-    offsets.push(0x0C10); offsets.push(0x0C14); offsets.push(0x0C18); offsets.push(0x0C1C); offsets.push(0x0C20); offsets.push(0x0C24); offsets.push(0x0C28); offsets.push(0x0C2C); offsets.push(0x0C30); offsets.push(0x0C34);
-    qint64 brickHitOffset = 0x6BDD;
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Brick_Block_Offsets();
+    QStack<qint64> brickHitOffsets = this->graphicsCombiner->Get_Brick_Block_Animation_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
-    if (this->Does_Patch_Use_New_Tiles(brickHitOffset, true, 4)) return true;
+    if (this->Does_Patch_Use_New_Tiles(brickHitOffsets, true, 4)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
-    if (!this->Write_Tiles_And_Order_To_Working_File(brickHitOffset, true, 4)) return false;
+    if (!this->Write_Tiles_And_Order_To_Working_File(brickHitOffsets, true, 4)) return false;
     if (!this->Write_Background_Tiles_To_Working_File(QByteArray(1, static_cast<char>(0x45)))) return false;
     return this->Create_Patch("Brick Block");
 }
@@ -377,7 +377,7 @@ bool Graphics_Ripper::Rip_Brick_Block() {
 bool Graphics_Ripper::Rip_Bowser_Bridge() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0C98);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Bowser_Bridge_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Bowser Bridge");
@@ -386,7 +386,7 @@ bool Graphics_Ripper::Rip_Bowser_Bridge() {
 bool Graphics_Ripper::Rip_Bridge() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0B4C); offsets.push(0x0C48);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Bridge_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Bridge");
@@ -395,7 +395,7 @@ bool Graphics_Ripper::Rip_Bridge() {
 bool Graphics_Ripper::Rip_Bullet_Bill_Cannon() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0C4C); offsets.push(0x0C50); offsets.push(0x0C54);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Bullet_Bill_Cannon_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Bullet Bill Cannon");
@@ -404,7 +404,7 @@ bool Graphics_Ripper::Rip_Bullet_Bill_Cannon() {
 bool Graphics_Ripper::Rip_Castle_Block() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0C44);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Castle_Block_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Block Castle");
@@ -413,7 +413,7 @@ bool Graphics_Ripper::Rip_Castle_Block() {
 bool Graphics_Ripper::Rip_Chain() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0B50);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Chain_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Chain");
@@ -422,7 +422,7 @@ bool Graphics_Ripper::Rip_Chain() {
 bool Graphics_Ripper::Rip_Cloud_Block() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0C94);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Cloud_Block_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Block Cloud");
@@ -431,7 +431,7 @@ bool Graphics_Ripper::Rip_Cloud_Block() {
 bool Graphics_Ripper::Rip_Coin() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0CA4); offsets.push(0x0CA8);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Coin_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Coin");
@@ -447,7 +447,7 @@ bool Graphics_Ripper::Rip_Coin_Icon() {
 bool Graphics_Ripper::Rip_Coral() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0BA8);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Coral_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Coral");
@@ -462,7 +462,7 @@ bool Graphics_Ripper::Rip_Fire_Flower() {
 bool Graphics_Ripper::Rip_Flagpole() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0BB0); offsets.push(0x0BB4);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Flagpole_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Flagpole");
@@ -483,7 +483,7 @@ bool Graphics_Ripper::Rip_Mushroom_Powerup() {
 bool Graphics_Ripper::Rip_Mushroom_Platform() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0B84); offsets.push(0x0B88); offsets.push(0x0B8C); offsets.push(0x0BF8); offsets.push(0x0BFC);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Mushroom_Platform_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Island Mushroom");
@@ -492,7 +492,7 @@ bool Graphics_Ripper::Rip_Mushroom_Platform() {
 bool Graphics_Ripper::Rip_Overworld_Block() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0C0C);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Overworld_Block_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Block Overworld");
@@ -501,8 +501,7 @@ bool Graphics_Ripper::Rip_Overworld_Block() {
 bool Graphics_Ripper::Rip_Pipe() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0C68); offsets.push(0x0C6C); offsets.push(0x0B60); offsets.push(0x0B64); offsets.push(0x0B68); offsets.push(0x0B6C); offsets.push(0x0B70); offsets.push(0x0B74);
-    offsets.push(0x0B90); offsets.push(0x0B94); offsets.push(0x0B98); offsets.push(0x0B9C); offsets.push(0x0BA0); offsets.push(0x0BA4);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Pipe_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Pipe");
@@ -511,7 +510,7 @@ bool Graphics_Ripper::Rip_Pipe() {
 bool Graphics_Ripper::Rip_Question_Block() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0C9C); offsets.push(0x0CA0); offsets.push(0x0CAC);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Question_Block_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("87").toLatin1()))) return false;
@@ -521,7 +520,7 @@ bool Graphics_Ripper::Rip_Question_Block() {
 bool Graphics_Ripper::Rip_Rope() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0BBC); offsets.push(0x0BC0); offsets.push(0x0BC4); offsets.push(0x0BC8);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Rope_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Rope");
@@ -536,7 +535,7 @@ bool Graphics_Ripper::Rip_Selector_Icon() {
 bool Graphics_Ripper::Rip_Solid_Block() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0C40);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Solid_Block_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Solid Block");
@@ -551,7 +550,7 @@ bool Graphics_Ripper::Rip_Starman() {
 bool Graphics_Ripper::Rip_Tree_Platform() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0B78); offsets.push(0x0B7C); offsets.push(0x0B80); offsets.push(0x0BEC);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Tree_Platform_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Island Tree");
@@ -560,7 +559,7 @@ bool Graphics_Ripper::Rip_Tree_Platform() {
 bool Graphics_Ripper::Rip_Underwater_Block() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0C60);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Underwater_Block_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Block Underwater");
@@ -575,7 +574,7 @@ bool Graphics_Ripper::Rip_Vine() {
 bool Graphics_Ripper::Rip_Water() {
     if (!this->Apply_Patch()) return false;
     bool sprite = false;
-    QStack<qint64> offsets; offsets.push(0x0C8C);
+    QStack<qint64> offsets = this->graphicsCombiner->Get_Water_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch("Water");
