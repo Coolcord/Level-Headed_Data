@@ -68,6 +68,33 @@ int main(int argc, char *argv[]) {
     }
     qInfo() << "Removing duplicates...";
     if (!Duplicate_Remover(applicationLocation+"/Sprites").Scan_And_Remove_All_Duplicates()) { qWarning() << "Failed to remove duplicates!"; return 1; }
+
+    //Copy new sprite patches into the Level-Headed_Data graphics directory
+    if (!STRING_GRAPHICS_PATCHES_LOCATION.isEmpty() && patchDir.exists()) {
+        qInfo() << "Copying patches to graphics directory...";
+        patchDir = QDir(STRING_GRAPHICS_PATCHES_LOCATION);
+        if (!patchDir.cd("Sprites")) { qWarning() << "Unable to copy patches!"; return 1; }
+        patchDir.removeRecursively();
+        patchDir = QDir(STRING_GRAPHICS_PATCHES_LOCATION);
+        patchDir.mkdir("Sprites");
+        if (!patchDir.cd("Sprites")) { qWarning() << "Unable to copy patches!"; return 1; }
+        dir = QDir(applicationLocation+"/Sprites");
+        for (QString folderName : dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
+            patchDir.mkdir(folderName);
+            if (!dir.cd(folderName)) { qWarning() << "Unable to copy patches!"; return 1; }
+            for (QString fileName : dir.entryList(QStringList("*.hexp"), QDir::Files | QDir::NoDotAndDotDot)) {
+                QFile file(applicationLocation+"/Sprites/"+folderName+"/"+fileName);
+                if (!file.open(QIODevice::ReadOnly)) continue;
+                QFile outputFile(STRING_GRAPHICS_PATCHES_LOCATION+"/Sprites/"+folderName+"/"+fileName);
+                if (!outputFile.open(QIODevice::ReadWrite)) { file.close(); continue; }
+                outputFile.write(file.readAll());
+                file.close();
+                outputFile.close();
+            }
+            if (!dir.cdUp()) { qWarning() << "Unable to copy patches!"; return 1; }
+        }
+    }
+
     qInfo() << "Ripping complete!";
     return 0;
 }

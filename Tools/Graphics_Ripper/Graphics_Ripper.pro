@@ -16,7 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         ../../../Hexagon/Hexagon/Value_Manipulator.cpp \
-        ../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Combiner.cpp \
+        ../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Offsets.cpp \
         Duplicate_Remover.cpp \
         Graphics_Ripper.cpp \
         main.cpp
@@ -32,6 +32,6 @@ HEADERS += \
     ../../../Hexagon/Hexagon/Value_Manipulator.h \
     ../../../Hexagon/Hexagon_GUI/Common_Strings.h \
     ../../../Level-Headed/SMB1/Common_SMB1_Files/Fix_Strings.h \
-    ../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Combiner.h \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Offsets.h \
     Duplicate_Remover.h \
     Graphics_Ripper.h

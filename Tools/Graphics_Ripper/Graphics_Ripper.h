@@ -7,7 +7,7 @@
 #include <QSet>
 #include <QStack>
 
-class Graphics_Combiner;
+class Graphics_Offsets;
 
 class Graphics_Ripper {
 public:
@@ -29,6 +29,7 @@ public:
     bool Rip_Coin_Animation();
     bool Rip_Explosion();
     bool Rip_Fireball();
+    bool Rip_Fire_Flower();
     bool Rip_Flagpole_Flag();
     bool Rip_Goomba();
     bool Rip_Hammer();
@@ -38,6 +39,7 @@ public:
     bool Rip_Lakitu();
     bool Rip_Lift();
     bool Rip_Mario();
+    bool Rip_Mushroom_Powerup();
     bool Rip_One_Up_Font();
     bool Rip_Peach();
     bool Rip_Piranha_Plant();
@@ -46,6 +48,7 @@ public:
     bool Rip_Sky_Lift();
     bool Rip_Spiny();
     bool Rip_Spiny_Egg();
+    bool Rip_Starman();
     bool Rip_Toad();
 
     //Background
@@ -60,10 +63,8 @@ public:
     bool Rip_Coin();
     bool Rip_Coin_Icon();
     bool Rip_Coral();
-    bool Rip_Fire_Flower();
     bool Rip_Flagpole();
     bool Rip_Font();
-    bool Rip_Mushroom_Powerup();
     bool Rip_Mushroom_Platform();
     bool Rip_Overworld_Block();
     bool Rip_Pipe();
@@ -71,7 +72,6 @@ public:
     bool Rip_Rope();
     bool Rip_Selector_Icon();
     bool Rip_Solid_Block();
-    bool Rip_Starman();
     bool Rip_Tree_Platform();
     bool Rip_Underwater_Block();
     bool Rip_Vine();
@@ -107,7 +107,7 @@ private:
     QFile *baseFile;
     QFile *outputFile;
     Hexagon_Interface *hexagon;
-    Graphics_Combiner *graphicsCombiner;
+    Graphics_Offsets *graphicsOffsets;
     QSet<char> writtenBackgroundTiles;
     QSet<char> writtenSpriteTiles;
     QMap<qint64, QByteArray*> *usedOffsets;
