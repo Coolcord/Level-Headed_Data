@@ -78,8 +78,8 @@ public:
     bool Rip_Water();
 
 private:
-    bool Apply_Patch();
-    bool Create_Patch(const QString &sprite);
+    bool Apply_Patch(const QString &sprite);
+    bool Create_Patch();
     void Close_Files();
     void Close_Working_Files();
     bool Does_Patch_Use_New_Tiles(qint64 offset, bool sprite, int tileOrderSize);
@@ -88,7 +88,7 @@ private:
     bool Is_Tile_Blank(char tileID, bool sprite);
     bool Read_Graphics_Bytes_From_Sprite_Tile_ID(char tileID, QByteArray &graphicsBytes);
     bool Read_Graphics_Bytes_From_Background_Tile_ID(char tileID, QByteArray &graphicsBytes);
-    bool Recreate_Working_File();
+    bool Open_Original_File();
     bool Scan_For_Palette_Allowed();
     bool Write_Background_Tiles_To_Working_File(const QByteArray &tiles);
     bool Write_Sprite_Tiles_To_Working_File(const QByteArray &tiles);
@@ -99,12 +99,9 @@ private:
 
     QString applicationLocation;
     QString originalFileLocation;
-    QString workingFileLocation; //0x52
     QString baseFileLocation;
     QString patchFileLocation;
     QFile *originalFile;
-    QFile *workingFile;
-    QFile *baseFile;
     QFile *outputFile;
     Hexagon_Interface *hexagon;
     Graphics_Offsets *graphicsOffsets;
