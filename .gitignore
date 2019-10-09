@@ -1,6 +1,7 @@
 build-*/
 Plugin_Debugger/
 Generator_Plugin_Tester/
+Graphics/Sprites/
 *.pro.user
 *.pro.user.*
 .~lock.*
