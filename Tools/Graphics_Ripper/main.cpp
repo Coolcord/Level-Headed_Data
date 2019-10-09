@@ -9,24 +9,26 @@
 #include <QPluginLoader>
 #include <QTextStream>
 
-//Arguments
-const static QString STRING_GRAPHICS_PATCHES_LOCATION = "F:/Documents/Source_Code/Level-Headed_Data/Graphics";
+//Pass in path to Graphics patches location for automatic install
+//E.g. F:/Documents/Source_Code/Level-Headed_Data/Graphics
 
 int main(int argc, char *argv[]) {
     QCoreApplication a(argc, argv);
     QString applicationLocation = QCoreApplication::applicationDirPath();
+    QString graphicsPatchesLocation;
+    if (argc >= 2) graphicsPatchesLocation = QString(argv[1]); //read graphics patches location
     if (!QFileInfo(applicationLocation+"/SMB1.nes").exists())  { qWarning() << "SMB1.nes does not exist!"; return 1; }
 
     //Copy all patches over to the patches directory
     qInfo() << "Preparing patches...";
-    QDir patchDir(STRING_GRAPHICS_PATCHES_LOCATION);
+    QDir patchDir(graphicsPatchesLocation);
     QDir dir(applicationLocation);
     dir.mkdir("Patches");
     if (patchDir.exists()) {
         QDir(applicationLocation+"/Patches").removeRecursively();
         dir.mkdir("Patches");
         for (QString fileName : patchDir.entryList(QStringList("*.hexp"), QDir::Files | QDir::NoDotAndDotDot)) {
-            QFile file(STRING_GRAPHICS_PATCHES_LOCATION+"/"+fileName);
+            QFile file(graphicsPatchesLocation+"/"+fileName);
             if (!file.open(QIODevice::ReadOnly)) continue;
             QFile outputFile(applicationLocation+"/Patches/"+fileName);
             if (!outputFile.open(QIODevice::ReadWrite)) { file.close(); continue; }
@@ -70,12 +72,13 @@ int main(int argc, char *argv[]) {
     if (!Duplicate_Remover(applicationLocation+"/Sprites").Scan_And_Remove_All_Duplicates()) { qWarning() << "Failed to remove duplicates!"; return 1; }
 
     //Copy new sprite patches into the Level-Headed_Data graphics directory
-    if (!STRING_GRAPHICS_PATCHES_LOCATION.isEmpty() && patchDir.exists()) {
+    if (!graphicsPatchesLocation.isEmpty() && patchDir.exists()) {
         qInfo() << "Copying patches to graphics directory...";
-        patchDir = QDir(STRING_GRAPHICS_PATCHES_LOCATION);
+        patchDir = QDir(graphicsPatchesLocation);
+        patchDir.mkdir("Sprites");
         if (!patchDir.cd("Sprites")) { qWarning() << "Unable to copy patches!"; return 1; }
         patchDir.removeRecursively();
-        patchDir = QDir(STRING_GRAPHICS_PATCHES_LOCATION);
+        patchDir = QDir(graphicsPatchesLocation);
         patchDir.mkdir("Sprites");
         if (!patchDir.cd("Sprites")) { qWarning() << "Unable to copy patches!"; return 1; }
         dir = QDir(applicationLocation+"/Sprites");
@@ -85,7 +88,7 @@ int main(int argc, char *argv[]) {
             for (QString fileName : dir.entryList(QStringList("*.hexp"), QDir::Files | QDir::NoDotAndDotDot)) {
                 QFile file(applicationLocation+"/Sprites/"+folderName+"/"+fileName);
                 if (!file.open(QIODevice::ReadOnly)) continue;
-                QFile outputFile(STRING_GRAPHICS_PATCHES_LOCATION+"/Sprites/"+folderName+"/"+fileName);
+                QFile outputFile(graphicsPatchesLocation+"/Sprites/"+folderName+"/"+fileName);
                 if (!outputFile.open(QIODevice::ReadWrite)) { file.close(); continue; }
                 outputFile.write(file.readAll());
                 file.close();
