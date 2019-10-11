@@ -532,7 +532,7 @@ bool Graphics_Ripper::Rip_Rope() {
 
 bool Graphics_Ripper::Rip_Selector_Icon() {
     if (!this->Apply_Patch("Selector Icon")) return false;
-    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("BE").toLatin1()))) return false;
+    if (!this->Write_Background_Tiles_To_Working_File(QByteArray::fromHex(QString("CE").toLatin1()))) return false;
     return this->Create_Patch();
 }
 
