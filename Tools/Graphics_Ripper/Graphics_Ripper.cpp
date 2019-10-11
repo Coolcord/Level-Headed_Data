@@ -480,7 +480,7 @@ bool Graphics_Ripper::Rip_Flagpole() {
 
 bool Graphics_Ripper::Rip_Font() {
     if (!this->Apply_Patch("Font")) return false;
-    if (!this->Write_Background_Tiles_To_Working_File(QByteArray::fromHex(QString("000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F2021222328292BAFCF").toLatin1()))) return false;
+    if (!this->Write_Background_Tiles_To_Working_File(QByteArray::fromHex(QString("000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F2021222328292BAF").toLatin1()))) return false;
     return this->Create_Patch();
 }
 
