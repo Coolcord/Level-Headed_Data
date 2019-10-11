@@ -14,7 +14,7 @@ public:
     Graphics_Ripper(const QString &applicationLocation, const QString &originalFileLocation, const QString &patchFileLocation, Hexagon_Interface *hexagon);
     ~Graphics_Ripper();
     bool Rip_All();
-    bool Dump_Tile_Order_Map();
+    bool Dump_Tile_Order_Map(const QString &graphicsOffsetsFileLocation);
 
     //Sprites
     bool Rip_Air_Bubble();
