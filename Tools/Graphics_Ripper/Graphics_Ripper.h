@@ -7,6 +7,7 @@
 #include <QSet>
 #include <QStack>
 
+class Blacklist;
 class Graphics_Offsets;
 
 class Graphics_Ripper {
@@ -78,7 +79,7 @@ public:
     bool Rip_Water();
 
 private:
-    bool Apply_Patch(const QString &sprite);
+    bool Apply_Patch(const QString &sprite, QString suggestedName = QString());
     bool Create_Patch();
     void Close_Files();
     void Close_Working_Files();
@@ -105,6 +106,7 @@ private:
     QFile *outputFile;
     Hexagon_Interface *hexagon;
     Graphics_Offsets *graphicsOffsets;
+    Blacklist *marioSpriteBlacklist;
     QSet<char> writtenBackgroundTiles;
     QSet<char> writtenSpriteTiles;
     QMap<qint64, QByteArray*> *usedOffsets;

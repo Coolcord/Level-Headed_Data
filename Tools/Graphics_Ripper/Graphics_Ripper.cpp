@@ -2,6 +2,7 @@
 #include "../../../Hexagon/Hexagon/Value_Manipulator.h"
 #include "../../../Level-Headed/SMB1/Common_SMB1_Files/Fix_Strings.h"
 #include "../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Offsets.h"
+#include "Blacklist.h"
 #include <assert.h>
 #include <QDebug>
 #include <QDir>
@@ -17,6 +18,7 @@ Graphics_Ripper::Graphics_Ripper(const QString &applicationLocation, const QStri
     this->palettesDisabled = false;
     this->outputFile = nullptr;
     this->originalFile = nullptr;
+    this->marioSpriteBlacklist = nullptr;
     this->graphicsOffsets = new Graphics_Offsets();
 }
 
@@ -25,6 +27,7 @@ Graphics_Ripper::~Graphics_Ripper() {
     for (QByteArray *bytes : this->usedOffsets->values()) delete bytes;
     delete this->usedOffsets;
     delete this->graphicsOffsets;
+    delete this->marioSpriteBlacklist;
 }
 
 bool Graphics_Ripper::Rip_All() {
@@ -325,7 +328,13 @@ bool Graphics_Ripper::Rip_Lift() {
 }
 
 bool Graphics_Ripper::Rip_Mario() {
-    if (!this->Apply_Patch("Mario")) return false;
+    if (!this->marioSpriteBlacklist) {
+        this->marioSpriteBlacklist = new Blacklist();
+        this->marioSpriteBlacklist->Populate_Mario_Sprite_Blacklist();
+    }
+    QString patchName = this->Get_Base_Name_From_Path(this->patchFileLocation);
+    if (this->marioSpriteBlacklist->Is_Blacklisted(patchName)) return true;
+    if (!this->Apply_Patch("Mario", this->marioSpriteBlacklist->Get_Suggested_File_Name(patchName))) return false;
 
     //Write the Tile Order
     bool sprite = true;
@@ -634,12 +643,14 @@ bool Graphics_Ripper::Rip_Water() {
     return this->Create_Patch();
 }
 
-bool Graphics_Ripper::Apply_Patch(const QString &sprite) {
+bool Graphics_Ripper::Apply_Patch(const QString &sprite, QString suggestedName) {
     QDir dir(this->applicationLocation);
     dir.mkdir("Sprites");
     if (!dir.cd("Sprites")) { this->Close_Files(); return false; }
     dir.mkdir(sprite);
-    if (this->hexagon->Start_Creating_Patch(this->applicationLocation+"/Sprites/"+sprite+"/"+this->Get_Base_Name_From_Path(this->patchFileLocation)+".hexp") != Hexagon_Error_Codes::OK) {
+    QString patchName = suggestedName;
+    if (patchName.isEmpty()) patchName = this->Get_Base_Name_From_Path(this->patchFileLocation);
+    if (this->hexagon->Start_Creating_Patch(this->applicationLocation+"/Sprites/"+sprite+"/"+patchName+".hexp") != Hexagon_Error_Codes::OK) {
         this->Close_Files();
         return false;
     }
