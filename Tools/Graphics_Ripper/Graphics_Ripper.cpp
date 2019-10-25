@@ -52,7 +52,7 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Koopa()) return false;
     if (!this->Rip_Lakitu()) return false;
     if (!this->Rip_Lift()) return false;
-    if (!this->Rip_Mario()) return false;
+    //if (!this->Rip_Mario()) return false;
     if (!this->Rip_One_Up_Font()) return false;
     if (!this->Rip_Peach()) return false;
     if (!this->Rip_Piranha_Plant()) return false;
