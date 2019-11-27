@@ -40,6 +40,7 @@ public:
     bool Rip_Lakitu();
     bool Rip_Lift();
     bool Rip_Mario();
+    bool Rip_Mario_Using_Blacklist();
     bool Rip_Mushroom_Powerup();
     bool Rip_One_Up_Font();
     bool Rip_Peach();

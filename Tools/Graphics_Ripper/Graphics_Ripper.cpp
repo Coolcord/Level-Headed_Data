@@ -53,6 +53,7 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Lakitu()) return false;
     if (!this->Rip_Lift()) return false;
     //if (!this->Rip_Mario()) return false;
+    //if (!this->Rip_Mario_Using_Blacklist()) return false;
     if (!this->Rip_One_Up_Font()) return false;
     if (!this->Rip_Peach()) return false;
     if (!this->Rip_Piranha_Plant()) return false;
@@ -328,6 +329,21 @@ bool Graphics_Ripper::Rip_Lift() {
 }
 
 bool Graphics_Ripper::Rip_Mario() {
+    if (!this->Apply_Patch("Mario")) return false;
+
+    //Write the Tile Order
+    bool sprite = true;
+    QStack<qint64> offsets = this->graphicsOffsets->Get_Mario_Offsets();
+    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 8)) return false;
+
+    //Write the Palette
+    if (!this->Write_Data_To_Working_File(0x05E8, 3)) return false;
+    if (!this->Write_Data_To_Working_File(0x05EC, 3)) return false;
+    if (!this->Write_Data_To_Working_File(0x05F0, 3)) return false;
+    return this->Create_Patch();
+}
+
+bool Graphics_Ripper::Rip_Mario_Using_Blacklist() {
     if (!this->marioSpriteBlacklist) {
         this->marioSpriteBlacklist = new Blacklist();
         this->marioSpriteBlacklist->Populate_Mario_Sprite_Blacklist();
