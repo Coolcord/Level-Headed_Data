@@ -336,6 +336,9 @@ bool Graphics_Ripper::Rip_Mario() {
     QStack<qint64> offsets = this->graphicsOffsets->Get_Mario_Offsets();
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 8)) return false;
 
+    //Handle the swimming animation tile
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray(1, static_cast<char>(0x46)))) return false;
+
     //Write the Palette
     if (!this->Write_Data_To_Working_File(0x05E8, 3)) return false;
     if (!this->Write_Data_To_Working_File(0x05EC, 3)) return false;
@@ -357,6 +360,9 @@ bool Graphics_Ripper::Rip_Mario_Using_Blacklist() {
     QStack<qint64> offsets = this->graphicsOffsets->Get_Mario_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 8)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 8)) return false;
+
+    //Handle the swimming animation tile
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray(1, static_cast<char>(0x46)))) return false;
 
     //Write the Palette
     if (!this->Write_Data_To_Working_File(0x05E8, 3)) return false;
