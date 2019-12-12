@@ -654,7 +654,7 @@ bool Graphics_Ripper::Rip_Underwater_Block() {
 
 bool Graphics_Ripper::Rip_Vine() {
     if (!this->Apply_Patch("Vine")) return false;
-    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("E0E1E2").toLatin1()))) return false;
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("E0E1").toLatin1()))) return false;
     return this->Create_Patch();
 }
 
