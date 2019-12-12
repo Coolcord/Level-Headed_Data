@@ -3641,7 +3641,7 @@ TreeLedge:
 MidTreeL: ldx $07
           lda #$17                ;render middle of tree ledge
           sta MetatileBuffer,x    ;note that this is also used if ledge position is
-          lda #$4c                ;at the start of level for continuous effect
+          lda #$4c                ;at the start of level for continuous effect  [A94C]
           jmp AllUnder            ;now render the part underneath
 EndTreeL: lda #$18                ;render end of tree ledge
           jmp NoUnder
