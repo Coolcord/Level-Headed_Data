@@ -48,7 +48,6 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Goomba()) return false;
     if (!this->Rip_Hammer()) return false;
     if (!this->Rip_Hammer_Bro()) return false;
-    //if (!this->Rip_Jump_Spring()) return false; //messes with the title screen
     if (!this->Rip_Koopa()) return false;
     if (!this->Rip_Lakitu()) return false;
     if (!this->Rip_Lift()) return false;
@@ -64,7 +63,6 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Spiny_Egg()) return false;
     if (!this->Rip_Toad()) return false;
     if (!this->Rip_Axe()) return false;
-    //if (!this->Rip_Brick_Block()) return false; //messes with the title screen
     if (!this->Rip_Bowser_Bridge()) return false;
     if (!this->Rip_Bridge()) return false;
     if (!this->Rip_Bullet_Bill_Cannon()) return false;
@@ -89,6 +87,8 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Underwater_Block()) return false;
     if (!this->Rip_Vine()) return false;
     if (!this->Rip_Water()) return false;
+    //if (!this->Rip_Brick_Block()) return false; //messes with the title screen
+    //if (!this->Rip_Jump_Spring()) return false; //messes with the title screen
     return true;
 }
 
