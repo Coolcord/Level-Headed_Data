@@ -48,7 +48,7 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Goomba()) return false;
     if (!this->Rip_Hammer()) return false;
     if (!this->Rip_Hammer_Bro()) return false;
-    if (!this->Rip_Jump_Spring()) return false;
+    //if (!this->Rip_Jump_Spring()) return false; //messes with the title screen
     if (!this->Rip_Koopa()) return false;
     if (!this->Rip_Lakitu()) return false;
     if (!this->Rip_Lift()) return false;
@@ -64,7 +64,7 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Spiny_Egg()) return false;
     if (!this->Rip_Toad()) return false;
     if (!this->Rip_Axe()) return false;
-    if (!this->Rip_Brick_Block()) return false;
+    //if (!this->Rip_Brick_Block()) return false; //messes with the title screen
     if (!this->Rip_Bowser_Bridge()) return false;
     if (!this->Rip_Bridge()) return false;
     if (!this->Rip_Bullet_Bill_Cannon()) return false;
@@ -288,6 +288,7 @@ bool Graphics_Ripper::Rip_Hammer_Bro() {
 }
 
 bool Graphics_Ripper::Rip_Jump_Spring() {
+    //Affects the Title Screen
     if (!this->Apply_Patch("Jump Spring")) return false;
 
     //Jump Spring Sprite
@@ -467,6 +468,7 @@ bool Graphics_Ripper::Rip_Axe() {
 }
 
 bool Graphics_Ripper::Rip_Brick_Block() {
+    //Affects the Title Screen
     if (!this->Apply_Patch("Brick Block")) return false;
     bool sprite = false;
     QStack<qint64> offsets = this->graphicsOffsets->Get_Brick_Block_Offsets();

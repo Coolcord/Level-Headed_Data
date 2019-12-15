@@ -35,7 +35,7 @@ public:
     bool Rip_Goomba();
     bool Rip_Hammer();
     bool Rip_Hammer_Bro();
-    bool Rip_Jump_Spring();
+    bool Rip_Jump_Spring(); //affects the title screen
     bool Rip_Koopa();
     bool Rip_Lakitu();
     bool Rip_Lift();
@@ -55,7 +55,7 @@ public:
 
     //Background
     bool Rip_Axe();
-    bool Rip_Brick_Block();
+    bool Rip_Brick_Block(); //affects the title screen
     bool Rip_Bowser_Bridge();
     bool Rip_Bridge();
     bool Rip_Bullet_Bill_Cannon();
