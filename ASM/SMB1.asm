@@ -11150,8 +11150,8 @@ HurtBowser:
           ldy WorldNumber            ;use world number as offset
           lda BowserIdentities,y     ;get enemy identifier to replace bowser with
           sta Enemy_ID,x             ;set as new enemy identifier
-          lda #$20                   ;set A to use starting value for state
-          cpy #$03                   ;check to see if using offset of 3 or more
+          lda #$20                   ;set A to use starting value for state  [A920]
+          cpy #$03                   ;check to see if using offset of 3 or more  [C003]
           bcs SetDBSte               ;branch if so
           ora #$03                   ;otherwise add 3 to enemy state
 SetDBSte: sta Enemy_State,x          ;set defeated enemy state
