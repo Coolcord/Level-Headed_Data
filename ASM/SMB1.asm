@@ -9489,10 +9489,10 @@ BlooberSwim:
        lda Enemy_Y_Position,x   ;get vertical coordinate
        sec
        sbc Enemy_Y_MoveForce,x  ;subtract movement force
-       cmp #$20                 ;check to see if position is above edge of status bar
-       bcc SwimX                ;if so, don't do it
-       sta Enemy_Y_Position,x   ;otherwise, set new vertical position, make bloober swim
-SwimX: ldy Enemy_MovingDir,x    ;check moving direction
+       cmp #$20                 ;check to see if position is above edge of status bar  [C920]
+       bcc SwimX                ;if so, don't do it  [9002]
+       sta Enemy_Y_Position,x   ;otherwise, set new vertical position, make bloober swim  [95CF]
+SwimX: ldy Enemy_MovingDir,x    ;check moving direction  [B446]
        dey
        bne LeftSwim             ;if moving to the left, branch to second part
        lda Enemy_X_Position,x
@@ -9565,13 +9565,13 @@ Floatdown:
 NoFD: rts                     ;leave
 
 ChkNearPlayer:
-      lda Enemy_Y_Position,x    ;get vertical coordinate
-      adc #$10                  ;add sixteen pixels
-      cmp Player_Y_Position     ;compare result with player's vertical coordinate
-      bcc Floatdown             ;if modified vertical less than player's, branch
-      lda #$00
-      sta BlooperMoveCounter,x  ;otherwise nullify movement counter
-      rts
+      lda Enemy_Y_Position,x    ;get vertical coordinate  [B5CF]
+      adc #$10                  ;add sixteen pixels  [6910]
+      cmp Player_Y_Position     ;compare result with player's vertical coordinate  [C5CE]
+      bcc Floatdown             ;if modified vertical less than player's, branch  [90F0]
+      lda #$00                  ; [A900]
+      sta BlooperMoveCounter,x  ;otherwise nullify movement counter  [95A0]
+      rts                       ; [60]
 
 ;--------------------------------
 
