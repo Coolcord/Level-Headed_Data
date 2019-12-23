@@ -75,7 +75,6 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Flagpole()) return false;
     if (!this->Rip_Font()) return false;
     if (!this->Rip_Mushroom_Powerup()) return false;
-    if (!this->Rip_Mushroom_Platform()) return false;
     if (!this->Rip_Overworld_Block()) return false;
     if (!this->Rip_Pipe()) return false;
     if (!this->Rip_Question_Block()) return false;
@@ -87,6 +86,7 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Underwater_Block()) return false;
     if (!this->Rip_Vine()) return false;
     if (!this->Rip_Water()) return false;
+    //if (!this->Rip_Mushroom_Platform()) return false; //messes with the background
     //if (!this->Rip_Brick_Block()) return false; //messes with the title screen
     //if (!this->Rip_Jump_Spring()) return false; //messes with the title screen
     return true;

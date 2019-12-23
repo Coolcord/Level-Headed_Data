@@ -67,7 +67,7 @@ public:
     bool Rip_Coral();
     bool Rip_Flagpole();
     bool Rip_Font();
-    bool Rip_Mushroom_Platform();
+    bool Rip_Mushroom_Platform(); //affects the backgrounds
     bool Rip_Overworld_Block();
     bool Rip_Pipe();
     bool Rip_Question_Block();
