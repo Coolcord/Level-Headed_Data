@@ -696,6 +696,8 @@ bool Graphics_Ripper::Apply_Patch(const QString &sprite, QString suggestedName) 
 }
 
 bool Graphics_Ripper::Create_Patch() {
+    this->writtenSpriteTiles.clear();
+    this->writtenBackgroundTiles.clear();
     if (this->hexagon->Finish_Creating_Patch()) return false;
     return this->Open_Original_File();
 }

@@ -57,9 +57,9 @@ int main(int argc, char *argv[]) {
     //Load the Hexagon Plugin
     QPluginLoader *pluginLoader = new QPluginLoader(Common_Strings::STRING_PLUGIN_LOCATION);
     QObject *validPlugin = pluginLoader->instance();
-    if (!validPlugin) { qWarning() << "Unable to load the backend plugin! Make sure the plugin is in the plugins folder!"; return 1; }
+    if (!validPlugin) { qWarning() << "Unable to load the hexagon backend plugin! Make sure the plugin is in the plugins folder!"; return 1; }
     Hexagon_Interface *hexagonPlugin = qobject_cast<Hexagon_Interface*>(validPlugin);
-    if (!hexagonPlugin) { qWarning() << "Unable to load the backend plugin! Make sure the plugin is in the plugins folder!"; return 1; }
+    if (!hexagonPlugin) { qWarning() << "Unable to load the hexagon backend plugin! Make sure the plugin is in the plugins folder!"; return 1; }
 
     //Rip the Graphics
     for (QString file : files) {
