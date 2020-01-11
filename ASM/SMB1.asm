@@ -8552,17 +8552,17 @@ FlameYMFAdderData:
       .db $ff, $01
 
 InitBowserFlame:
-        lda FrenzyEnemyTimer        ;if timer not expired yet, branch to leave
-        bne FlmEx
-        sta Enemy_Y_MoveForce,x     ;reset something here
-        lda NoiseSoundQueue
-        ora #Sfx_BowserFlame        ;load bowser's flame sound into queue
-        sta NoiseSoundQueue
-        ldy BowserFront_Offset      ;get bowser's buffer offset
-        lda Enemy_ID,y              ;check for bowser
-        cmp #Bowser
-        beq SpawnFromMouth          ;branch if found
-        jsr SetFlameTimer           ;get timer data based on flame counter
+        lda FrenzyEnemyTimer        ;if timer not expired yet, branch to leave  [AD8F07]
+        bne FlmEx                   ; [D0F4]
+        sta Enemy_Y_MoveForce,x     ;reset something here  [9D3404]
+        lda NoiseSoundQueue         ; [A5FD]
+        ora #Sfx_BowserFlame        ;load bowser's flame sound into queue  [0902]
+        sta NoiseSoundQueue         ; [85FD]
+        ldy BowserFront_Offset      ;get bowser's buffer offset  [AC6803]
+        lda Enemy_ID,y              ;check for bowser  [B91600]
+        cmp #Bowser                 ; [C92D]
+        beq SpawnFromMouth          ;branch if found  [F031]
+        jsr SetFlameTimer           ;get timer data based on flame counter  [20D9D1]
         clc
         adc #$20                    ;add 32 frames by default
         ldy SecondaryHardMode
