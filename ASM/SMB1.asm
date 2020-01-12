@@ -10215,15 +10215,15 @@ CompDToO:  cmp MaxRangeFromOrigin     ;compare difference with pseudorandom valu
 HammerChk: lda EnemyFrameTimer,x      ;if timer set here not expired yet, skip ahead to
            bne MakeBJump              ;some other section of code
            jsr MoveEnemySlowVert      ;otherwise start by moving bowser downwards
-           lda WorldNumber            ;check world number
-           cmp #World6
-           bcc SetHmrTmr              ;if world 1-5, skip this part (not time to throw hammers yet)
-           lda FrameCounter
-           and #%00000011             ;check to see if it's time to execute sub
-           bne SetHmrTmr              ;if not, skip sub, otherwise
-           jsr SpawnHammerObj         ;execute sub on every fourth frame to spawn misc object (hammer)
-SetHmrTmr: lda Enemy_Y_Position,x     ;get current vertical position
-           cmp #$80                   ;if still above a certain point
+           lda WorldNumber            ;check world number  [AD5F07]
+           cmp #World6                ; [C905]
+           bcc SetHmrTmr              ;if world 1-5, skip this part (not time to throw hammers yet)  [9009]
+           lda FrameCounter           ; [A509]
+           and #%00000011             ;check to see if it's time to execute sub  [2903]
+           bne SetHmrTmr              ;if not, skip sub, otherwise  [D003]
+           jsr SpawnHammerObj         ;execute sub on every fourth frame to spawn misc object (hammer)  [2094BA]
+SetHmrTmr: lda Enemy_Y_Position,x     ;get current vertical position  [B5CF]
+           cmp #$80                   ;if still above a certain point  [C980]
            bcc ChkFireB               ;then skip to world number check for flames
            lda PseudoRandomBitReg,x
            and #%00000011             ;get pseudorandom offset
