@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        ../../../C_Common_Code/Qt/Text_Insertion_Buffer/Text_Insertion_Buffer.cpp \
         ../../../Level-Headed/Common_Files/Random.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Bridge_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Castle_Generator.cpp \
@@ -55,6 +56,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    ../../../C_Common_Code/Qt/Text_Insertion_Buffer/Text_Insertion_Buffer.h \
     ../../../Level-Headed/Common_Files/Random.h \
     ../../../Level-Headed/Level-Headed/Interpreter_Interface.h \
     ../../../Level-Headed/SMB1/Common_SMB1_Files/Background.h \
