@@ -71,7 +71,6 @@ public:
     bool Rip_Overworld_Block();
     bool Rip_Pipe();
     bool Rip_Question_Block();
-    bool Rip_Rope();
     bool Rip_Selector_Icon();
     bool Rip_Solid_Block();
     bool Rip_Tree_Platform();

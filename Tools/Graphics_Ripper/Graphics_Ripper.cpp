@@ -78,7 +78,6 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Overworld_Block()) return false;
     if (!this->Rip_Pipe()) return false;
     if (!this->Rip_Question_Block()) return false;
-    if (!this->Rip_Rope()) return false;
     if (!this->Rip_Selector_Icon()) return false;
     if (!this->Rip_Solid_Block()) return false;
     if (!this->Rip_Starman()) return false;
@@ -609,15 +608,6 @@ bool Graphics_Ripper::Rip_Question_Block() {
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("87").toLatin1()))) return false;
-    return this->Create_Patch();
-}
-
-bool Graphics_Ripper::Rip_Rope() {
-    if (!this->Apply_Patch("Rope")) return false;
-    bool sprite = false;
-    QStack<qint64> offsets = this->graphicsOffsets->Get_Rope_Offsets();
-    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
-    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch();
 }
 
