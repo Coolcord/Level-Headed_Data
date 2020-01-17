@@ -3,9 +3,9 @@
 #include "Coordinates.h"
 #include <assert.h>
 
-Object_Parser::Object_Parser(QTextStream *stream, int numBytesLeft, SMB1_Compliance_Generator_Arguments *args) {
+Object_Parser::Object_Parser(int numBytesLeft, SMB1_Compliance_Generator_Arguments *args) {
     this->args = args;
-    this->objectWriter = new Object_Writer(stream, numBytesLeft, args);
+    this->objectWriter = new Object_Writer(numBytesLeft, args);
     this->objectWriter->Set_Coordinate_Safety(false);
     this->coordinates = new Coordinates(this->objectWriter);
 }

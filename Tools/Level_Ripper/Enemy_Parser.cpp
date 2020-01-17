@@ -5,10 +5,9 @@
 #include "Coordinates.h"
 #include <assert.h>
 
-Enemy_Parser::Enemy_Parser(QTextStream *stream, int numBytesLeft, SMB1_Compliance_Generator_Arguments *args) {
-    this->stream = stream;
-    this->enemyWriter = new Enemy_Writer(stream, numBytesLeft);
-    this->objectWriter = new Object_Writer(stream, numBytesLeft, args);
+Enemy_Parser::Enemy_Parser(int numBytesLeft, SMB1_Compliance_Generator_Arguments *args) {
+    this->enemyWriter = new Enemy_Writer(numBytesLeft);
+    this->objectWriter = new Object_Writer(numBytesLeft, args);
     this->objectWriter->Set_Coordinate_Safety(false);
     this->enemyWriter->Set_Coordinate_Safety(false);
     this->pipePointerWriter = new Pipe_Pointer_Writer(this->objectWriter, this->enemyWriter);

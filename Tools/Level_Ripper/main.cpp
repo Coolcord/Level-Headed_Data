@@ -12,7 +12,6 @@ int main(int argc, char *argv[]) {
     QFile output(a.applicationDirPath()+"/dump.txt");
     if (!file.open(QIODevice::ReadOnly)) return 1;
     if (!output.open(QIODevice::WriteOnly | QIODevice::Truncate)) { file.close(); return 1; }
-    QTextStream stream(&output);
     SMB1_Compliance_Generator_Arguments args;
     args.endCastle = Castle::SMALL;
     args.startCastle = Castle::SMALL;
@@ -111,14 +110,14 @@ int main(int argc, char *argv[]) {
     //Parse the level
     if (!file.seek(offset)) { output.close(); file.close(); return 1; }
     if (object) {
-        Object_Parser objectParser(&stream, 10000, &args);
+        Object_Parser objectParser(10000, &args);
         QByteArray bytes = file.read(2);
         while (!objectParser.At_End(bytes.at(0))) {
             if (!objectParser.Parse_Object(bytes.at(0), bytes.at(1), args.levelType)) { output.close(); file.close(); return 1; }
             bytes = file.read(2);
         }
     } else {
-        Enemy_Parser enemyParser(&stream, 10000, &args);
+        Enemy_Parser enemyParser(10000, &args);
         QByteArray bytes = file.read(2);
         while (!enemyParser.At_End(bytes.at(0))) {
             if (enemyParser.Is_Pipe_Pointer(bytes.at(0), bytes.at(1))) {
@@ -130,7 +129,6 @@ int main(int argc, char *argv[]) {
             bytes = file.read(2);
         }
     }
-    stream.flush();
     output.flush();
     output.close();
     file.close();

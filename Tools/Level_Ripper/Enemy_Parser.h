@@ -11,7 +11,7 @@ class Pipe_Pointer_Writer;
 
 class Enemy_Parser {
 public:
-    Enemy_Parser(QTextStream *s, int numBytesLeft, SMB1_Compliance_Generator_Arguments *args);
+    Enemy_Parser(int numBytesLeft, SMB1_Compliance_Generator_Arguments *args);
     ~Enemy_Parser();
     bool At_End(char coordinates);
     bool Is_Pipe_Pointer(char coordinates, char enemy);
@@ -24,7 +24,6 @@ private:
     Enemy_Writer *enemyWriter;
     Pipe_Pointer_Writer *pipePointerWriter;
     SMB1_Compliance_Generator_Arguments *args;
-    QTextStream *stream;
     bool lastWasPageChange;
 };
 
