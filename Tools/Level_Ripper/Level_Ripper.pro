@@ -41,10 +41,12 @@ SOURCES += \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Required_Enemy_Spawns.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Map.cpp \
+        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Object_Parser.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Simple_Object_Spawner.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Standard_Overworld_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underground_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underwater_Generator.cpp \
+        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Vertical_Limit_Checker.cpp \
         Coordinates.cpp \
         Enemy_Parser.cpp \
         Object_Parser.cpp \
@@ -108,10 +110,12 @@ HEADERS += \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator_Arguments.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator_Interface.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Map.h \
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Object_Parser.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Simple_Object_Spawner.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Standard_Overworld_Generator.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underground_Generator.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underwater_Generator.h \
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Vertical_Limit_Checker.h \
     Coordinates.h \
     Enemy_Parser.h \
     Object_Parser.h
