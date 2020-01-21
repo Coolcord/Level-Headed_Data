@@ -1,11 +1,11 @@
 #include "Object_Parser.h"
-#include "../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Writer.h"
+#include "../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Buffer.h"
 #include "Coordinates.h"
 #include <assert.h>
 
 Object_Parser::Object_Parser(int numBytesLeft, SMB1_Compliance_Generator_Arguments *args) {
     this->args = args;
-    this->objectWriter = new Object_Writer(numBytesLeft, args);
+    this->objectWriter = new Object_Buffer(numBytesLeft, args);
     this->objectWriter->Set_Coordinate_Safety(false);
     this->coordinates = new Coordinates(this->objectWriter);
 }

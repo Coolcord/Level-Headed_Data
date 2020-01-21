@@ -5,9 +5,9 @@
 #include <QTextStream>
 
 class Coordinates;
-class Enemy_Writer;
-class Object_Writer;
-class Pipe_Pointer_Writer;
+class Enemy_Buffer;
+class Object_Buffer;
+class Pipe_Pointer_Buffer;
 
 class Enemy_Parser {
 public:
@@ -20,9 +20,9 @@ public:
 
 private:
     Coordinates *coordinates;
-    Object_Writer *objectWriter;
-    Enemy_Writer *enemyWriter;
-    Pipe_Pointer_Writer *pipePointerWriter;
+    Object_Buffer *objects;
+    Enemy_Buffer *enemies;
+    Pipe_Pointer_Buffer *pipePointerWriter;
     SMB1_Compliance_Generator_Arguments *args;
     bool lastWasPageChange;
 };

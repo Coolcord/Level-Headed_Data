@@ -25,19 +25,19 @@ SOURCES += \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Continuous_Enemies_Spawner.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/End_Spawner.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Enemy_Spawner.cpp \
-        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Enemy_Writer.cpp \
+        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Enemy_Buffer.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/First_Page_Handler.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Header_Writer.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Island_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Item_Spawner.cpp \
-        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Item_Writer.cpp \
+        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Item_Buffer.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Crawler.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Midpoint_Handler.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Spawner.cpp \
-        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Writer.cpp \
+        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Buffer.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Pipe_Exit_Generator.cpp \
-        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Pipe_Pointer_Writer.cpp \
+        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Pipe_Pointer_Buffer.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Required_Enemy_Spawns.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Map.cpp \
@@ -46,7 +46,6 @@ SOURCES += \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Standard_Overworld_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underground_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underwater_Generator.cpp \
-        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Vertical_Limit_Checker.cpp \
         Coordinates.cpp \
         Enemy_Parser.cpp \
         Object_Parser.cpp \
@@ -89,22 +88,24 @@ HEADERS += \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Difficulty.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/End_Pattern.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/End_Spawner.h \
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Enemy_Buffer_Data.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Enemy_Spawner.h \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Enemy_Writer.h \
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Enemy_Buffer.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Extra_Enemy_Args.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/First_Page_Handler.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Header_Writer.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Island_Generator.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Item_Spawner.h \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Item_Writer.h \
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Item_Buffer.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Crawler.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Generator.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Midpoint_Handler.h \
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Buffer_Data.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Spawner.h \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Writer.h \
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Buffer.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Physics.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Pipe_Exit_Generator.h \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Pipe_Pointer_Writer.h \
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Pipe_Pointer_Buffer.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Required_Enemy_Spawns.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator_Arguments.h \
@@ -115,7 +116,6 @@ HEADERS += \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Standard_Overworld_Generator.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underground_Generator.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underwater_Generator.h \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Vertical_Limit_Checker.h \
     Coordinates.h \
     Enemy_Parser.h \
     Object_Parser.h

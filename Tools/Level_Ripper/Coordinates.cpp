@@ -1,7 +1,7 @@
 #include "Coordinates.h"
-#include "../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Item_Writer.h"
+#include "../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Item_Buffer.h"
 
-Coordinates::Coordinates(Item_Writer *itemWriter) {
+Coordinates::Coordinates(Item_Buffer *itemWriter) {
     this->itemWriter = itemWriter;
 }
 

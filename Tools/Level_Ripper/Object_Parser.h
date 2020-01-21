@@ -5,7 +5,7 @@
 #include <QTextStream>
 
 class Coordinates;
-class Object_Writer;
+class Object_Buffer;
 
 class Object_Parser {
 public:
@@ -21,7 +21,7 @@ private:
     bool Parse_E_Object(int x, char object);
     bool Parse_F_Object(int x, char object);
 
-    Object_Writer *objectWriter;
+    Object_Buffer *objectWriter;
     Coordinates *coordinates;
     SMB1_Compliance_Generator_Arguments *args;
 };
