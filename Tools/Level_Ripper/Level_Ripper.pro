@@ -82,13 +82,13 @@ HEADERS += \
     ../../../Level-Headed/SMB1/Common_SMB1_Files/Scenery.h \
     ../../../Level-Headed/SMB1/Common_SMB1_Files/Scenery_String.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Bridge_Generator.h \
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Buffer_Data.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Castle_Generator.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Common_Pattern_Spawner.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Continuous_Enemies_Spawner.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Difficulty.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/End_Pattern.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/End_Spawner.h \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Enemy_Buffer_Data.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Enemy_Spawner.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Enemy_Buffer.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Extra_Enemy_Args.h \
@@ -100,7 +100,6 @@ HEADERS += \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Crawler.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Generator.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Midpoint_Handler.h \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Buffer_Data.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Spawner.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Buffer.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Physics.h \

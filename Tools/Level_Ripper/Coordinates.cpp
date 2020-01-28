@@ -14,7 +14,7 @@ void Coordinates::Get_Coordinates(char coordinates, char object, int &x, int &y,
     int value = static_cast<int>(coordinates);
     y = value&0x0F;
     int absoluteX = (value&0xF0)/0x10;
-    int lastAbsoluteX = this->itemWriter->Get_Absolute_X(0);
+    int lastAbsoluteX = this->itemWriter->Get_Page_Relative_Absolute_X(0);
     if (this->lastWasGroup) {
         if (!peek) this->lastWasGroup = false;
         if (lastAbsoluteX > 0xC) {
