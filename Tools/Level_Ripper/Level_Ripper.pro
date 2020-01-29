@@ -38,6 +38,7 @@ SOURCES += \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Buffer.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Pipe_Exit_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Pipe_Pointer_Buffer.cpp \
+        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Powerup_Distributor.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Required_Enemy_Spawns.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Map.cpp \
@@ -81,6 +82,7 @@ HEADERS += \
     ../../../Level-Headed/SMB1/Common_SMB1_Files/Object_Item_String.h \
     ../../../Level-Headed/SMB1/Common_SMB1_Files/Scenery.h \
     ../../../Level-Headed/SMB1/Common_SMB1_Files/Scenery_String.h \
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Block_Data.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Bridge_Generator.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Buffer_Data.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Castle_Generator.h \
@@ -105,6 +107,7 @@ HEADERS += \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Physics.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Pipe_Exit_Generator.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Pipe_Pointer_Buffer.h \
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Powerup_Distributor.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Required_Enemy_Spawns.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator_Arguments.h \

@@ -37,15 +37,15 @@ bool Object_Parser::Parse_B_Object(int x, int y, char object) {
     case 0x00:
         switch (value) {
         default:    return false;
-        case 0x00:  return this->objectWriter->Question_Block_With_Mushroom_Only(x, y);
+        case 0x00:  return this->objectWriter->Question_Block_With_Mushroom(x, y);
         case 0x01:  return this->objectWriter->Question_Block_With_Coin(x, y);
         case 0x02:  return this->objectWriter->Hidden_Block_With_Coin(x, y);
-        case 0x03:  return this->objectWriter->Hidden_Block_With_1up_Only(x, y);
-        case 0x04:  return this->objectWriter->Brick_With_Mushroom_Only(x, y);
+        case 0x03:  return this->objectWriter->Hidden_Block_With_1up(x, y);
+        case 0x04:  return this->objectWriter->Brick_With_Mushroom(x, y);
         case 0x05:  return this->objectWriter->Brick_With_Vine_Without_Pointer(x, y);
-        case 0x06:  return this->objectWriter->Brick_With_Star_Only(x, y);
+        case 0x06:  return this->objectWriter->Brick_With_Star(x, y);
         case 0x07:  return this->objectWriter->Brick_With_10_Coins(x, y);
-        case 0x08:  return this->objectWriter->Brick_With_1up_Only(x, y);
+        case 0x08:  return this->objectWriter->Brick_With_1up(x, y);
         case 0x09:  return this->objectWriter->Underwater_Sideways_Pipe_Without_Pointer(x, y);
         case 0x0A:  return this->objectWriter->Used_Block(x, y);
         case 0x0B:  return this->objectWriter->Trampoline(x, y);
