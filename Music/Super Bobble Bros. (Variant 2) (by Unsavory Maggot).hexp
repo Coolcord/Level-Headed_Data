@@ -1,15 +1,15 @@
 # Compatible:
 # In the Depths [C] (by Coolcord).hexp
+# In the Depths [W] (by Coolcord).hexp
 # Kamikaze 3 (by 79).hexp
 # Music 03 (from U1's Music Pack).hexp
 # Stomp on Brother's Head (by Kaeri).hexp
-# Super Bobble Bros. (Variant 2) (by Unsavory Maggot).hexp
 # Super Zabil Bros. (by Poporo).hexp
 # Super Zabil Bros. Starman (by Poporo).hexp
 # Techno! Mario Bros [O,W,S].hexp
 # Techno! Mario Bros [W,S].hexp
 A: 0x7880
-V: 51
+V: 52
 
 A: 0x7924
 V: FF
