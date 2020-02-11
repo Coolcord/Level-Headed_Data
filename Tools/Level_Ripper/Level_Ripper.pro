@@ -18,7 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         ../../../C_Common_Code/Qt/Text_Insertion_Buffer/Text_Insertion_Buffer.cpp \
-        ../../../Level-Headed/Common_Files/Random.cpp \
+        ../../../C_Common_Code/Qt/Random/Random.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Bridge_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Castle_Generator.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Common_Pattern_Spawner.cpp \
@@ -59,7 +59,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     ../../../C_Common_Code/Qt/Text_Insertion_Buffer/Text_Insertion_Buffer.h \
-    ../../../Level-Headed/Common_Files/Random.h \
+    ../../../C_Common_Code/Qt/Random/Random.h \
     ../../../Level-Headed/Level-Headed/Interpreter_Interface.h \
     ../../../Level-Headed/SMB1/Common_SMB1_Files/Background.h \
     ../../../Level-Headed/SMB1/Common_SMB1_Files/Background_String.h \

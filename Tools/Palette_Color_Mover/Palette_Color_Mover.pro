@@ -43,7 +43,7 @@ SOURCES += \
     ../../../Level-Headed/SMB1/SMB1_Writer/Sequential_Archive_Handler.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Powerups.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Sound.cpp \
-    ../../../Level-Headed//Common_Files/Random.cpp \
+    ../../../C_Common_Code/Qt/Random/Random.cpp \
     Palette_Color_Mover.cpp \
     main.cpp
 
@@ -81,6 +81,6 @@ HEADERS += \
     ../../../Level-Headed/SMB1/SMB1_Writer/Sequential_Archive_Handler.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Powerups.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Sound.h \
-    ../../../Level-Headed//Common_Files/Random.h \
+    ../../../C_Common_Code/Qt/Random/Random.h \
     Palette_Color_Mover.h \
     Sprites.h
