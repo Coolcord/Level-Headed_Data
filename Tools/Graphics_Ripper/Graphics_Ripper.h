@@ -7,7 +7,6 @@
 #include <QSet>
 #include <QStack>
 
-class Blacklist;
 class Graphics_Offsets;
 
 class Graphics_Ripper {
@@ -79,6 +78,17 @@ public:
     bool Rip_Water();
 
 private:
+    bool Rip_Bowser_Fire_Dark();
+    bool Rip_Bowser_Fire_Light();
+    bool Rip_Fireball_Dark();
+    bool Rip_Fireball_Light();
+    bool Rip_Mushroom_Dark();
+    bool Rip_Mushroom_Light();
+    bool Rip_Peach_Dark();
+    bool Rip_Peach_Light();
+    bool Rip_Toad_Dark();
+    bool Rip_Toad_Light();
+
     bool Apply_Patch(const QString &sprite, QString suggestedName = QString());
     bool Create_Patch();
     void Close_Files();
@@ -86,7 +96,10 @@ private:
     bool Does_Patch_Use_New_Tiles(qint64 offset, bool sprite, int tileOrderSize);
     bool Does_Patch_Use_New_Tiles(QStack<qint64> offsets, bool sprite, int tileOrderSize);
     QString Get_Base_Name_From_Path(const QString &path);
+    bool Is_Peach_Skin_Dark();
+    bool Is_Red_Border_Black();
     bool Is_Tile_Blank(char tileID, bool sprite);
+    bool Read_From_Output_File(qint64 offset, int amount, QByteArray &bytes);
     bool Read_Graphics_Bytes_From_Sprite_Tile_ID(char tileID, QByteArray &graphicsBytes);
     bool Read_Graphics_Bytes_From_Background_Tile_ID(char tileID, QByteArray &graphicsBytes);
     bool Open_Original_File();
@@ -106,7 +119,6 @@ private:
     QFile *outputFile;
     Hexagon_Interface *hexagon;
     Graphics_Offsets *graphicsOffsets;
-    Blacklist *marioSpriteBlacklist;
     QSet<char> writtenBackgroundTiles;
     QSet<char> writtenSpriteTiles;
     QMap<qint64, QByteArray*> *usedOffsets;

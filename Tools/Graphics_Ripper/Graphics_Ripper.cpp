@@ -2,7 +2,6 @@
 #include "../../../Hexagon/Hexagon/Value_Manipulator.h"
 #include "../../../Level-Headed/SMB1/Common_SMB1_Files/Fix_Strings.h"
 #include "../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Offsets.h"
-#include "Blacklist.h"
 #include <assert.h>
 #include <QDebug>
 #include <QDir>
@@ -18,7 +17,6 @@ Graphics_Ripper::Graphics_Ripper(const QString &applicationLocation, const QStri
     this->palettesDisabled = false;
     this->outputFile = nullptr;
     this->originalFile = nullptr;
-    this->marioSpriteBlacklist = nullptr;
     this->graphicsOffsets = new Graphics_Offsets();
 }
 
@@ -27,7 +25,6 @@ Graphics_Ripper::~Graphics_Ripper() {
     for (QByteArray *bytes : this->usedOffsets->values()) delete bytes;
     delete this->usedOffsets;
     delete this->graphicsOffsets;
-    delete this->marioSpriteBlacklist;
 }
 
 bool Graphics_Ripper::Rip_All() {
@@ -52,7 +49,6 @@ bool Graphics_Ripper::Rip_All() {
     if (!this->Rip_Lakitu()) return false;
     if (!this->Rip_Lift()) return false;
     //if (!this->Rip_Mario()) return false;
-    //if (!this->Rip_Mario_Using_Blacklist()) return false;
     if (!this->Rip_One_Up_Font()) return false;
     if (!this->Rip_Peach()) return false;
     if (!this->Rip_Piranha_Plant()) return false;
@@ -188,9 +184,8 @@ bool Graphics_Ripper::Rip_Bowser() {
 }
 
 bool Graphics_Ripper::Rip_Bowser_Fire() {
-    if (!this->Apply_Patch("Bowser Fire")) return false;
-    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("515253").toLatin1()))) return false;
-    return this->Create_Patch();
+    if (this->Is_Red_Border_Black()) return this->Rip_Bowser_Fire_Dark();
+    else return this->Rip_Bowser_Fire_Light();
 }
 
 bool Graphics_Ripper::Rip_Brick_Piece() {
@@ -245,9 +240,8 @@ bool Graphics_Ripper::Rip_Explosion() {
 }
 
 bool Graphics_Ripper::Rip_Fireball() {
-    if (!this->Apply_Patch("Fireball")) return false;
-    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("6465").toLatin1()))) return false;
-    return this->Create_Patch();
+    if (!this->Is_Red_Border_Black()) return this->Rip_Fireball_Dark();
+    else return this->Rip_Fireball_Light();
 }
 
 bool Graphics_Ripper::Rip_Fire_Flower() {
@@ -347,36 +341,9 @@ bool Graphics_Ripper::Rip_Mario() {
     return this->Create_Patch();
 }
 
-bool Graphics_Ripper::Rip_Mario_Using_Blacklist() {
-    if (!this->marioSpriteBlacklist) {
-        this->marioSpriteBlacklist = new Blacklist();
-        this->marioSpriteBlacklist->Populate_Mario_Sprite_Blacklist();
-    }
-    QString patchName = this->Get_Base_Name_From_Path(this->patchFileLocation);
-    if (this->marioSpriteBlacklist->Is_Blacklisted(patchName)) return true;
-    if (!this->Apply_Patch("Mario", this->marioSpriteBlacklist->Get_Suggested_File_Name(patchName))) return false;
-
-    //Write the Tile Order
-    bool sprite = true;
-    QStack<qint64> offsets = this->graphicsOffsets->Get_Mario_Offsets();
-    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 8)) return true;
-    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 8)) return false;
-
-    //Handle the swimming animation tiles
-    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray(1, static_cast<char>(0x31)))) return false;
-    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray(1, static_cast<char>(0x46)))) return false;
-
-    //Write the Palette
-    if (!this->Write_Data_To_Working_File(0x05E8, 3)) return false;
-    if (!this->Write_Data_To_Working_File(0x05EC, 3)) return false;
-    if (!this->Write_Data_To_Working_File(0x05F0, 3)) return false;
-    return this->Create_Patch();
-}
-
 bool Graphics_Ripper::Rip_Mushroom_Powerup() {
-    if (!this->Apply_Patch("Powerup Mushroom")) return false;
-    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("76777879").toLatin1()))) return false;
-    return this->Create_Patch();
+    if (!this->Is_Red_Border_Black()) return this->Rip_Mushroom_Dark();
+    else return this->Rip_Mushroom_Light();
 }
 
 bool Graphics_Ripper::Rip_One_Up_Font() {
@@ -386,12 +353,8 @@ bool Graphics_Ripper::Rip_One_Up_Font() {
 }
 
 bool Graphics_Ripper::Rip_Peach() {
-    if (!this->Apply_Patch("Peach")) return false;
-    bool sprite = true;
-    QStack<qint64> offsets = this->graphicsOffsets->Get_Peach_Offsets();
-    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
-    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
-    return this->Create_Patch();
+    if (this->Is_Peach_Skin_Dark()) return this->Rip_Peach_Dark();
+    else return this->Rip_Peach_Light();
 }
 
 bool Graphics_Ripper::Rip_Piranha_Plant() {
@@ -449,12 +412,8 @@ bool Graphics_Ripper::Rip_Starman() {
 }
 
 bool Graphics_Ripper::Rip_Toad() {
-    if (!this->Apply_Patch("Toad")) return false;
-    bool sprite = true;
-    QStack<qint64> offsets = this->graphicsOffsets->Get_Toad_Offsets();
-    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
-    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
-    return this->Create_Patch();
+    if (this->Is_Peach_Skin_Dark()) return this->Rip_Toad_Dark();
+    else return this->Rip_Toad_Light();
 }
 
 bool Graphics_Ripper::Rip_Axe() {
@@ -659,6 +618,78 @@ bool Graphics_Ripper::Rip_Water() {
     return this->Create_Patch();
 }
 
+bool Graphics_Ripper::Rip_Bowser_Fire_Dark() {
+    if (!this->Apply_Patch("Bowser Fire Dark")) return false;
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("515253").toLatin1()))) return false;
+    return this->Create_Patch();
+}
+
+bool Graphics_Ripper::Rip_Bowser_Fire_Light() {
+    if (!this->Apply_Patch("Bowser Fire Light")) return false;
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("515253").toLatin1()))) return false;
+    return this->Create_Patch();
+}
+
+bool Graphics_Ripper::Rip_Fireball_Dark() {
+    if (!this->Apply_Patch("Fireball Dark")) return false;
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("6465").toLatin1()))) return false;
+    return this->Create_Patch();
+}
+
+bool Graphics_Ripper::Rip_Fireball_Light() {
+    if (!this->Apply_Patch("Fireball Light")) return false;
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("6465").toLatin1()))) return false;
+    return this->Create_Patch();
+}
+
+bool Graphics_Ripper::Rip_Mushroom_Dark() {
+    if (!this->Apply_Patch("Powerup Mushroom Dark")) return false;
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("76777879").toLatin1()))) return false;
+    return this->Create_Patch();
+}
+
+bool Graphics_Ripper::Rip_Mushroom_Light() {
+    if (!this->Apply_Patch("Powerup Mushroom Light")) return false;
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("76777879").toLatin1()))) return false;
+    return this->Create_Patch();
+}
+
+bool Graphics_Ripper::Rip_Peach_Dark() {
+    if (!this->Apply_Patch("Peach Dark")) return false;
+    bool sprite = true;
+    QStack<qint64> offsets = this->graphicsOffsets->Get_Peach_Offsets();
+    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
+    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
+    return this->Create_Patch();
+}
+
+bool Graphics_Ripper::Rip_Peach_Light() {
+    if (!this->Apply_Patch("Peach Light")) return false;
+    bool sprite = true;
+    QStack<qint64> offsets = this->graphicsOffsets->Get_Peach_Offsets();
+    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
+    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
+    return this->Create_Patch();
+}
+
+bool Graphics_Ripper::Rip_Toad_Dark() {
+    if (!this->Apply_Patch("Toad Dark")) return false;
+    bool sprite = true;
+    QStack<qint64> offsets = this->graphicsOffsets->Get_Toad_Offsets();
+    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
+    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
+    return this->Create_Patch();
+}
+
+bool Graphics_Ripper::Rip_Toad_Light() {
+    if (!this->Apply_Patch("Toad Light")) return false;
+    bool sprite = true;
+    QStack<qint64> offsets = this->graphicsOffsets->Get_Toad_Offsets();
+    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
+    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
+    return this->Create_Patch();
+}
+
 bool Graphics_Ripper::Apply_Patch(const QString &sprite, QString suggestedName) {
     QDir dir(this->applicationLocation);
     dir.mkdir("Sprites");
@@ -762,6 +793,18 @@ QString Graphics_Ripper::Get_Base_Name_From_Path(const QString &path) {
     return baseName;
 }
 
+bool Graphics_Ripper::Is_Peach_Skin_Dark() {
+    QByteArray bytes;
+    if (!this->Read_From_Output_File(0x0D3E, 1, bytes)) return false;
+    return bytes.at(0) == static_cast<char>(0x0F);
+}
+
+bool Graphics_Ripper::Is_Red_Border_Black() {
+    QByteArray bytes;
+    if (!this->Read_From_Output_File(0x0CF4, 1, bytes)) return false;
+    return bytes.at(0) == static_cast<char>(0x0F);
+}
+
 bool Graphics_Ripper::Is_Tile_Blank(char tileID, bool sprite) {
     QByteArray graphicsBytes;
     if (sprite) assert(this->Read_Graphics_Bytes_From_Sprite_Tile_ID(tileID, graphicsBytes));
@@ -770,6 +813,13 @@ bool Graphics_Ripper::Is_Tile_Blank(char tileID, bool sprite) {
         if (graphicsBytes.at(i) != static_cast<char>(0x00)) return false;
     }
     return true;
+}
+
+bool Graphics_Ripper::Read_From_Output_File(qint64 offset, int amount, QByteArray &bytes) {
+    if (amount <= 0) return false;
+    if (!this->outputFile->seek(offset)) return false;
+    bytes = this->outputFile->read(amount);
+    return bytes.size() == amount;
 }
 
 bool Graphics_Ripper::Read_Graphics_Bytes_From_Sprite_Tile_ID(char tileID, QByteArray &graphicsBytes) {
