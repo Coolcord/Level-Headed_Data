@@ -1,4 +1,4 @@
-4967
+4949
 aardvark
 abacus
 abbey
@@ -41,7 +41,6 @@ adviser
 advocacy
 advocate
 affair
-affect
 affinity
 afoul
 age
@@ -484,7 +483,6 @@ boxer
 boy
 boycott
 boyhood
-bra
 brace
 bracelet
 bracket
@@ -497,7 +495,6 @@ brandy
 brass
 bread
 break
-breast
 breath
 breeze
 brewer
@@ -782,7 +779,6 @@ chive
 chives
 choice
 choir
-choker
 choosing
 chop
 chops
@@ -1016,7 +1012,6 @@ cradle
 craft
 crane
 cranky
-crap
 crash
 crate
 cravat
@@ -1222,8 +1217,6 @@ diaper
 diarist
 diary
 dibble
-dick
-dickey
 dictator
 diction
 die
@@ -1380,8 +1373,6 @@ dynamics
 dynamite
 dynamo
 dynasty
-e-book
-e-mail
 e-reader
 eagle
 eaglet
@@ -1398,6 +1389,7 @@ easel
 east
 eating
 eaves
+ebook
 ecclesia
 echidna
 eclipse
@@ -1567,7 +1559,6 @@ family
 fan
 fang
 fanlight
-fanny
 fantasy
 farm
 farmer
@@ -1776,7 +1767,6 @@ frosting
 frown
 fruit
 fry
-fuck
 fuel
 fugato
 full
@@ -2698,7 +2688,6 @@ meme
 memo
 memorial
 memory
-men
 menorah
 mention
 mentor
@@ -3222,7 +3211,6 @@ pillar
 pillbox
 pillow
 pilot
-pimp
 pimple
 pin
 pinafore
@@ -3858,7 +3846,6 @@ setting
 settler
 severity
 sewer
-sex
 shack
 shackle
 shade
@@ -3894,7 +3881,6 @@ shipper
 shipping
 shipyard
 shirt
-shit
 shoat
 shock
 shoe
@@ -4246,7 +4232,6 @@ subtitle
 suburb
 subway
 success
-suck
 sucker
 suede
 suet
@@ -4415,7 +4400,6 @@ thanks
 thaw
 theater
 theft
-theism
 theme
 theology
 theory
@@ -4428,8 +4412,6 @@ thing
 thinking
 thirst
 thistle
-thong
-thongs
 thorn
 thought
 thousand
