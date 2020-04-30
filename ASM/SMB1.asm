@@ -3217,10 +3217,10 @@ NoFore:   iny
           bne SceLoop2
 RendTerr: ldy AreaType               ;check world type for water level
           bne TerMTile               ;if not water level, skip this part
-          lda WorldNumber            ;check world number, if not world number eight
-          cmp #World8                ;then skip this part
-          bne TerMTile
-          lda #$62                   ;if set as water level and world number eight,
+          lda WorldNumber            ;check world number, if not world number eight  [AD5F07]
+          cmp #World8                ;then skip this part  [C907]
+          bne TerMTile               ; [D005]
+          lda #$62                   ;if set as water level and world number eight,  [A962]
           jmp StoreMT                ;use castle wall metatile as terrain type
 TerMTile: lda TerrainMetatiles,y     ;otherwise get appropriate metatile for area type
           ldy CloudTypeOverride      ;check for cloud type override
