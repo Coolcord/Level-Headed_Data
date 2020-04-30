@@ -1,4 +1,4 @@
-4948
+4944
 aardvark
 abacus
 abbey
@@ -137,10 +137,6 @@ antique
 antler
 antling
 anxiety
-anybody
-anyone
-anything
-anywhere
 ape
 aperitif
 apology

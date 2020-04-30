@@ -1,4 +1,4 @@
-2750
+2720
 abacus
 abbey
 accent
@@ -10,8 +10,6 @@ acre
 act
 action
 ad
-admin
-admire
 adobe
 advent
 advice
@@ -60,7 +58,6 @@ anklet
 annual
 anorak
 answer
-anyone
 app
 appeal
 apple
@@ -87,7 +84,6 @@ ascent
 ascot
 ash
 ashram
-aside
 aspect
 aspic
 asset
@@ -155,7 +151,6 @@ beam
 bean
 beanie
 beard
-beast
 beat
 beauty
 beck
@@ -190,23 +185,15 @@ biopsy
 birch
 bit
 bite
-bitten
 bitter
 blade
 blame
 blank
 blast
 blazer
-blend
-blight
-blind
 block
 blog
-blood
-bloom
 blouse
-blow
-blush
 board
 boat
 bob
@@ -232,7 +219,6 @@ boss
 botany
 bother
 bottle
-bottom
 bough
 bout
 bow
@@ -285,7 +271,6 @@ buggy
 bugle
 bulb
 bulk
-bull
 bullet
 bump
 bumper
@@ -311,8 +296,6 @@ cabin
 cable
 cacao
 cactus
-caddy
-cadet
 cafe
 caftan
 cage
@@ -448,7 +431,6 @@ cleat
 clef
 cleft
 click
-client
 cliff
 climb
 clinic
@@ -1007,7 +989,6 @@ glow
 glue
 glut
 goal
-god
 going
 gold
 golf
@@ -1113,7 +1094,6 @@ heyday
 hide
 high
 hike
-hiking
 hill
 hint
 hip
@@ -1300,7 +1280,6 @@ laugh
 lava
 law
 lawn
-lawyer
 lay
 layer
 layout
@@ -1645,7 +1624,6 @@ outset
 oval
 ovary
 oven
-owner
 oxford
 oxygen
 ozone
@@ -1717,7 +1695,6 @@ pecker
 pedal
 peek
 peen
-peer
 pelt
 pen
 pence
@@ -1730,8 +1707,6 @@ perch
 period
 permit
 perp
-person
-pest
 pet
 petal
 pew
@@ -2176,7 +2151,6 @@ skean
 skill
 skin
 skirt
-skull
 sky
 slang
 slash
@@ -2310,7 +2284,6 @@ stew
 stick
 still
 stock
-stole
 stone
 stool
 stop
@@ -2341,7 +2314,6 @@ stuff
 stump
 sty
 style
-stylus
 sub
 subset
 suburb
@@ -2610,7 +2582,6 @@ viola
 violet
 violin
 virtue
-virus
 visa
 vise
 vision
@@ -2621,7 +2592,6 @@ visual
 vitro
 vivo
 vixen
-vodka
 vogue
 voice
 void
