@@ -1,4 +1,4 @@
-2780
+2750
 abacus
 abbey
 accent
@@ -167,7 +167,6 @@ beet
 behalf
 behest
 behold
-being
 belfry
 belief
 bell
@@ -193,7 +192,6 @@ bit
 bite
 bitten
 bitter
-black
 blade
 blame
 blank
@@ -208,7 +206,6 @@ blood
 bloom
 blouse
 blow
-blue
 blush
 board
 boat
@@ -658,7 +655,6 @@ diam
 diaper
 diary
 dibble
-die
 diesel
 diet
 dig
@@ -1035,7 +1031,6 @@ gravy
 gray
 grease
 greed
-green
 greens
 grey
 grid
@@ -1254,7 +1249,6 @@ kettle
 key
 kick
 kidney
-kill
 kilt
 kimono
 kinase
@@ -1632,7 +1626,6 @@ onset
 opera
 opium
 option
-orange
 orator
 orchid
 order
@@ -1875,7 +1868,6 @@ pupil
 puppet
 puppy
 purity
-purple
 purr
 purse
 push
@@ -1898,8 +1890,6 @@ quiver
 quota
 quote
 race
-racer
-racing
 rack
 radar
 radio
@@ -1921,16 +1911,12 @@ ranch
 range
 rank
 rap
-rape
-rate
 rating
 ratio
 ray
 rayon
 razor
 reach
-read
-reader
 real
 realm
 reamer
@@ -1942,7 +1928,6 @@ recall
 recess
 recipe
 record
-red
 reef
 reform
 refuge
@@ -2005,7 +1990,6 @@ roast
 robe
 robot
 rock
-rocker
 rocket
 rod
 role
@@ -2189,8 +2173,6 @@ site
 size
 skate
 skean
-ski
-skiing
 skill
 skin
 skirt
@@ -2224,8 +2206,6 @@ smolt
 snack
 snap
 snarl
-sneeze
-snob
 snow
 snuck
 snug
@@ -2272,7 +2252,6 @@ sphynx
 spice
 spike
 spill
-spine
 spiral
 spirit
 spit
@@ -2330,8 +2309,6 @@ stereo
 stew
 stick
 still
-sting
-stitch
 stock
 stole
 stone
@@ -2394,9 +2371,6 @@ swath
 sweat
 sweets
 swell
-swim
-swine
-swing
 switch
 swivel
 sword
@@ -2485,8 +2459,6 @@ till
 tilt
 timber
 time
-timer
-timing
 tin
 tinkle
 tip
@@ -2708,7 +2680,6 @@ wheel
 whelp
 whey
 whip
-white
 whole
 whorl
 wick
@@ -2776,6 +2747,5 @@ zero
 zinc
 zipper
 zither
-zombie
 zone
 zoo

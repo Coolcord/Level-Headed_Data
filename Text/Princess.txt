@@ -1,4 +1,4 @@
-4949
+4948
 aardvark
 abacus
 abbey
@@ -3498,7 +3498,6 @@ range
 ranger
 rank
 rap
-rape
 rat
 rate
 rating
