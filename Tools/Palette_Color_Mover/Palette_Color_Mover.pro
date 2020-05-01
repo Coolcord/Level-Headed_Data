@@ -19,11 +19,11 @@ SOURCES += \
     ../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Offsets.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/SMB1_Writer.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Bowser_Bridge_Destroyer.cpp \
-    ../../../Level-Headed/SMB1/SMB1_Writer/Item_Writer.cpp \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Item_Buffer.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Binary_Manipulator.cpp \
-    ../../../Level-Headed/SMB1/SMB1_Writer/Object_Writer.cpp \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Object_Buffer.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/Header_Writer.cpp \
-    ../../../Level-Headed/SMB1/SMB1_Writer/Enemy_Writer.cpp \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Enemy_Buffer.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/SMB1_Writer_Accessors.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/ROM_Handler.cpp \
     ../../../Level-Headed/SMB1/SMB1_Writer/ROM_Checksum.cpp \
@@ -57,11 +57,11 @@ HEADERS += \
     ../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Offsets.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/SMB1_Writer.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Bowser_Bridge_Destroyer.h \
-    ../../../Level-Headed/SMB1/SMB1_Writer/Item_Writer.h \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Item_Buffer.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Binary_Manipulator.h \
-    ../../../Level-Headed/SMB1/SMB1_Writer/Object_Writer.h \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Object_Buffer.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Header_Writer.h \
-    ../../../Level-Headed/SMB1/SMB1_Writer/Enemy_Writer.h \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Enemy_Buffer.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/ROM_Handler.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/ROM_Checksum.h \
     ../../../Level-Headed/SMB1/SMB1_Writer/Midpoint_Writer.h \
