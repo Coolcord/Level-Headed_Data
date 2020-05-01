@@ -2585,8 +2585,6 @@ weapon
 wear
 web
 wedge
-weed
-weeder
 week
 weight
 weird
@@ -2594,7 +2592,6 @@ well
 west
 whack
 wharf
-wheat
 wheel
 whelp
 whey

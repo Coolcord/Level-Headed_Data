@@ -1,4 +1,4 @@
-28
+32
 admirable
 all right
 bravo
@@ -10,11 +10,14 @@ good play
 good show
 good work
 great job
+holy cow
+holy moly
 hurray
 huzzah
 kudos
 nice job
 nice work
+pogchamp
 right on
 smashing
 solid job
@@ -24,6 +27,7 @@ thank you
 thanks
 way to go
 well done
+wow
 you rock
 you win
 you won
