@@ -1,4 +1,4 @@
-2721
+2687
 abacus
 abbey
 accent
@@ -554,6 +554,7 @@ cub
 cube
 cuckoo
 cue
+cult
 cup
 cupola
 curd
@@ -1293,7 +1294,6 @@ leash
 leave
 leaver
 leek
-leeway
 left
 leg
 legacy
@@ -1301,8 +1301,6 @@ legal
 legend
 legume
 lemon
-lender
-length
 lens
 lentil
 lesson
@@ -1323,7 +1321,6 @@ lilac
 lily
 limb
 lime
-limit
 limo
 line
 linen
@@ -1345,7 +1342,6 @@ loafer
 loan
 lobby
 local
-lock
 locker
 locket
 lode
@@ -1358,8 +1354,6 @@ logo
 look
 loop
 loquat
-lord
-loss
 lot
 lotion
 lounge
@@ -1384,11 +1378,8 @@ lysine
 macro
 madam
 mafia
-maggot
 magic
 magnet
-mail
-main
 maize
 major
 makeup
@@ -1441,7 +1432,6 @@ medium
 meet
 melody
 melon
-member
 meme
 memo
 memory
@@ -1452,15 +1442,12 @@ mess
 messy
 metal
 meteor
-meter
 method
 metric
 metro
 midden
 middle
 might
-mile
-milk
 mill
 millet
 mimosa
@@ -1481,7 +1468,6 @@ miter
 mitten
 mix
 mixer
-moai
 moat
 mob
 mobile
@@ -1522,9 +1508,7 @@ mug
 mukluk
 murder
 muscat
-muscle
 museum
-music
 mussel
 mutt
 mutton
@@ -1574,14 +1558,9 @@ nudge
 nuke
 number
 nut
-nutmeg
 nylon
 nymph
-oak
-oar
 oasis
-oat
-oats
 obi
 object
 oboe
@@ -1615,7 +1594,6 @@ orient
 origin
 osprey
 other
-ounce
 outfit
 outlay
 outlet
@@ -1637,8 +1615,6 @@ pagan
 page
 pagoda
 pail
-pain
-paint
 pair
 palace
 palate
@@ -1649,7 +1625,6 @@ panel
 panic
 pansy
 pantry
-pants
 panty
 papaya
 paper
@@ -1692,7 +1667,6 @@ peanut
 pear
 pearl
 pecan
-pecker
 pedal
 peek
 peen
@@ -1782,12 +1756,7 @@ pod
 poem
 poetry
 point
-poison
-poker
-pole
-police
 policy
-polish
 poll
 polo
 polyp
@@ -2211,7 +2180,6 @@ soy
 space
 spade
 span
-spank
 spark
 spasm
 spat
@@ -2580,7 +2548,6 @@ villa
 vine
 vinyl
 viola
-violet
 violin
 virtue
 visa
@@ -2669,7 +2636,6 @@ wine
 winery
 wing
 wink
-winner
 winter
 wire
 wiring

@@ -1,4 +1,4 @@
-4944
+4960
 aardvark
 abacus
 abbey
@@ -306,6 +306,7 @@ bather
 bathrobe
 bathroom
 bathtub
+batman
 batter
 battery
 batting
@@ -1003,7 +1004,6 @@ coyote
 crab
 crack
 cracker
-crackers
 cradle
 craft
 crane
@@ -1067,6 +1067,7 @@ cuckoo
 cucumber
 cue
 cuisine
+cult
 cultivar
 culture
 culvert
@@ -1342,6 +1343,7 @@ drum
 drummer
 drunk
 dryer
+ds
 duck
 duckling
 dud
@@ -1563,11 +1565,11 @@ farmland
 farrow
 fascia
 fashion
-fat
 fate
 father
 fatigue
 fatigues
+fatty
 faucet
 fault
 fav
@@ -1790,6 +1792,8 @@ galoshes
 gambling
 game
 gamebird
+gameboy
+gamecube
 gaming
 gander
 gang
@@ -1824,6 +1828,7 @@ gemsbok
 gender
 gene
 general
+genesis
 genetics
 genie
 genius
@@ -2840,6 +2845,7 @@ mutt
 mutton
 mystery
 myth
+n64
 nail
 name
 naming
@@ -2860,7 +2866,9 @@ neighbor
 neon
 neonate
 nephew
+neptune
 nerve
+nes
 nest
 nestling
 nestmate
@@ -3135,7 +3143,6 @@ pear
 pearl
 peasant
 pecan
-pecker
 pedal
 peek
 peen
@@ -3328,14 +3335,12 @@ potty
 pouch
 poultry
 pound
-pounding
 poverty
 powder
 power
 practice
 prairie
 praise
-pray
 prayer
 preface
 prefix
@@ -3400,6 +3405,10 @@ prow
 proximal
 prune
 pruner
+ps1
+ps2
+ps3
+ps4
 pub
 public
 pudding
@@ -3716,6 +3725,7 @@ salon
 saloon
 salsa
 salt
+saltine
 salute
 samovar
 sampan
@@ -3808,6 +3818,7 @@ seed
 seeder
 seeker
 seep
+sega
 segment
 seizure
 self
@@ -3993,6 +4004,7 @@ snarl
 sneaker
 sneakers
 sneeze
+snes
 sniffle
 snob
 snorer
@@ -4050,7 +4062,6 @@ spacing
 spade
 span
 spandex
-spank
 sparerib
 spark
 sparrow
@@ -4841,6 +4852,8 @@ widow
 width
 wife
 wifi
+wii
+wii u
 wild
 wildlife
 will
@@ -4906,6 +4919,9 @@ wrist
 writer
 writing
 wrong
+xbox
+xbox 360
+xbox one
 yacht
 yahoo
 yak
