@@ -1,4 +1,4 @@
-2668
+2653
 abacus
 abbey
 accent
@@ -2132,17 +2132,10 @@ smile
 smith
 smock
 smog
-smoke
-smolt
 snack
 snap
-snarl
 snow
-snuck
-snug
 soap
-sock
-socks
 soda
 sofa
 soil
@@ -2167,7 +2160,6 @@ space
 spade
 span
 spark
-spasm
 spat
 spawn
 spear
@@ -2183,9 +2175,7 @@ spike
 spill
 spiral
 spirit
-spit
 spite
-spleen
 split
 spool
 spoon
@@ -2479,13 +2469,11 @@ tv
 tweet
 twig
 twine
-twins
 twist
 type
 union
 unique
 unit
-unity
 update
 uplift
 upper
