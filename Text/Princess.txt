@@ -1881,14 +1881,12 @@ forager
 foray
 force
 ford
-forearm
 forebear
 forecast
 forehead
 forelimb
 forest
 forestry
-forever
 forgery
 fork
 form
@@ -2601,7 +2599,6 @@ kiss
 kit
 kitchen
 kite
-kitsch
 kitten
 kitty
 kiwi
@@ -2617,7 +2614,6 @@ knitting
 knock
 knot
 know-how
-knuckle
 koala
 koffing
 kohlrabi
@@ -2648,7 +2644,6 @@ lambkin
 lament
 lamp
 lampent
-lanai
 land
 landform
 landing
