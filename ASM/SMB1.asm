@@ -1188,15 +1188,15 @@ PrintVictoryMessages:
                cmp #$03                  ;check primary message counter again
                bcc IncMsgCounter         ;if not at 3 yet (world 8 only), branch to increment
                sbc #$01                  ;otherwise subtract one
-               jmp ThankPlayer           ;and skip to next part
-MRetainerMsg:  cmp #$02                  ;check primary message counter
-               bcc IncMsgCounter         ;if not at 2 yet (world 1-7 only), branch
-ThankPlayer:   tay                       ;put primary message counter into Y
-               bne SecondPartMsg         ;if counter nonzero, skip this part, do not print first message
-               lda CurrentPlayer         ;otherwise get player currently on the screen
-               beq EvalForMusic          ;if mario, branch
-               iny                       ;otherwise increment Y once for luigi and
-               bne EvalForMusic          ;do an unconditional branch to the same place
+               jmp ThankPlayer           ;and skip to next part  [4C1884]
+MRetainerMsg:  cmp #$02                  ;check primary message counter  [C902]
+               bcc IncMsgCounter         ;if not at 2 yet (world 1-7 only), branch  [902B]
+ThankPlayer:   tay                       ;put primary message counter into Y  [A8]
+               bne SecondPartMsg         ;if counter nonzero, skip this part, do not print first message  [D008]
+               lda CurrentPlayer         ;otherwise get player currently on the screen  [AD5307]
+               beq EvalForMusic          ;if mario, branch  [F014]
+               iny                       ;otherwise increment Y once for luigi and  [C8]
+               bne EvalForMusic          ;do an unconditional branch to the same place  [D011]
 SecondPartMsg: iny                       ;increment Y to do world 8's message
                lda WorldNumber
                cmp #World8               ;check world number
