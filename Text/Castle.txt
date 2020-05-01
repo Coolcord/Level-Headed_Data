@@ -1,4 +1,4 @@
-2669
+2668
 abacus
 abbey
 accent
@@ -1596,7 +1596,6 @@ output
 outrun
 outset
 oval
-ovary
 oven
 oxford
 oxygen

@@ -1,4 +1,5 @@
-5559
+5573
+8-track
 aardvark
 abacus
 abbey
@@ -423,11 +424,13 @@ birch
 bird
 birdbath
 birdcage
+birdo
 birth
 birthday
 biscuit
 bisharp
 bit
+bitcoin
 bite
 bitten
 bitter
@@ -455,11 +458,13 @@ blogger
 blood
 bloom
 bloomer
+blooper
 blossom
 blouse
 blow
 blowgun
 blowhole
+blu-ray
 blue
 blush
 boar
@@ -487,6 +492,7 @@ bonnet
 bonsai
 bonsly
 bonus
+boo
 book
 bookcase
 bookend
@@ -521,6 +527,7 @@ bower
 bowl
 bowler
 bowling
+bowser
 bowtie
 box
 boxer
@@ -731,6 +738,7 @@ cashier
 casino
 casket
 cassava
+cassette
 cassock
 cast
 castanet
@@ -1086,6 +1094,7 @@ cousin
 cover
 coverage
 coverall
+covid-19
 cow
 cowbell
 cowboy
@@ -1383,6 +1392,7 @@ divine
 diving
 division
 divorce
+dna
 doc
 dock
 doctor
@@ -1500,6 +1510,7 @@ dust
 duster
 dustox
 duty
+dvd
 dwarf
 dwebble
 dwell
@@ -1547,6 +1558,7 @@ efficacy
 effort
 egg
 egghead
+eggman
 eggnog
 eggplant
 ego
@@ -1637,6 +1649,7 @@ estimate
 estrogen
 estuary
 eternity
+ethereum
 ethernet
 ethics
 ethyl
@@ -1676,7 +1689,6 @@ extreme
 eye
 eyeball
 eyebrow
-eyebrows
 eyelash
 eyelid
 eyelids
@@ -1937,6 +1949,7 @@ function
 fund
 funding
 funeral
+funk
 fur
 furfrou
 furnace
@@ -2081,6 +2094,7 @@ goodie
 goodness
 goodra
 goodwill
+goomba
 goomy
 goose
 gopher
@@ -2306,6 +2320,7 @@ hold
 holder
 hole
 holiday
+hologram
 home
 homeland
 hometown
@@ -2361,6 +2376,7 @@ hubris
 hug
 hugger
 hull
+hulu
 human
 humanity
 humidity
@@ -2607,6 +2623,7 @@ koffing
 kohlrabi
 komala
 kommo-o
+koopa
 krabby
 krokorok
 kumquat
@@ -2616,8 +2633,6 @@ lab
 label
 labor
 laborer
-labour
-labourer
 lace
 lack
 lad
@@ -2714,7 +2729,6 @@ lens
 lentil
 leopard
 leprosy
-lesbian
 lesson
 letter
 lettuce
@@ -2808,6 +2822,7 @@ loophole
 lopunny
 loquat
 lord
+loser
 loss
 lot
 lotad
@@ -2826,6 +2841,7 @@ luck
 ludicolo
 luggage
 lugia
+luigi
 lumber
 lumineon
 lunala
@@ -2834,7 +2850,6 @@ lunch
 lung
 lunge
 lurantis
-lust
 lute
 luvdisc
 luxio
@@ -2940,6 +2955,7 @@ mariachi
 marill
 marimba
 marines
+mario
 mark
 marker
 market
@@ -3032,6 +3048,7 @@ methane
 method
 metric
 metro
+metroid
 mew
 mewtwo
 midden
@@ -3134,6 +3151,7 @@ morbid
 morelull
 morning
 moron
+morpheus
 morsel
 mortal
 mortgage
@@ -3160,8 +3178,6 @@ movement
 mover
 movie
 mower
-mr. mime
-mrna
 mud
 mudbray
 mudkip
@@ -3175,7 +3191,6 @@ munchlax
 munna
 murder
 murkrow
-muscat
 muscatel
 muscle
 museum
@@ -3212,6 +3227,7 @@ needle
 neglect
 negligee
 neighbor
+neo
 neon
 neonate
 nephew
@@ -3224,6 +3240,7 @@ nestmate
 net
 netball
 netbook
+netflix
 netsuke
 network
 neuron
@@ -3326,7 +3343,6 @@ offset
 oil
 okra
 oldie
-oleo
 olive
 omanyte
 omastar
@@ -3359,9 +3375,9 @@ order
 ordinary
 ore
 oregano
+oreo
 organ
 oricorio
-orient
 origin
 original
 ornament
@@ -3388,7 +3404,6 @@ outrun
 outset
 outside
 oval
-ovary
 oven
 overcoat
 overhead
@@ -3523,7 +3538,6 @@ peasant
 pecan
 pedal
 peek
-peen
 peer
 pegboard
 pelican
@@ -3776,7 +3790,6 @@ priority
 prison
 prisoner
 privacy
-private
 prize
 probe
 problem
@@ -3899,7 +3912,6 @@ railing
 railroad
 railway
 raiment
-rain
 rainbow
 raincoat
 rainy
@@ -4050,6 +4062,7 @@ ride
 rider
 ridge
 riding
+ridley
 rifle
 right
 rim
@@ -4067,6 +4080,7 @@ ritual
 river
 riverbed
 rivulet
+rna
 road
 roadway
 roar
@@ -4168,6 +4182,7 @@ sampan
 sample
 samurai
 samurott
+samus
 sanction
 sanctity
 sand
@@ -4448,9 +4463,6 @@ slate
 slaw
 sled
 sledge
-sleep
-sleeping
-sleet
 sleuth
 slice
 slide
@@ -4528,6 +4540,7 @@ sonar
 sonata
 song
 songbird
+sonic
 sonnet
 soot
 soprano
@@ -4620,6 +4633,7 @@ squeegee
 squid
 squirrel
 squirtle
+ssn
 stab
 stable
 stack
@@ -4634,7 +4648,6 @@ stake
 stalk
 stall
 stallion
-stamen
 stamina
 stamp
 stance
@@ -4692,7 +4705,6 @@ stop
 stopsign
 storage
 store
-storey
 storm
 story
 stot
@@ -4963,6 +4975,7 @@ tic
 tick
 ticket
 tide
+tide pod
 tie
 tiger
 tights
@@ -5033,7 +5046,6 @@ torte
 torterra
 tortilla
 tortoise
-tosser
 total
 tote
 totodile
@@ -5258,6 +5270,8 @@ vestment
 vet
 veteran
 veto
+vhs
+vhs tape
 vibe
 vibrava
 vice
@@ -5288,7 +5302,6 @@ virizion
 virtue
 virus
 visa
-viscose
 vise
 vision
 visit
@@ -5327,7 +5340,6 @@ wagon
 wailmer
 wailord
 waist
-wait
 waiter
 waiting
 waitress
@@ -5343,6 +5355,7 @@ wallet
 walnut
 walrein
 walrus
+waluigi
 wampum
 wannabe
 want
@@ -5350,6 +5363,7 @@ war
 warden
 wardrobe
 warfare
+wario
 warlock
 warlord
 warm-up
@@ -5421,7 +5435,6 @@ whisper
 whistle
 white
 whole
-whorl
 wick
 widget
 widow
@@ -5528,6 +5541,7 @@ yoga
 yogurt
 yoke
 yolk
+yoshi
 young
 yourself
 youth
