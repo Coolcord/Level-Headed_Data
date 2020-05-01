@@ -1,4 +1,4 @@
-2687
+2669
 abacus
 abbey
 accent
@@ -226,7 +226,6 @@ bower
 bowl
 bowtie
 box
-boy
 brace
 brain
 brake
@@ -974,7 +973,6 @@ gig
 giggle
 ginger
 girdle
-girl
 git
 glance
 gland
@@ -1366,7 +1364,6 @@ lumber
 lunch
 lung
 lunge
-lust
 lute
 luxury
 lychee
@@ -1522,8 +1519,6 @@ nation
 nature
 neck
 nectar
-need
-needle
 neon
 nerve
 nest
@@ -1767,7 +1762,6 @@ pond
 pool
 poor
 porch
-pork
 port
 porter
 post
@@ -1809,7 +1803,6 @@ pun
 punch
 pup
 pupa
-pupil
 puppet
 puppy
 purity
@@ -1949,7 +1942,6 @@ roster
 round
 route
 router
-row
 rowing
 rubber
 rubric
@@ -1979,7 +1971,6 @@ safe
 safety
 sage
 sail
-saint
 sake
 salad
 salami
@@ -2116,16 +2107,13 @@ sir
 sitar
 site
 size
-skate
 skean
-skill
 skin
 skirt
 sky
 slang
 slash
 slate
-slave
 slaw
 sled
 sledge
@@ -2160,7 +2148,6 @@ soda
 sofa
 soil
 sole
-son
 sonar
 sonata
 song
@@ -2215,7 +2202,6 @@ spring
 sprout
 spruce
 spud
-spume
 spur
 spy
 square
@@ -2309,8 +2295,6 @@ sushi
 suv
 swamp
 swath
-sweat
-sweets
 swell
 switch
 swivel
@@ -2346,7 +2330,6 @@ taste
 tatami
 tattoo
 tavern
-tax
 taxi
 tea
 team
@@ -2358,7 +2341,6 @@ temp
 temper
 temple
 tempo
-tenant
 tender
 tenet
 tennis
