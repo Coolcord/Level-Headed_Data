@@ -1144,14 +1144,14 @@ SetupVictoryMode:
 ;-------------------------------------------------------------------------------------
 
 PlayerVictoryWalk:
-             ldy #$00                ;set value here to not walk player by default
-             sty VictoryWalkControl
-             lda Player_PageLoc      ;get player's page location
-             cmp DestinationPageLoc  ;compare with destination page location
-             bne PerformWalk         ;if page locations don't match, branch
-             lda Player_X_Position   ;otherwise get player's horizontal position
-             cmp #$60                ;compare with preset horizontal position
-             bcs DontWalk            ;if still on other page, branch ahead
+             ldy #$00                ;set value here to not walk player by default  [A000]
+             sty VictoryWalkControl  ; [8435]
+             lda Player_PageLoc      ;get player's page location  [A56D]
+             cmp DestinationPageLoc  ;compare with destination page location  [C534]
+             bne PerformWalk         ;if page locations don't match, branch  [D006]
+             lda Player_X_Position   ;otherwise get player's horizontal position  [A586]
+             cmp #$60                ;compare with preset horizontal position  [C960]
+             bcs DontWalk            ;if still on other page, branch ahead  [B003]
 PerformWalk: inc VictoryWalkControl  ;otherwise increment value and Y
              iny                     ;note Y will be used to walk the player
 DontWalk:    tya                     ;put contents of Y in A and
