@@ -591,6 +591,7 @@ bool Graphics_Ripper::Rip_Tree_Platform() {
     QStack<qint64> offsets = this->graphicsOffsets->Get_Tree_Platform_Offsets();
     if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
     if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
+    if (!this->Write_Data_To_Working_File(0x1780, 3)) return false;
     return this->Create_Patch();
 }
 
