@@ -33,6 +33,7 @@ SOURCES += \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Item_Buffer.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Crawler.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Generator.cpp \
+        ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Script_Modifier.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Script_Parser.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Midpoint_Handler.cpp \
         ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Spawner.cpp \
@@ -102,6 +103,7 @@ HEADERS += \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Item_Buffer.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Crawler.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Generator.h \
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Script_Modifier.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Level_Script_Parser.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Midpoint_Handler.h \
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Spawner.h \
@@ -124,13 +126,3 @@ HEADERS += \
     Coordinates.h \
     Enemy_Parser.h \
     Object_Parser.h
-
-SUBDIRS += \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator.pro
-
-DISTFILES += \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator.pro.user \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator.pro.user.4.10-pre1 \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator.pro.user.4.8-pre1 \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator.pro.user.4.9-pre1 \
-    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/SMB1_Compliance_Generator.pro.user.b6a0727
