@@ -88,7 +88,7 @@ bool Enemy_Parser::Parse_Enemy(char coordinates, char enemy) {
     case 0x2B:  return this->enemies->Lift_Spawner(x, y, true, true, hardMode);
     case 0x2C:  return this->enemies->Lift_Spawner(x, y, false, true, hardMode);
     case 0x2D:  return this->enemies->Bowser(x, hardMode);
-    case 0x34:  return this->enemies->Warp_Zone(x, hardMode);
+    case 0x34:  return this->enemies->Warp_Zone(x);
     case 0x35:  return this->enemies->Toad(x, hardMode);
     case 0x37:  success = this->enemies->Goomba_Group(x, 0xA, 2, hardMode); break;
     case 0x38:  success = this->enemies->Goomba_Group(x, 0xA, 3, hardMode); break;
