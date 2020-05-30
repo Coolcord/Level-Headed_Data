@@ -240,7 +240,7 @@ bool Graphics_Ripper::Rip_Explosion() {
 }
 
 bool Graphics_Ripper::Rip_Fireball() {
-    if (!this->Is_Red_Border_Black()) return this->Rip_Fireball_Dark();
+    if (this->Is_Red_Border_Black()) return this->Rip_Fireball_Dark();
     else return this->Rip_Fireball_Light();
 }
 
@@ -342,8 +342,9 @@ bool Graphics_Ripper::Rip_Mario() {
 }
 
 bool Graphics_Ripper::Rip_Mushroom_Powerup() {
-    if (!this->Is_Red_Border_Black()) return this->Rip_Mushroom_Dark();
-    else return this->Rip_Mushroom_Light();
+    if (this->Is_Red_Base_The_Same_As_Green()) return this->Rip_Mushroom_Same_Base();
+    if (this->Is_Red_Border_The_Same_As_Green()) return this->Rip_Mushroom_Same_Border();
+    else return this->Rip_Mushroom_Unique();
 }
 
 bool Graphics_Ripper::Rip_One_Up_Font() {
@@ -643,14 +644,20 @@ bool Graphics_Ripper::Rip_Fireball_Light() {
     return this->Create_Patch();
 }
 
-bool Graphics_Ripper::Rip_Mushroom_Dark() {
-    if (!this->Apply_Patch("Powerup Mushroom Dark")) return false;
+bool Graphics_Ripper::Rip_Mushroom_Same_Base() {
+    if (!this->Apply_Patch("Powerup Mushroom Same Base")) return false;
     if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("76777879").toLatin1()))) return false;
     return this->Create_Patch();
 }
 
-bool Graphics_Ripper::Rip_Mushroom_Light() {
-    if (!this->Apply_Patch("Powerup Mushroom Light")) return false;
+bool Graphics_Ripper::Rip_Mushroom_Same_Border() {
+    if (!this->Apply_Patch("Powerup Mushroom Same Border")) return false;
+    if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("76777879").toLatin1()))) return false;
+    return this->Create_Patch();
+}
+
+bool Graphics_Ripper::Rip_Mushroom_Unique() {
+    if (!this->Apply_Patch("Powerup Mushroom Unique")) return false;
     if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("76777879").toLatin1()))) return false;
     return this->Create_Patch();
 }
@@ -800,10 +807,31 @@ bool Graphics_Ripper::Is_Peach_Skin_Dark() {
     return bytes.at(0) == static_cast<char>(0x0F);
 }
 
+bool Graphics_Ripper::Is_Red_Base_The_Same_As_Green() {
+    QByteArray greenBytes, redBytes;
+    if (!this->Read_From_Output_File(0x0CF2, 1, greenBytes)) return false;
+    if (!this->Read_From_Output_File(0x0CF6, 1, redBytes)) return false;
+    return greenBytes.at(0) == redBytes.at(0);
+}
+
+bool Graphics_Ripper::Is_Red_Border_The_Same_As_Green() {
+    QByteArray greenBytes, redBytes;
+    if (!this->Read_From_Output_File(0x0CF0, 1, greenBytes)) return false;
+    if (!this->Read_From_Output_File(0x0CF4, 1, redBytes)) return false;
+    return greenBytes.at(0) == redBytes.at(0);
+}
+
 bool Graphics_Ripper::Is_Red_Border_Black() {
     QByteArray bytes;
     if (!this->Read_From_Output_File(0x0CF4, 1, bytes)) return false;
     return bytes.at(0) == static_cast<char>(0x0F);
+}
+
+bool Graphics_Ripper::Is_Red_Border_Darkest_Shade() {
+    QByteArray bytes;
+    if (!this->Read_From_Output_File(0x0CF4, 1, bytes)) return false;
+    char c = bytes.at(0)&0xF0;
+    return c == static_cast<char>(0x00);
 }
 
 bool Graphics_Ripper::Is_Tile_Blank(char tileID, bool sprite) {

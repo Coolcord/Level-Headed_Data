@@ -82,8 +82,9 @@ private:
     bool Rip_Bowser_Fire_Light();
     bool Rip_Fireball_Dark();
     bool Rip_Fireball_Light();
-    bool Rip_Mushroom_Dark();
-    bool Rip_Mushroom_Light();
+    bool Rip_Mushroom_Same_Base();
+    bool Rip_Mushroom_Same_Border();
+    bool Rip_Mushroom_Unique();
     bool Rip_Peach_Dark();
     bool Rip_Peach_Light();
     bool Rip_Toad_Dark();
@@ -97,7 +98,10 @@ private:
     bool Does_Patch_Use_New_Tiles(QStack<qint64> offsets, bool sprite, int tileOrderSize);
     QString Get_Base_Name_From_Path(const QString &path);
     bool Is_Peach_Skin_Dark();
+    bool Is_Red_Base_The_Same_As_Green();
+    bool Is_Red_Border_The_Same_As_Green();
     bool Is_Red_Border_Black();
+    bool Is_Red_Border_Darkest_Shade();
     bool Is_Tile_Blank(char tileID, bool sprite);
     bool Read_From_Output_File(qint64 offset, int amount, QByteArray &bytes);
     bool Read_Graphics_Bytes_From_Sprite_Tile_ID(char tileID, QByteArray &graphicsBytes);
