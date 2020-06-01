@@ -1759,22 +1759,22 @@ NameLoop:    lda LuigiName,y        ;otherwise, replace "MARIO" with "LUIGI"
 ExitChkName: rts
 
 PrintWarpZoneNumbers:
-             sbc #$04               ;subtract 4 and then shift to the left
-             asl                    ;twice to get proper warp zone number
-             asl                    ;offset
-             tax
-             ldy #$00
-WarpNumLoop: lda WarpZoneNumbers,x  ;print warp zone numbers into the
-             sta VRAM_Buffer1+27,y  ;placeholders from earlier
-             inx
-             iny                    ;put a number in every fourth space
-             iny
-             iny
-             iny
-             cpy #$0c
-             bcc WarpNumLoop
-             lda #$2c               ;load new buffer pointer at end of message
-             jmp SetVRAMOffset
+             sbc #$04               ;subtract 4 and then shift to the left  [E904]
+             asl                    ;twice to get proper warp zone number  [0A]
+             asl                    ;offset  [0A]
+             tax                    ; [AA]
+             ldy #$00               ; [A000]
+WarpNumLoop: lda WarpZoneNumbers,x  ;print warp zone numbers into the  [BDF287]
+             sta VRAM_Buffer1+27,y  ;placeholders from earlier  [991C03]
+             inx                    ; [E8]
+             iny                    ;put a number in every fourth space  [C8]
+             iny                    ; [C8]
+             iny                    ; [C8]
+             iny                    ; [C8]
+             cpy #$0c               ; [C00C]
+             bcc WarpNumLoop        ; [90F1]
+             lda #$2c               ;load new buffer pointer at end of message  [A92C]
+             jmp SetVRAMOffset      ; [4C3F86]
 
 ;-------------------------------------------------------------------------------------
 
