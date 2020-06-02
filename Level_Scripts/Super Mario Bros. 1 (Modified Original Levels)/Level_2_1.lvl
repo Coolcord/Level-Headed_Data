@@ -53,10 +53,9 @@ Horizontal_Bricks 3 3 5
 Question_Block_With_Coin 6 7
 Brick_With_Mushroom 2 3
 Pipe 4 8 3
-Horizontal_Bricks 9 7 2
-Hidden_Block_With_Coin 1 3
-Trampoline 2 9
-Vertical_Blocks 2 1 10
+Horizontal_Blocks 9 7 2
+Horizontal_Blocks 1 3 3
+Vertical_Blocks 4 1 10
 Vertical_Blocks 1 1 10
 Flagpole 9
 Castle 4

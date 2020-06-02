@@ -45,11 +45,11 @@ Horizontal_Bricks 0 7 5
 Vertical_Blocks 7 8 3
 Bullet_Bill_Turret 5 8 2
 Bullet_Bill_Turret 0 10 1
-Horizontal_Bricks 3 6 2
+Horizontal_Bricks 3 5 2
 Brick_With_Mushroom 2 0
-Trampoline 0 9
+Vertical_Blocks 0 9 2
 Hole 1 1
-Horizontal_Bricks 1 4 2
+Horizontal_Bricks 1 3 2
 Steps 0 6
 End_Steps 9
 Flagpole 17
