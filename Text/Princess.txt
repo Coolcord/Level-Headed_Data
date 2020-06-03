@@ -1,4 +1,4 @@
-5564
+5562
 8-track
 aardvark
 abacus
@@ -3630,7 +3630,6 @@ pipeline
 piplup
 piracy
 pirate
-piss
 pistol
 pit
 pita
@@ -4139,7 +4138,6 @@ rutabaga
 rye
 sableye
 sabre
-sac
 sack
 saddle
 sadness
