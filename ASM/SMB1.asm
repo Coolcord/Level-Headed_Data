@@ -10521,11 +10521,11 @@ RaiseFlagSetoffFWorks:
          bcc SetoffF             ;if star flag higher vertically, branch to other code
          dec Enemy_Y_Position,x  ;otherwise, raise star flag by one pixel
          jmp DrawStarFlag        ;and skip this part here
-SetoffF: lda FireworksCounter    ;check fireworks counter
-         beq DrawFlagSetTimer    ;if no fireworks left to go off, skip this part
-         bmi DrawFlagSetTimer    ;if no fireworks set to go off, skip this part
-         lda #Fireworks
-         sta EnemyFrenzyBuffer   ;otherwise set fireworks object in frenzy queue
+SetoffF: lda FireworksCounter    ;check fireworks counter  [ADD706]
+         beq DrawFlagSetTimer    ;if no fireworks left to go off, skip this part  [F038]
+         bmi DrawFlagSetTimer    ;if no fireworks set to go off, skip this part  [3036]
+         lda #Fireworks          ; [A916]
+         sta EnemyFrenzyBuffer   ;otherwise set fireworks object in frenzy queue  [8DCB06]
 
 DrawStarFlag:
          jsr RelativeEnemyPosition  ;get relative coordinates of star flag
