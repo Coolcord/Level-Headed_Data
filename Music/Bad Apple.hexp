@@ -1,8 +1,11 @@
+# Compatible:
+# OHB (by Kipp).hexp
+# Super Zabil Bros. Starman (by Poporo).hexp
 A: 0x10FA
 V: 01
 
 A: 0x7880
-V: FD
+V: F9
 
 A: 0x7920
 V: 3C
