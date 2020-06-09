@@ -48,6 +48,19 @@ int main(int argc, char *argv[]) {
     originalPatchFileStream.flush();
     originalPatchFile.flush(); originalPatchFile.close();
 
+    //Generate the original with fixed Bowser fire patch file
+    QFile fixedBowserFirePatchFile(applicationLocation+"/Patches/Original with Fixed Bowser Fire (by Nintendo).hexp");
+    fixedBowserFirePatchFile.remove();
+    if (!fixedBowserFirePatchFile.open(QIODevice::ReadWrite)) { qWarning() << "Unable to generate the original patch file!"; return 1; }
+    QTextStream fixedBowserFirePatchFileStream(&fixedBowserFirePatchFile);
+    fixedBowserFirePatchFileStream << "A: 0x8520" << Common_Strings::STRING_NEW_LINE;
+    fixedBowserFirePatchFileStream << "V: 041FFFC3BF7F0F0200003C3F7F070000FC" << Common_Strings::STRING_NEW_LINE;
+    fixedBowserFirePatchFileStream << Common_Strings::STRING_NEW_LINE;
+    fixedBowserFirePatchFileStream << "A: 0x8536" << Common_Strings::STRING_NEW_LINE;
+    fixedBowserFirePatchFileStream << "V: DF6E0000F3E0FE00000000E0F8FFE0F8F060000000000000" << Common_Strings::STRING_NEW_LINE;
+    fixedBowserFirePatchFileStream.flush();
+    fixedBowserFirePatchFile.flush(); fixedBowserFirePatchFile.close();
+
     //Scan for .hexp files to extract graphics from
     if (!dir.cd("Patches") || dir.isEmpty()) { qWarning() << "The patches directory is empty!"; return 1; }
     QStringList files = dir.entryList(QStringList("*.hexp"), QDir::Files | QDir::NoDotAndDotDot);
