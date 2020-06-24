@@ -3,15 +3,18 @@
 
 #include <QImage>
 
+class ROM_Reader;
+
 class Tile {
 public:
-    Tile(char tileNumber, bool sprite);
+    Tile(ROM_Reader *romReader, char tileNumber, bool sprite);
     ~Tile();
     QImage *Get_Image();
 
 private:
     bool Read_Tile_From_ROM();
 
+    ROM_Reader *romReader;
     QImage *image;
     char tileNumber;
     bool sprite;

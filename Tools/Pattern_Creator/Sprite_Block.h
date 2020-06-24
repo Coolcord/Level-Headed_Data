@@ -4,11 +4,12 @@
 #include <QGraphicsItem>
 #include <QPainter>
 
+class ROM_Reader;
 class Tile;
 
 class Sprite_Block : public QGraphicsItem {
 public:
-    Sprite_Block(char topLeftTile, char topRightTile, char middleLeftTile, char middleRightTile, char bottomLeftTile, char bottomRightTile);
+    Sprite_Block(ROM_Reader *romReader, char topLeftTile, char topRightTile, char middleLeftTile, char middleRightTile, char bottomLeftTile, char bottomRightTile);
     ~Sprite_Block();
 
     QRectF boundingRect() const override;
@@ -17,6 +18,7 @@ public:
 protected:
 
 private:
+    ROM_Reader *romReader;
     Tile *topLeft;
     Tile *topRight;
     Tile *middleLeft;

@@ -7,6 +7,7 @@
 #include <QDebug>
 
 #include "Graphics_Question_Block.h"
+#include "ROM_Reader.h"
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
@@ -21,7 +22,9 @@ int main(int argc, char *argv[]) {
     QBrush *brush = new QBrush(QColor(146, 144, 255));
     view->setBackgroundBrush(*brush);
 
-    Graphics_Question_Block *tileTest = new Graphics_Question_Block();
+    ROM_Reader romReader;
+    romReader.Open_ROM(app.applicationDirPath()+"/SMB1.nes");
+    Graphics_Question_Block *tileTest = new Graphics_Question_Block(&romReader);
     scene->addItem(tileTest);
 
 

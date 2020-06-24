@@ -1,11 +1,12 @@
 #include "Object_Block.h"
 #include "Tile.h"
 
-Object_Block::Object_Block(char topLeftTile, char topRightTile, char bottomLeftTile, char bottomRightTile) {
-    this->topLeft = new Tile(topLeftTile, false);
-    this->topRight = new Tile(topRightTile, false);
-    this->bottomLeft = new Tile(bottomLeftTile, false);
-    this->bottomRight = new Tile(bottomRightTile, false);
+Object_Block::Object_Block(ROM_Reader *romReader, char topLeftTile, char topRightTile, char bottomLeftTile, char bottomRightTile) {
+    this->romReader = romReader;
+    this->topLeft = new Tile(romReader, topLeftTile, false);
+    this->topRight = new Tile(romReader, topRightTile, false);
+    this->bottomLeft = new Tile(romReader, bottomLeftTile, false);
+    this->bottomRight = new Tile(romReader, bottomRightTile, false);
 }
 
 Object_Block::~Object_Block() {

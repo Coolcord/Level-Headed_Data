@@ -7,13 +7,12 @@ class Graphics_Offsets;
 
 class ROM_Reader {
 public:
-    ROM_Reader(const QString &romLocation);
+    ROM_Reader();
     ~ROM_Reader();
-    bool Open_ROM();
+    bool Open_ROM(const QString &romLocation);
     QByteArray Read_Bytes_From_ROM(qint64 offset, int amount);
     QByteArray Read_Background_Tile_From_ROM(char tileID);
     QByteArray Read_Sprite_Tile_From_ROM(char tileID);
-
 
 private:
     bool Is_ROM_Valid(QByteArray &bytes);

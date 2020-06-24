@@ -1,8 +1,9 @@
 #include "Graphics_Question_Block.h"
 #include "Object_Block.h"
 
-Graphics_Question_Block::Graphics_Question_Block() {
-    this->objectBlock = new Object_Block(0, 1, 2, 3);
+Graphics_Question_Block::Graphics_Question_Block(ROM_Reader *romReader) {
+    this->romReader = romReader;
+    this->objectBlock = new Object_Block(romReader, 0, 1, 2, 3);
     setFlag(ItemIsMovable);
 }
 

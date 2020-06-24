@@ -1,12 +1,12 @@
 #include "ROM_Reader.h"
 #include "../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Offsets.h"
+#include <QDebug>
 #include <QFile>
 #include <assert.h>
 
 const static int UNHEADERED_ROM_SIZE = 40960;
 
-ROM_Reader::ROM_Reader(const QString &romLocation) {
-    this->romLocation = romLocation;
+ROM_Reader::ROM_Reader() {
     this->romBytes = QByteArray();
     this->graphicsOffsets = new Graphics_Offsets();
 }
@@ -15,8 +15,8 @@ ROM_Reader::~ROM_Reader() {
     delete this->graphicsOffsets;
 }
 
-bool ROM_Reader::Open_ROM() {
-    QFile file(this->romLocation);
+bool ROM_Reader::Open_ROM(const QString &romLocation) {
+    QFile file(romLocation);
     if (!file.exists() || !file.open(QIODevice::ReadOnly)) return false;
     QByteArray bytes = file.readAll();
     file.close();
@@ -27,6 +27,7 @@ bool ROM_Reader::Open_ROM() {
 
 QByteArray ROM_Reader::Read_Bytes_From_ROM(qint64 offset, int amount) {
     QByteArray bytes = QByteArray(amount, static_cast<char>(0xFF));
+    if (this->romBytes.isEmpty()) return bytes;
     if (offset + amount >= this->romBytes.size()) return bytes;
     for (int i = 0; i < amount; ++i) bytes[i] = this->romBytes.at(offset+i);
     return bytes;
@@ -60,13 +61,14 @@ bool ROM_Reader::Is_ROM_Valid(QByteArray &bytes) {
     if (bytes.at(0x0007) != static_cast<char>(0xA2)) return false;
     if (bytes.at(0x0008) != static_cast<char>(0xFF)) return false;
     if (bytes.at(0x0009) != static_cast<char>(0x9A)) return false;
-    if (bytes.at(0x000A) != static_cast<char>(0x02)) return false;
-    if (bytes.at(0x000B) != static_cast<char>(0x20)) return false;
-    if (bytes.at(0x000C) != static_cast<char>(0x10)) return false;
-    if (bytes.at(0x000D) != static_cast<char>(0xFB)) return false;
-    if (bytes.at(0x000E) != static_cast<char>(0xAD)) return false;
-    if (bytes.at(0x000F) != static_cast<char>(0x02)) return false;
-    if (bytes.at(0x0010) != static_cast<char>(0x20)) return false;
+    if (bytes.at(0x000A) != static_cast<char>(0xAD)) return false;
+    if (bytes.at(0x000B) != static_cast<char>(0x02)) return false;
+    if (bytes.at(0x000C) != static_cast<char>(0x20)) return false;
+    if (bytes.at(0x000D) != static_cast<char>(0x10)) return false;
+    if (bytes.at(0x000E) != static_cast<char>(0xFB)) return false;
+    if (bytes.at(0x000F) != static_cast<char>(0xAD)) return false;
+    if (bytes.at(0x0010) != static_cast<char>(0x02)) return false;
+    if (bytes.at(0x0011) != static_cast<char>(0x20)) return false;
 
     //Check against second chunk
     if (bytes.at(0x3FF0) != static_cast<char>(0xB5)) return false;

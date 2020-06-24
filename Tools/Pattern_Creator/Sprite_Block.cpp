@@ -1,13 +1,14 @@
 #include "Sprite_Block.h"
 #include "Tile.h"
 
-Sprite_Block::Sprite_Block(char topLeftTile, char topRightTile, char middleLeftTile, char middleRightTile, char bottomLeftTile, char bottomRightTile) {
-    this->topLeft = new Tile(topLeftTile, true);
-    this->topRight = new Tile(topRightTile, true);
-    this->middleLeft = new Tile(middleLeftTile, true);
-    this->middleRight = new Tile(middleRightTile, true);
-    this->bottomLeft = new Tile(bottomLeftTile, true);
-    this->bottomRight = new Tile(bottomRightTile, true);
+Sprite_Block::Sprite_Block(ROM_Reader *romReader, char topLeftTile, char topRightTile, char middleLeftTile, char middleRightTile, char bottomLeftTile, char bottomRightTile) {
+    this->romReader = romReader;
+    this->topLeft = new Tile(romReader, topLeftTile, true);
+    this->topRight = new Tile(romReader, topRightTile, true);
+    this->middleLeft = new Tile(romReader, middleLeftTile, true);
+    this->middleRight = new Tile(romReader, middleRightTile, true);
+    this->bottomLeft = new Tile(romReader, bottomLeftTile, true);
+    this->bottomRight = new Tile(romReader, bottomRightTile, true);
 }
 
 Sprite_Block::~Sprite_Block() {
