@@ -24,6 +24,8 @@ QRectF Sprite_Block::boundingRect() const {
 }
 
 void Sprite_Block::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
     painter->drawImage(QRectF(0, 0, 16, 24), *this->topLeft->Get_Image());
     painter->drawImage(QRectF(8, 0, 16, 24), *this->topRight->Get_Image());
     painter->drawImage(QRectF(0, 8, 16, 24), *this->middleLeft->Get_Image());

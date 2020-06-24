@@ -16,17 +16,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Offsets.cpp \
     Graphics_Question_Block.cpp \
     Object_Block.cpp \
+    ROM_Reader.cpp \
     Sprite_Block.cpp \
     Tile.cpp \
     main.cpp \
     Main_Window.cpp
 
 HEADERS += \
+    ../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Offsets.h \
     Graphics_Question_Block.h \
     Main_Window.h \
     Object_Block.h \
+    ROM_Reader.h \
     Sprite_Block.h \
     Tile.h
 
