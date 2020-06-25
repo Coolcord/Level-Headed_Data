@@ -10,6 +10,7 @@ public:
     ROM_Reader();
     ~ROM_Reader();
     bool Open_ROM(const QString &romLocation);
+    char Read_Byte_From_ROM(qint64 offset);
     QByteArray Read_Bytes_From_ROM(qint64 offset, int amount);
     QByteArray Read_Background_Tile_From_ROM(char tileID);
     QByteArray Read_Sprite_Tile_From_ROM(char tileID);

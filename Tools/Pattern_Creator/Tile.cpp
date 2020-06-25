@@ -1,6 +1,7 @@
 #include "Tile.h"
 
 Tile::Tile(ROM_Reader *romReader, char tileNumber, bool sprite) {
+    assert(romReader);
     this->romReader = romReader;
     this->tileNumber = tileNumber;
     this->sprite = sprite;

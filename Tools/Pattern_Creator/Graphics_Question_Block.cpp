@@ -2,6 +2,7 @@
 #include "Object_Block.h"
 
 Graphics_Question_Block::Graphics_Question_Block(ROM_Reader *romReader) {
+    assert(romReader);
     this->romReader = romReader;
     this->objectBlock = new Object_Block(romReader, 0, 1, 2, 3);
     setFlag(ItemIsMovable);

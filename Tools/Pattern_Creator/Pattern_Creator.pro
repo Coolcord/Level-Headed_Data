@@ -19,6 +19,7 @@ SOURCES += \
     ../../../Level-Headed/SMB1/SMB1_Writer/Graphics_Offsets.cpp \
     Graphics_Question_Block.cpp \
     Object_Block.cpp \
+    Palettes.cpp \
     ROM_Reader.cpp \
     Sprite_Block.cpp \
     Tile.cpp \
@@ -30,9 +31,12 @@ HEADERS += \
     Graphics_Question_Block.h \
     Main_Window.h \
     Object_Block.h \
+    Palette.h \
+    Palettes.h \
     ROM_Reader.h \
     Sprite_Block.h \
-    Tile.h
+    Tile.h \
+    Weather.h
 
 FORMS += \
     Main_Window.ui

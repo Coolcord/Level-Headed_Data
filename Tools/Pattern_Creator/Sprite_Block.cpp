@@ -2,6 +2,7 @@
 #include "Tile.h"
 
 Sprite_Block::Sprite_Block(ROM_Reader *romReader, char topLeftTile, char topRightTile, char middleLeftTile, char middleRightTile, char bottomLeftTile, char bottomRightTile) {
+    assert(romReader);
     this->romReader = romReader;
     this->topLeft = new Tile(romReader, topLeftTile, true);
     this->topRight = new Tile(romReader, topRightTile, true);

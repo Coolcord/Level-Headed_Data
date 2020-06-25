@@ -25,6 +25,11 @@ bool ROM_Reader::Open_ROM(const QString &romLocation) {
     return true;
 }
 
+char ROM_Reader::Read_Byte_From_ROM(qint64 offset) {
+    QByteArray bytes = this->Read_Bytes_From_ROM(offset, 1);
+    return bytes.at(0);
+}
+
 QByteArray ROM_Reader::Read_Bytes_From_ROM(qint64 offset, int amount) {
     QByteArray bytes = QByteArray(amount, static_cast<char>(0xFF));
     if (this->romBytes.isEmpty()) return bytes;

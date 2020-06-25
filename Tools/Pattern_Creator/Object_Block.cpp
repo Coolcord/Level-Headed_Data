@@ -2,6 +2,7 @@
 #include "Tile.h"
 
 Object_Block::Object_Block(ROM_Reader *romReader, char topLeftTile, char topRightTile, char bottomLeftTile, char bottomRightTile) {
+    assert(romReader);
     this->romReader = romReader;
     this->topLeft = new Tile(romReader, topLeftTile, false);
     this->topRight = new Tile(romReader, topRightTile, false);
