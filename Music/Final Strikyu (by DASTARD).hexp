@@ -3,13 +3,7 @@
 # OHB (by Kipp).hexp
 # Super Zabil Bros. Starman (by Poporo).hexp
 A: 0x10F7
-V: 01010102
-
-A: 0x111F
-V: 00
-
-A: 0x1140
-V: 01
+V: 01010101
 
 A: 0x78F6
 V: 7C
