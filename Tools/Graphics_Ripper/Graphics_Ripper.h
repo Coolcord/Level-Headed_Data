@@ -97,7 +97,7 @@ private:
     bool Does_Patch_Use_New_Tiles(qint64 offset, bool sprite, int tileOrderSize);
     bool Does_Patch_Use_New_Tiles(QStack<qint64> offsets, bool sprite, int tileOrderSize);
     QString Get_Base_Name_From_Path(const QString &path);
-    bool Is_Peach_Skin_Dark();
+    bool Is_Peach_Border_Dark();
     bool Is_Red_Base_The_Same_As_Green();
     bool Is_Red_Border_The_Same_As_Green();
     bool Is_Red_Border_Black();

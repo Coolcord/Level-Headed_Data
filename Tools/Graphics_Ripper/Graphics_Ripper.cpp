@@ -354,7 +354,7 @@ bool Graphics_Ripper::Rip_One_Up_Font() {
 }
 
 bool Graphics_Ripper::Rip_Peach() {
-    if (this->Is_Peach_Skin_Dark()) return this->Rip_Peach_Dark();
+    if (this->Is_Peach_Border_Dark()) return this->Rip_Peach_Dark();
     else return this->Rip_Peach_Light();
 }
 
@@ -413,7 +413,7 @@ bool Graphics_Ripper::Rip_Starman() {
 }
 
 bool Graphics_Ripper::Rip_Toad() {
-    if (this->Is_Peach_Skin_Dark()) return this->Rip_Toad_Dark();
+    if (this->Is_Peach_Border_Dark()) return this->Rip_Toad_Dark();
     else return this->Rip_Toad_Light();
 }
 
@@ -801,9 +801,9 @@ QString Graphics_Ripper::Get_Base_Name_From_Path(const QString &path) {
     return baseName;
 }
 
-bool Graphics_Ripper::Is_Peach_Skin_Dark() {
+bool Graphics_Ripper::Is_Peach_Border_Dark() {
     QByteArray bytes;
-    if (!this->Read_From_Output_File(0x0D3E, 1, bytes)) return false;
+    if (!this->Read_From_Output_File(0x0D3C, 1, bytes)) return false;
     return bytes.at(0) == static_cast<char>(0x0F);
 }
 
