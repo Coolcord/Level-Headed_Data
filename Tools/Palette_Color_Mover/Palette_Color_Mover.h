@@ -23,6 +23,11 @@ public:
     bool Swap_Colors_In_Background_Tile_Without_Touching_Palette(int color1, int color2, char tileID);
     bool Swap_Colors_In_Sprite_Tile_Without_Touching_Palette(int color1, int color2, char tileID);
 
+    bool Read_Graphics_Bytes_From_Background_Tile_ID(char tileID, QByteArray &graphicsBytes);
+    bool Read_Graphics_Bytes_From_Sprite_Tile_ID(char tileID, QByteArray &graphicsBytes);
+    bool Write_Graphics_Bytes_To_Background_Tile_ID(char tileID, const QByteArray &graphicsBytes);
+    bool Write_Graphics_Bytes_To_Sprite_Tile_ID(char tileID, const QByteArray &graphicsBytes);
+
 private:
     bool Are_Colors_Valid(int color1, int color2);
     bool Read_Maps();
@@ -35,11 +40,6 @@ private:
     bool Swap_Color_In_Background_Tile(char tileID, int color1, int color2);
     bool Swap_Color_In_Sprite_Tile(char tileID, int color1, int color2);
     bool Swap_Color_In_Graphics_Bytes(QByteArray &graphicsBytes, int color1, int color2);
-
-    bool Read_Graphics_Bytes_From_Background_Tile_ID(char tileID, QByteArray &graphicsBytes);
-    bool Read_Graphics_Bytes_From_Sprite_Tile_ID(char tileID, QByteArray &graphicsBytes);
-    bool Write_Graphics_Bytes_To_Background_Tile_ID(char tileID, const QByteArray &graphicsBytes);
-    bool Write_Graphics_Bytes_To_Sprite_Tile_ID(char tileID, const QByteArray &graphicsBytes);
 
     QMap<Sprites::Sprites, int> *colorMap;
     QMap<Sprites::Sprites, QByteArray> *tileMap;
