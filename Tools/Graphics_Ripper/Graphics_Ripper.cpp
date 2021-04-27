@@ -354,8 +354,13 @@ bool Graphics_Ripper::Rip_One_Up_Font() {
 }
 
 bool Graphics_Ripper::Rip_Peach() {
-    if (this->Is_Peach_Border_Dark()) return this->Rip_Peach_Dark();
-    else return this->Rip_Peach_Light();
+    if (this->Is_Peach_Border_Dark()) return true; //ignore Peach sprites that make use of the dark border
+    if (!this->Apply_Patch("Peach")) return false;
+    bool sprite = true;
+    QStack<qint64> offsets = this->graphicsOffsets->Get_Peach_Offsets();
+    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
+    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
+    return this->Create_Patch();
 }
 
 bool Graphics_Ripper::Rip_Piranha_Plant() {
@@ -413,8 +418,13 @@ bool Graphics_Ripper::Rip_Starman() {
 }
 
 bool Graphics_Ripper::Rip_Toad() {
-    if (this->Is_Peach_Border_Dark()) return this->Rip_Toad_Dark();
-    else return this->Rip_Toad_Light();
+    if (this->Is_Peach_Border_Dark()) return true; //ignore Toad sprites that make use of the dark border
+    if (!this->Apply_Patch("Toad")) return false;
+    bool sprite = true;
+    QStack<qint64> offsets = this->graphicsOffsets->Get_Toad_Offsets();
+    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
+    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
+    return this->Create_Patch();
 }
 
 bool Graphics_Ripper::Rip_Axe() {
@@ -659,42 +669,6 @@ bool Graphics_Ripper::Rip_Mushroom_Same_Border() {
 bool Graphics_Ripper::Rip_Mushroom_Unique() {
     if (!this->Apply_Patch("Powerup Mushroom Unique")) return false;
     if (!this->Write_Sprite_Tiles_To_Working_File(QByteArray::fromHex(QString("76777879").toLatin1()))) return false;
-    return this->Create_Patch();
-}
-
-bool Graphics_Ripper::Rip_Peach_Dark() {
-    if (!this->Apply_Patch("Peach Dark")) return false;
-    bool sprite = true;
-    QStack<qint64> offsets = this->graphicsOffsets->Get_Peach_Offsets();
-    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
-    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
-    return this->Create_Patch();
-}
-
-bool Graphics_Ripper::Rip_Peach_Light() {
-    if (!this->Apply_Patch("Peach Light")) return false;
-    bool sprite = true;
-    QStack<qint64> offsets = this->graphicsOffsets->Get_Peach_Offsets();
-    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
-    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
-    return this->Create_Patch();
-}
-
-bool Graphics_Ripper::Rip_Toad_Dark() {
-    if (!this->Apply_Patch("Toad Dark")) return false;
-    bool sprite = true;
-    QStack<qint64> offsets = this->graphicsOffsets->Get_Toad_Offsets();
-    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
-    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
-    return this->Create_Patch();
-}
-
-bool Graphics_Ripper::Rip_Toad_Light() {
-    if (!this->Apply_Patch("Toad Light")) return false;
-    bool sprite = true;
-    QStack<qint64> offsets = this->graphicsOffsets->Get_Toad_Offsets();
-    if (this->Does_Patch_Use_New_Tiles(offsets, sprite, 0)) return true;
-    if (!this->Write_Tiles_And_Order_To_Working_File(offsets, sprite, 0)) return false;
     return this->Create_Patch();
 }
 

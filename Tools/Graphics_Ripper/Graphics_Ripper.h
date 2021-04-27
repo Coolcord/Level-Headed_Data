@@ -85,10 +85,6 @@ private:
     bool Rip_Mushroom_Same_Base();
     bool Rip_Mushroom_Same_Border();
     bool Rip_Mushroom_Unique();
-    bool Rip_Peach_Dark();
-    bool Rip_Peach_Light();
-    bool Rip_Toad_Dark();
-    bool Rip_Toad_Light();
 
     bool Apply_Patch(const QString &sprite, QString suggestedName = QString());
     bool Create_Patch();
