@@ -11,16 +11,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wdeprecated -Werror")
 
-find_package(QT NAMES Qt6 COMPONENTS Core REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 set(SOURCES
     main.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
-target_link_libraries(${PROJECT_NAME}
-    Qt${QT_VERSION_MAJOR}::Core
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    Qt6::Core
 )
 
 include(GNUInstallDirs)
