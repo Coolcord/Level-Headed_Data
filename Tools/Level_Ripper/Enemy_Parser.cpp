@@ -2,6 +2,7 @@
 #include "../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Enemy_Buffer.h"
 #include "../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Object_Buffer.h"
 #include "../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Pipe_Pointer_Buffer.h"
+#include "../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Required_Enemy_Spawns.h"
 #include "Coordinates.h"
 #include <QDebug>
 #include <assert.h>
@@ -11,13 +12,15 @@ Enemy_Parser::Enemy_Parser(int numBytesLeft, SMB1_Compliance_Generator_Arguments
     this->objects = new Object_Buffer(numBytesLeft, args);
     this->objects->Set_Coordinate_Safety(false);
     this->enemies->Set_Coordinate_Safety(false);
-    this->pipePointerWriter = new Pipe_Pointer_Buffer(this->objects, this->enemies);
+    this->requiredEnemies = new Required_Enemy_Spawns(this->objects, this->enemies, args);
+    this->pipePointerWriter = new Pipe_Pointer_Buffer(this->objects, this->enemies, this->requiredEnemies);
     this->coordinates = new Coordinates(this->enemies);
     this->lastWasPageChange = false;
 }
 
 Enemy_Parser::~Enemy_Parser() {
     delete this->pipePointerWriter;
+    delete this->requiredEnemies;
     delete this->enemies;
     delete this->objects;
     delete this->coordinates;

@@ -45,6 +45,7 @@ set(SOURCES
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Simple_Object_Spawner.cpp
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Standard_Overworld_Generator.cpp
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underground_Generator.cpp
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underground_Bonus_Generator.cpp
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underwater_Generator.cpp
     Coordinates.cpp
     Enemy_Parser.cpp
@@ -115,6 +116,7 @@ set(HEADERS
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Simple_Object_Spawner.h
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Standard_Overworld_Generator.h
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underground_Generator.h
+    ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underground_Bonus_Generator.h
     ../../../Level-Headed/SMB1/SMB1_Compliance_Generator/Underwater_Generator.h
     Coordinates.h
     Enemy_Parser.h

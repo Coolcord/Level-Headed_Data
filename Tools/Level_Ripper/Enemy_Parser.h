@@ -8,6 +8,7 @@ class Coordinates;
 class Enemy_Buffer;
 class Object_Buffer;
 class Pipe_Pointer_Buffer;
+class Required_Enemy_Spawns;
 
 class Enemy_Parser {
 public:
@@ -22,6 +23,7 @@ private:
     Coordinates *coordinates;
     Object_Buffer *objects;
     Enemy_Buffer *enemies;
+    Required_Enemy_Spawns *requiredEnemies;
     Pipe_Pointer_Buffer *pipePointerWriter;
     SMB1_Compliance_Generator_Arguments *args;
     bool lastWasPageChange;
